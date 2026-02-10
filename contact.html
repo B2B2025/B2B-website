@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar scrolled">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-rocket"></i> B2B
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="btn-premium btn-primary" style="padding: 10px 20px;">Get
+                            Started</a></li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 80px;">
+        <section class="section-spacing">
+            <div class="container">
+                <div class="flex-split" style="align-items: flex-start;">
+                    <div class="hero-text" style="padding-top: var(--spacing-lg);">
+                        <span class="badge-tag">Get in Touch</span>
+                        <h1 style="font-size: 3.5rem;">Let's Build Your <span
+                                style="color: var(--brand-primary);">Digital Edge.</span></h1>
+                        <p style="font-size: 1.1rem; margin-top: var(--spacing-sm);">Join the thousands of MSMEs growing
+                            with B2B. Our team typically responds in less than 2 hours during business hours.</p>
+
+                        <div style="margin-top: var(--spacing-xl); display: grid; gap: var(--spacing-lg);">
+                            <div style="display: flex; gap: 20px; align-items: flex-start;">
+                                <div
+                                    style="width: 48px; height: 48px; background: rgba(59, 130, 246, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--brand-primary);">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 4px; font-size: 1.1rem;">Email Support</h4>
+                                    <p style="color: var(--brand-muted);">growth@bharat2business.in</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 20px; align-items: flex-start;">
+                                <div
+                                    style="width: 48px; height: 48px; background: rgba(59, 130, 246, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--brand-primary);">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 4px; font-size: 1.1rem;">Sales Inquiry</h4>
+                                    <p style="color: var(--brand-muted);">+91 1800-B2B-SERVE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-premium" style="flex: 1; width: 100%; box-shadow: var(--shadow-premium);">
+                        <form id="contactForm" style="display: grid; gap: var(--spacing-md);">
+                            <div>
+                                <label
+                                    style="display: block; margin-bottom: 8px; font-weight: 700; color: var(--brand-dark);">Full
+                                    Name</label>
+                                <input type="text" id="name" class="form-input"
+                                    style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--brand-border); font-family: inherit;"
+                                    placeholder="e.g. Rahul Gupta">
+                                <span class="error-message" id="nameError"
+                                    style="color: #ef4444; font-size: 0.8rem; display: none; margin-top: 4px;"></span>
+                            </div>
+                            <div>
+                                <label
+                                    style="display: block; margin-bottom: 8px; font-weight: 700; color: var(--brand-dark);">Business
+                                    Email</label>
+                                <input type="email" id="email" class="form-input"
+                                    style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--brand-border); font-family: inherit;"
+                                    placeholder="rahul@guptatextiles.com">
+                                <span class="error-message" id="emailError"
+                                    style="color: #ef4444; font-size: 0.8rem; display: none; margin-top: 4px;"></span>
+                            </div>
+                            <div>
+                                <label
+                                    style="display: block; margin-bottom: 8px; font-weight: 700; color: var(--brand-dark);">How
+                                    can we help?</label>
+                                <textarea id="message" class="form-textarea"
+                                    style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--brand-border); font-family: inherit; min-height: 120px;"
+                                    placeholder="Tell us about your business goals..."></textarea>
+                                <span class="error-message" id="messageError"
+                                    style="color: #ef4444; font-size: 0.8rem; display: none; margin-top: 4px;"></span>
+                            </div>
+                            <button type="submit" class="btn-premium btn-primary"
+                                style="justify-content: center; width: 100%;">Send Message <i
+                                    class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p style="color: var(--brand-muted);">&copy; 2026 Bharat2Business. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
