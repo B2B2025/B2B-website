@@ -66,6 +66,9 @@
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                 <li><a href="contact.html" class="btn-cta">Get Started</a></li>
             </ul>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
@@ -73,14 +76,12 @@
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>We <br><span class="typed-text"></span> MSMEs<span class="cursor">&nbsp;</span></h1>
-                <p>Bharat2Business provides the digital infrastructure for MSMEs to source smarter, sell faster, and
-                    thrive in the global economy. The all-in-one OS for the heart of Bharat.</p>
+                <h1>We <span class="typed-text"></span> MSMEs<span class="cursor">&nbsp;</span></h1>
+                <p>Powering 63 Million Businesses. Building Bharat.</p>
                 <div class="hero-btns">
-                    <a href="contact.html" class="btn-cta" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Join the
-                        Network</a>
-                    <a href="https://vimeo.com/45830194" class="nav-link" style="margin-left: 2rem;"><i
-                            class="fas fa-play-circle"></i> Watch Video</a>
+                    <a href="#" id="download-btn" class="btn-cta"
+                        style="padding: 1rem 2.5rem; font-size: 1.1rem;">Download the App</a>
+
                 </div>
             </div>
         </div>
@@ -122,56 +123,239 @@
     <section class="parallax-section">
         <div class="container">
             <h2 style="margin-bottom: 1.5rem;">Why MSMEs Choose Bharat2Business?</h2>
-            <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 2.5rem; opacity: 0.9;">
-                Because we understand one thing deeply:<br>
-                Indian businesses don’t need more noise — they need reliable direction.
+            <p style="font-size: 1.5rem; max-width: 850px; margin: 0 auto 2.5rem; opacity: 0.9;">
+                Because MSMEs don’t need another app.
+                They need a system that works. <br><br>We bring clarity, structure and direction.
             </p>
             <p style="font-size: 1.1rem; font-weight: 600; opacity: 0.8; margin-bottom: 2rem;">That’s what we’re
                 building. Every day.</p>
-            <a href="contact.html" class="btn-cta" style="background: white; color: var(--secondary);">Get Started
-                Now</a>
         </div>
     </section>
 
-    <!-- Works Section -->
-    <section class="works">
+    <section id="works" class="works">
         <div class="container">
-            <div class="section-title">
-                <span>Works</span>
-                <h2>Major Pillars of Growth</h2>
-            </div>
-
+            <!-- Digital Assistant -->
             <div class="work-row">
-                <div class="work-img">
-                    <div
-                        style="background: #e2e8f0; height: 350px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-truck-moving" style="font-size: 8rem; color: #cbd5e1;"></i>
-                    </div>
-                </div>
                 <div class="work-text">
-                    <span>Logistics</span>
-                    <h3>Hyper-Local Sourcing, Global Reach.</h3>
-                    <p>Our intelligent logistics engine connects you with the most reliable transport partners in your
-                        region while opening doors to international shipping with zero complexity.</p>
-                    <a href="solutions.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Learn
-                        More <i class="fas fa-arrow-right"></i></a>
+
+                    <h3>Ask Complex Questions.</h3>
+                    <p style="margin-top: 1rem;">Want to understand GST filing or decode the government’s latest policy
+                        for your sector? Our Digital Partner is trained on real MSME workflows, so you can ask anything
+                        and follow up until it truly makes sense.</p>
+                    <ul class="benefit-list" style="margin-top: 2rem;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                            <span>Real-time voice & text AI</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                            <span>Available in your language</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="work-img">
+                    <div class="mobile-mockup">
+                        <div class="app-screen" id="app-home-screen">
+                            <!-- Header with Skyline -->
+                            <div class="app-header-layered">
+                                <div class="app-status-bar">
+                                    <span>3:24</span>
+                                    <div class="status-icons">
+                                        <i class="fas fa-wifi"></i>
+                                        <i class="fas fa-signal"></i>
+                                        <i class="fas fa-battery-full"></i>
+                                    </div>
+                                </div>
+                                <div class="app-top-nav">
+                                    <div class="menu-btn-round"><i class="fas fa-bars"></i></div>
+                                    <span class="user-greeting">Good Morning, <strong>Demo</strong></span>
+                                    <div class="nav-icons">
+                                        <span class="lang-tag-pill">EN</span>
+                                        <div class="settings-btn-round"><i class="fas fa-cog"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mumbai-skyline"></div>
+                            </div>
+                            <!-- App Content -->
+                            <div class="app-body">
+                                <span class="app-section-title">Recommended for you</span>
+                                <div class="app-card">
+                                    <div class="card-icon-round"><i class="fas fa-chart-line"></i></div>
+                                    <div class="card-text">
+                                        <strong>Business Health</strong>
+                                        <span>Credit score updated today</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right"
+                                        style="margin-left: auto; opacity: 0.3; font-size: 0.8rem;"></i>
+                                </div>
+                                <div class="app-pagination">
+                                    <span></span>
+                                    <span class="active"></span>
+                                    <span></span>
+                                </div>
+
+                                <div class="app-search-container">
+                                    <div class="app-search-bar">
+                                        <i class="fas fa-search"></i>
+                                        <div class="typing-wrapper">
+                                            <span id="app-typing-target"></span><span class="app-cursor">|</span>
+                                        </div>
+                                        <i class="fas fa-microphone" style="color: #2563eb;"></i>
+                                    </div>
+                                    <p class="search-hint">Try: "Latest Budget Impact"</p>
+                                </div>
+
+                                <div class="help-grid-title">How can I help you today?</div>
+                                <div class="help-grid">
+                                    <div class="help-item">
+                                        <div class="help-item-text">
+                                            <strong>Apply for a Business Loan</strong>
+                                            <span>Up to ₹50L</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="help-item">
+                                        <div class="help-item-text">
+                                            <strong>Find Subsidies</strong>
+                                            <span>Central & State</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI RESPONSE SCREEN (DIGITAL ASSISTANT) -->
+                        <div class="app-screen-ai" id="app-ai-screen" style="display: none;">
+                            <div class="ai-header-fixed">
+                                <i class="fas fa-arrow-left" id="ai-back"></i>
+                                <span>Digital Assistant</span>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                            <div class="ai-chat-body-scroller">
+                                <div class="chat-bubble-user-app">How to file GST?</div>
+                                <div class="chat-bubble-ai-app">
+                                    <div class="ai-avatar-circle">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="ai-message-content">
+                                        <div id="ai-response-text"></div>
+                                        <span class="ai-cursor">|</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="work-row reverse">
+            <!-- Access Verified Experts -->
+            <div class="work-row">
+                <div class="work-text">
+                    <h3>Access Verified Experts.</h3>
+                    <p>Need help responding to a compliance notice, or preparing export documents? Connect directly with
+                        vetted chartered accountants, legal consultants, and industry specialists to get trusted human
+                        guidance when it matters.</p>
+                    <a href="solutions.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Connect
+                        with Experts <i class="fas fa-arrow-right"></i></a>
+                </div>
                 <div class="work-img">
-                    <div
-                        style="background: #e2e8f0; height: 350px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-wallet" style="font-size: 8rem; color: #cbd5e1;"></i>
+                    <div class="placeholder-icon-box">
+                        <i class="fas fa-user-tie"></i>
                     </div>
                 </div>
+            </div>
+
+            <!-- Government Schemes -->
+            <div class="work-row">
                 <div class="work-text">
-                    <span>Financing</span>
-                    <h3>Fuel Growth with Zero Collateral.</h3>
-                    <p>Don't let capital hold you back. B2B Credit uses your transaction history on the platform to
-                        offer instant, flexible work capital that traditional banks might miss.</p>
+                    <h3>Government Schemes for You.</h3>
+                    <p>Unsure which subsidies, credit programs, or incentives apply to your business? Bharat2Business
+                        analyzes your business profile and highlights schemes you qualify for so you don’t miss
+                        opportunities meant for you.</p>
+                    <a href="solutions.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Check
+                        Eligibility <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="work-img">
+                    <div class="mobile-mockup">
+                        <div class="app-screen" id="schemes-home-screen">
+                            <div class="schemes-header">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>Government Schemes</span>
+                                <i class="fas fa-ellipsis-v"
+                                    style="margin-left: auto; font-size: 0.9rem; color: #94a3b8;"></i>
+                            </div>
+
+                            <div class="schemes-body">
+                                <!-- STATE 1: Banner + Input -->
+                                <div id="schemes-wizard" style="padding: 1.25rem;">
+                                    <div class="udyam-input-box">
+                                        <i class="fas fa-id-card"></i>
+                                        <span id="udyam-typing-target">Enter Udyam Number</span>
+                                    </div>
+                                    <div class="app-card" style="margin-bottom: 15px;">
+                                        <div class="card-text">
+                                            <strong>Annual Turnover</strong>
+                                            <span>₹2.5 Crores</span>
+                                        </div>
+                                        <i class="fas fa-chevron-down" style="margin-left: auto; opacity: 0.3;"></i>
+                                    </div>
+                                    <button class="btn-cta"
+                                        style="width: 100%; border-radius: 12px; font-size: 0.9rem; padding: 0.8rem;">Check
+                                        Eligibility</button>
+                                </div>
+
+                                <!-- STATE 2: Loader -->
+                                <div id="schemes-loader" class="schemes-loader" style="display: none;">
+                                    <div class="loader-spinner"></div>
+                                    <p style="font-size: 0.85rem; font-weight: 700;">Matching your profile...</p>
+                                </div>
+
+                                <!-- STATE 3: Banner + Results -->
+                                <div id="schemes-results" style="display: none;">
+                                    <div class="eligibility-banner">
+                                        <i class="fas fa-check-circle" style="color: #2563eb;"></i>
+                                        <p>You are eligible for 2 central schemes!</p>
+                                    </div>
+                                    <div class="schemes-list" style="padding: 1.25rem;">
+                                        <div class="scheme-card-item">
+                                            <span class="scheme-tag">ELIGIBLE</span>
+                                            <strong
+                                                style="display: block; font-size: 0.85rem; margin-bottom: 4px;">PMEGP
+                                                Loan Scheme</strong>
+                                            <p style="font-size: 0.7rem; color: #64748b;">Get up to 35% subsidy on
+                                                credit.</p>
+                                        </div>
+                                        <div class="scheme-card-item">
+                                            <span class="scheme-tag">ELIGIBLE</span>
+                                            <strong
+                                                style="display: block; font-size: 0.85rem; margin-bottom: 4px;">CLCSS
+                                                Technology</strong>
+                                            <p style="font-size: 0.7rem; color: #64748b;">15% capital subsidy for
+                                                upgrades.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trade Shows -->
+            <div class="work-row">
+                <div class="work-text">
+                    <h3>Trade Shows & Opportunities.</h3>
+                    <p>Looking to expand beyond your local market? Find relevant trade shows, expos, and industry events
+                        tailored to your sector and explore new customers, suppliers, and partnerships with confidence.
+                    </p>
                     <a href="solutions.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Explore
-                        Financing <i class="fas fa-arrow-right"></i></a>
+                        Opportunities <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="work-img">
+                    <div class="placeholder-icon-box">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
                 </div>
             </div>
         </div>
