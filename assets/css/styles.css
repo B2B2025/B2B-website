@@ -310,10 +310,10 @@ section {
 
 /* Featured / Parallax */
 .parallax-section {
-    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('../img/parallax-bg.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    color: var(--white);
+    background: linear-gradient(180deg,
+            rgba(19, 136, 8, 0.08) 0%,
+            rgba(255, 255, 255, 1) 100%);
+    color: var(--secondary);
     text-align: center;
     padding: 120px 0;
 }
