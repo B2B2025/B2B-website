@@ -281,4 +281,94 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.5 });
         observer.observe(counterSection);
     }
+
+    // --- TESTIMONIAL CAROUSEL (MEETPRISM STYLE) ---
+    const track = document.getElementById('testimonialTrack');
+    const paginationContainer = document.getElementById('testimonial-pagination');
+
+    if (track && paginationContainer) {
+        let cards = Array.from(track.children);
+        const originalCount = cards.length;
+
+        // Clone for infinite loop illusion
+        // We clone 2 at start and 2 at end to allowing robust centering
+        const clonesStart = cards.slice(-2).map(c => { const clone = c.cloneNode(true); clone.classList.add('clone'); return clone; });
+        const clonesEnd = cards.slice(0, 2).map(c => { const clone = c.cloneNode(true); clone.classList.add('clone'); return clone; });
+
+        clonesStart.forEach(c => track.insertBefore(c, track.firstChild));
+        clonesEnd.forEach(c => track.appendChild(c));
+
+        // Re-query cards to include clones
+        let allCards = Array.from(track.children);
+
+        let currentIndex = 2; // Start at first real card (since we added 2 clones at start)
+        const cardWidth = 340; // width
+        const gap = 40; // margin 20px * 2
+        const itemWidth = cardWidth + gap;
+        const intervalTime = 20000; // 20 seconds
+        let autoSlideInterval;
+
+        // Generate Pagination Dots
+        for (let i = 0; i < originalCount; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(i + 2);
+                resetTimer();
+            });
+            paginationContainer.appendChild(dot);
+        }
+
+        const dots = Array.from(paginationContainer.children);
+
+        function updateCarousel(transition = true) {
+            const itemWidth = 340 + 40; // re-declare or use scope? Scope is fine.
+            const centerOffset = -(currentIndex * itemWidth);
+            // Center calculation: 50% + itemWidth/2 + offset
+            track.style.transform = `translateX(calc(-50% + ${itemWidth / 2}px + ${centerOffset}px))`;
+
+            track.style.transition = transition ? 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)' : 'none';
+
+            // Update Active Classes
+            allCards.forEach((c, i) => {
+                c.classList.remove('active-center');
+                if (i === currentIndex) c.classList.add('active-center');
+            });
+
+            // Update Dots
+            let realIndex = (currentIndex - 2) % originalCount;
+            if (realIndex < 0) realIndex += originalCount;
+
+            dots.forEach(d => d.classList.remove('active'));
+            if (dots[realIndex]) dots[realIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentIndex++;
+            updateCarousel(true);
+
+            // Check for loop
+            if (currentIndex >= allCards.length - 2) {
+                setTimeout(() => {
+                    currentIndex = 2; // Jump back to first real card
+                    updateCarousel(false);
+                }, 800);
+            }
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel(true);
+        }
+
+        function resetTimer() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, intervalTime);
+        }
+
+        // Initialize
+        updateCarousel(false);
+        resetTimer();
+    }
 });

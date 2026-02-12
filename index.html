@@ -75,7 +75,7 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li><a href="solutions.html" class="nav-link">What can we do?</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                 <li><a href="contact.html" class="btn-cta">Get Started</a></li>
@@ -100,6 +100,27 @@
             </div>
         </div>
     </header>
+
+    <!-- Counter Section -->
+    <section class="counters" id="section-counter">
+        <div class="container">
+            <div class="counters-grid">
+                <div class="counter-item">
+                    <strong class="number" data-number="10000">0</strong>
+                    <span>Active MSMEs</span>
+                </div>
+                <div class="counter-item">
+                    <strong class="number" data-number="1200">0</strong>
+                    <span>Verified Experts</span>
+                </div>
+                <div class="counter-item">
+                    <strong class="number" data-number="24000">0</strong>
+                    <span>Queries Daily</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Parallax Section -->
     <section class="parallax-section">
@@ -234,12 +255,13 @@
             <!-- Access Verified Experts -->
             <div class="work-row">
                 <div class="work-text">
-                    <h3>Access Verified Experts.</h3>
-                    <p>Need help responding to a compliance notice, or preparing export documents? Connect directly with
-                        vetted chartered accountants, legal consultants, and industry specialists to get trusted human
-                        guidance when it matters.</p>
-                    <a href="solutions.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Connect
-                        with Experts <i class="fas fa-arrow-right"></i></a>
+                    <h3>Get Onboarded as an Expert.</h3>
+                    <p>Are you a Chartered Accountant, Legal Consultant, or Industry Specialist? We are opening early
+                        registrations for experts to join our platform. Partner with us to help millions of MSMEs grow.
+                    </p>
+                    <a href="https://forms.google.com/placeholder-expert-registration" target="_blank" class="nav-link"
+                        style="color: var(--primary); font-weight: 700;">Join as an Expert <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="work-img">
                     <div class="placeholder-icon-box">
@@ -350,48 +372,102 @@
                 <span>Customer Says</span>
                 <h2>Our satisfied customer says</h2>
             </div>
-            <div class="services-grid">
-                <div class="testimonial-card">
-                    <div class="user-img"><i class="fas fa-user"></i></div>
-                    <p>"B2B didn't just give us an app; they gave us a global presence. Our Surat textile unit is now
-                        shipping to five countries."</p>
-                    <h4 style="margin-top: 1.5rem;">Vikram Mehta</h4>
-                    <span style="color: var(--text-muted); font-size: 0.9rem;">Mehta Textiles</span>
-                </div>
-                <div class="testimonial-card">
-                    <div class="user-img"><i class="fas fa-user-tie"></i></div>
-                    <p>"The instant credit facility allowed us to scale during the festive season when traditional loans
-                        were stuck in paperwork."</p>
-                    <h4 style="margin-top: 1.5rem;">Ananya Roy</h4>
-                    <span style="color: var(--text-muted); font-size: 0.9rem;">Roy Handcrafted</span>
-                </div>
-                <div class="testimonial-card">
-                    <div class="user-img"><i class="fas fa-user-ninja"></i></div>
-                    <p>"Logistics was a nightmare. Now, it's one click. We save at least 20 hours of manual coordination
-                        every single week."</p>
-                    <h4 style="margin-top: 1.5rem;">Saurabh Singh</h4>
-                    <span style="color: var(--text-muted); font-size: 0.9rem;">AutoHub Spares</span>
+            <div class="testimonial-slider-container">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <!-- Card 1 -->
+                    <div class="testimonial-card">
+                        <div class="card-content">
+                            <i class="fas fa-quote-left"
+                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #881337;">Global Reach</h3>
+                            <p>"B2B didn't just give us an app; they gave us a global presence. Our Surat textile unit
+                                is now shipping to five countries."</p>
+                        </div>
+                        <div class="user-profile">
+                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
+                                    class="fas fa-user"></i></div>
+                            <div>
+                                <h4 style="font-size: 1rem; margin: 0;">Vikram Mehta</h4>
+                                <span style="font-size: 0.8rem;">Mehta Textiles</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="testimonial-card">
+                        <div class="card-content">
+                            <i class="fas fa-quote-left"
+                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #0c4a6e;">Instant Credit</h3>
+                            <p>"The instant credit facility allowed us to scale during the festive season when
+                                traditional loans were stuck in paperwork."</p>
+                        </div>
+                        <div class="user-profile">
+                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
+                                    class="fas fa-user-tie"></i></div>
+                            <div>
+                                <h4 style="font-size: 1rem; margin: 0;">Ananya Roy</h4>
+                                <span style="font-size: 0.8rem;">Roy Handcrafted</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="testimonial-card">
+                        <div class="card-content">
+                            <i class="fas fa-quote-left"
+                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #14532d;">Logistics Solved</h3>
+                            <p>"Logistics was a nightmare. Now, it's one click. We save at least 20 hours of manual
+                                coordination every single week."</p>
+                        </div>
+                        <div class="user-profile">
+                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
+                                    class="fas fa-user-ninja"></i></div>
+                            <div>
+                                <h4 style="font-size: 1rem; margin: 0;">Saurabh Singh</h4>
+                                <span style="font-size: 0.8rem;">AutoHub Spares</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="testimonial-card">
+                        <div class="card-content">
+                            <i class="fas fa-quote-left"
+                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #7c2d12;">Verified Suppliers</h3>
+                            <p>"We found the best suppliers for raw materials through the verified network. Quality has
+                                gone up, costs down."</p>
+                        </div>
+                        <div class="user-profile">
+                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
+                                    class="fas fa-industry"></i></div>
+                            <div>
+                                <h4 style="font-size: 1rem; margin: 0;">Rajesh Gupta</h4>
+                                <span style="font-size: 0.8rem;">Gupta Polymers</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 (More variety) -->
+                    <div class="testimonial-card">
+                        <div class="card-content">
+                            <i class="fas fa-quote-left"
+                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #881337;">Export Easy</h3>
+                            <p>"Documentation for export used to take weeks. With the expert guidance here, we did it in
+                                days."</p>
+                        </div>
+                        <div class="user-profile">
+                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
+                                    class="fas fa-ship"></i></div>
+                            <div>
+                                <h4 style="font-size: 1rem; margin: 0;">Priya Desai</h4>
+                                <span style="font-size: 0.8rem;">Desai Exports</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Counter Section -->
-    <section class="counters" id="section-counter">
-        <div class="container">
-            <div class="counters-grid">
-                <div class="counter-item">
-                    <strong class="number" data-number="10000">0</strong>
-                    <span>Businesses Scaled</span>
-                </div>
-                <div class="counter-item">
-                    <strong class="number" data-number="1200">0</strong>
-                    <span>Verified Suppliers</span>
-                </div>
-                <div class="counter-item">
-                    <strong class="number" data-number="24">0</strong>
-                    <span>Hour Support</span>
-                </div>
+            <div class="carousel-pagination" id="testimonial-pagination">
+                <!-- Dots will be generated by JS -->
             </div>
         </div>
     </section>
