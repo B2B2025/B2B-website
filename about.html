@@ -5,6 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Bharat2Business - The Mission for MSMEs</title>
+    <meta name="description"
+        content="Learn about the mission of Bharat2Business: empowering 63 million Indian MSMEs with digital power, clarity, and growth tools.">
+    <meta name="keywords"
+        content="MSME mission, Indian business empowerment, Bharat2Business story, digital backbone India">
+    <meta name="author" content="Bharat2Business">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Our Story | Bharat2Business – Powering Bharat's MSMEs">
+    <meta property="og:description"
+        content="We believe every small shop deserves digital power. This is why we built Bharat2Business.">
+    <meta property="og:url" content="https://www.bharat2business.com/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.bharat2business.com/assets/img/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +28,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/about.css">
 </head>
 
-<body>
+<body class="page-entrance">
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollBar"></div>
+    </div>
 
     <!-- Navbar -->
     <nav class="navbar scrolled">
@@ -23,211 +42,190 @@
             <a href="index.html" class="logo">
                 <i class="fas fa-rocket"></i> Bharat2Business
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li><a href="msme.html" class="nav-link">For MSMEs</a></li>
+                <li><a href="experts.html" class="nav-link">For Experts</a></li>
                 <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
+
                 <li><a href="contact.html" class="btn-cta">Get Started</a></li>
             </ul>
-            <div class="nav-toggle">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <header class="section-spacing"
-        style="padding-top: 150px; background: linear-gradient(135deg, rgba(255, 153, 51, 0.1) 0%, rgba(255, 255, 255, 1) 50%, rgba(19, 136, 8, 0.1) 100%);">
-        <div class="container" style="text-align: center;">
-            <span class="section-title" style="margin-bottom: 1rem;"><span>Our Story</span></span>
-            <h1 style="font-size: 3.5rem; margin-bottom: 2rem;">Built for the Future of Bharat.</h1>
-            <p
-                style="font-size: 1.35rem; max-width: 800px; margin: 0 auto; line-height: 1.6; color: var(--secondary); font-weight: 600;">
-                Bharat2Business (B2B) was born from a simple belief: the smallest shop in the furthest corner of India
-                deserves the same digital power as a global giant.
+    <header class="about-hero">
+        <div class="about-hero-bg"></div>
+        <div class="container text-center pos-relative z-1">
+            <span class="section-title margin-b-small"><span>Our Story</span></span>
+            <h1 class="about-hero-headline">
+                <span class="hero-word">Built</span>
+                <span class="hero-word">for</span>
+                <span class="hero-word">the</span>
+                <span class="hero-word hero-glow-wrap">
+                    <span class="hero-radial-glow"></span>Future
+                </span>
+                <span class="hero-word">of</span>
+                <span class="hero-word hero-glow-wrap">
+                    <span class="hero-radial-glow"></span>Bharat.
+                </span>
+            </h1>
+            <p class="about-hero-desc">
+                We believe the smallest shop in the furthest district deserves the same digital power as a global
+                enterprise.<br>
+
+                And we are building it.
             </p>
         </div>
+        <div class="section-separator-gradient"></div>
     </header>
 
+
     <!-- The Journey Section -->
-    <section class="section-spacing">
+    <section class="section-spacing purpose-section">
         <div class="container">
-            <div class="work-row">
-                <div class="work-img">
-                    <div
-                        style="background: #f8fafc; height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 20px;">
-                        <i class="fas fa-history" style="font-size: 8rem; color: var(--primary); opacity: 0.2;"></i>
+            <div class="text-center margin-b-large">
+                <h2 class="animated-header">
+                    Our Purpose
+                    <span class="header-underline"></span>
+                </h2>
+            </div>
+            <div class="purpose-grid">
+                <div class="purpose-card reveal-up">
+                    <p>India has over <strong>63 million MSMEs</strong>&mdash;the backbone of employment,
+                        manufacturing, and exports&mdash;yet they remain underserved by technology. For decades,
+                        they've grown <strong>despite</strong> confusing regulations and fragmented information.</p>
+                </div>
+                <div class="purpose-card reveal-up">
+                    <p>We decided to change that. Bharat2Business exists to bring
+                        <span class="gradient-highlight">clarity, confidence, and capability</span>
+                        through smart AI-powered intelligence, verified expert access,
+                        and actionable digital tools.
+                    </p>
+                </div>
+                <div class="purpose-card reveal-up span-full">
+                    <p>By combining AI, local expertise, and ecosystem partnerships, we're
+                        making business
+                        growth
+                        <span class="gradient-highlight">predictable, affordable, and accessible</span>
+                        for every MSME urban or rural.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section-separator-gradient"></div>
+    </section>
+
+
+    <!-- Founder Section (Emotional Trust) -->
+    <section class="section-spacing founder-section">
+        <div class="founder-bg-band"></div>
+        <div class="container">
+            <div class="founder-layout">
+                <div class="founder-image-box reveal-left">
+                    <div class="founder-circle">
+                        <img src="assets/img/founder.png" alt="Founder of Bharat2Business">
                     </div>
                 </div>
-                <div class="work-text">
-                    <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-                        For decades, MSMEs have grown despite complexity like confusing regulations, fragmented
-                        information,
-                        unreliable intermediaries, and systems that were never designed for them.
+                <div class="founder-content reveal-right">
+                    <span class="badge-tag">The Human Mission</span>
+                    <h2 class="founder-title">A Mission Beyond Business</h2>
+                    <p class="founder-text">
+                        Bharat2Business was founded on the idea that technology should be an equalizer, not a barrier.
+                        My journey across India's industrial hubs showed me that MSME owners are the most resilient
+                        entrepreneurs
+                        on the planet, yet they are often left to navigate complex digital shifts alone.
                     </p>
-                    <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">
-                        We decided to change that. Bharat2Business exists to bring clarity, confidence, and capability
-                        to Indian entrepreneurs without jargon, without dependency, and without delay.
+                    <p class="founder-text">
+                        We're here to change that narrative. Our mission is to provide the human touch and the AI power
+                        needed
+                        to transform every local business into a national success story. Because when small businesses
+                        grow,
+                        Bharat grows.
                     </p>
-                    <div
-                        style="padding: 1.5rem; border-left: 4px solid var(--primary); background: #f0f7ff; border-radius: 0 10px 10px 0;">
-                        <p style="font-weight: 700; color: var(--secondary); font-size: 1.1rem;">
-                            Empowering millions of businesses across the heart of Bharat.
-                        </p>
+                </div>
+            </div>
+        </div>
+        <div class="section-separator-gradient"></div>
+    </section>
+
+
+
+
+
+    <!-- The Principles That Guide Us Section -->
+    <section class="section-spacing values-section section-light">
+        <div class="container">
+            <div class="text-center margin-b-xl">
+                <h2 class="animated-header">
+                    The Principles That Guide Us
+                    <span class="header-underline"></span>
+                </h2>
+            </div>
+            <div class="principles-grid">
+                <div class="principle-item reveal-up">
+                    <div class="principle-number">01</div>
+                    <div class="principle-content">
+                        <h3>Clarity Over Complexity</h3>
+                        <p>Simple steps. Actionable guidance. No jargon.</p>
+                    </div>
+                </div>
+
+                <div class="principle-item reveal-up">
+                    <div class="principle-number">02</div>
+                    <div class="principle-content">
+                        <h3>Trust Above All</h3>
+                        <p>Verified experts. Transparent pricing. No hidden incentives.</p>
+                    </div>
+                </div>
+
+                <div class="principle-item reveal-up">
+                    <div class="principle-number">03</div>
+                    <div class="principle-content">
+                        <h3>Bharat-First Thinking</h3>
+                        <p>Built around Indian realities like language, compliance, access.</p>
+                    </div>
+                </div>
+
+                <div class="principle-item reveal-up principle-span-half">
+                    <div class="principle-number">04</div>
+                    <div class="principle-content">
+                        <h3>Accessible by Design</h3>
+                        <p>Affordable. Multilingual. Built for real devices.</p>
+                    </div>
+                </div>
+
+                <div class="principle-item reveal-up principle-span-half">
+                    <div class="principle-number">05</div>
+                    <div class="principle-content">
+                        <h3>Long-Term Impact</h3>
+                        <p>We build systems that compound, not features that trend.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Mission Section -->
-    <section class="section-spacing" style="background-color: var(--secondary); color: var(--white);">
+    <!-- Pre-Footer CTA -->
+    <section class="pre-footer-cta">
         <div class="container">
-            <div class="section-title">
-                <span style="color: var(--primary);">Our Mission</span>
-                <h2 style="color: var(--white);">Building the digital nervous system for India’s MSMEs.</h2>
-            </div>
-            <div style="max-width: 900px; margin: 0 auto;">
-                <p style="font-size: 1.15rem; opacity: 0.8; text-align: center; margin-bottom: 3.5rem;">
-                    India has over 63 million MSMEs. They are the backbone of employment, manufacturing, exports, and
-                    local economies—yet they remain underserved by technology.
-                </p>
-                <div class="services-grid">
-                    <div class="card-premium"
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; text-align: left;">
-                        <div class="service-icon"
-                            style="background: var(--primary); color: white; margin: 0 0 1.5rem 0;"><i
-                                class="fas fa-brain"></i></div>
-                        <h3 style="color: white; margin-bottom: 1rem;">Smart Intelligence</h3>
-                        <p style="opacity: 0.7;">For compliance, licensing, and data-driven decision-making that takes
-                            the guesswork out of growth.</p>
+            <div class="pre-footer-content">
+                <div class="cta-message">
+                    <h3>Ready to take the next step?</h3>
+                    <p>Connect with us or start your journey today.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="#" class="btn-cta">Get Started</a>
+                    <div class="contact-actions">
+                        <a href="https://wa.me/yournumber" class="contact-icon-link" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:info@bharat2business.com" class="contact-icon-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
-                    <div class="card-premium"
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; text-align: left;">
-                        <div class="service-icon"
-                            style="background: var(--primary); color: white; margin: 0 0 1.5rem 0;"><i
-                                class="fas fa-user-check"></i></div>
-                        <h3 style="color: white; margin-bottom: 1rem;">Verified Expert Access</h3>
-                        <p style="opacity: 0.7;">Direct connection to trusted professionals and local experts whenever
-                            human support is needed.</p>
-                    </div>
-                    <div class="card-premium"
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; text-align: left;">
-                        <div class="service-icon"
-                            style="background: var(--primary); color: white; margin: 0 0 1.5rem 0;"><i
-                                class="fas fa-tools"></i></div>
-                        <h3 style="color: white; margin-bottom: 1rem;">Actionable Tools</h3>
-                        <p style="opacity: 0.7;">Simple, effective digital solutions that simplify daily business
-                            operations and automate routine tasks.</p>
-                    </div>
-                </div>
-                <div
-                    style="margin-top: 4rem; padding: 2.5rem; background: rgba(37, 99, 235, 0.1); border-radius: 20px; text-align: center; border: 1px dashed rgba(255,255,255,0.2);">
-                    <p style="font-size: 1.2rem; font-weight: 600; line-height: 1.7;">
-                        By combining AI, local expertise, and ecosystem partnerships, we’re making business growth
-                        predictable, affordable, and accessible for every MSME—urban or rural.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Values Section -->
-    <section class="section-spacing" style="background-color: var(--bg-light);">
-        <div class="container">
-            <div class="section-title">
-                <span>Core Values</span>
-                <h2>What defines us</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Clarity over complexity</h3>
-                    <p>Simple steps, not overwhelming theory. We prioritize actionable advice over jargon.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
-                    <h3>Trust above all</h3>
-                    <p>Verified experts and transparent processes. We build relationships on reliability.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-flag"></i></div>
-                    <h3>Bharat-first thinking</h3>
-                    <p>Designed for Indian businesses, from day one. Tailored to local needs and realities.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-universal-access"></i></div>
-                    <h3>Accessibility</h3>
-                    <p>Language, affordability, and usability matter. Technology for everyone, everywhere.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-leaf"></i></div>
-                    <h3>Long-term impact</h3>
-                    <p>Building systems that last, not quick hacks. We focus on sustainable growth.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Impact Section -->
-    <section class="section-spacing"
-        style="background: linear-gradient(rgba(37, 99, 235, 0.05), rgba(37, 99, 235, 0.05));">
-        <div class="container">
-            <div class="work-row reverse">
-                <div class="work-img">
-                    <div
-                        style="background: var(--white); height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 20px; box-shadow: var(--shadow-lg);">
-                        <i class="fas fa-users" style="font-size: 8rem; color: var(--primary); opacity: 0.15;"></i>
-                    </div>
-                </div>
-                <div class="work-text">
-                    <span class="section-title" style="text-align: left; margin: 0;"><span>Commitment</span></span>
-                    <h2 style="margin: 1rem 0 2rem;">Social Impact</h2>
-                    <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">
-                        Bharat2Business is committed to enabling inclusive growth by supporting those who are often left
-                        behind by the digital revolution.
-                    </p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center;">
-                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
-                            <span style="font-weight: 600;">First-generation entrepreneurs</span>
-                        </li>
-                        <li style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center;">
-                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
-                            <span style="font-weight: 600;">Women-led businesses</span>
-                        </li>
-                        <li style="margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
-                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
-                            <span style="font-weight: 600;">Small and rural enterprises entering the digital
-                                economy</span>
-                        </li>
-                    </ul>
-                    <p style="font-style: italic; color: var(--text-muted);">
-                        As we scale, we aim to work closely with ecosystem partners, industry bodies, and institutions
-                        that share this mission.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="section-spacing">
-        <div class="container">
-            <div class="counters-grid">
-                <div class="counter-item">
-                    <strong class="number" style="color: var(--primary); font-size: 4rem;" data-number="63">0</strong>
-                    <span style="font-weight: 700; color: var(--secondary);">Million MSMEs in Bharat</span>
-                </div>
-                <div class="counter-item">
-                    <strong class="number" style="color: var(--primary); font-size: 4rem;"
-                        data-number="10000">0</strong>
-                    <span style="font-weight: 700; color: var(--secondary);">Active Partnerships</span>
-                </div>
-                <div class="counter-item">
-                    <strong class="number" style="color: var(--primary); font-size: 4rem;" data-number="100">0</strong>
-                    <span style="font-weight: 700; color: var(--secondary);">Expert Hubs</span>
                 </div>
             </div>
         </div>
@@ -241,17 +239,41 @@
                     <a href="index.html" class="logo footer-logo">
                         <i class="fas fa-rocket"></i> Bharat2Business
                     </a>
-                    <p style="margin-top: 1rem; color: #94a3b8;">The digital infrastructure for Bharat's traditional
-                        economy.</p>
+                    <p class="footer-desc">Elevate.Empower.Expand.</p>
                 </div>
-                <div class="footer-bottom" style="grid-column: span 4; margin-top: 2rem;">
-                    <p>&copy; 2026 Bharat2Business. Proudly Built in Bharat.</p>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
                 </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="usage-policy.html">Usage Policy</a></li>
+                        <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
+                        <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Newsletter</h4>
+                    <p class="newsletter-desc">Stay updated with our latest news.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Email" class="newsletter-input" id="newsletter-email" required>
+                        <button type="submit" class="btn-cta newsletter-btn">Join</button>
+                    </form>
+                    <div id="newsletter-status" class="form-status"></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bharat2Business. Built in Bharat. For Bharat.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
 </body>
 

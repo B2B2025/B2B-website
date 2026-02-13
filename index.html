@@ -28,41 +28,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        /* Cursor animation for typing effect */
-        .cursor {
-            display: inline-block;
-            background-color: var(--primary);
-            margin-left: 0.1rem;
-            width: 3px;
-            animation: blink 1s infinite;
-        }
-
-        .cursor.typing {
-            animation: none;
-        }
-
-        @keyframes blink {
-            0% {
-                background-color: var(--primary);
-            }
-
-            49% {
-                background-color: var(--primary);
-            }
-
-            50% {
-                background-color: transparent;
-            }
-
-            99% {
-                background-color: transparent;
-            }
-
-            100% {
-                background-color: var(--primary);
-            }
+        :root {
+            --primary-rgb: 37, 99, 235;
         }
     </style>
+    <link rel="stylesheet" href="assets/css/utilities.css">
 </head>
 
 <body>
@@ -73,16 +43,17 @@
             <a href="index.html" class="logo">
                 <i class="fas fa-rocket"></i> Bharat2Business
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="solutions.html" class="nav-link">What can we do?</a></li>
+                <li><a href="msme.html" class="nav-link">For MSMEs</a></li>
+                <li><a href="experts.html" class="nav-link">For Experts</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
+
                 <li><a href="contact.html" class="btn-cta">Get Started</a></li>
             </ul>
-            <div class="nav-toggle">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -90,32 +61,53 @@
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>We <span class="typed-text"></span> MSMEs<span class="cursor">&nbsp;</span></h1>
+                <h1>
+                    <span class="typed-text">Empower</span>
+                    <span class="hero-glyph"></span>
+                    <span class="hero-msme-text">MSMEs</span>
+                    <span class="cursor">&nbsp;</span>
+                </h1>
                 <p>Powering 63 Million Businesses. Building Bharat.</p>
                 <div class="hero-btns">
-                    <a href="#" id="download-btn" class="btn-cta"
-                        style="padding: 1rem 2.5rem; font-size: 1.1rem;">Download the App</a>
+                    <a href="#" id="download-btn" class="btn-cta hero-cta-btn">Download the App</a>
+                    <a href="#works" class="btn-outline">See How It Works</a>
+                </div>
+                <span class="hero-microcopy">Early access • Free Digital Partner queries</span>
 
+                <!-- Trust Row -->
+                <div class="hero-trust-row">
+                    <div class="trust-item">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Digital Partner</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-user-check"></i>
+                        <span>Verified Experts</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-search-location"></i>
+                        <span>Scheme Discovery</span>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Counter Section -->
-    <section class="counters" id="section-counter">
+    <section class="counters reveal-up" id="section-counter">
         <div class="container">
             <div class="counters-grid">
                 <div class="counter-item">
-                    <strong class="number" data-number="10000">0</strong>
-                    <span>Active MSMEs</span>
+                    <strong class="number" data-number="15000">0</strong><span class="beta-tag">beta</span>
+                    <span>Early access</span>
                 </div>
                 <div class="counter-item">
                     <strong class="number" data-number="1200">0</strong>
-                    <span>Verified Experts</span>
+                    <span>Verified onboarding</span>
                 </div>
                 <div class="counter-item">
-                    <strong class="number" data-number="24000">0</strong>
-                    <span>Queries Daily</span>
+                    <strong class="number" data-number="24000">0</strong><span class="beta-tag">beta</span>
+                    <span>Daily queries</span>
                 </div>
             </div>
         </div>
@@ -123,15 +115,13 @@
 
 
     <!-- Parallax Section -->
-    <section class="parallax-section">
+    <section class="parallax-section reveal-up">
         <div class="container">
-            <h2 style="margin-bottom: 1.5rem;">Why MSMEs Choose Bharat2Business?</h2>
-            <p style="font-size: 1.5rem; max-width: 850px; margin: 0 auto 2.5rem; opacity: 0.9;">
+            <h2 class="parallax-title">Why MSMEs Choose Bharat2Business?</h2>
+            <p class="parallax-desc">
                 Because MSMEs don’t need another app.
                 They need a system that works. <br><br>We bring clarity, structure and direction.
             </p>
-            <p style="font-size: 1.1rem; font-weight: 600; opacity: 0.8; margin-bottom: 2rem;">That’s what we’re
-                building. Every day.</p>
         </div>
     </section>
 
@@ -139,24 +129,24 @@
         <div class="container">
             <!-- Digital Assistant -->
             <div class="work-row">
-                <div class="work-text">
+                <div class="work-text reveal-left">
 
                     <h3>Ask Complex Questions.</h3>
-                    <p style="margin-top: 1rem;">Want to understand GST filing or decode the government’s latest policy
+                    <p class="mt-1">Want to understand GST filing or decode the government’s latest policy
                         for your sector? Our Digital Partner is trained on real MSME workflows, so you can ask anything
                         and follow up until it truly makes sense.</p>
-                    <ul class="benefit-list" style="margin-top: 2rem;">
-                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
                             <span>Real-time voice & text AI</span>
                         </li>
-                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
                             <span>Available in your language</span>
                         </li>
                     </ul>
                 </div>
-                <div class="work-img">
+                <div class="work-img reveal-right">
                     <div class="mobile-mockup">
                         <div class="app-screen" id="app-home-screen">
                             <!-- Header with Skyline -->
@@ -188,8 +178,7 @@
                                         <strong>Business Health</strong>
                                         <span>Credit score updated today</span>
                                     </div>
-                                    <i class="fas fa-chevron-right"
-                                        style="margin-left: auto; opacity: 0.3; font-size: 0.8rem;"></i>
+                                    <i class="fas fa-chevron-right chevron-right"></i>
                                 </div>
                                 <div class="app-pagination">
                                     <span></span>
@@ -203,7 +192,7 @@
                                         <div class="typing-wrapper">
                                             <span id="app-typing-target"></span><span class="app-cursor">|</span>
                                         </div>
-                                        <i class="fas fa-microphone" style="color: #2563eb;"></i>
+                                        <i class="fas fa-microphone mic-icon"></i>
                                     </div>
                                     <p class="search-hint">Try: "Latest Budget Impact"</p>
                                 </div>
@@ -252,90 +241,69 @@
                 </div>
             </div>
 
-            <!-- Access Verified Experts -->
-            <div class="work-row">
-                <div class="work-text">
-                    <h3>Get Onboarded as an Expert.</h3>
-                    <p>Are you a Chartered Accountant, Legal Consultant, or Industry Specialist? We are opening early
-                        registrations for experts to join our platform. Partner with us to help millions of MSMEs grow.
-                    </p>
-                    <a href="https://forms.google.com/placeholder-expert-registration" target="_blank" class="nav-link"
-                        style="color: var(--primary); font-weight: 700;">Join as an Expert <i
-                            class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="work-img">
-                    <div class="placeholder-icon-box">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                </div>
-            </div>
 
             <!-- Government Schemes -->
             <div class="work-row">
-                <div class="work-text">
+                <div class="work-text reveal-left">
                     <h3>Government Schemes for You.</h3>
                     <p>Unsure which subsidies, credit programs, or incentives apply to your business? Bharat2Business
                         analyzes your business profile and highlights schemes you qualify for so you don’t miss
                         opportunities meant for you.</p>
-                    <a href="solutions.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Check
+                    <a href="msme.html" class="nav-link feature-link">Check
                         Eligibility <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="work-img">
+                <div class="work-img reveal-right">
                     <div class="mobile-mockup">
                         <div class="app-screen" id="schemes-home-screen">
                             <div class="schemes-header">
                                 <i class="fas fa-arrow-left"></i>
                                 <span>Government Schemes</span>
-                                <i class="fas fa-ellipsis-v"
-                                    style="margin-left: auto; font-size: 0.9rem; color: #94a3b8;"></i>
+                                <i class="fas fa-ellipsis-v schemes-options-icon"></i>
                             </div>
 
                             <div class="schemes-body">
                                 <!-- STATE 1: Banner + Input -->
-                                <div id="schemes-wizard" style="padding: 1.25rem;">
+                                <div id="schemes-wizard" class="schemes-wizard-content">
                                     <div class="udyam-input-box">
                                         <i class="fas fa-id-card"></i>
                                         <span id="udyam-typing-target">Enter Udyam Number</span>
                                     </div>
-                                    <div class="app-card" style="margin-bottom: 15px;">
+                                    <div class="app-card schemes-card-spacer">
                                         <div class="card-text">
                                             <strong>Annual Turnover</strong>
                                             <span>₹2.5 Crores</span>
                                         </div>
-                                        <i class="fas fa-chevron-down" style="margin-left: auto; opacity: 0.3;"></i>
+                                        <i class="fas fa-chevron-down opacity-30" style="margin-left: auto;"></i>
                                     </div>
-                                    <button class="btn-cta"
-                                        style="width: 100%; border-radius: 12px; font-size: 0.9rem; padding: 0.8rem;">Check
+                                    <button class="btn-cta schemes-check-btn">Check
                                         Eligibility</button>
                                 </div>
 
                                 <!-- STATE 2: Loader -->
                                 <div id="schemes-loader" class="schemes-loader" style="display: none;">
                                     <div class="loader-spinner"></div>
-                                    <p style="font-size: 0.85rem; font-weight: 700;">Matching your profile...</p>
+                                    <p class="loader-text">Matching your profile...</p>
                                 </div>
 
                                 <!-- STATE 3: Banner + Results -->
                                 <div id="schemes-results" style="display: none;">
                                     <div class="eligibility-banner">
-                                        <i class="fas fa-check-circle" style="color: #2563eb;"></i>
+                                        <i class="fas fa-check-circle eligible-icon"></i>
                                         <p>You are eligible for 2 central schemes!</p>
                                     </div>
-                                    <div class="schemes-list" style="padding: 1.25rem;">
+                                    <div class="schemes-list schemes-list-container">
                                         <div class="scheme-card-item">
                                             <span class="scheme-tag">ELIGIBLE</span>
-                                            <strong
-                                                style="display: block; font-size: 0.85rem; margin-bottom: 4px;">PMEGP
+                                            <strong class="scheme-name">PMEGP
                                                 Loan Scheme</strong>
-                                            <p style="font-size: 0.7rem; color: #64748b;">Get up to 35% subsidy on
+                                            <p class="scheme-desc">Get up to 35% subsidy on
                                                 credit.</p>
                                         </div>
                                         <div class="scheme-card-item">
                                             <span class="scheme-tag">ELIGIBLE</span>
-                                            <strong
-                                                style="display: block; font-size: 0.85rem; margin-bottom: 4px;">CLCSS
+                                            <strong class="scheme-name">CLCSS
                                                 Technology</strong>
-                                            <p style="font-size: 0.7rem; color: #64748b;">15% capital subsidy for
+                                            <p class="scheme-desc">15% capital subsidy for
                                                 upgrades.</p>
                                         </div>
                                     </div>
@@ -353,121 +321,222 @@
                     <p>Looking to expand beyond your local market? Find relevant trade shows, expos, and industry events
                         tailored to your sector and explore new customers, suppliers, and partnerships with confidence.
                     </p>
-                    <a href="solutions.html" class="nav-link" style="color: var(--primary); font-weight: 700;">Explore
+                    <a href="msme.html" class="nav-link feature-link">Explore
                         Opportunities <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="work-img">
-                    <div class="placeholder-icon-box">
-                        <i class="fas fa-calendar-check"></i>
+                <div class="work-img reveal-right">
+                    <div class="mobile-mockup">
+                        <div class="app-screen">
+                            <div class="schemes-header">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Upcoming Expos</span>
+                                <i class="fas fa-filter schemes-options-icon"></i>
+                            </div>
+                            <div class="event-list">
+                                <!-- Event 1 -->
+                                <div class="event-item reveal-left">
+                                    <div class="event-date-tag">15<br>FEB</div>
+                                    <div class="event-details">
+                                        <span class="event-name">Global Textile Expo 2026</span>
+                                        <div class="event-meta">
+                                            <span class="event-location-chip">Surat</span>
+                                            <span class="event-type">B2B Exhibition</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Event 2 -->
+                                <div class="event-item reveal-left delay-100">
+                                    <div class="event-date-tag">22<br>FEB</div>
+                                    <div class="event-details">
+                                        <span class="event-name">MSME Tech Summit Bharat</span>
+                                        <div class="event-meta">
+                                            <span class="event-location-chip">Delhi</span>
+                                            <span class="event-type">Tech Sourcing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Event 3 -->
+                                <div class="event-item reveal-left delay-200">
+                                    <div class="event-date-tag">05<br>MAR</div>
+                                    <div class="event-details">
+                                        <span class="event-name">Auto Spares Sourcing Fair</span>
+                                        <div class="event-meta">
+                                            <span class="event-location-chip">Pune</span>
+                                            <span class="event-type">Supplier Meet</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
             <div class="section-title">
-                <span>Customer Says</span>
                 <h2>Our satisfied customer says</h2>
             </div>
             <div class="testimonial-slider-container">
+                <button class="carousel-control prev" id="testimonialPrev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="testimonial-track" id="testimonialTrack">
                     <!-- Card 1 -->
                     <div class="testimonial-card">
                         <div class="card-content">
                             <i class="fas fa-quote-left"
                                 style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #881337;">Global Reach</h3>
+                            <h3 class="testimonial-heading text-rose">Global Reach</h3>
                             <p>"B2B didn't just give us an app; they gave us a global presence. Our Surat textile unit
                                 is now shipping to five countries."</p>
                         </div>
                         <div class="user-profile">
-                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
-                                    class="fas fa-user"></i></div>
+                            <div class="user-img user-img-small"><i class="fas fa-user"></i></div>
                             <div>
-                                <h4 style="font-size: 1rem; margin: 0;">Vikram Mehta</h4>
-                                <span style="font-size: 0.8rem;">Mehta Textiles</span>
+                                <h4 class="user-name">Vikram Mehta</h4>
+                                <span class="user-meta">Owner • Surat • Textiles</span>
+                                <span class="user-company">Mehta Textiles</span>
                             </div>
+                        </div>
+                        <div class="testimonial-result">
+                            <i class="fas fa-chart-line"></i> <span>+5 export markets</span>
                         </div>
                     </div>
                     <!-- Card 2 -->
                     <div class="testimonial-card">
                         <div class="card-content">
-                            <i class="fas fa-quote-left"
-                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #0c4a6e;">Instant Credit</h3>
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <h3 class="testimonial-heading text-sky">Instant Credit</h3>
                             <p>"The instant credit facility allowed us to scale during the festive season when
                                 traditional loans were stuck in paperwork."</p>
                         </div>
                         <div class="user-profile">
-                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
-                                    class="fas fa-user-tie"></i></div>
+                            <div class="user-img user-img-small"><i class="fas fa-user-tie"></i></div>
                             <div>
-                                <h4 style="font-size: 1rem; margin: 0;">Ananya Roy</h4>
-                                <span style="font-size: 0.8rem;">Roy Handcrafted</span>
+                                <h4 class="user-name">Ananya Roy</h4>
+                                <span class="user-meta">Founder • Kolkata • Handcrafted Goods</span>
+                                <span class="user-company">Roy Handcrafted</span>
                             </div>
+                        </div>
+                        <div class="testimonial-result">
+                            <i class="fas fa-bolt"></i> <span>Instant scale-up</span>
                         </div>
                     </div>
                     <!-- Card 3 -->
                     <div class="testimonial-card">
                         <div class="card-content">
-                            <i class="fas fa-quote-left"
-                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #14532d;">Logistics Solved</h3>
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <h3 class="testimonial-heading text-green">Logistics Solved</h3>
                             <p>"Logistics was a nightmare. Now, it's one click. We save at least 20 hours of manual
                                 coordination every single week."</p>
                         </div>
                         <div class="user-profile">
-                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
-                                    class="fas fa-user-ninja"></i></div>
+                            <div class="user-img user-img-small"><i class="fas fa-user-ninja"></i></div>
                             <div>
-                                <h4 style="font-size: 1rem; margin: 0;">Saurabh Singh</h4>
-                                <span style="font-size: 0.8rem;">AutoHub Spares</span>
+                                <h4 class="user-name">Saurabh Singh</h4>
+                                <span class="user-meta">Managing Partner • Pune • Auto Spares</span>
+                                <span class="user-company">AutoHub Spares</span>
                             </div>
+                        </div>
+                        <div class="testimonial-result">
+                            <i class="fas fa-clock"></i> <span>Saved 20 hrs/week</span>
                         </div>
                     </div>
                     <!-- Card 4 -->
                     <div class="testimonial-card">
                         <div class="card-content">
-                            <i class="fas fa-quote-left"
-                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #7c2d12;">Verified Suppliers</h3>
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <h3 class="testimonial-heading text-orange">Verified Suppliers</h3>
                             <p>"We found the best suppliers for raw materials through the verified network. Quality has
                                 gone up, costs down."</p>
                         </div>
                         <div class="user-profile">
-                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
-                                    class="fas fa-industry"></i></div>
+                            <div class="user-img user-img-small"><i class="fas fa-industry"></i></div>
                             <div>
-                                <h4 style="font-size: 1rem; margin: 0;">Rajesh Gupta</h4>
-                                <span style="font-size: 0.8rem;">Gupta Polymers</span>
+                                <h4 class="user-name">Rajesh Gupta</h4>
+                                <span class="user-meta">Director • Ahmedabad • Polymers</span>
+                                <span class="user-company">Gupta Polymers</span>
                             </div>
+                        </div>
+                        <div class="testimonial-result">
+                            <i class="fas fa-shield-alt"></i> <span>Zero quality issues</span>
                         </div>
                     </div>
                     <!-- Card 5 (More variety) -->
                     <div class="testimonial-card">
                         <div class="card-content">
-                            <i class="fas fa-quote-left"
-                                style="font-size: 1.5rem; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #881337;">Export Easy</h3>
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <h3 class="testimonial-heading text-rose">Export Easy</h3>
                             <p>"Documentation for export used to take weeks. With the expert guidance here, we did it in
                                 days."</p>
                         </div>
                         <div class="user-profile">
-                            <div class="user-img" style="width: 50px; height: 50px; font-size: 1.2rem; margin: 0;"><i
-                                    class="fas fa-ship"></i></div>
+                            <div class="user-img user-img-small"><i class="fas fa-ship"></i></div>
                             <div>
-                                <h4 style="font-size: 1rem; margin: 0;">Priya Desai</h4>
-                                <span style="font-size: 0.8rem;">Desai Exports</span>
+                                <h4 class="user-name">Priya Desai</h4>
+                                <span class="user-meta">Proprietor • Mumbai • Apparel Exports</span>
+                                <span class="user-company">Desai Exports</span>
                             </div>
+                        </div>
+                        <div class="testimonial-result">
+                            <i class="fas fa-rocket"></i> <span>70% faster compliance</span>
                         </div>
                     </div>
                 </div>
+                <button class="carousel-control next" id="testimonialNext" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
             <div class="carousel-pagination" id="testimonial-pagination">
                 <!-- Dots will be generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert CTA Banner -->
+    <section class="expert-cta-banner">
+        <div class="container">
+            <div class="expert-cta-content">
+                <div class="expert-cta-text">
+                    <h4>Are you a CA / Consultant? Join Verified Expert Network</h4>
+                </div>
+                <a href="experts.html" class="btn-outline expert-cta-btn">Join Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- Pre-Footer CTA -->
+    <section class="pre-footer-cta">
+        <div class="container">
+            <div class="pre-footer-content">
+                <div class="cta-message">
+                    <h3>Ready to take the next step?</h3>
+                    <p>Connect with us or start your journey today.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="#" class="btn-primary">Get Started</a>
+                    <div class="contact-actions">
+                        <div class="tooltip-container">
+                            <a href="https://wa.me/yournumber" class="icon-btn whatsapp" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <span class="tooltip">WhatsApp</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="mailto:info@bharat2business.com" class="icon-btn email" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <span class="tooltip">Email</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="https://www.linkedin.com/company/bharat2business/" target="_blank"
+                                class="icon-btn linkedin" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <span class="tooltip">LinkedIn</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -480,33 +549,33 @@
                     <a href="index.html" class="logo footer-logo">
                         <i class="fas fa-rocket"></i> Bharat2Business
                     </a>
-                    <p style="margin-top: 1rem; color: #94a3b8;">The digital infrastructure for Bharat's traditional
-                        economy.</p>
+                    <p class="footer-desc">Elevate.Empower.Expand.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Platform</h4>
                     <ul>
-                        <li><a href="#">Procurement</a></li>
-                        <li><a href="#">Logistics</a></li>
-                        <li><a href="#">B2B Credit</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Company</h4>
+                    <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Join the Team</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="usage-policy.html">Usage Policy</a></li>
+                        <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
+                        <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Newsletter</h4>
-                    <p style="color: #94a3b8; margin-bottom: 1rem;">Stay updated with our latest news.</p>
-                    <form style="display: flex; gap: 0.5rem;">
-                        <input type="email" placeholder="Email"
-                            style="padding: 0.5rem; border-radius: 5px; border: none; flex: 1;">
-                        <button class="btn-cta" style="padding: 0.5rem 1rem;">Join</button>
+                    <p class="newsletter-desc">Stay updated with our latest news.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Email" class="newsletter-input" id="newsletter-email" required>
+                        <button type="submit" class="btn-cta newsletter-btn">Join</button>
                     </form>
+                    <div id="newsletter-status" class="form-status"></div>
                 </div>
             </div>
             <div class="footer-bottom">

@@ -1,0 +1,68 @@
+/* --- REFACTORED GENERIC UTILITIES --- */
+
+/* Typography & Colors */
+.text-primary {
+    color: var(--primary);
+}
+
+.text-dark {
+    color: var(--secondary);
+}
+
+.text-muted-sm {
+    color: #94a3b8;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-sm {
+    font-size: 0.85rem;
+}
+
+.font-xs {
+    font-size: 0.7rem;
+}
+
+.opacity-30 {
+    opacity: 0.3;
+}
+
+/* Spacing */
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+/* Flex Utilities */
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}

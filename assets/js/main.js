@@ -1,374 +1,369 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
 
-    // Mobile Menu Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const App = {
+        init() {
+            this.initMobileMenu();
+            this.initDownloadRedirect();
+            this.initAppTyping();
+            this.initSchemesAnimation();
+            this.initCounters();
+            this.initTestimonialCarousel();
+            this.initNewsletterForm();
+            this.initRevealObserver();
+            this.initParallax();
+        },
 
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            // Change icon
-            const icon = navToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.replace('fa-bars', 'fa-times');
-            } else {
-                icon.classList.replace('fa-times', 'fa-bars');
-            }
-        });
-    }
 
-    // Close menu when clicking a link
-    const navLinksItems = document.querySelectorAll('.nav-link, .btn-cta');
-    navLinksItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
+        // --- Mobile Menu ---
+        initMobileMenu() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (!navToggle || !navLinks) return;
+
+            navToggle.addEventListener('click', () => {
+                const isExpanded = navLinks.classList.toggle('active');
+                navToggle.setAttribute('aria-expanded', isExpanded);
                 const icon = navToggle.querySelector('i');
-                icon.classList.replace('fa-times', 'fa-bars');
-            }
-        });
-    });
+                if (icon) {
+                    icon.classList.replace(isExpanded ? 'fa-bars' : 'fa-times', isExpanded ? 'fa-times' : 'fa-bars');
+                }
+            });
 
-    // Smart Download Button Redirection
-    const downloadBtn = document.getElementById('download-btn');
-    if (downloadBtn) {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-        // Placeholder links
-        const playStoreUrl = "https://play.google.com/store/apps/details?id=com.bharat2business.app";
-        const appStoreUrl = "https://apps.apple.com/in/app/bharat2business/id123456789";
-        const defaultUrl = "contact.html";
-
-        if (/android/i.test(userAgent)) {
-            downloadBtn.href = playStoreUrl;
-        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            downloadBtn.href = appStoreUrl;
-        } else {
-            downloadBtn.href = defaultUrl;
-        }
-    }
-
-    // Custom Typing Effect
-    const typedTextSpan = document.querySelector(".typed-text");
-    const cursorSpan = document.querySelector(".cursor");
-
-    // Mockup App Typing Animation
-    const appTarget = document.getElementById('app-typing-target');
-    const appPhrases = [
-        "How to file GST?",
-        "Latest MSME subsidies?",
-        "Apply for business loan",
-        "Decode export policy"
-    ];
-    let appPhraseIndex = 0;
-    let appCharIdx = 0;
-    let appIsDeleting = false;
-
-    function animateAppSearch() {
-        if (!appTarget) return;
-
-        const currentPhrase = appPhrases[appPhraseIndex];
-
-        if (appIsDeleting) {
-            appTarget.textContent = currentPhrase.substring(0, appCharIdx - 1);
-            appCharIdx--;
-        } else {
-            appTarget.textContent = currentPhrase.substring(0, appCharIdx + 1);
-            appCharIdx++;
-        }
-
-        let typeSpeed = appIsDeleting ? 50 : 100;
-
-        if (!appIsDeleting && appCharIdx === currentPhrase.length) {
-            typeSpeed = 1500; // Pause at end
-
-            // SPECIAL TRIGGER: If it's the GST question, show AI screen
-            if (currentPhrase.includes("GST")) {
-                setTimeout(showAIScreen, 1000);
-                return; // Stop this loop for now
-            }
-
-            appIsDeleting = true;
-        } else if (appIsDeleting && appCharIdx === 0) {
-            appIsDeleting = false;
-            appPhraseIndex = (appPhraseIndex + 1) % appPhrases.length;
-            typeSpeed = 500;
-        }
-
-        setTimeout(animateAppSearch, typeSpeed);
-    }
-
-    function showAIScreen() {
-        const homeScreen = document.getElementById('app-home-screen');
-        const aiScreen = document.getElementById('app-ai-screen');
-        const aiText = document.getElementById('ai-response-text');
-        const backBtn = document.getElementById('ai-back');
-
-        if (!homeScreen || !aiScreen) return;
-
-        homeScreen.style.display = 'none';
-        aiScreen.style.display = 'flex';
-        aiText.textContent = "";
-
-        const responseString = "To file GST in India: \n1. Login to the GST Portal (gst.gov.in).\n2. Navigate to 'Returns Dashboard'.\n3. Select the financial year and filing period.\n4. Prepare and file GSTR-1 for outward supplies and GSTR-3B for summary returns.\n5. Make the tax payment if applicable and submit.";
-        let charIndex = 0;
-        let isResponseCancelled = false;
-
-        const manualBack = () => {
-            isResponseCancelled = true;
-            aiScreen.style.display = 'none';
-            homeScreen.style.display = 'flex';
-            appIsDeleting = true;
-            animateAppSearch();
-            backBtn.removeEventListener('click', manualBack);
-        };
-
-        backBtn.addEventListener('click', manualBack);
-
-        function typeAIResponse() {
-            if (isResponseCancelled) return;
-
-            if (charIndex < responseString.length) {
-                aiText.textContent += responseString.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeAIResponse, 25);
-            } else {
-                // Pause and reset auto
-                setTimeout(() => {
-                    if (!isResponseCancelled) {
-                        manualBack();
+            document.querySelectorAll('.nav-link, .btn-cta').forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        const icon = navToggle.querySelector('i');
+                        if (icon) icon.classList.replace('fa-times', 'fa-bars');
                     }
-                }, 5000);
-            }
-        }
+                });
+            });
+        },
 
-        setTimeout(typeAIResponse, 500);
-    }
+        // --- Download Redirect ---
+        initDownloadRedirect() {
+            const downloadBtn = document.getElementById('download-btn');
+            if (downloadBtn) {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                const playStoreUrl = "https://play.google.com/store/apps/details?id=com.bharat2business.app";
+                const appStoreUrl = "https://apps.apple.com/in/app/bharat2business/id123456789";
 
-    // --- GOVERNMENT SCHEMES ANIMATION ---
-    function animateSchemesEligibility() {
-        const wizard = document.getElementById('schemes-wizard');
-        const loader = document.getElementById('schemes-loader');
-        const results = document.getElementById('schemes-results');
-        const udyamTarget = document.getElementById('udyam-typing-target');
-
-        if (!wizard || !loader || !results || !udyamTarget) return;
-
-        const udyamNumber = "UDYAM-MH-12-0012345";
-        let udyamIndex = 0;
-
-        function typeUdyam() {
-            if (udyamIndex < udyamNumber.length) {
-                if (udyamIndex === 0) udyamTarget.textContent = "";
-                udyamTarget.textContent += udyamNumber.charAt(udyamIndex);
-                udyamIndex++;
-                setTimeout(typeUdyam, 100);
-            } else {
-                // Done typing, wait then click
-                setTimeout(clickButton, 1500);
-            }
-        }
-
-        function clickButton() {
-            const btn = wizard.querySelector('button');
-            if (btn) btn.style.transform = 'scale(0.95)';
-
-            setTimeout(() => {
-                if (btn) btn.style.transform = 'scale(1)';
-                wizard.style.display = 'none';
-                loader.style.display = 'flex';
-
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    results.style.display = 'block';
-
-                    setTimeout(resetAndRestart, 5000);
-                }, 2000);
-            }, 150);
-        }
-
-        function resetAndRestart() {
-            udyamIndex = 0;
-            udyamTarget.textContent = "Enter Udyam Number";
-            wizard.style.display = 'block';
-            loader.style.display = 'none';
-            results.style.display = 'none';
-            setTimeout(typeUdyam, 2000);
-        }
-
-        setTimeout(typeUdyam, 1000);
-    }
-
-    animateSchemesEligibility();
-    animateAppSearch();
-
-    const textArray = ["Elevate", "Empower", "Expand"];
-    const typingDelay = 100;
-    const erasingDelay = 50;
-    const newTextDelay = 2000; // Delay between current and next text
-    let textArrayIndex = 0;
-    let charIndex = 0;
-
-    function type() {
-        if (charIndex < textArray[textArrayIndex].length) {
-            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, typingDelay);
-        }
-        else {
-            cursorSpan.classList.remove("typing");
-            setTimeout(erase, newTextDelay);
-        }
-    }
-
-    function erase() {
-        if (charIndex > 0) {
-            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, erasingDelay);
-        }
-        else {
-            cursorSpan.classList.remove("typing");
-            textArrayIndex++;
-            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-            setTimeout(type, typingDelay + 1100);
-        }
-    }
-
-    if (textArray.length) setTimeout(type, newTextDelay + 250);
-
-    // Counter Animation
-    const counters = document.querySelectorAll('.number');
-    const speed = 200;
-
-    const animateCounters = () => {
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-number');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 1);
+                if (/android/i.test(userAgent)) {
+                    downloadBtn.href = playStoreUrl;
+                } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    downloadBtn.href = appStoreUrl;
                 } else {
-                    counter.innerText = target;
+                    downloadBtn.href = "contact.html";
+                }
+            }
+        },
+
+        // --- Typing Animations ---
+        initAppTyping() {
+            const typedTextSpan = document.querySelector(".typed-text");
+            const cursorSpan = document.querySelector(".cursor");
+            const appTarget = document.getElementById('app-typing-target');
+            if (!typedTextSpan || !appTarget) return;
+
+            const appPhrases = ["How to file GST?", "Latest MSME subsidies?", "Apply for business loan", "Decode export policy"];
+            let appPhraseIndex = 0;
+            let appCharIdx = 0;
+            let appIsDeleting = false;
+
+            const animateAppSearch = () => {
+                const currentPhrase = appPhrases[appPhraseIndex];
+                appTarget.textContent = currentPhrase.substring(0, appIsDeleting ? appCharIdx - 1 : appCharIdx + 1);
+                appIsDeleting ? appCharIdx-- : appCharIdx++;
+
+                let typeSpeed = appIsDeleting ? 50 : 100;
+                if (!appIsDeleting && appCharIdx === currentPhrase.length) {
+                    typeSpeed = 1500;
+                    if (currentPhrase.includes("GST")) {
+                        setTimeout(showAIScreen, 1000);
+                        return;
+                    }
+                    appIsDeleting = true;
+                } else if (appIsDeleting && appCharIdx === 0) {
+                    appIsDeleting = false;
+                    appPhraseIndex = (appPhraseIndex + 1) % appPhrases.length;
+                    typeSpeed = 500;
+                }
+                setTimeout(animateAppSearch, typeSpeed);
+            };
+
+            const showAIScreen = () => {
+                const homeScreen = document.getElementById('app-home-screen');
+                const aiScreen = document.getElementById('app-ai-screen');
+                const aiText = document.getElementById('ai-response-text');
+                const backBtn = document.getElementById('ai-back');
+                if (!homeScreen || !aiScreen) return;
+
+                homeScreen.style.display = 'none';
+                aiScreen.style.display = 'flex';
+                aiText.textContent = "";
+
+                const responseString = "To file GST in India: \n1. Login to the GST Portal (gst.gov.in).\n2. Navigate to 'Returns Dashboard'.\n3. Select shipping period.\n4. Prepare GSTR-1 & GSTR-3B.\n5. Pay tax and submit.";
+                let charIdx = 0;
+                let cancelled = false;
+
+                const back = () => {
+                    cancelled = true;
+                    aiScreen.style.display = 'none';
+                    homeScreen.style.display = 'flex';
+                    appIsDeleting = true;
+                    animateAppSearch();
+                    backBtn.removeEventListener('click', back);
+                };
+                backBtn.addEventListener('click', back);
+
+                const typeAI = () => {
+                    if (cancelled) return;
+                    if (charIdx < responseString.length) {
+                        aiText.textContent += responseString.charAt(charIdx++);
+                        setTimeout(typeAI, 25);
+                    } else {
+                        setTimeout(() => { if (!cancelled) back(); }, 5000);
+                    }
+                };
+                setTimeout(typeAI, 500);
+            };
+
+            animateAppSearch();
+        },
+
+        // --- Government Schemes ---
+        initSchemesAnimation() {
+            const wizard = document.getElementById('schemes-wizard');
+            if (!wizard) return;
+            const loader = document.getElementById('schemes-loader');
+            const results = document.getElementById('schemes-results');
+            const target = document.getElementById('udyam-typing-target');
+            const num = "UDYAM-MH-12-0012345";
+            let idx = 0;
+
+            const type = () => {
+                if (idx < num.length) {
+                    if (idx === 0) target.textContent = "";
+                    target.textContent += num.charAt(idx++);
+                    setTimeout(type, 100);
+                } else {
+                    setTimeout(click, 1500);
                 }
             };
-            updateCount();
-        });
+
+            const click = () => {
+                const btn = wizard.querySelector('button');
+                if (btn) btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    if (btn) btn.style.transform = 'scale(1)';
+                    wizard.style.display = 'none';
+                    loader.style.display = 'flex';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        results.style.display = 'block';
+                        setTimeout(reset, 5000);
+                    }, 2000);
+                }, 150);
+            };
+
+            const reset = () => {
+                idx = 0;
+                target.textContent = "Enter Udyam Number";
+                wizard.style.display = 'block';
+                loader.style.display = 'none';
+                results.style.display = 'none';
+                setTimeout(type, 2000);
+            };
+            setTimeout(type, 1000);
+        },
+
+        initCounters() {
+            const counters = document.querySelectorAll('.number');
+            const section = document.querySelector('#section-counter');
+            if (!section || counters.length === 0) return;
+
+            const animate = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-number');
+                    const duration = 2000;
+                    let startTime = null;
+
+                    const step = (timestamp) => {
+                        if (!startTime) startTime = timestamp;
+                        const progress = Math.min((timestamp - startTime) / duration, 1);
+                        counter.innerText = Math.floor(progress * target);
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+                });
+            };
+
+            new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting) {
+                    animate();
+                }
+            }, { threshold: 0.5 }).observe(section);
+        },
+
+        // --- Testimonials ---
+        initTestimonialCarousel() {
+            const track = document.getElementById('testimonialTrack');
+            const pag = document.getElementById('testimonial-pagination');
+            if (!track || !pag) return;
+
+            const cards = Array.from(track.querySelectorAll('.testimonial-card'));
+            const prev = document.getElementById('testimonialPrev');
+            const next = document.getElementById('testimonialNext');
+            const count = cards.length;
+            let activeIdx = 1;
+            let paused = false;
+            let dots = [];
+
+            const setActive = (i) => {
+                if (i < 0) i = count - 1;
+                if (i >= count) i = 0;
+                activeIdx = i;
+
+                cards.forEach((c, idx) => c.classList.toggle('is-active', idx === i));
+                dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+
+                const itemWidth = cards[0].offsetWidth + 50; // width + margin
+                const offset = (activeIdx * itemWidth) - (track.parentElement.offsetWidth / 2) + (itemWidth / 2);
+                track.style.transform = `translateX(${-offset}px)`;
+            };
+
+            for (let i = 0; i < count; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.addEventListener('click', () => { setActive(i); resetTimer(); });
+                pag.appendChild(dot);
+                dots.push(dot);
+            }
+
+            if (prev) prev.addEventListener('click', () => { setActive(activeIdx - 1); resetTimer(); });
+            if (next) next.addEventListener('click', () => { setActive(activeIdx + 1); resetTimer(); });
+
+            let timer;
+            const resetTimer = () => {
+                clearInterval(timer);
+                timer = setInterval(() => { if (!paused) setActive(activeIdx + 1); }, 6000);
+            };
+
+            track.addEventListener('mouseenter', () => paused = true);
+            track.addEventListener('mouseleave', () => paused = false);
+
+            let startX = 0;
+            track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; paused = true; }, { passive: true });
+            track.addEventListener('touchend', e => {
+                const endX = e.changedTouches[0].clientX;
+                if (startX - endX > 50) setActive(activeIdx + 1);
+                else if (endX - startX > 50) setActive(activeIdx - 1);
+                setTimeout(() => paused = false, 1000);
+                resetTimer();
+            }, { passive: true });
+
+            window.addEventListener('resize', () => setActive(activeIdx));
+            setActive(activeIdx);
+            resetTimer();
+        },
+
+        // --- Newsletter ---
+        initNewsletterForm() {
+            const form = document.getElementById('newsletter-form');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('newsletter-email').value.trim();
+                const status = document.getElementById('newsletter-status');
+                const btn = form.querySelector('button');
+
+                if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    status.textContent = 'Invalid email.';
+                    status.className = 'form-status error';
+                    return;
+                }
+
+                btn.disabled = true;
+                const oldText = btn.textContent;
+                btn.textContent = '...';
+
+                try {
+                    const res = await fetch('/api/subscribe', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email })
+                    });
+                    const data = await res.json();
+                    status.textContent = data.message;
+                    status.className = `form-status ${data.success ? 'success' : 'error'}`;
+                    if (data.success) form.reset();
+                } catch (e) {
+                    status.textContent = 'Network error.';
+                    status.className = 'form-status error';
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = oldText;
+                    setTimeout(() => { status.textContent = ''; status.className = 'form-status'; }, 5000);
+                }
+            });
+        },
+
+        // --- Reveal ---
+        initRevealObserver() {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+        },
+
+        // --- Parallax & Scroll Effects ---
+        initParallax() {
+            const hero = document.querySelector('.hero');
+            const aboutHeroBg = document.querySelector('.about-hero-bg');
+            const scrollBar = document.getElementById('scrollBar');
+            const navbar = document.querySelector('.navbar');
+            let ticking = false;
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const y = window.scrollY;
+
+                        // Navbar Effect
+                        if (navbar) {
+                            if (y > 50) navbar.classList.add('scrolled');
+                            else navbar.classList.remove('scrolled');
+                        }
+
+                        // Hero Parallax
+                        if (hero && y < 800) {
+                            hero.style.backgroundPositionY = `${y * 0.4}px`;
+                            const content = hero.querySelector('.hero-content');
+                            if (content) content.style.opacity = Math.max(0, 1 - (y / 600));
+                        }
+
+                        // About Page Background Parallax
+                        if (aboutHeroBg) aboutHeroBg.style.transform = `translateY(${y * 0.12}px)`;
+
+                        // Progress Bar
+                        if (scrollBar) {
+                            const h = document.documentElement.scrollHeight - window.innerHeight;
+                            scrollBar.style.width = `${(y / h) * 100}%`;
+                        }
+
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
     };
 
-    // Intersection Observer for counters
-    const counterSection = document.querySelector('#section-counter');
-    if (counterSection) {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                observer.unobserve(counterSection);
-            }
-        }, { threshold: 0.5 });
-        observer.observe(counterSection);
-    }
-
-    // --- TESTIMONIAL CAROUSEL (MEETPRISM STYLE) ---
-    const track = document.getElementById('testimonialTrack');
-    const paginationContainer = document.getElementById('testimonial-pagination');
-
-    if (track && paginationContainer) {
-        let cards = Array.from(track.children);
-        const originalCount = cards.length;
-
-        // Clone for infinite loop illusion
-        // We clone 2 at start and 2 at end to allowing robust centering
-        const clonesStart = cards.slice(-2).map(c => { const clone = c.cloneNode(true); clone.classList.add('clone'); return clone; });
-        const clonesEnd = cards.slice(0, 2).map(c => { const clone = c.cloneNode(true); clone.classList.add('clone'); return clone; });
-
-        clonesStart.forEach(c => track.insertBefore(c, track.firstChild));
-        clonesEnd.forEach(c => track.appendChild(c));
-
-        // Re-query cards to include clones
-        let allCards = Array.from(track.children);
-
-        let currentIndex = 2; // Start at first real card (since we added 2 clones at start)
-        const cardWidth = 340; // width
-        const gap = 40; // margin 20px * 2
-        const itemWidth = cardWidth + gap;
-        const intervalTime = 20000; // 20 seconds
-        let autoSlideInterval;
-
-        // Generate Pagination Dots
-        for (let i = 0; i < originalCount; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                goToSlide(i + 2);
-                resetTimer();
-            });
-            paginationContainer.appendChild(dot);
-        }
-
-        const dots = Array.from(paginationContainer.children);
-
-        function updateCarousel(transition = true) {
-            const itemWidth = 340 + 40; // re-declare or use scope? Scope is fine.
-            const centerOffset = -(currentIndex * itemWidth);
-            // Center calculation: 50% + itemWidth/2 + offset
-            track.style.transform = `translateX(calc(-50% + ${itemWidth / 2}px + ${centerOffset}px))`;
-
-            track.style.transition = transition ? 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)' : 'none';
-
-            // Update Active Classes
-            allCards.forEach((c, i) => {
-                c.classList.remove('active-center');
-                if (i === currentIndex) c.classList.add('active-center');
-            });
-
-            // Update Dots
-            let realIndex = (currentIndex - 2) % originalCount;
-            if (realIndex < 0) realIndex += originalCount;
-
-            dots.forEach(d => d.classList.remove('active'));
-            if (dots[realIndex]) dots[realIndex].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentIndex++;
-            updateCarousel(true);
-
-            // Check for loop
-            if (currentIndex >= allCards.length - 2) {
-                setTimeout(() => {
-                    currentIndex = 2; // Jump back to first real card
-                    updateCarousel(false);
-                }, 800);
-            }
-        }
-
-        function goToSlide(index) {
-            currentIndex = index;
-            updateCarousel(true);
-        }
-
-        function resetTimer() {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = setInterval(nextSlide, intervalTime);
-        }
-
-        // Initialize
-        updateCarousel(false);
-        resetTimer();
-    }
+    App.init();
 });

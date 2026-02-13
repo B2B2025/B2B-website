@@ -22,16 +22,17 @@
             <a href="index.html" class="logo">
                 <i class="fas fa-rocket"></i> Bharat2Business
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li><a href="msme.html" class="nav-link">For MSMEs</a></li>
+                <li><a href="experts.html" class="nav-link">For Experts</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
+
                 <li><a href="contact.html" class="btn-cta">Get Started</a></li>
             </ul>
-            <div class="nav-toggle">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -114,8 +115,44 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container" style="text-align: center;">
-            <p style="color: var(--brand-muted);">&copy; 2026 Bharat2Business. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="logo footer-logo">
+                        <i class="fas fa-rocket"></i> Bharat2Business
+                    </a>
+                    <p class="footer-desc">Elevate.Empower.Expand.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="usage-policy.html">Usage Policy</a></li>
+                        <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
+                        <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Newsletter</h4>
+                    <p class="newsletter-desc">Stay updated with our latest news.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Email" class="newsletter-input" id="newsletter-email" required>
+                        <button type="submit" class="btn-cta newsletter-btn">Join</button>
+                    </form>
+                    <div id="newsletter-status" class="form-status"></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bharat2Business. Proudly Built in Bharat.</p>
+            </div>
         </div>
     </footer>
 
