@@ -311,7 +311,7 @@ section {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
 }
 
 .hero-microcopy {
@@ -331,13 +331,30 @@ section {
     margin-right: auto;
 }
 
+.hero-lead {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: var(--secondary) !important;
+    margin-bottom: 1rem !important;
+    max-width: 800px !important;
+}
+
+.hero-subtext {
+    font-size: 1.15rem !important;
+    line-height: 1.7 !important;
+    color: var(--text-muted) !important;
+    max-width: 850px !important;
+    margin-bottom: 3rem !important;
+    opacity: 0.9;
+}
+
 /* Hero Trust Row */
 .hero-trust-row {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin-top: 3.5rem;
-    padding-top: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -3868,5 +3885,272 @@ footer {
 
     .msme-demo-node {
         transition: none !important;
+    }
+}
+
+/* Premium MSME Ecosystem Animation Styles */
+.msme-ecosystem-card {
+    width: 100%;
+    max-width: 1050px;
+    margin: 3rem auto 0;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 40px;
+    padding: 3.5rem 2rem;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+}
+
+.ecosystem-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.ecosystem-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+}
+
+.zone-inputs {
+    align-items: flex-start;
+}
+
+.zone-center {
+    flex: 0 0 200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.zone-outputs {
+    align-items: flex-end;
+}
+
+.zone-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary);
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+}
+
+/* Query Bubbles (Inputs) */
+.query-bubble {
+    background: white;
+    padding: 0.9rem 1.4rem;
+    border-radius: 20px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.query-bubble i {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.query-bubble.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* AI Brain Node */
+.ai-brain-node {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.node-core {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary), #1e40af);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.6rem;
+    z-index: 5;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+}
+
+.node-glow {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: brainNodePulse 4s ease-in-out infinite;
+}
+
+.node-ring {
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    border: 2px solid rgba(37, 99, 235, 0.1);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: brainSpin 2s linear infinite;
+}
+
+.node-label {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--secondary);
+    line-height: 1.3;
+}
+
+/* Output Cards */
+.output-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.9rem 1.2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 260px;
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.output-card.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.query-bubble.fade-out,
+.output-card.fade-out {
+    opacity: 0 !important;
+    transform: scale(0.95) !important;
+    transition: all 0.8s ease-in-out !important;
+}
+
+.output-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.output-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.output-text strong {
+    font-size: 0.85rem;
+    color: #1e293b;
+    display: block;
+}
+
+.output-text span {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* SVG Flow */
+.ecosystem-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.flow-path {
+    fill: none;
+    stroke: rgba(37, 99, 235, 0.08);
+    stroke-width: 2;
+    stroke-dasharray: 6, 4;
+}
+
+/* Keyframes */
+@keyframes brainNodePulse {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes brainSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+    .msme-ecosystem-card {
+        padding: 3rem 1.5rem;
+        min-height: auto;
+    }
+
+    .ecosystem-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .ecosystem-zone {
+        align-items: center;
+        width: 100%;
+    }
+
+    .output-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .ecosystem-svg {
+        display: none;
     }
 }

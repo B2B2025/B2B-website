@@ -51,66 +51,102 @@
                     </p>
                 </div>
 
-                <!-- Ecosystem Demo Card -->
-                <div class="msme-demo-card">
-                    <div class="msme-demo-grid">
-                        <!-- Left: MSME Query -->
-                        <div class="msme-demo-node msme-query">
-                            <div class="demo-bubble">
-                                <span id="demo-query-text"></span><span class="demo-cursor">|</span>
+                <!-- Premium Ecosystem Animation -->
+                <div class="msme-ecosystem-card">
+                    <div class="ecosystem-container">
+                        <!-- Left Zone: Sequential Inputs -->
+                        <div class="ecosystem-zone zone-inputs">
+                            <div class="zone-tag">MSME Query</div>
+                            <div class="query-bubble" data-index="0">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>How to file GST?</span>
                             </div>
-                            <div class="demo-label">MSME Query</div>
+                            <div class="query-bubble" data-index="1">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <span>Which subsidy am I eligible for?</span>
+                            </div>
+                            <div class="query-bubble" data-index="2">
+                                <i class="fas fa-globe"></i>
+                                <span>How to get export license?</span>
+                            </div>
+                            <div class="query-bubble" data-index="3">
+                                <i class="fas fa-user-check"></i>
+                                <span>Need CA for compliance</span>
+                            </div>
                         </div>
 
-                        <!-- Center: AI Node -->
-                        <div class="msme-demo-node msme-ai">
-                            <div class="ai-node-wrapper">
-                                <div class="ai-rotating-ring"></div>
-                                <div class="ai-core">
+                        <!-- Center Zone: AI Partner -->
+                        <div class="ecosystem-zone zone-center">
+                            <div class="ai-brain-node">
+                                <div class="node-glow"></div>
+                                <div class="node-ring"></div>
+                                <div class="node-core">
                                     <i class="fas fa-brain"></i>
                                 </div>
                             </div>
-                            <div class="demo-label">Bharat2Business<br>Digital Partner</div>
+                            <div class="node-label">Bharat2Business<br>Digital Partner</div>
                         </div>
 
-                        <!-- Right: Expert Match -->
-                        <div class="msme-demo-node expert-match">
-                            <div class="match-card-container">
-                                <div class="match-status-badge">
-                                    <i class="fas fa-check-circle"></i> Verified Match
-                                </div>
-                                <div class="match-profile-card">
-                                    <div class="card-shimmer"></div>
-                                    <div class="profile-icon">
-                                        <i class="fas fa-user-tie"></i>
-                                    </div>
-                                    <div class="profile-info">
-                                        <strong id="expert-name">Searching...</strong>
-                                        <span id="expert-specialty">AI Matching</span>
-                                    </div>
-                                </div>
-                                <div class="match-toast">
-                                    <i class="fas fa-calendar-check"></i> Consultation Booked
+                        <!-- Right Zone: Structured Outputs -->
+                        <div class="ecosystem-zone zone-outputs">
+                            <div class="zone-tag">Digital Output</div>
+                            <div class="output-card" data-index="0">
+                                <div class="output-icon"><i class="fas fa-award"></i></div>
+                                <div class="output-text">
+                                    <strong>Eligible Govt Schemes</strong>
+                                    <span>PMEGP & CGTMSE Identified</span>
                                 </div>
                             </div>
-                            <div class="demo-label">Verified Expert</div>
+                            <div class="output-card" data-index="1">
+                                <div class="output-icon"><i class="fas fa-clipboard-check"></i></div>
+                                <div class="output-text">
+                                    <strong>Documentation Ready</strong>
+                                    <span>Full Checklist Generated</span>
+                                </div>
+                            </div>
+                            <div class="output-card" data-index="2">
+                                <div class="output-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                <div class="output-text">
+                                    <strong>Credit Options</strong>
+                                    <span>3 Banks Matching Profile</span>
+                                </div>
+                            </div>
+                            <div class="output-card" data-index="3">
+                                <div class="output-icon"><i class="fas fa-check-double"></i></div>
+                                <div class="output-text">
+                                    <strong>Verified Expert Match</strong>
+                                    <span>Top-Rated CA Connected</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- SVG Connection Lines -->
-                    <svg class="demo-svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet">
-                        <path id="demo-path-1" d="M 230,100 L 370,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
-                            stroke-dasharray="6,4" fill="none" />
-                        <path id="demo-path-2" d="M 430,100 L 570,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
-                            stroke-dasharray="6,4" fill="none" />
-                        <circle id="demo-dot" r="4" fill="var(--primary)"
-                            style="opacity: 0; filter: drop-shadow(0 0 8px var(--primary));">
-                            <animateMotion id="demo-dot-motion" dur="1s" repeatCount="1" fill="freeze"
-                                begin="indefinite">
-                                <mpath href="#demo-path-1" />
-                            </animateMotion>
-                        </circle>
-                    </svg>
+                        <!-- Animated Vectors Overlay -->
+                        <svg class="ecosystem-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+                            <!-- Input Paths -->
+                            <path id="path-in-0" d="M 180,80 Q 300,80 370,180" class="flow-path" />
+                            <path id="path-in-1" d="M 180,140 Q 300,140 370,190" class="flow-path" />
+                            <path id="path-in-2" d="M 180,260 Q 300,260 370,210" class="flow-path" />
+                            <path id="path-in-3" d="M 180,320 Q 300,320 370,220" class="flow-path" />
+
+                            <!-- Output Paths -->
+                            <path id="path-out-0" d="M 430,180 Q 500,80 620,80" class="flow-path" />
+                            <path id="path-out-1" d="M 430,190 Q 500,140 620,140" class="flow-path" />
+                            <path id="path-out-2" d="M 430,210 Q 500,260 620,260" class="flow-path" />
+                            <path id="path-out-3" d="M 430,220 Q 500,320 620,320" class="flow-path" />
+
+                            <!-- Glowing Flow Particles -->
+                            <circle id="particle-in" r="3" fill="var(--primary)" style="opacity:0">
+                                <animateMotion id="anim-particle-in" begin="indefinite" dur="0.8s" fill="freeze">
+                                    <mpath href="#path-in-0" />
+                                </animateMotion>
+                            </circle>
+                            <circle id="particle-out" r="3" fill="var(--primary)" style="opacity:0">
+                                <animateMotion id="anim-particle-out" begin="indefinite" dur="0.8s" fill="freeze">
+                                    <mpath href="#path-out-0" />
+                                </animateMotion>
+                            </circle>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </section>

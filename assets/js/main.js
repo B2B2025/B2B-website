@@ -509,111 +509,75 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(animateCycle, 500);
         },
 
-        // --- MSME Ecosystem Demo Animation ---
+        // --- Premium MSME Ecosystem Animation ---
         initMSMEDemo() {
-            const container = document.querySelector('.msme-demo-card') || document.querySelector('.live-match-card');
-            if (!container) return;
+            const card = document.querySelector('.msme-ecosystem-card');
+            if (!card) return;
 
-            // Fallback for reduced motion
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                const queryText = document.getElementById('demo-query-text');
-                const expertName = document.getElementById('expert-name');
-                const expertSpec = document.getElementById('expert-specialty');
-                const badge = container.querySelector('.match-status-badge');
-                if (queryText) queryText.textContent = "Need FSSAI license";
-                if (expertName) expertName.textContent = "Vikram R.";
-                if (expertSpec) expertSpec.textContent = "FSSAI & Licensing Specialist";
-                if (badge) {
-                    badge.style.opacity = "1";
-                    badge.style.transform = "translateY(0)";
-                }
-                return;
-            }
-
-            const scenarios = [
-                { query: "How to file GST?", expert: "Rajesh K.", spec: "Tax & GST Consultant" },
-                { query: "Need FSSAI license", expert: "Anita S.", spec: "FSSAI Compliance Expert" },
-                { query: "MSME schemes?", expert: "Sanjay M.", spec: "Govt. Schemes Advisor" }
-            ];
-
-            let index = 0;
-            const querySpan = document.getElementById('demo-query-text');
-            const expertName = document.getElementById('expert-name');
-            const expertSpec = document.getElementById('expert-specialty');
-            const badge = container.querySelector('.match-status-badge');
-            const profileCard = container.querySelector('.match-profile-card');
-            const toast = container.querySelector('.match-toast');
-            const dot = document.getElementById('demo-dot');
-            const dotMotion = document.getElementById('demo-dot-motion');
-            const mpath = dotMotion.querySelector('mpath');
+            const bubbles = card.querySelectorAll('.query-bubble');
+            const outputs = card.querySelectorAll('.output-card');
+            const particleIn = document.getElementById('particle-in');
+            const particleOut = document.getElementById('particle-out');
+            const animIn = document.getElementById('anim-particle-in');
+            const animOut = document.getElementById('anim-particle-out');
+            const mpathIn = animIn.querySelector('mpath');
+            const mpathOut = animOut.querySelector('mpath');
 
             const wait = (ms) => new Promise(r => setTimeout(r, ms));
 
-            const typeWriter = async (element, text) => {
-                element.textContent = "";
-                for (let i = 0; i < text.length; i++) {
-                    element.textContent += text.charAt(i);
-                    await wait(50);
-                }
-            };
-
             const runCycle = async () => {
-                const s = scenarios[index];
-                index = (index + 1) % scenarios.length;
-
-                // Reset
-                querySpan.textContent = "";
-                expertName.textContent = "Searching...";
-                expertSpec.textContent = "AI Matching";
-                badge.style.opacity = "0";
-                badge.style.transform = "translateY(10px)";
-                toast.style.opacity = "0";
-                toast.style.transform = "translateY(10px)";
-                profileCard.classList.add('searching');
-                dot.style.opacity = "0";
+                // RESET
+                bubbles.forEach(b => b.classList.remove('active'));
+                outputs.forEach(o => o.classList.remove('active'));
+                particleIn.style.opacity = "0";
+                particleOut.style.opacity = "0";
 
                 await wait(1000);
 
-                // Step 1: Type Query
-                await typeWriter(querySpan, s.query);
-                await wait(500);
+                // 1. INPUT PHASE: Sequential Bubbles + Particles
+                for (let i = 0; i < bubbles.length; i++) {
+                    bubbles[i].classList.add('active');
 
-                // Step 2: Dot travel Left -> Center
-                dot.style.opacity = "1";
-                mpath.setAttribute('href', '#demo-path-1');
-                dotMotion.beginElement();
-                await wait(1000);
-                dot.style.opacity = "0";
+                    // Trigger flow particle to center
+                    mpathIn.setAttribute('href', `#path-in-${i}`);
+                    particleIn.style.opacity = "1";
+                    animIn.beginElement();
 
-                // Step 3: AI Node Pulse is handled by CSS
-                await wait(500);
+                    await wait(600);
+                    particleIn.style.opacity = "0";
+                }
 
-                // Step 4: Dot travel Center -> Right
-                dot.style.opacity = "1";
-                mpath.setAttribute('href', '#demo-path-2');
-                dotMotion.beginElement();
-                await wait(1000);
-                dot.style.opacity = "0";
-
-                // Step 5: Match Result
-                profileCard.classList.remove('searching');
-                expertName.textContent = s.expert;
-                expertSpec.textContent = s.spec;
-
-                // Badge slide in
-                badge.style.opacity = "1";
-                badge.style.transform = "translateY(0)";
+                // 2. PROCESSING PHASE: Subtle delay for center processing effect
                 await wait(800);
 
-                // Step 6: Toast pop
-                toast.style.opacity = "1";
-                toast.style.transform = "translateY(0)";
+                // 3. OUTPUT PHASE: Staggered Cards + Particles
+                for (let i = 0; i < outputs.length; i++) {
+                    // Trigger flow particle from center
+                    mpathOut.setAttribute('href', `#path-out-${i}`);
+                    particleOut.style.opacity = "1";
+                    animOut.beginElement();
 
-                // Step 7: Wait and Loop
+                    await wait(300);
+                    outputs[i].classList.add('active');
+                    await wait(300);
+                    particleOut.style.opacity = "0";
+                }
+
+                // 4. HOLD PHASE: Enjoy the result
                 await wait(4000);
+
+                // 5. FADE OUT for Seamless Loop
+                bubbles.forEach(b => b.classList.add('fade-out'));
+                outputs.forEach(o => o.classList.add('fade-out'));
+
+                await wait(800);
+                bubbles.forEach(b => b.classList.remove('fade-out'));
+                outputs.forEach(o => o.classList.remove('fade-out'));
+
                 requestAnimationFrame(runCycle);
             };
 
+            // Start the infinite loop
             runCycle();
         }
     };
