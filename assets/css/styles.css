@@ -3058,6 +3058,8 @@ footer {
     z-index: 2;
     height: 100%;
     padding: 0 1rem;
+    transform: translateY(-12px);
+    /* Shifting up to avoid overlap with trust strip at bottom */
 }
 
 .msme-node {
@@ -3159,6 +3161,13 @@ footer {
     gap: 2rem;
     opacity: 0;
     transition: opacity 0.5s ease;
+    z-index: 10;
+    /* Ensure it stays above SVG if needed, but below animations usually */
+}
+
+/* Specific shift for the background SVG nodes to match grid shift */
+.live-match-card .eco-svg {
+    transform: translateY(-12px);
 }
 
 .glow-pulse-bg {
