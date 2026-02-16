@@ -29,6 +29,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/about.css">
+
 </head>
 
 <body class="page-entrance">
@@ -36,29 +37,11 @@
         <div class="scroll-progress-bar" id="scrollBar"></div>
     </div>
 
-    <!-- Navbar -->
-    <nav class="navbar scrolled">
-        <div class="container nav-content">
-            <a href="index.html" class="logo">
-                <i class="fas fa-rocket"></i> Bharat2Business
-            </a>
-            <ul class="nav-links" id="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="msme.html" class="nav-link">For MSMEs</a></li>
-                <li><a href="experts.html" class="nav-link">For Experts</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-
-                <li><a href="contact.html" class="btn-cta">Get Started</a></li>
-            </ul>
-            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <!-- Page Header -->
     <header class="about-hero">
-        <div class="about-hero-bg"></div>
+        <div class="hero-animated-bg"></div>
         <div class="container text-center pos-relative z-1">
             <span class="section-title margin-b-small"><span>Our Story</span></span>
             <h1 class="about-hero-headline">
@@ -127,7 +110,7 @@
             <div class="founder-layout">
                 <div class="founder-image-box reveal-left">
                     <div class="founder-circle">
-                        <img src="assets/img/founder.png" alt="Founder of Bharat2Business">
+                        <img src="assets/img/founder.png" alt="Founder of Bharat2Business" loading="lazy">
                     </div>
                 </div>
                 <div class="founder-content reveal-right">
@@ -220,7 +203,7 @@
                     <a href="contact.html" class="btn-outline">Get Started</a>
                     <div class="contact-actions">
                         <div class="tooltip-container">
-                            <a href="https://wa.me/yournumber" class="icon-btn whatsapp" aria-label="WhatsApp">
+                            <a href="https://wa.me/919999999999" class="icon-btn whatsapp" aria-label="WhatsApp">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                             <span class="tooltip">WhatsApp</span>
@@ -251,48 +234,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="index.html" class="logo footer-logo">
-                        <i class="fas fa-rocket"></i> Bharat2Business
-                    </a>
-                    <p class="footer-desc">Elevate.Empower.Expand.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="about.html">Our Story</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="usage-policy.html">Usage Policy</a></li>
-                        <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
-                        <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Newsletter</h4>
-                    <p class="newsletter-desc">Stay updated with our latest news.</p>
-                    <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" placeholder="Email" class="newsletter-input" id="newsletter-email" required>
-                        <button type="submit" class="btn-cta newsletter-btn">Join</button>
-                    </form>
-                    <div id="newsletter-status" class="form-status"></div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Bharat2Business. Proudly Built in Bharat.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script src="assets/js/main.js"></script>
 </body>

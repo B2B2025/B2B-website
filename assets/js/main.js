@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const App = {
-        init() {
+        async init() {
+            // Inject common UI components first
+            await this.injectPartials();
+
             this.initMobileMenu();
             this.initDownloadRedirect();
             this.initHeroTyping();
@@ -13,6 +16,87 @@ document.addEventListener('DOMContentLoaded', () => {
             this.initRevealObserver();
             this.initParallax();
             this.initMSMEDemo();
+            this.initPersonaSelector();
+            this.initJourneyLifecycle();
+            this.initMatchEngine();
+            this.initContactForm();
+        },
+
+        async injectPartials() {
+            const navbarArea = document.getElementById('navbar-placeholder');
+            const footerArea = document.getElementById('footer-placeholder');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+            if (navbarArea) {
+                const isScrolledPage = ['msme.html', 'experts.html', 'about.html', 'contact.html', 'privacy-policy.html', 'terms-msme.html', 'terms-experts.html', 'usage-policy.html'].includes(currentPage);
+                const navClass = isScrolledPage ? 'navbar scrolled' : 'navbar';
+
+                navbarArea.innerHTML = `
+                    <nav class="${navClass}">
+                        <div class="container nav-content">
+                            <a href="index.html" class="logo">
+                                <i class="fas fa-rocket"></i> Bharat2Business
+                            </a>
+                            <ul class="nav-links" id="nav-menu">
+                                <li><a href="index.html" class="nav-link ${currentPage === 'index.html' ? 'active' : ''}">Home</a></li>
+                                <li><a href="msme.html" class="nav-link ${currentPage === 'msme.html' ? 'active' : ''}">For MSMEs</a></li>
+                                <li><a href="experts.html" class="nav-link ${currentPage === 'experts.html' ? 'active' : ''}">For Experts</a></li>
+                                <li><a href="about.html" class="nav-link ${currentPage === 'about.html' ? 'active' : ''}">About</a></li>
+                                <li><a href="contact.html" class="btn-cta ${currentPage === 'contact.html' ? 'active' : ''}">Get Started</a></li>
+                            </ul>
+                            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </nav>
+                `;
+            }
+
+            if (footerArea) {
+                footerArea.innerHTML = `
+                    <footer>
+                        <div class="container">
+                            <div class="footer-grid">
+                                <div>
+                                    <a href="index.html" class="logo footer-logo">
+                                        <i class="fas fa-rocket"></i> Bharat2Business
+                                    </a>
+                                    <p class="footer-desc">Elevate.Empower.Expand.</p>
+                                </div>
+                                <div class="footer-links">
+                                    <h4>Platform</h4>
+                                    <ul>
+                                        <li><a href="about.html">Our Story</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer-links">
+                                    <h4>Legal</h4>
+                                    <ul>
+                                        <li><a href="usage-policy.html">Usage Policy</a></li>
+                                        <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
+                                        <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
+                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer-links">
+                                    <h4>Newsletter</h4>
+                                    <p class="newsletter-desc">Stay updated with our latest news.</p>
+                                    <form class="newsletter-form" id="newsletter-form">
+                                        <input type="email" placeholder="Email" class="newsletter-input" id="newsletter-email" aria-label="Email Address" required>
+                                        <button type="submit" class="btn-cta newsletter-btn">Join</button>
+                                    </form>
+                                    <div id="newsletter-status" class="form-status"></div>
+                                </div>
+                            </div>
+                            <div class="footer-bottom">
+                                <p>&copy; 2026 Bharat2Business. Proudly Built in Bharat.</p>
+                            </div>
+                        </div>
+                    </footer>
+                `;
+            }
         },
 
 
@@ -407,106 +491,103 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { passive: true });
         },
 
-        // --- Live Match Engine Animation ---
+        // --- Live Match Engine Animation (Expert Matching) ---
         initMatchEngine() {
             const container = document.querySelector('.live-match-card');
             if (!container) return;
 
             const scenarios = [
-                { query: "I need FSSAI license for my bakery.", match: "Legal • FSSAI Expert", outcome: "Consultation Booked • FSSAI Guidance" },
-                { query: "How do I file GST for last month?", match: "CA • GST Filing", outcome: "Consultation Booked • GST Filing" },
-                { query: "Which schemes am I eligible for?", match: "Govt Scheme Expert", outcome: "Consultation Booked • Subsidy Check" },
-                { query: "Register my new Pvt Ltd company.", match: "CS • Company Reg", outcome: "Consultation Booked • Company Reg" }
+                { query: "I need FSSAI license for my bakery.", match: "Meera Iyer", specialty: "Legal • FSSAI Expert" },
+                { query: "How do I file GST for last month?", match: "Rajesh Kumar", specialty: "CA • GST Filing" },
+                { query: "Which schemes am I eligible for?", match: "Sanjay Shah", specialty: "Govt Scheme Expert" },
+                { query: "Register my new Pvt Ltd company.", match: "Anita Desai", specialty: "CS • Company Reg" }
             ];
 
+            const typingText = document.getElementById('demo-query-text');
+            const expertName = document.getElementById('expert-name');
+            const expertSpecialty = document.getElementById('expert-specialty');
+            const dotMotion = document.getElementById('demo-dot-motion');
+            const dot = document.getElementById('demo-dot');
+            const profileCard = container.querySelector('.match-profile-card');
+            const statusBadge = container.querySelector('.match-status-badge');
+            const toast = container.querySelector('.match-toast');
+
             let cycleCount = 0;
-            let isAnimating = false;
 
-            const animateCycle = async () => {
-                if (isAnimating) return;
-                isAnimating = true;
+            const wait = (ms) => new Promise(r => setTimeout(r, ms));
 
-                const scenario = scenarios[cycleCount % scenarios.length];
-                cycleCount++;
-
-                // Elements
-                const chatBubble = container.querySelector('.chat-bubble');
-                const typingText = chatBubble.querySelector('.typing-text');
-                const spinner = container.querySelector('.processing-spinner');
-                const flowPath = document.getElementById('match-flow-path');
-                const flowDot = document.getElementById('flow-dot-1');
-
-                const expertCard = container.querySelector('.expert-profile-card');
-                const expertName = expertCard.querySelector('.expert-name');
-                const expertSub = expertCard.querySelector('.expert-sub');
-                const expertIconDiv = expertCard.querySelector('div:first-child');
-                const expertGlow = expertCard.querySelector('.expert-glow-ring');
-                const matchBadge = container.querySelector('.match-badge');
-
-                const outcomePill = container.querySelector('.outcome-pill');
-                const outcomeText = outcomePill.querySelector('.outcome-text');
-                const trustStrip = container.querySelector('.trust-strip');
-
-                // Helper for delays
-                const wait = (ms) => new Promise(r => setTimeout(r, ms));
-
-                // Helper for typing
-                const typeWriter = async (element, text) => {
-                    element.textContent = "";
-                    for (let i = 0; i < text.length; i++) {
-                        element.textContent += text.charAt(i);
-                        await wait(20 + Math.random() * 20);
-                    }
-                };
-
-                // --- RESET STATE ---
-                container.dataset.state = "idle";
-                typingText.textContent = "";
-
-                // Selectors for dynamic content updates
-                const matchedLayer = expertCard.querySelector('.state-matched');
-                const matchedName = matchedLayer.querySelector('.expert-name');
-                const dotAnim = document.querySelector('#flow-dot-1 animateMotion');
-
-                // Start of Cycle (Direct Transition - No Idle Blanking)
-
-                // 1. SEARCHING STATE
-                // Clear previous text immediately or crossfade if we had double buffers (simple clear for now)
-                typingText.textContent = "";
-
-                container.dataset.state = "searching";
-                if (dotAnim) dotAnim.beginElement();
-
-                await wait(200);
-
-                // Typing
-                await typeWriter(typingText, scenario.query);
-
-                // Allow time for spinner/path animation
-                await wait(1800);
-
-                // Update Expert Data (hidden layer) before showing match
-                matchedName.textContent = scenario.match;
-
-                // 2. MATCHED STATE
-                container.dataset.state = "matched";
-                if (dotAnim) dotAnim.endElement(); // Stop dot motion
-
-                await wait(1200); // Read the match
-
-                // 3. BOOKED STATE
-                outcomeText.textContent = scenario.outcome;
-                container.dataset.state = "booked";
-
-                await wait(2200); // Hold final outcome
-
-                // Loop
-                isAnimating = false;
-                requestAnimationFrame(animateCycle);
+            const typeWriter = async (element, text) => {
+                element.textContent = "";
+                for (let i = 0; i < text.length; i++) {
+                    element.textContent += text.charAt(i);
+                    await wait(30 + Math.random() * 30);
+                }
             };
 
-            // Start loop
-            setTimeout(animateCycle, 500);
+            const runCycle = async () => {
+                const s = scenarios[cycleCount % scenarios.length];
+                cycleCount++;
+
+                // Reset States
+                typingText.textContent = "";
+                expertName.textContent = "Searching...";
+                expertSpecialty.textContent = "AI Matching";
+                profileCard.classList.add('searching');
+                statusBadge.style.opacity = "0";
+                statusBadge.style.transform = "translateY(10px)";
+                toast.style.opacity = "0";
+                toast.style.transform = "translateY(10px)";
+                dot.style.opacity = "0";
+
+                await wait(1000);
+
+                // 1. MSME Types Query
+                await typeWriter(typingText, s.query);
+                await wait(600);
+
+                // 2. Flow to AI Brain
+                dot.style.opacity = "1";
+                if (dotMotion) {
+                    const mpath = dotMotion.querySelector('mpath');
+                    if (mpath) mpath.setAttribute('href', '#demo-path-1');
+                    dotMotion.beginElement();
+                }
+
+                await wait(1200);
+
+                // 3. AI Processing (Handled by CSS animations in ai-core)
+                await wait(1500);
+
+                // 4. Match Found & Flow to Expert
+                if (dotMotion) {
+                    const mpath = dotMotion.querySelector('mpath');
+                    if (mpath) mpath.setAttribute('href', '#demo-path-2');
+                    dotMotion.beginElement();
+                }
+
+                await wait(800);
+
+                // 5. Reveal Expert
+                profileCard.classList.remove('searching');
+                expertName.textContent = s.match;
+                expertSpecialty.textContent = s.specialty;
+                statusBadge.style.opacity = "1";
+                statusBadge.style.transform = "translateY(0)";
+
+                await wait(1500);
+
+                // 6. Show Success Toast
+                toast.style.opacity = "1";
+                toast.style.transform = "translateY(0)";
+
+                // Hold for user to see
+                await wait(5000);
+
+                // Seamlessly restart
+                requestAnimationFrame(runCycle);
+            };
+
+            runCycle();
         },
 
         // --- Premium MSME Ecosystem Animation ---
@@ -543,12 +624,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     particleIn.style.opacity = "1";
                     animIn.beginElement();
 
-                    await wait(600);
+                    await wait(800); // Slower, more premium pacing
                     particleIn.style.opacity = "0";
                 }
 
                 // 2. PROCESSING PHASE: Subtle delay for center processing effect
-                await wait(800);
+                await wait(1200); // Deeper processing pause for 'Intelligence' feel
 
                 // 3. OUTPUT PHASE: Staggered Cards + Particles
                 for (let i = 0; i < outputs.length; i++) {
@@ -557,14 +638,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     particleOut.style.opacity = "1";
                     animOut.beginElement();
 
-                    await wait(300);
+                    await wait(400); // Smooth flow
                     outputs[i].classList.add('active');
-                    await wait(300);
+                    await wait(400);
                     particleOut.style.opacity = "0";
                 }
 
                 // 4. HOLD PHASE: Enjoy the result
-                await wait(4000);
+                await wait(5000);
 
                 // 5. FADE OUT for Seamless Loop
                 bubbles.forEach(b => b.classList.add('fade-out'));
@@ -579,6 +660,153 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Start the infinite loop
             runCycle();
+        },
+
+        // --- Persona Selector (For MSMEs Page) ---
+        initPersonaSelector() {
+            const pills = document.querySelectorAll('.persona-pill');
+            const contents = document.querySelectorAll('.persona-content');
+            const dynamicHeadline = document.getElementById('persona-dynamic-headline');
+
+            if (!pills.length || !contents.length) return;
+
+            const updatePersona = (persona) => {
+                let headlineText = "";
+
+                // Update active pill
+                pills.forEach(p => {
+                    if (p.getAttribute('data-persona') === persona) {
+                        p.classList.add('active');
+                        headlineText = p.getAttribute('data-headline');
+                    } else {
+                        p.classList.remove('active');
+                    }
+                });
+
+                // Update dynamic headline with fade effect
+                if (dynamicHeadline && headlineText) {
+                    dynamicHeadline.style.opacity = '0';
+                    dynamicHeadline.style.transition = 'opacity 0.2s ease-in-out';
+                    setTimeout(() => {
+                        dynamicHeadline.textContent = headlineText;
+                        dynamicHeadline.style.opacity = '1';
+                    }, 200);
+                }
+
+                // Update content panel
+                contents.forEach(content => {
+                    if (content.id === `persona-${persona}`) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+            };
+
+            // Initialize with active state
+            const activePill = document.querySelector('.persona-pill.active');
+            if (activePill) {
+                const initialPersona = activePill.getAttribute('data-persona');
+                updatePersona(initialPersona);
+            }
+
+            pills.forEach(pill => {
+                const persona = pill.getAttribute('data-persona');
+
+                // Handle both click and hover for better responsiveness
+                pill.addEventListener('click', () => updatePersona(persona));
+                pill.addEventListener('mouseenter', () => updatePersona(persona));
+            });
+        },
+
+        // --- Journey Lifecycle Animation (Scroll-based) ---
+        initJourneyLifecycle() {
+            const steps = document.querySelectorAll('.journey-step');
+            const progressFill = document.querySelector('.journey-progress-fill');
+            const wrapper = document.querySelector('.journey-timeline-wrapper');
+            if (!steps.length || !progressFill || !wrapper) return;
+
+            // 1. Observer for individual step activation
+            const observerOptions = {
+                root: null,
+                threshold: 0.6,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const stepObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            steps.forEach(step => stepObserver.observe(step));
+
+            // 2. Continuous progress line fill on scroll
+            const updateProgressLine = () => {
+                const rect = wrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Calculate how much of the wrapper is visible/past the scroll point
+                // We want progress to start when the top of the wrapper is at 70% of the screen
+                const startPoint = windowHeight * 0.7;
+                const totalHeight = rect.height;
+                const distance = startPoint - rect.top;
+
+                let progress = (distance / totalHeight) * 100;
+                progress = Math.max(0, Math.min(100, progress));
+
+                progressFill.style.height = `${progress}%`;
+            };
+
+            window.addEventListener('scroll', updateProgressLine);
+            // Initial call
+            updateProgressLine();
+        },
+
+        // --- Contact Form ---
+        initContactForm() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const btn = form.querySelector('button');
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Simple validation
+                let hasError = false;
+                if (!name) { document.getElementById('nameError').textContent = "Required"; document.getElementById('nameError').style.display = "block"; hasError = true; }
+                if (!email) { document.getElementById('emailError').textContent = "Required"; document.getElementById('emailError').style.display = "block"; hasError = true; }
+
+                if (hasError) return;
+
+                btn.disabled = true;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                try {
+                    // Simulate API call or connect to server.js
+                    await new Promise(r => setTimeout(r, 1500));
+
+                    form.innerHTML = `
+                        <div class="success-message" style="text-align: center; padding: 2rem;">
+                            <i class="fas fa-check-circle" style="font-size: 3rem; color: #10b981; margin-bottom: 1rem;"></i>
+                            <h3>Message Sent!</h3>
+                            <p>Thank you ${name}. Our team will contact you shortly.</p>
+                            <button onclick="location.reload()" class="btn-cta" style="margin-top: 1rem;">Send Another</button>
+                        </div>
+                    `;
+                } catch (err) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    alert("Submission failed. Please try again.");
+                }
+            });
         }
     };
 

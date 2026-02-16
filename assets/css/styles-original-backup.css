@@ -255,13 +255,6 @@ section {
     color: var(--white);
 }
 
-.btn-cta.active {
-    background: var(--brand-primary);
-    /* Keep primary brand color but maybe darken or inset shadow */
-    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.2);
-    transform: translateY(1px);
-}
-
 .btn-outline {
     background: transparent;
     color: var(--primary);
@@ -4654,46 +4647,6 @@ footer {
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
-}
-
-/* Dynamic Persona Enhancements */
-.gradient-text-anim {
-    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShift 3s linear infinite;
-}
-
-.card-elevation-high {
-    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
-    background: rgba(255, 255, 255, 0.95);
-    /* Slightly more opaque */
-    border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-.persona-chips-scroll.shadow-sm {
-    box-shadow: none;
-    /* Reset container shadow just in case */
-    padding-bottom: 10px;
-    /* Reduced padding */
-}
-
-.persona-chips-scroll.shadow-sm .persona-pill {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-    /* Reduced shadow */
-    border-color: rgba(0, 0, 0, 0.03);
-}
-
-.persona-chips-scroll.shadow-sm .persona-pill:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.persona-chips-scroll.shadow-sm .persona-pill.active {
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
-    transform: translateY(-2px);
 }
 
 .persona-content {
