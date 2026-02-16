@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.initNewsletterForm();
             this.initRevealObserver();
             this.initParallax();
-            this.initMatchEngine();
+            this.initMSMEDemo();
         },
 
 
@@ -64,9 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Typing Animations ---
         initHeroTyping() {
             const typedTextSpan = document.querySelector(".hero .typed-text");
-            if (!typedTextSpan) return;
+            const msmeHeader = document.getElementById("msme-typing-header");
+            if (!typedTextSpan && !msmeHeader) return;
 
-            const phrases = ["Empower", "Elevate", "Expand"];
+            const target = typedTextSpan || msmeHeader;
+            const phrases = msmeHeader
+                ? ["Instant Clarity.", "Seamless Compliance.", "Global Growth."]
+                : ["Empower", "Elevate", "Expand"];
+
             let phraseIndex = 0;
             let charIdx = 0;
             let isDeleting = false;
@@ -74,10 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const type = () => {
                 const currentPhrase = phrases[phraseIndex];
                 if (isDeleting) {
-                    typedTextSpan.textContent = currentPhrase.substring(0, charIdx - 1);
+                    target.textContent = currentPhrase.substring(0, charIdx - 1);
                     charIdx--;
                 } else {
-                    typedTextSpan.textContent = currentPhrase.substring(0, charIdx + 1);
+                    target.textContent = currentPhrase.substring(0, charIdx + 1);
                     charIdx++;
                 }
 
@@ -502,6 +507,114 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Start loop
             setTimeout(animateCycle, 500);
+        },
+
+        // --- MSME Ecosystem Demo Animation ---
+        initMSMEDemo() {
+            const container = document.querySelector('.msme-demo-card') || document.querySelector('.live-match-card');
+            if (!container) return;
+
+            // Fallback for reduced motion
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const queryText = document.getElementById('demo-query-text');
+                const expertName = document.getElementById('expert-name');
+                const expertSpec = document.getElementById('expert-specialty');
+                const badge = container.querySelector('.match-status-badge');
+                if (queryText) queryText.textContent = "Need FSSAI license";
+                if (expertName) expertName.textContent = "Vikram R.";
+                if (expertSpec) expertSpec.textContent = "FSSAI & Licensing Specialist";
+                if (badge) {
+                    badge.style.opacity = "1";
+                    badge.style.transform = "translateY(0)";
+                }
+                return;
+            }
+
+            const scenarios = [
+                { query: "How to file GST?", expert: "Rajesh K.", spec: "Tax & GST Consultant" },
+                { query: "Need FSSAI license", expert: "Anita S.", spec: "FSSAI Compliance Expert" },
+                { query: "MSME schemes?", expert: "Sanjay M.", spec: "Govt. Schemes Advisor" }
+            ];
+
+            let index = 0;
+            const querySpan = document.getElementById('demo-query-text');
+            const expertName = document.getElementById('expert-name');
+            const expertSpec = document.getElementById('expert-specialty');
+            const badge = container.querySelector('.match-status-badge');
+            const profileCard = container.querySelector('.match-profile-card');
+            const toast = container.querySelector('.match-toast');
+            const dot = document.getElementById('demo-dot');
+            const dotMotion = document.getElementById('demo-dot-motion');
+            const mpath = dotMotion.querySelector('mpath');
+
+            const wait = (ms) => new Promise(r => setTimeout(r, ms));
+
+            const typeWriter = async (element, text) => {
+                element.textContent = "";
+                for (let i = 0; i < text.length; i++) {
+                    element.textContent += text.charAt(i);
+                    await wait(50);
+                }
+            };
+
+            const runCycle = async () => {
+                const s = scenarios[index];
+                index = (index + 1) % scenarios.length;
+
+                // Reset
+                querySpan.textContent = "";
+                expertName.textContent = "Searching...";
+                expertSpec.textContent = "AI Matching";
+                badge.style.opacity = "0";
+                badge.style.transform = "translateY(10px)";
+                toast.style.opacity = "0";
+                toast.style.transform = "translateY(10px)";
+                profileCard.classList.add('searching');
+                dot.style.opacity = "0";
+
+                await wait(1000);
+
+                // Step 1: Type Query
+                await typeWriter(querySpan, s.query);
+                await wait(500);
+
+                // Step 2: Dot travel Left -> Center
+                dot.style.opacity = "1";
+                mpath.setAttribute('href', '#demo-path-1');
+                dotMotion.beginElement();
+                await wait(1000);
+                dot.style.opacity = "0";
+
+                // Step 3: AI Node Pulse is handled by CSS
+                await wait(500);
+
+                // Step 4: Dot travel Center -> Right
+                dot.style.opacity = "1";
+                mpath.setAttribute('href', '#demo-path-2');
+                dotMotion.beginElement();
+                await wait(1000);
+                dot.style.opacity = "0";
+
+                // Step 5: Match Result
+                profileCard.classList.remove('searching');
+                expertName.textContent = s.expert;
+                expertSpec.textContent = s.spec;
+
+                // Badge slide in
+                badge.style.opacity = "1";
+                badge.style.transform = "translateY(0)";
+                await wait(800);
+
+                // Step 6: Toast pop
+                toast.style.opacity = "1";
+                toast.style.transform = "translateY(0)";
+
+                // Step 7: Wait and Loop
+                await wait(4000);
+                requestAnimationFrame(runCycle);
+            };
+
+            runCycle();
         }
     };
 

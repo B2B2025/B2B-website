@@ -3035,117 +3035,21 @@ footer {
 
 /* Live Match Visibility Classes */
 /* Experts Hero Card Structured Styles */
+/* Live Match Engine Card (Unified with MSME Style) */
 .live-match-card {
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 32px;
-    padding: 2.5rem 2rem;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
-    overflow: hidden;
     min-height: 280px;
-}
-
-.match-engine-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    padding: 0 1rem;
-    transform: translateY(-12px);
-    /* Shifting up to avoid overlap with trust strip at bottom */
-}
-
-.msme-node {
-    width: 200px;
-    position: relative;
-}
-
-.b2b-node {
-    position: relative;
-}
-
-.expert-node {
-    width: 220px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.chat-bubble {
-    background: white;
-    padding: 0.8rem 1.2rem;
-    border-radius: 16px;
-    border-bottom-left-radius: 2px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    font-size: 0.85rem;
-    color: #1e293b;
-    position: relative;
-    opacity: 0;
-    transform: translateY(10px);
-    text-align: left;
-    transition: all 0.4s ease-out;
-}
-
-.expert-profile-card {
-    background: white;
-    padding: 0.8rem 1rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.1);
-    width: 100%;
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    opacity: 0.5;
-    transform: scale(0.95);
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-}
-
-.match-badge {
-    background: #10b981;
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 0.8rem;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.outcome-pill {
-    /* Relative positioning for Expert Node flow */
-    position: relative;
-    margin-top: 0.8rem;
-    transform: translateY(10px);
-
-    background: rgba(30, 41, 59, 0.95);
-    backdrop-filter: blur(10px);
-    color: white;
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    opacity: 0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    font-size: 0.8rem;
-    z-index: 5;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    /* Ensure right alignment in flex column */
-    align-self: flex-end;
 }
 
 .trust-strip {
@@ -3153,21 +3057,27 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 0.8rem 0;
-    background: rgba(255, 255, 255, 0.5);
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    gap: 3rem;
     z-index: 10;
-    /* Ensure it stays above SVG if needed, but below animations usually */
 }
 
-/* Specific shift for the background SVG nodes to match grid shift */
-.live-match-card .eco-svg {
-    transform: translateY(-12px);
+.trust-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.trust-strip-icon {
+    color: var(--primary);
+    font-size: 1rem;
 }
 
 .glow-pulse-bg {
@@ -3585,4 +3495,378 @@ footer {
 
 .route-active {
     stroke-dashoffset: 0 !important;
+}
+
+/* MSME Premium Hero & Demo Styling */
+.msme-hero {
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.msme-hero-gradient {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg,
+            rgba(255, 153, 51, 0.08) 0%,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(19, 136, 8, 0.08) 50%,
+            rgba(255, 255, 255, 0.05) 75%,
+            rgba(255, 153, 51, 0.08) 100%);
+    animation: gradientParallax 15s ease-in-out infinite;
+    z-index: 0;
+}
+
+.msme-hero-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.msme-hero-content {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+}
+
+.msme-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    color: #0f172a;
+}
+
+.msme-cursor {
+    color: var(--primary);
+    animation: blink 1s step-end infinite;
+}
+
+.msme-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+/* Glassmorphism Demo Card */
+.msme-demo-card {
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 280px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 32px;
+    padding: 3rem 2rem;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.msme-demo-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.msme-demo-node {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    will-change: transform, opacity;
+}
+
+.demo-bubble {
+    background: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    font-size: 0.95rem;
+    color: #1e293b;
+    font-weight: 500;
+    min-width: 220px;
+    text-align: left;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.demo-cursor {
+    color: var(--primary);
+    animation: blink 1s step-end infinite;
+}
+
+.demo-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+/* AI Center Node */
+.ai-node-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.ai-core {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary), #1e40af);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.6rem;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    position: relative;
+    z-index: 3;
+}
+
+
+.ai-rotating-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    z-index: 2;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes aiPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(0.85);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes gradientParallax {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-2%, -2%);
+    }
+}
+
+/* Expert Match Card */
+.match-card-container {
+    width: 240px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.match-status-badge {
+    background: #10b981;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 0.75rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.match-profile-card {
+    background: #ffffff;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transform: translateX(-100%);
+}
+
+.match-profile-card.searching .card-shimmer {
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.profile-icon {
+    width: 44px;
+    height: 44px;
+    background: #f1f5f9;
+    color: #64748b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.5s ease;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.profile-info strong {
+    font-size: 0.9rem;
+    color: #1e293b;
+    display: block;
+}
+
+.profile-info span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.match-toast {
+    position: absolute;
+    bottom: -50px;
+    background: #1e293b;
+    color: white;
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    white-space: nowrap;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.match-toast i {
+    color: #4ade80;
+}
+
+/* SVG Connection Lines */
+.demo-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .msme-hero {
+        padding: 80px 0 60px;
+    }
+
+    .msme-demo-card {
+        min-height: 320px;
+        padding: 2rem 1rem;
+    }
+
+    .msme-demo-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .demo-bubble {
+        min-width: 100%;
+        font-size: 0.85rem;
+    }
+
+    .match-card-container {
+        width: 100%;
+    }
+
+    .demo-svg {
+        display: none;
+    }
+
+    .msme-demo-node {
+        gap: 0.75rem;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .msme-hero-gradient,
+    .ai-glow,
+    .ai-rotating-ring,
+    .msme-cursor,
+    .demo-cursor,
+    .card-shimmer {
+        animation: none !important;
+    }
+
+    .msme-demo-node {
+        transition: none !important;
+    }
 }

@@ -37,103 +37,80 @@
     </nav>
 
     <main>
-        <section class="hero" style="padding: 80px 0 40px; min-height: auto;">
-            <div class="container" style="text-align: center;">
-                <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem;">
-                    Instant Clarity. <span style="color: var(--primary);">Seamless Compliance.</span>
-                </h1>
-                <p style="font-size: 1.125rem; max-width: 700px; margin: 0 auto; opacity: 0.8;">
-                    Discover government schemes, connect with verified experts, and navigate regulations with
-                    confidence.
-                </p>
+        <!-- Premium MSME Hero -->
+        <section class="msme-hero">
+            <div class="msme-hero-gradient"></div>
+            <div class="container msme-hero-container">
+                <div class="msme-hero-content">
+                    <h1 class="msme-title">
+                        <span id="msme-typing-header"></span><span class="msme-cursor">|</span>
+                    </h1>
+                    <p class="msme-subtitle">
+                        The Digital Operating System for India's 63 Million MSMEs. Clarity, Compliance and Growth — all
+                        in one place.
+                    </p>
+                </div>
 
-                <div class="hero-ecosystem" style="margin-top: 2.5rem;">
-                    <div class="ecosystem-card"
-                        style="padding: 2rem; max-width: 800px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.25) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.4);">
-                        <div class="ecosystem-diagram" style="height: 160px; position: relative;">
-                            <svg class="eco-svg" viewBox="0 0 600 160" preserveAspectRatio="none"
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                                <defs>
-                                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color: var(--primary); stop-opacity: 0.6" />
-                                        <stop offset="100%" style="stop-color: var(--primary); stop-opacity: 0.3" />
-                                    </linearGradient>
-                                </defs>
-
-                                <path id="path-msme-b2b" class="eco-line" d="M 100,80 Q 200,20 300,80"
-                                    stroke="url(#lineGradient)" stroke-width="2.5" stroke-dasharray="8,6" fill="none"
-                                    opacity="0.7" />
-                                <path id="path-b2b-expert" class="eco-line" d="M 300,80 Q 400,140 500,80"
-                                    stroke="url(#lineGradient)" stroke-width="2.5" stroke-dasharray="8,6" fill="none"
-                                    opacity="0.7" />
-
-                                <circle r="5" fill="var(--primary)" filter="drop-shadow(0 0 8px var(--primary))">
-                                    <animateMotion dur="8s" repeatCount="indefinite">
-                                        <mpath href="#path-msme-b2b" />
-                                    </animateMotion>
-                                </circle>
-                                <circle r="5" fill="var(--primary)" filter="drop-shadow(0 0 8px var(--primary))">
-                                    <animateMotion dur="8s" repeatCount="indefinite" begin="4s">
-                                        <mpath href="#path-b2b-expert" />
-                                    </animateMotion>
-                                </circle>
-                                <circle r="5" fill="var(--primary)" filter="drop-shadow(0 0 8px var(--primary))"
-                                    opacity="0.6">
-                                    <animateMotion dur="8s" repeatCount="indefinite" begin="2s">
-                                        <mpath href="#path-msme-b2b" />
-                                    </animateMotion>
-                                </circle>
-                            </svg>
-
-                            <!-- MSME Node (Highlighted) -->
-                            <div style="position: absolute; left: 16.66%; top: 50%; transform: translate(-50%, -50%);">
-                                <!-- Pulsing Halo Background -->
-                                <div
-                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(37, 99, 235, 0) 70%); border-radius: 50%; animation: expertHalo 3s ease-in-out infinite;">
-                                </div>
-                                <!-- Node with Glow Ring -->
-                                <div class="eco-node active"
-                                    style="position: relative; left: 0; top: 0; transform: none; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4), 0 0 20px rgba(37, 99, 235, 0.3); margin-bottom: 0.5rem; animation: expertFocus 3s ease-in-out infinite; width: 60px; height: 60px; font-size: 1.5rem;">
-                                    <i class="fas fa-industry"></i>
-                                </div>
-                                <div
-                                    style="font-size: 0.75rem; font-weight: 600; color: var(--secondary); opacity: 0; animation: fadeInLabel 1s ease-out 0.5s forwards;">
-                                    MSMEs</div>
+                <!-- Ecosystem Demo Card -->
+                <div class="msme-demo-card">
+                    <div class="msme-demo-grid">
+                        <!-- Left: MSME Query -->
+                        <div class="msme-demo-node msme-query">
+                            <div class="demo-bubble">
+                                <span id="demo-query-text"></span><span class="demo-cursor">|</span>
                             </div>
+                            <div class="demo-label">MSME Query</div>
+                        </div>
 
-                            <!-- Center Node with Animated Glow -->
-                            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
-                                <!-- Pulsing Glow Background -->
-                                <div
-                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(37, 99, 235, 0) 70%); border-radius: 50%; animation: glowPulse 3s ease-in-out infinite;">
+                        <!-- Center: AI Node -->
+                        <div class="msme-demo-node msme-ai">
+                            <div class="ai-node-wrapper">
+                                <div class="ai-rotating-ring"></div>
+                                <div class="ai-core">
+                                    <i class="fas fa-brain"></i>
                                 </div>
-                                <!-- Node -->
-                                <div style="position: relative; margin-bottom: 0.5rem;">
-                                    <div class="eco-node"
-                                        style="position: relative; left: 0; top: 0; transform: none; opacity: 0.7; width: 60px; height: 60px; font-size: 1.5rem;">
-                                        <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="demo-label">Bharat2Business<br>Digital Partner</div>
+                        </div>
+
+                        <!-- Right: Expert Match -->
+                        <div class="msme-demo-node expert-match">
+                            <div class="match-card-container">
+                                <div class="match-status-badge">
+                                    <i class="fas fa-check-circle"></i> Verified Match
+                                </div>
+                                <div class="match-profile-card">
+                                    <div class="card-shimmer"></div>
+                                    <div class="profile-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div class="profile-info">
+                                        <strong id="expert-name">Searching...</strong>
+                                        <span id="expert-specialty">AI Matching</span>
                                     </div>
                                 </div>
-                                <div
-                                    style="font-size: 0.7rem; font-weight: 600; color: var(--secondary); opacity: 0; animation: fadeInLabel 1s ease-out 1s forwards; position: relative; top: -4px;">
-                                    AI Platform</div>
-                            </div>
-
-                            <!-- Verified Experts Node -->
-                            <div style="position: absolute; left: 83.33%; top: 50%; transform: translate(-50%, -50%);">
-                                <div class="eco-node"
-                                    style="position: relative; left: 0; top: 0; transform: none; opacity: 0.7; margin-bottom: 0.5rem; width: 60px; height: 60px; font-size: 1.5rem;">
-                                    <i class="fas fa-user-tie"></i>
+                                <div class="match-toast">
+                                    <i class="fas fa-calendar-check"></i> Consultation Booked
                                 </div>
-                                <div
-                                    style="font-size: 0.75rem; font-weight: 600; color: var(--secondary); opacity: 0; animation: fadeInLabel 1s ease-out 1.5s forwards;">
-                                    Verified Experts</div>
                             </div>
-                        </div>
-                        <div class="ecosystem-microcopy" style="margin-top: 1.5rem;">
-                            Discover → Connect → Grow
+                            <div class="demo-label">Verified Expert</div>
                         </div>
                     </div>
+
+                    <!-- SVG Connection Lines -->
+                    <svg class="demo-svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet">
+                        <path id="demo-path-1" d="M 230,100 L 370,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
+                            stroke-dasharray="6,4" fill="none" />
+                        <path id="demo-path-2" d="M 430,100 L 570,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
+                            stroke-dasharray="6,4" fill="none" />
+                        <circle id="demo-dot" r="4" fill="var(--primary)"
+                            style="opacity: 0; filter: drop-shadow(0 0 8px var(--primary));">
+                            <animateMotion id="demo-dot-motion" dur="1s" repeatCount="1" fill="freeze"
+                                begin="indefinite">
+                                <mpath href="#demo-path-1" />
+                            </animateMotion>
+                        </circle>
+                    </svg>
                 </div>
             </div>
         </section>

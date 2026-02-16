@@ -69,126 +69,65 @@
             </div>
 
             <!-- Live Match Engine Hero Card -->
+            <!-- Ecosystem Demo Card (Experts Context) -->
             <div class="live-match-card">
-                <!-- Connection Lines Layer -->
-                <svg class="eco-svg" viewBox="0 0 700 160" preserveAspectRatio="xMidYMid meet">
-                    <!-- Static Path (Always visible track) -->
-                    <path class="flow-path-track" d="M 120,80 Q 250,80 350,80 T 580,80" stroke="var(--primary)"
-                        stroke-width="2" stroke-dasharray="6,4" fill="none" style="opacity: 0.12;" />
+                <div class="msme-demo-grid">
+                    <!-- Left: MSME Query -->
+                    <div class="msme-demo-node msme-query">
+                        <div class="demo-bubble">
+                            <span id="demo-query-text"></span><span class="demo-cursor">|</span>
+                        </div>
+                        <div class="demo-label">MSME Query</div>
+                    </div>
 
-                    <!-- Flowing Animation Path (Visible only when searching) -->
-                    <path id="match-flow-path" d="M 120,80 Q 250,80 350,80 T 580,80" stroke="url(#lineGradientLive)"
-                        stroke-width="3" stroke-dasharray="8,6" fill="none"
-                        style="opacity: 0; stroke-linecap: round;" />
+                    <!-- Center: AI Node -->
+                    <div class="msme-demo-node msme-ai">
+                        <div class="ai-node-wrapper">
+                            <div class="ai-rotating-ring"></div>
+                            <div class="ai-core">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <div class="demo-label">Bharat2Business<br>Digital Partner</div>
+                    </div>
 
-                    <defs>
-                        <linearGradient id="lineGradientLive" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color: var(--primary); stop-opacity: 0.8" />
-                            <stop offset="100%" style="stop-color: var(--primary); stop-opacity: 0.4" />
-                        </linearGradient>
-                    </defs>
+                    <!-- Right: Expert Match -->
+                    <div class="msme-demo-node expert-match">
+                        <div class="match-card-container">
+                            <div class="match-status-badge">
+                                <i class="fas fa-check-circle"></i> Verified Match
+                            </div>
+                            <div class="match-profile-card">
+                                <div class="card-shimmer"></div>
+                                <div class="profile-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="profile-info">
+                                    <strong id="expert-name">Searching...</strong>
+                                    <span id="expert-specialty">AI Matching</span>
+                                </div>
+                            </div>
+                            <div class="match-toast">
+                                <i class="fas fa-calendar-check"></i> Consultation Booked
+                            </div>
+                        </div>
+                        <div class="demo-label">Verified Expert</div>
+                    </div>
+                </div>
 
-                    <!-- Moving Dots -->
-                    <circle id="flow-dot-1" r="4" fill="var(--primary)" style="opacity: 0;">
-                        <animateMotion begin="indefinite" dur="2s" repeatCount="indefinite" fill="freeze"
-                            calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.2 1">
-                            <mpath href="#match-flow-path" />
+                <!-- SVG Connection Lines -->
+                <svg class="demo-svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet">
+                    <path id="demo-path-1" d="M 230,100 L 370,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
+                        stroke-dasharray="6,4" fill="none" />
+                    <path id="demo-path-2" d="M 430,100 L 570,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
+                        stroke-dasharray="6,4" fill="none" />
+                    <circle id="demo-dot" r="4" fill="var(--primary)"
+                        style="opacity: 0; filter: drop-shadow(0 0 8px var(--primary));">
+                        <animateMotion id="demo-dot-motion" dur="1s" repeatCount="1" fill="freeze" begin="indefinite">
+                            <mpath href="#demo-path-1" />
                         </animateMotion>
                     </circle>
                 </svg>
-
-                <div class="match-engine-grid">
-
-                    <!-- Left: MSME Query -->
-                    <div class="match-node msme-node">
-                        <div class="chat-bubble">
-                            <span class="typing-text"></span><span class="cursor-blink">|</span>
-                        </div>
-                        <div class="msme-label-container">
-                            <div class="msme-icon-wrapper">
-                                <i class="fas fa-store msme-icon"></i>
-                            </div>
-                            <span class="msme-label-text">MSME</span>
-                        </div>
-                    </div>
-
-                    <!-- Center: Bharat2Business Digital Partner -->
-                    <div class="match-node b2b-node">
-
-                        <!-- Wrapper to center animations on the Icon only -->
-                        <div class="b2b-icon-container"
-                            style="position: relative; width: 80px; height: 80px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                            <!-- Neural Glow Pulse -->
-                            <div class="glow-pulse-bg"></div>
-
-                            <!-- Rotating Ring -->
-                            <svg class="processing-spinner" width="80" height="80" viewBox="0 0 80 80"
-                                style="position: absolute; top: 0; left: 0;">
-                                <circle cx="40" cy="40" r="38" stroke="url(#lineGradientLive)" stroke-width="2"
-                                    fill="none" stroke-dasharray="180" stroke-dashoffset="180" stroke-linecap="round" />
-                            </svg>
-
-                            <div class="core-circle">
-                                <i class="fas fa-brain b2b-brain-icon"></i>
-                            </div>
-                        </div>
-
-                        <div class="b2b-partner-label">
-                            Bharat2Business<br>Digital Partner</div>
-
-                        <!-- MOVED: Match Badge (Center) -->
-                        <div class="match-badge" style="margin-top: 1rem;">
-                            <i class="fas fa-check-circle"></i> Verified Match
-                        </div>
-
-                        <!-- MOVED: Expert Card (Center) -->
-                        <div class="expert-profile-card" style="margin-top: 0.5rem; width: 240px;">
-                            <!-- Layer 1: Searching State -->
-                            <div class="expert-state-layer state-searching">
-                                <div class="expert-profile-icon-wrapper"
-                                    style="background: #eff6ff; color: var(--primary);">
-                                    <i class="fas fa-user-tie"></i>
-                                </div>
-                                <div class="expert-profile-text-content">
-                                    <div class="expert-name" style="color: #1e293b;">Searching...</div>
-                                    <div class="expert-sub">AI Matching</div>
-                                </div>
-                            </div>
-
-                            <!-- Layer 2: Matched State -->
-                            <div class="expert-state-layer state-matched">
-                                <div class="expert-profile-icon-wrapper" style="background: #dcfce7; color: #166534;">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="expert-profile-text-content">
-                                    <div class="expert-name" style="color: #10b981;">Verified Expert</div>
-                                    <div class="expert-sub">Verified Match</div>
-                                </div>
-                            </div>
-
-                            <!-- Glow Ring (Global for match) -->
-                            <div class="expert-glow-ring"></div>
-                        </div>
-                    </div>
-
-                    <!-- Right: Constant Expert Entity -->
-                    <div class="match-node expert-node">
-                        <!-- MOVED: Outcome Toast (Mirrors Chat Bubble) -->
-                        <div style="min-height: 60px; display: flex; align-items: flex-end; justify-content: flex-end;">
-                            <div class="outcome-pill" style="margin-bottom: 0.5rem; margin-top: 0;">
-                                <i class="fas fa-calendar-check outcome-icon"></i>
-                                <span class="outcome-text">Consultation Booked</span>
-                            </div>
-                        </div>
-
-                        <div class="msme-label-container" style="justify-content: flex-end;">
-                            <span class="msme-label-text">Expert</span>
-                            <div class="msme-icon-wrapper">
-                                <i class="fas fa-user-tie msme-icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Trust Strip (Bottom Footer) -->
                 <div class="trust-strip">
