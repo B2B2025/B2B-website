@@ -455,93 +455,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 // --- RESET STATE ---
-                chatBubble.classList.remove('visible');
+                container.dataset.state = "idle";
                 typingText.textContent = "";
 
-                spinner.classList.remove('visible');
-                spinner.style.animation = "none";
+                // Selectors for dynamic content updates
+                const matchedLayer = expertCard.querySelector('.state-matched');
+                const matchedName = matchedLayer.querySelector('.expert-name');
+                const dotAnim = document.querySelector('#flow-dot-1 animateMotion');
 
-                flowPath.classList.remove('visible');
-                flowDot.classList.remove('visible');
-                const dotAnim = flowDot.querySelector('animateMotion');
-                if (dotAnim) dotAnim.endElement();
+                // Start of Cycle (Direct Transition - No Idle Blanking)
 
-                expertCard.classList.remove('visible', 'matched');
-                expertCard.style.opacity = "0.5"; // Dim initial state
-                expertCard.style.transform = "scale(0.95)"; // Reset transform
-                expertName.textContent = "Searching...";
-                expertName.style.opacity = "1";
-                expertName.style.color = "#1e293b";
-                expertSub.textContent = "Pending";
-                expertIconDiv.style.background = "#eff6ff";
-                expertIconDiv.innerHTML = '<i class="fas fa-user-tie"></i>';
-                if (expertGlow) expertGlow.style.opacity = "0";
+                // 1. SEARCHING STATE
+                // Clear previous text immediately or crossfade if we had double buffers (simple clear for now)
+                typingText.textContent = "";
 
-                matchBadge.classList.remove('visible');
-                outcomePill.classList.remove('visible');
-                if (trustStrip) trustStrip.style.opacity = "0"; // Keep explicit for now or add class
-
-                await wait(600);
-
-                // 1. MSME QUERY
-                chatBubble.classList.add('visible');
+                container.dataset.state = "searching";
+                if (dotAnim) dotAnim.beginElement();
 
                 await wait(200);
 
                 // Typing
                 await typeWriter(typingText, scenario.query);
 
-                await wait(400);
+                // Allow time for spinner/path animation
+                await wait(1800);
 
-                // 2. AI PROCESSING
-                spinner.classList.add('visible');
-                spinner.style.animation = "spin 2s linear infinite";
+                // Update Expert Data (hidden layer) before showing match
+                matchedName.textContent = scenario.match;
 
-                await wait(500);
+                // 2. MATCHED STATE
+                container.dataset.state = "matched";
+                if (dotAnim) dotAnim.endElement(); // Stop dot motion
 
-                // 3. FLOW ANIMATION
-                flowPath.classList.add('visible');
-                flowDot.classList.add('visible');
-                if (dotAnim) dotAnim.beginElement();
+                await wait(1200); // Read the match
 
-                await wait(800);
-
-                // 4. EXPERT MATCH
-                matchBadge.classList.add('visible');
-
-                await wait(150);
-
-                expertCard.classList.add('visible');
-                // Note: .visible sets opacity:1, scale:1.
-                // We'll add .matched shortly for 1.1 scale
-
-                await wait(300);
-
-                // Update Expert Data
-                expertName.style.opacity = "0";
-                await wait(100);
-                expertName.textContent = scenario.match;
-                expertName.style.opacity = "1";
-                expertName.style.color = "#10b981";
-                expertSub.textContent = "Verified Expert";
-
-                expertIconDiv.style.background = "#dcfce7";
-                expertIconDiv.innerHTML = '<i class="fas fa-check" style="color: #166534"></i>';
-
-                // Pop effect
-                expertCard.classList.add('matched');
-                if (expertGlow) expertGlow.style.opacity = "1";
-
-                await wait(400);
-                if (trustStrip) trustStrip.classList.add('visible');
-
-                await wait(800);
-
-                // 5. OUTCOME
+                // 3. BOOKED STATE
                 outcomeText.textContent = scenario.outcome;
-                outcomePill.classList.add('visible');
+                container.dataset.state = "booked";
 
-                await wait(2500); // Hold
+                await wait(2200); // Hold final outcome
 
                 // Loop
                 isAnimating = false;
