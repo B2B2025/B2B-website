@@ -36,72 +36,160 @@
         </div>
     </nav>
 
-    <main style="padding-top: 80px;">
-        <section class="section-spacing">
-            <div class="container">
-                <div style="text-align: center; margin-bottom: var(--spacing-2xl);">
-                    <span class="badge-tag">Our Ecosystem</span>
-                    <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">Everything you need to <span
-                            style="color: var(--brand-primary);">Scale Bharat.</span></h1>
-                    <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto;">A complete suite of digital tools
-                        designed specifically for the unique challenges of MSMEs.</p>
-                </div>
+    <main>
+        <section class="hero" style="padding: 80px 0 40px; min-height: auto;">
+            <div class="container" style="text-align: center;">
+                <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem;">
+                    Instant Clarity. <span style="color: var(--primary);">Seamless Compliance.</span>
+                </h1>
+                <p style="font-size: 1.125rem; max-width: 700px; margin: 0 auto; opacity: 0.8;">
+                    Discover government schemes, connect with verified experts, and navigate regulations with
+                    confidence.
+                </p>
 
-                <!-- Solution Section 1: Alternating -->
-                <div class="alternate-row">
-                    <div class="feature-content">
-                        <span class="badge-tag"
-                            style="background: rgba(16, 185, 129, 0.1); color: #10b981;">Procurement</span>
-                        <h2>Hyper-Local Sourcing.</h2>
-                        <p>Eliminate the middleman. Our platform directly connects you with vetted manufacturers across
-                            India, ensuring the best raw material prices and verified quality controls.</p>
-                        <div style="margin-top: var(--spacing-md);">
-                            <div class="card-premium"
-                                style="margin-bottom: var(--spacing-sm); padding: var(--spacing-md);">
-                                <h4>Vetted Manufacturer Database</h4>
-                                <p style="font-size: 0.9rem;">Access over 50,000 verified factory profiles across 250+
-                                    industrial hubs.</p>
+                <div class="hero-ecosystem" style="margin-top: 2.5rem;">
+                    <div class="ecosystem-card"
+                        style="padding: 2rem; max-width: 800px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.25) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.4);">
+                        <div class="ecosystem-diagram" style="height: 160px; position: relative;">
+                            <svg class="eco-svg" viewBox="0 0 600 160" preserveAspectRatio="none"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                                <defs>
+                                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color: var(--primary); stop-opacity: 0.6" />
+                                        <stop offset="100%" style="stop-color: var(--primary); stop-opacity: 0.3" />
+                                    </linearGradient>
+                                </defs>
+
+                                <path id="path-msme-b2b" class="eco-line" d="M 100,80 Q 200,20 300,80"
+                                    stroke="url(#lineGradient)" stroke-width="2.5" stroke-dasharray="8,6" fill="none"
+                                    opacity="0.7" />
+                                <path id="path-b2b-expert" class="eco-line" d="M 300,80 Q 400,140 500,80"
+                                    stroke="url(#lineGradient)" stroke-width="2.5" stroke-dasharray="8,6" fill="none"
+                                    opacity="0.7" />
+
+                                <circle r="5" fill="var(--primary)" filter="drop-shadow(0 0 8px var(--primary))">
+                                    <animateMotion dur="8s" repeatCount="indefinite">
+                                        <mpath href="#path-msme-b2b" />
+                                    </animateMotion>
+                                </circle>
+                                <circle r="5" fill="var(--primary)" filter="drop-shadow(0 0 8px var(--primary))">
+                                    <animateMotion dur="8s" repeatCount="indefinite" begin="4s">
+                                        <mpath href="#path-b2b-expert" />
+                                    </animateMotion>
+                                </circle>
+                                <circle r="5" fill="var(--primary)" filter="drop-shadow(0 0 8px var(--primary))"
+                                    opacity="0.6">
+                                    <animateMotion dur="8s" repeatCount="indefinite" begin="2s">
+                                        <mpath href="#path-msme-b2b" />
+                                    </animateMotion>
+                                </circle>
+                            </svg>
+
+                            <!-- MSME Node (Highlighted) -->
+                            <div style="position: absolute; left: 16.66%; top: 50%; transform: translate(-50%, -50%);">
+                                <!-- Pulsing Halo Background -->
+                                <div
+                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(37, 99, 235, 0) 70%); border-radius: 50%; animation: expertHalo 3s ease-in-out infinite;">
+                                </div>
+                                <!-- Node with Glow Ring -->
+                                <div class="eco-node active"
+                                    style="position: relative; left: 0; top: 0; transform: none; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4), 0 0 20px rgba(37, 99, 235, 0.3); margin-bottom: 0.5rem; animation: expertFocus 3s ease-in-out infinite; width: 60px; height: 60px; font-size: 1.5rem;">
+                                    <i class="fas fa-industry"></i>
+                                </div>
+                                <div
+                                    style="font-size: 0.75rem; font-weight: 600; color: var(--secondary); opacity: 0; animation: fadeInLabel 1s ease-out 0.5s forwards;">
+                                    MSMEs</div>
                             </div>
-                            <div class="card-premium" style="padding: var(--spacing-md);">
-                                <h4>Smart RFQ System</h4>
-                                <p style="font-size: 0.9rem;">Send one request, get multiple quotes. Compare and
-                                    negotiate in real-time.</p>
+
+                            <!-- Center Node with Animated Glow -->
+                            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                                <!-- Pulsing Glow Background -->
+                                <div
+                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(37, 99, 235, 0) 70%); border-radius: 50%; animation: glowPulse 3s ease-in-out infinite;">
+                                </div>
+                                <!-- Node -->
+                                <div style="position: relative; margin-bottom: 0.5rem;">
+                                    <div class="eco-node"
+                                        style="position: relative; left: 0; top: 0; transform: none; opacity: 0.7; width: 60px; height: 60px; font-size: 1.5rem;">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                </div>
+                                <div
+                                    style="font-size: 0.7rem; font-weight: 600; color: var(--secondary); opacity: 0; animation: fadeInLabel 1s ease-out 1s forwards; position: relative; top: -4px;">
+                                    AI Platform</div>
+                            </div>
+
+                            <!-- Verified Experts Node -->
+                            <div style="position: absolute; left: 83.33%; top: 50%; transform: translate(-50%, -50%);">
+                                <div class="eco-node"
+                                    style="position: relative; left: 0; top: 0; transform: none; opacity: 0.7; margin-bottom: 0.5rem; width: 60px; height: 60px; font-size: 1.5rem;">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div
+                                    style="font-size: 0.75rem; font-weight: 600; color: var(--secondary); opacity: 0; animation: fadeInLabel 1s ease-out 1.5s forwards;">
+                                    Verified Experts</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="feature-img-box">
-                        <i class="fas fa-microchip" style="font-size: 6rem; color: #cbd5e1;"></i>
-                    </div>
-                </div>
-
-                <!-- Solution Section 2: Alternating -->
-                <div class="alternate-row">
-                    <div class="feature-content">
-                        <span class="badge-tag"
-                            style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">Capital</span>
-                        <h2>B2B Work Capital.</h2>
-                        <p>Don't let cash flow bottlenecks stall your production. We provide short-term financing based
-                            on your platform performance, not just traditional collateral.</p>
-                        <ul style="margin-top: var(--spacing-md); list-style: none;">
-                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-check" style="color: #10b981;"></i> <span>Instant credit lines up to
-                                    ₹50 Lakhs</span>
-                            </li>
-                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-check" style="color: #10b981;"></i> <span>Zero collateral for
-                                    platform-active businesses</span>
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-check" style="color: #10b981;"></i> <span>Flexible repayment synced
-                                    with your sales cycle</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="feature-img-box">
-                        <i class="fas fa-hand-holding-dollar" style="font-size: 6rem; color: #cbd5e1;"></i>
+                        <div class="ecosystem-microcopy" style="margin-top: 1.5rem;">
+                            Discover → Connect → Grow
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Solution Section 1: Alternating -->
+        <div class="alternate-row">
+            <div class="feature-content">
+                <span class="badge-tag" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">Procurement</span>
+                <h2>Hyper-Local Sourcing.</h2>
+                <p>Eliminate the middleman. Our platform directly connects you with vetted manufacturers across
+                    India, ensuring the best raw material prices and verified quality controls.</p>
+                <div style="margin-top: var(--spacing-md);">
+                    <div class="card-premium" style="margin-bottom: var(--spacing-sm); padding: var(--spacing-md);">
+                        <h4>Vetted Manufacturer Database</h4>
+                        <p style="font-size: 0.9rem;">Access over 50,000 verified factory profiles across 250+
+                            industrial hubs.</p>
+                    </div>
+                    <div class="card-premium" style="padding: var(--spacing-md);">
+                        <h4>Smart RFQ System</h4>
+                        <p style="font-size: 0.9rem;">Send one request, get multiple quotes. Compare and
+                            negotiate in real-time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-img-box">
+                <i class="fas fa-microchip" style="font-size: 6rem; color: #cbd5e1;"></i>
+            </div>
+        </div>
+
+        <!-- Solution Section 2: Alternating -->
+        <div class="alternate-row">
+            <div class="feature-content">
+                <span class="badge-tag" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">Capital</span>
+                <h2>B2B Work Capital.</h2>
+                <p>Don't let cash flow bottlenecks stall your production. We provide short-term financing based
+                    on your platform performance, not just traditional collateral.</p>
+                <ul style="margin-top: var(--spacing-md); list-style: none;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-check" style="color: #10b981;"></i> <span>Instant credit lines up to
+                            ₹50 Lakhs</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-check" style="color: #10b981;"></i> <span>Zero collateral for
+                            platform-active businesses</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-check" style="color: #10b981;"></i> <span>Flexible repayment synced
+                            with your sales cycle</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="feature-img-box">
+                <i class="fas fa-hand-holding-dollar" style="font-size: 6rem; color: #cbd5e1;"></i>
+            </div>
+        </div>
+        </div>
         </section>
 
         <!-- Solutions Grid View -->
@@ -130,6 +218,49 @@
             </div>
         </section>
     </main>
+
+    <!-- Pre-Footer CTA -->
+    <section class="pre-footer-cta">
+        <div class="container">
+            <div class="pre-footer-content">
+                <div class="cta-message">
+                    <h3>Ready to take the next step?</h3>
+                    <p>Connect with us or start your journey today.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="contact.html" class="btn-outline">Get Started</a>
+                    <div class="contact-actions">
+                        <div class="tooltip-container">
+                            <a href="https://wa.me/yournumber" class="icon-btn whatsapp" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <span class="tooltip">WhatsApp</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="mailto:info@bharat2business.com" class="icon-btn email" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <span class="tooltip">Email</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="https://www.linkedin.com/company/bharat2business/" target="_blank"
+                                class="icon-btn linkedin" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <span class="tooltip">LinkedIn</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="https://www.instagram.com/bharat2business/" target="_blank"
+                                class="icon-btn instagram" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <span class="tooltip">Instagram</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>

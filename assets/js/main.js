@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         init() {
             this.initMobileMenu();
             this.initDownloadRedirect();
+            this.initHeroTyping();
             this.initAppTyping();
             this.initSchemesAnimation();
             this.initCounters();
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.initNewsletterForm();
             this.initRevealObserver();
             this.initParallax();
+            this.initMatchEngine();
         },
 
 
@@ -60,6 +62,42 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         // --- Typing Animations ---
+        initHeroTyping() {
+            const typedTextSpan = document.querySelector(".hero .typed-text");
+            if (!typedTextSpan) return;
+
+            const phrases = ["Empower", "Elevate", "Expand"];
+            let phraseIndex = 0;
+            let charIdx = 0;
+            let isDeleting = false;
+
+            const type = () => {
+                const currentPhrase = phrases[phraseIndex];
+                if (isDeleting) {
+                    typedTextSpan.textContent = currentPhrase.substring(0, charIdx - 1);
+                    charIdx--;
+                } else {
+                    typedTextSpan.textContent = currentPhrase.substring(0, charIdx + 1);
+                    charIdx++;
+                }
+
+                let typeSpeed = isDeleting ? 75 : 150;
+
+                if (!isDeleting && charIdx === currentPhrase.length) {
+                    typeSpeed = 2000; // Pause at end
+                    isDeleting = true;
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typeSpeed = 500; // Pause before next word
+                }
+
+                setTimeout(type, typeSpeed);
+            };
+
+            setTimeout(type, 1000);
+        },
+
         initAppTyping() {
             const typedTextSpan = document.querySelector(".typed-text");
             const cursorSpan = document.querySelector(".cursor");
@@ -362,6 +400,156 @@ document.addEventListener('DOMContentLoaded', () => {
                     ticking = true;
                 }
             }, { passive: true });
+        },
+
+        // --- Live Match Engine Animation ---
+        initMatchEngine() {
+            const container = document.querySelector('.live-match-card');
+            if (!container) return;
+
+            const scenarios = [
+                { query: "I need FSSAI license for my bakery.", match: "Legal • FSSAI Expert", outcome: "Consultation Booked • FSSAI Guidance" },
+                { query: "How do I file GST for last month?", match: "CA • GST Filing", outcome: "Consultation Booked • GST Filing" },
+                { query: "Which schemes am I eligible for?", match: "Govt Scheme Expert", outcome: "Consultation Booked • Subsidy Check" },
+                { query: "Register my new Pvt Ltd company.", match: "CS • Company Reg", outcome: "Consultation Booked • Company Reg" }
+            ];
+
+            let cycleCount = 0;
+            let isAnimating = false;
+
+            const animateCycle = async () => {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                const scenario = scenarios[cycleCount % scenarios.length];
+                cycleCount++;
+
+                // Elements
+                const chatBubble = container.querySelector('.chat-bubble');
+                const typingText = chatBubble.querySelector('.typing-text');
+                const spinner = container.querySelector('.processing-spinner');
+                const flowPath = document.getElementById('match-flow-path');
+                const flowDot = document.getElementById('flow-dot-1');
+
+                const expertCard = container.querySelector('.expert-profile-card');
+                const expertName = expertCard.querySelector('.expert-name');
+                const expertSub = expertCard.querySelector('.expert-sub');
+                const expertIconDiv = expertCard.querySelector('div:first-child');
+                const expertGlow = expertCard.querySelector('.expert-glow-ring');
+                const matchBadge = container.querySelector('.match-badge');
+
+                const outcomePill = container.querySelector('.outcome-pill');
+                const outcomeText = outcomePill.querySelector('.outcome-text');
+                const trustStrip = container.querySelector('.trust-strip');
+
+                // Helper for delays
+                const wait = (ms) => new Promise(r => setTimeout(r, ms));
+
+                // Helper for typing
+                const typeWriter = async (element, text) => {
+                    element.textContent = "";
+                    for (let i = 0; i < text.length; i++) {
+                        element.textContent += text.charAt(i);
+                        await wait(20 + Math.random() * 20);
+                    }
+                };
+
+                // --- RESET STATE ---
+                chatBubble.classList.remove('visible');
+                typingText.textContent = "";
+
+                spinner.classList.remove('visible');
+                spinner.style.animation = "none";
+
+                flowPath.classList.remove('visible');
+                flowDot.classList.remove('visible');
+                const dotAnim = flowDot.querySelector('animateMotion');
+                if (dotAnim) dotAnim.endElement();
+
+                expertCard.classList.remove('visible', 'matched');
+                expertCard.style.opacity = "0.5"; // Dim initial state
+                expertCard.style.transform = "scale(0.95)"; // Reset transform
+                expertName.textContent = "Searching...";
+                expertName.style.opacity = "1";
+                expertName.style.color = "#1e293b";
+                expertSub.textContent = "Pending";
+                expertIconDiv.style.background = "#eff6ff";
+                expertIconDiv.innerHTML = '<i class="fas fa-user-tie"></i>';
+                if (expertGlow) expertGlow.style.opacity = "0";
+
+                matchBadge.classList.remove('visible');
+                outcomePill.classList.remove('visible');
+                if (trustStrip) trustStrip.style.opacity = "0"; // Keep explicit for now or add class
+
+                await wait(600);
+
+                // 1. MSME QUERY
+                chatBubble.classList.add('visible');
+
+                await wait(200);
+
+                // Typing
+                await typeWriter(typingText, scenario.query);
+
+                await wait(400);
+
+                // 2. AI PROCESSING
+                spinner.classList.add('visible');
+                spinner.style.animation = "spin 2s linear infinite";
+
+                await wait(500);
+
+                // 3. FLOW ANIMATION
+                flowPath.classList.add('visible');
+                flowDot.classList.add('visible');
+                if (dotAnim) dotAnim.beginElement();
+
+                await wait(800);
+
+                // 4. EXPERT MATCH
+                matchBadge.classList.add('visible');
+
+                await wait(150);
+
+                expertCard.classList.add('visible');
+                // Note: .visible sets opacity:1, scale:1.
+                // We'll add .matched shortly for 1.1 scale
+
+                await wait(300);
+
+                // Update Expert Data
+                expertName.style.opacity = "0";
+                await wait(100);
+                expertName.textContent = scenario.match;
+                expertName.style.opacity = "1";
+                expertName.style.color = "#10b981";
+                expertSub.textContent = "Verified Expert";
+
+                expertIconDiv.style.background = "#dcfce7";
+                expertIconDiv.innerHTML = '<i class="fas fa-check" style="color: #166534"></i>';
+
+                // Pop effect
+                expertCard.classList.add('matched');
+                if (expertGlow) expertGlow.style.opacity = "1";
+
+                await wait(400);
+                if (trustStrip) trustStrip.classList.add('visible');
+
+                await wait(800);
+
+                // 5. OUTCOME
+                outcomeText.textContent = scenario.outcome;
+                outcomePill.classList.add('visible');
+
+                await wait(2500); // Hold
+
+                // Loop
+                isAnimating = false;
+                requestAnimationFrame(animateCycle);
+            };
+
+            // Start loop
+            setTimeout(animateCycle, 500);
         }
     };
 

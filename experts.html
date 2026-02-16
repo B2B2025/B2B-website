@@ -46,80 +46,417 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" style="padding: 8rem 0 4rem;">
-        <div class="container" style="text-align: center;">
-            <h1 style="font-size: 3rem; margin-bottom: 1.5rem;">For Experts</h1>
-            <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2rem; opacity: 0.9;">
-                Join our network of verified professionals and help India's MSMEs thrive.
-            </p>
+    <section class="hero" style="padding: 80px 0 50px; position: relative; overflow: hidden; min-height: auto;">
+        <!-- Animated Tricolor Gradient Background -->
+        <div
+            style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(135deg, rgba(255, 153, 51, 0.08) 0%, rgba(255, 255, 255, 0.05) 25%, rgba(19, 136, 8, 0.08) 50%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 153, 51, 0.08) 100%); animation: gradientParallax 15s ease-in-out infinite; z-index: 0;">
+        </div>
+
+        <div class="container" style="text-align: center; max-width: 1100px; position: relative; z-index: 1;">
+            <!-- Top Section: Headline + Subtext + CTA -->
+            <div style="margin-bottom: 2rem;">
+                <h1
+                    style="font-size: clamp(2.8rem, 6vw, 4rem); margin-bottom: 1rem; line-height: 1.1; letter-spacing: -2px; font-weight: 800; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Empowering India's <span style="color: var(--primary);">Experts.</span>
+                </h1>
+                <p
+                    style="font-size: 1.125rem; max-width: 700px; margin: 0 auto 1.5rem; color: var(--text-muted); font-weight: 500; line-height: 1.6; opacity: 0.85;">
+                    Connect with quality MSMEs, earn fair commissions, and receive instant payouts—all on one platform.
+                </p>
+                <a href="contact.html" class="btn-cta" <a href="contact.html" class="btn-cta hero-cta">
+                    Join Network
+                </a>
+            </div>
+
+            <!-- Live Match Engine Hero Card -->
+            <div class="live-match-card">
+                <!-- Connection Lines Layer -->
+                <svg class="eco-svg" viewBox="0 0 700 160" preserveAspectRatio="xMidYMid meet">
+                    <!-- Static Path -->
+                    <path d="M 120,80 Q 250,80 350,80 T 580,80" stroke="rgba(37, 99, 235, 0.1)" stroke-width="2"
+                        stroke-dasharray="6,4" fill="none" />
+
+                    <!-- Flowing Animation Path -->
+                    <path id="match-flow-path" d="M 120,80 Q 250,80 350,80 T 580,80" stroke="url(#lineGradientLive)"
+                        stroke-width="3" stroke-dasharray="8,6" fill="none"
+                        style="opacity: 0; stroke-linecap: round;" />
+
+                    <defs>
+                        <linearGradient id="lineGradientLive" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color: var(--primary); stop-opacity: 0.8" />
+                            <stop offset="100%" style="stop-color: var(--primary); stop-opacity: 0.4" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Moving Dots -->
+                    <circle id="flow-dot-1" r="4" fill="var(--primary)" style="opacity: 0;">
+                        <animateMotion dur="2s" repeatCount="indefinite" fill="freeze" calcMode="spline" keyTimes="0;1"
+                            keySplines="0.4 0 0.2 1">
+                            <mpath href="#match-flow-path" />
+                        </animateMotion>
+                    </circle>
+                </svg>
+
+                <div class="match-engine-grid">
+
+                    <!-- Left: MSME Query -->
+                    <div class="match-node msme-node">
+                        <div class="chat-bubble">
+                            <span class="typing-text"></span><span class="cursor-blink">|</span>
+                        </div>
+                        <div class="msme-label-container">
+                            <div class="msme-icon-wrapper">
+                                <i class="fas fa-store msme-icon"></i>
+                            </div>
+                            <span class="msme-label-text">MSME</span>
+                        </div>
+                    </div>
+
+                    <!-- Center: Bharat2Business Digital Partner -->
+                    <div class="match-node b2b-node">
+                        <!-- Neural Glow Pulse -->
+                        <div class="glow-pulse-bg">
+                        </div>
+
+                        <!-- Rotating Ring -->
+                        <svg class="processing-spinner" width="80" height="80" viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="38" stroke="url(#lineGradientLive)" stroke-width="2" fill="none"
+                                stroke-dasharray="180" stroke-dashoffset="180" stroke-linecap="round" />
+                        </svg>
+
+                        <div class="core-circle">
+                            <i class="fas fa-brain b2b-brain-icon"></i>
+                        </div>
+                        <div class="b2b-partner-label">
+                            Bharat2Business<br>Digital Partner</div>
+                    </div>
+
+                    <!-- Right: Verified Expert -->
+                    <div class="match-node expert-node">
+                        <!-- Match Badge -->
+                        <div class="match-badge">
+                            <i class="fas fa-check-circle"></i> Verified Match
+                        </div>
+
+                        <!-- Expert Card (Scaled Up & Glowing) -->
+                        <div class="expert-profile-card">
+                            <!-- Blue Glow Ring Container (Animated by JS) -->
+                            <div class="expert-glow-ring">
+                            </div>
+
+                            <div class="expert-profile-icon-wrapper">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="expert-profile-text-content">
+                                <div class="expert-name">
+                                    Searching...</div> <!-- Base font increased slightly -->
+                                <div class="expert-sub">Pending</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom: Outcome Toast -->
+                <div class="outcome-pill">
+                    <i class="fas fa-calendar-check outcome-icon"></i>
+                    <span class="outcome-text">Consultation Booked</span>
+                </div>
+
+                <!-- Trust Strip (Bottom Footer) -->
+                <div class="trust-strip">
+                    <div class="trust-strip-item">
+                        <i class="fas fa-shield-alt trust-strip-icon"></i> Verified Experts
+                    </div>
+                    <div class="trust-strip-item">
+                        <i class="fas fa-coins trust-strip-icon"></i> Transparent Commission
+                    </div>
+                    <div class="trust-strip-item">
+                        <i class="fas fa-bolt trust-strip-icon"></i> Instant Payouts
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Placeholder Content -->
-    <section style="padding: 4rem 0;">
+    <!-- Tricolor Gradient Divider -->
+    <div
+        style="height: 120px; background: linear-gradient(135deg, rgba(255, 153, 51, 0.15) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(19, 136, 8, 0.15) 100%); position: relative; overflow: hidden;">
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent 0%, white 100%); opacity: 0.5;">
+        </div>
+    </div>
+
+    <!-- Expert Timeline Section -->
+    <section class="expert-timeline-section">
         <div class="container">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <i class="fas fa-users-cog" style="font-size: 4rem; color: var(--primary); margin-bottom: 2rem;"></i>
-                <h2 style="margin-bottom: 1.5rem;">Expert Portal Coming Soon</h2>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #64748b; margin-bottom: 2rem;">
-                    We're building a dedicated platform for chartered accountants, legal consultants, and industry
-                    specialists to connect with MSMEs who need expert guidance.
+            <div class="timeline-steps" style="position: relative;">
+                <!-- Horizontal Progress Line -->
+                <div
+                    style="position: absolute; top: 30px; left: 15%; right: 15%; height: 3px; background: rgba(37, 99, 235, 0.15); z-index: 0;">
+                </div>
+
+                <!-- Animated Moving Dot on Progress Line -->
+                <div style="position: absolute; top: 28.5px; left: 15%; width: 70%; height: 6px; z-index: 1;">
+                    <div
+                        style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); animation: progressDot 6s ease-in-out infinite;">
+                    </div>
+                </div>
+
+                <div class="timeline-step reveal-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="timeline-label">
+                        <h4>Apply</h4>
+                        <p>Submit credentials</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-up" style="animation-delay: 0.2s;">
+                    <div class="timeline-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <div class="timeline-label">
+                        <h4>Verification</h4>
+                        <p>48-hour review</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-up" style="animation-delay: 0.4s;">
+                    <div class="timeline-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="timeline-label">
+                        <h4>Start Earning</h4>
+                        <p>Connect with MSMEs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trust-row">
+                <div class="trust-badge">
+                    <i class="fas fa-percent"></i>
+                    <span>Transparent Commission</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Instant Payout</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Quality-First Matching</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Ecosystem Section -->
+    <section class="expertise-ecosystem">
+        <div class="container">
+            <div class="section-title">
+                <span>Domain Expertise</span>
+                <h2>Comprehensive Guidance Across All Sectors</h2>
+                <p style="max-width: 800px; margin: 1rem auto; color: var(--text-muted);">
+                    We have curated a network of verified professionals to cover every aspect of your MSME journey.
+                    From registration to global expansion, Bharat2Business is your one-stop expert ecosystem.
                 </p>
-                <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; margin-top: 3rem;">
-                    <h3 style="margin-bottom: 1rem;">Why Join as an Expert?</h3>
-                    <ul style="list-style: none; padding: 0; text-align: left; max-width: 500px; margin: 0 auto;">
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Access to pre-qualified MSME clients</span>
-                        </li>
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Transparent, pay-as-you-go pricing</span>
-                        </li>
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Flexible engagement models</span>
-                        </li>
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Digital tools to manage consultations</span>
-                        </li>
+            </div>
+
+            <div class="expertise-grid">
+                <!-- Category 1 -->
+                <div class="expertise-card reveal-up">
+                    <div class="expertise-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Finance & Tax</h3>
+                    <p>Chartered Accountants and Auditors for GST filing, Income Tax, and financial auditing.</p>
+                    <ul class="expertise-tags">
+                        <li>GST Compliance</li>
+                        <li>Audit</li>
+                        <li>Tax Planning</li>
                     </ul>
                 </div>
-                <a href="contact.html" class="btn-cta"
-                    style="margin-top: 2rem; display: inline-block; padding: 1rem 2rem;">
-                    Express Interest
-                </a>
+
+                <!-- Category 2 -->
+                <div class="expertise-card reveal-up delay-100">
+                    <div class="expertise-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Legal & Compliance</h3>
+                    <p>Legal consultants and Company Secretaries for business registration, IP, and licensing.</p>
+                    <ul class="expertise-tags">
+                        <li>Udyam</li>
+                        <li>Trademark</li>
+                        <li>FSSAI</li>
+                    </ul>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="expertise-card reveal-up delay-200">
+                    <div class="expertise-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Growth & Marketing</h3>
+                    <p>Strategists to help you build your brand, reach new customers, and expand your market.</p>
+                    <ul class="expertise-tags">
+                        <li>Digital Ads</li>
+                        <li>Branding</li>
+                        <li>Sales Funnel</li>
+                    </ul>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="expertise-card reveal-up delay-300">
+                    <div class="expertise-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Technology & IT</h3>
+                    <p>Experts in digital transformation, ERP systems, and secure business infrastructure.</p>
+                    <ul class="expertise-tags">
+                        <li>Web Dev</li>
+                        <li>Cloud Ops</li>
+                        <li>ERP Setup</li>
+                    </ul>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="expertise-card reveal-up delay-400">
+                    <div class="expertise-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Operations</h3>
+                    <p>Supply chain and manufacturing experts to optimize your production and logistics.</p>
+                    <ul class="expertise-tags">
+                        <li>Six Sigma</li>
+                        <li>Inventory</li>
+                        <li>Logistics</li>
+                    </ul>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="expertise-card reveal-up delay-500">
+                    <div class="expertise-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Funding & Grants</h3>
+                    <p>Consultants to help you navigate bank loans, venture capital, and government subsidies.</p>
+                    <ul class="expertise-tags">
+                        <li>Bank Loans</li>
+                        <li>Subsidy</li>
+                        <li>Equity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Join as Expert CTA -->
+            <div class="expert-join-cta reveal-up">
+                <div class="cta-inner">
+                    <div class="cta-text">
+                        <h3>Become a Bharat2Business Expert</h3>
+                        <p>Are you a verified professional looking to empower India's MSME sector? Join our platform to
+                            connect with thousands of businesses needing your expertise.</p>
+                    </div>
+                    <div class="cta-action">
+                        <a href="contact.html" class="btn-cta">Register as an Expert <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Logos (Marquee) -->
+    <section class="partner-marquee-section">
+        <div class="container">
+            <h3 class="marquee-title">Trusted by Experts from Leading Institutions</h3>
+            <div class="marquee-wrapper">
+                <div class="marquee-content">
+                    <!-- Standard placeholder "logos" or brand names with high-end typography -->
+                    <div class="marquee-item"><span>ICA India</span></div>
+                    <div class="marquee-item"><span>LawCouncil</span></div>
+                    <div class="marquee-item"><span>StartupHub</span></div>
+                    <div class="marquee-item"><span>GlobalConsult</span></div>
+                    <div class="marquee-item"><span>MSME Ally</span></div>
+                    <div class="marquee-item"><span>IndiaLegal</span></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="marquee-item"><span>ICA India</span></div>
+                    <div class="marquee-item"><span>LawCouncil</span></div>
+                    <div class="marquee-item"><span>StartupHub</span></div>
+                    <div class="marquee-item"><span>GlobalConsult</span></div>
+                    <div class="marquee-item"><span>MSME Ally</span></div>
+                    <div class="marquee-item"><span>IndiaLegal</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-Footer CTA -->
+    <section class="pre-footer-cta">
+        <div class="container">
+            <div class="pre-footer-content">
+                <div class="cta-message">
+                    <h3>Ready to take the next step?</h3>
+                    <p>Connect with us or start your journey today.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="contact.html" class="btn-outline">Get Started</a>
+                    <div class="contact-actions">
+                        <div class="tooltip-container">
+                            <a href="https://wa.me/yournumber" class="icon-btn whatsapp" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <span class="tooltip">WhatsApp</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="mailto:info@bharat2business.com" class="icon-btn email" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <span class="tooltip">Email</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="https://www.linkedin.com/company/bharat2business/" target="_blank"
+                                class="icon-btn linkedin" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <span class="tooltip">LinkedIn</span>
+                        </div>
+                        <div class="tooltip-container">
+                            <a href="https://www.instagram.com/bharat2business/" target="_blank"
+                                class="icon-btn instagram" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <span class="tooltip">Instagram</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
+            <div class="footer-grid">
+                <div>
                     <a href="index.html" class="logo footer-logo">
                         <i class="fas fa-rocket"></i> Bharat2Business
                     </a>
-                    <p class="footer-desc">The digital infrastructure for Bharat's traditional economy.</p>
+                    <p class="footer-desc">Elevate.Empower.Expand.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Platform</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="msme.html">For MSMEs</a></li>
-                        <li><a href="experts.html">For Experts</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Contact</h4>
+                    <h4>Legal</h4>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> info@bharat2business.com</li>
-                        <li><i class="fas fa-phone"></i> +91 XXX XXX XXXX</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Mumbai, India</li>
+                        <li><a href="usage-policy.html">Usage Policy</a></li>
+                        <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
+                        <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -133,7 +470,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Bharat2Business. All Rights Reserved.</p>
+                <p>&copy; 2026 Bharat2Business. Proudly Built in Bharat.</p>
             </div>
         </div>
     </footer>
