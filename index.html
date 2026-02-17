@@ -52,9 +52,9 @@
                     <span class="cursor">&nbsp;</span>
                 </h1>
                 <p class="hero-lead">Powering 63 Million Businesses. Building Bharat.</p>
-                <p class="hero-subtext">From compliance to growth, Bharat2Business acts as your AI Digital Partner:
-                    helping MSMEs navigate regulations, unlock schemes, and connect with verified experts, all in one
-                    system.</p>
+                <p class="hero-subtext"></p>Bharat2Business acts as AI Digital Partner for MSMEs to navigate
+                regulations,
+                unlock schemes, and connect with verified experts, all in one system.</p>
                 <div class="hero-btns">
                     <a href="contact.html" id="download-btn" class="btn-cta hero-cta-btn">Download the App</a>
                     <a href="#works" class="btn-outline">See How It Works</a>
@@ -84,16 +84,16 @@
         <div class="container">
             <div class="counters-grid">
                 <div class="counter-item">
-                    <strong class="number" data-number="15000">0</strong><span class="beta-tag">beta</span>
-                    <span>Early access</span>
+                    <strong class="number" data-number="1000">0</strong>
+                    <span>Early access (Beta phase)</span>
                 </div>
                 <div class="counter-item">
                     <strong class="number" data-number="1200">0</strong>
-                    <span>Verified onboarding</span>
+                    <span>Verified experts in the network</span>
                 </div>
                 <div class="counter-item">
-                    <strong class="number" data-number="24000">0</strong><span class="beta-tag">beta</span>
-                    <span>Daily queries</span>
+                    <strong class="number" data-number="24000">0</strong>
+                    <span>Queries resolved (Beta phase)</span>
                 </div>
             </div>
         </div>
@@ -226,8 +226,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- Government Schemes -->
             <div class="work-row">
                 <div class="work-text reveal-left">
@@ -235,8 +233,16 @@
                     <p>Unsure which subsidies, credit programs, or incentives apply to your business? Bharat2Business
                         analyzes your business profile and highlights schemes you qualify for so you don’t miss
                         opportunities meant for you.</p>
-                    <a href="msme.html" class="nav-link feature-link">Check
-                        Eligibility <i class="fas fa-arrow-right"></i></a>
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Instant eligibility analysis</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Personalized subsidy matching</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="work-img reveal-right">
                     <div class="mobile-mockup">
@@ -267,7 +273,11 @@
 
                                 <!-- STATE 2: Loader -->
                                 <div id="schemes-loader" class="schemes-loader" style="display: none;">
-                                    <div class="loader-spinner"></div>
+                                    <div class="ios-loader">
+                                        <div class="ios-spinner">
+                                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                                        </div>
+                                    </div>
                                     <p class="loader-text">Matching your profile...</p>
                                 </div>
 
@@ -307,48 +317,75 @@
                     <p>Looking to expand beyond your local market? Find relevant trade shows, expos, and industry events
                         tailored to your sector and explore new customers, suppliers, and partnerships with confidence.
                     </p>
-                    <a href="msme.html" class="nav-link feature-link">Explore
-                        Opportunities <i class="fas fa-arrow-right"></i></a>
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Curated expos and industry meets near you</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Expand your reach to national and global markets</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="work-img reveal-right">
                     <div class="mobile-mockup">
-                        <div class="app-screen">
+                        <div class="app-screen" id="expos-screen">
                             <div class="schemes-header">
                                 <i class="fas fa-calendar-alt"></i>
-                                <span>Upcoming Expos</span>
-                                <i class="fas fa-filter schemes-options-icon"></i>
+                                <span>Market Discovery</span>
+                                <i class="fas fa-search schemes-options-icon"></i>
                             </div>
-                            <div class="event-list">
-                                <!-- Event 1 -->
-                                <div class="event-item reveal-left">
-                                    <div class="event-date-tag">15<br>FEB</div>
-                                    <div class="event-details">
-                                        <span class="event-name">Global Textile Expo 2026</span>
-                                        <div class="event-meta">
-                                            <span class="event-location-chip">Surat</span>
-                                            <span class="event-type">B2B Exhibition</span>
-                                        </div>
+
+                            <div class="expos-body">
+                                <!-- STATE 1: Searching -->
+                                <div id="expos-search" class="expos-search-ui">
+                                    <div class="search-entry-pill">
+                                        <i class="fas fa-search"></i>
+                                        <span id="expo-typing-target">Expos in Pune</span>
+                                    </div>
+                                    <div class="discovery-pulse-container">
+                                        <div class="location-pulse"></div>
+                                        <div class="flag-mini f-1"><i class="fas fa-flag"></i></div>
+                                        <div class="flag-mini f-2"><i class="fas fa-flag"></i></div>
+                                        <div class="flag-mini f-3"><i class="fas fa-flag"></i></div>
+                                        <p class="discovery-text">Finding nearby opportunities...</p>
                                     </div>
                                 </div>
-                                <!-- Event 2 -->
-                                <div class="event-item reveal-left delay-100">
-                                    <div class="event-date-tag">22<br>FEB</div>
-                                    <div class="event-details">
-                                        <span class="event-name">MSME Tech Summit Bharat</span>
-                                        <div class="event-meta">
-                                            <span class="event-location-chip">Delhi</span>
-                                            <span class="event-type">Tech Sourcing</span>
+
+                                <!-- STATE 2: Results -->
+                                <div id="expos-results" class="event-list" style="display: none;">
+                                    <!-- Event 1 -->
+                                    <div class="event-item">
+                                        <div class="event-date-tag">15<br>FEB</div>
+                                        <div class="event-details">
+                                            <span class="event-name">Global Textile Expo 2026</span>
+                                            <div class="event-meta">
+                                                <span class="event-location-chip">Surat</span>
+                                                <span class="event-type">B2B Exhibition</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Event 3 -->
-                                <div class="event-item reveal-left delay-200">
-                                    <div class="event-date-tag">05<br>MAR</div>
-                                    <div class="event-details">
-                                        <span class="event-name">Auto Spares Sourcing Fair</span>
-                                        <div class="event-meta">
-                                            <span class="event-location-chip">Pune</span>
-                                            <span class="event-type">Supplier Meet</span>
+                                    <!-- Event 2 -->
+                                    <div class="event-item">
+                                        <div class="event-date-tag">22<br>FEB</div>
+                                        <div class="event-details">
+                                            <span class="event-name">MSME Tech Summit Bharat</span>
+                                            <div class="event-meta">
+                                                <span class="event-location-chip">Delhi</span>
+                                                <span class="event-type">Tech Sourcing</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Event 3 -->
+                                    <div class="event-item">
+                                        <div class="event-date-tag">05<br>MAR</div>
+                                        <div class="event-details">
+                                            <span class="event-name">Auto Spares Sourcing Fair</span>
+                                            <div class="event-meta">
+                                                <span class="event-location-chip">Pune</span>
+                                                <span class="event-type">Supplier Meet</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -357,7 +394,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Testimonials Section -->

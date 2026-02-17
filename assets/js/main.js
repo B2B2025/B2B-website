@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.initHeroTyping();
             this.initAppTyping();
             this.initSchemesAnimation();
+            this.initExposAnimation();
             this.initCounters();
             this.initTestimonialCarousel();
             this.initNewsletterForm();
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <a href="index.html" class="logo footer-logo">
                                         <i class="fas fa-rocket"></i> Bharat2Business
                                     </a>
-                                    <p class="footer-desc">Elevate.Empower.Expand.</p>
+                                    <p class="footer-desc">Empower.Elevate.Expand.</p>
                                 </div>
                                 <div class="footer-links">
                                     <h4>Platform</h4>
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                             <div class="footer-bottom">
-                                <p>&copy; 2026 Bharat2Business. Proudly Built in Bharat.</p>
+                                <p>&copy; 2026 Bharat2Business. Built In Bharat. For Bharat.</p>
                             </div>
                         </div>
                     </footer>
@@ -225,13 +226,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const aiScreen = document.getElementById('app-ai-screen');
                 const aiText = document.getElementById('ai-response-text');
                 const backBtn = document.getElementById('ai-back');
+                const aiBubble = document.querySelector('.chat-bubble-ai-app');
+                const scroller = document.querySelector('.ai-chat-body-scroller');
+
                 if (!homeScreen || !aiScreen) return;
 
                 homeScreen.style.display = 'none';
                 aiScreen.style.display = 'flex';
-                // Show thinking state
-                aiText.innerHTML = '<i class="fas fa-circle-notch fa-spin" style="margin-right:8px; font-size:0.8em;"></i> Parsing query...';
-                aiText.style.color = '#64748b';
+                aiScreen.style.animation = 'fadeIn 0.3s ease-out';
+
+                // Show thinking state with a more premium look
+                aiText.innerHTML = `
+                    <div class="ai-thinking-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 600;">Analyzing GST guidelines...</span>
+                `;
 
                 const responseString = "Short Guide to Filing GST:\n\n1. Login to GST Portal (gst.gov.in)\n2. Go to 'Returns Dashboard'\n3. Select Financial Period\n4. File GSTR-1 (Outward Supplies)\n5. File GSTR-3B & Pay Tax";
 
@@ -251,24 +261,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 const typeAI = () => {
                     if (cancelled) return;
 
-                    // Start actual typing
                     if (charIdx === 0) {
                         aiText.textContent = "";
-                        aiText.style.color = '#334155'; // Darker text for answer
+                        aiText.style.color = '#334155';
                     }
 
                     if (charIdx < responseString.length) {
-                        aiText.textContent += responseString.charAt(charIdx++);
-                        // Add random variance for natural feel
-                        setTimeout(typeAI, 15 + Math.random() * 20);
+                        const char = responseString.charAt(charIdx++);
+                        aiText.textContent += char;
+
+                        // Scroll to bottom as it types
+                        if (scroller) scroller.scrollTop = scroller.scrollHeight;
+
+                        // Varied typing speed for natural feel
+                        let nextDelay = 20 + Math.random() * 30;
+                        if (char === '\n') nextDelay = 400; // Pause at newlines
+                        if (char === '.') nextDelay = 500;  // Pause at sentences
+
+                        setTimeout(typeAI, nextDelay);
                     } else {
-                        // Hold longer before resetting
                         setTimeout(() => { if (!cancelled) back(); }, 6000);
                     }
                 };
 
-                // Delay before typing starts
-                setTimeout(typeAI, 1200);
+                setTimeout(typeAI, 2000); // Wait longer for the thinking dots to feel like AI is working
             };
 
             animateAppSearch();
@@ -318,6 +334,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(type, 2000);
             };
             setTimeout(type, 1000);
+        },
+
+        initExposAnimation() {
+            const screen = document.getElementById('expos-screen');
+            if (!screen) return;
+            const search = document.getElementById('expos-search');
+            const results = document.getElementById('expos-results');
+            const target = document.getElementById('expo-typing-target');
+            const phr = "Expos in Surat...";
+            let idx = 0;
+
+            const type = () => {
+                if (idx < phr.length) {
+                    if (idx === 0) target.textContent = "";
+                    target.textContent += phr.charAt(idx++);
+                    setTimeout(type, 100);
+                } else {
+                    setTimeout(showResults, 3000);
+                }
+            };
+
+            const showResults = () => {
+                if (search) search.style.display = 'none';
+                if (results) results.style.display = 'block';
+                setTimeout(reset, 6000);
+            };
+
+            const reset = () => {
+                idx = 0;
+                if (target) target.textContent = "Searching...";
+                if (search) search.style.display = 'flex';
+                if (results) results.style.display = 'none';
+                setTimeout(type, 1500);
+            };
+
+            setTimeout(type, 2000);
         },
 
         initCounters() {
