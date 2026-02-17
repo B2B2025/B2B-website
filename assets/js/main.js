@@ -2,26 +2,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const App = {
         async init() {
-            // Inject common UI components first
-            await this.injectPartials();
-
+            // Priority Inits
+            this.initExpertForm();
+            this.initIndustrySelect();
             this.initMobileMenu();
-            this.initDownloadRedirect();
-            this.initHeroTyping();
-            this.initAppTyping();
-            this.initSchemesAnimation();
-            this.initExposAnimation();
-            this.initCounters();
-            this.initTestimonialCarousel();
-            this.initNewsletterForm();
-            this.initRevealObserver();
-            this.initParallax();
-            this.initMSMEDemo();
-            this.initPersonaSelector();
-            this.initJourneyLifecycle();
-            this.initMatchEngine();
-            this.initContactForm();
-            this.initDynamicFormOptions();
+
+            // Inject common UI components
+            this.injectPartials();
+
+            try {
+                this.initDownloadRedirect();
+                this.initHeroTyping();
+                this.initAppTyping();
+                this.initSchemesAnimation();
+                this.initExposAnimation();
+                this.initCounters();
+                this.initTestimonialCarousel();
+                this.initNewsletterForm();
+                this.initRevealObserver();
+                this.initParallax();
+                this.initMSMEDemo();
+                this.initPersonaSelector();
+                this.initJourneyLifecycle();
+                this.initMatchEngine();
+                this.initContactForm();
+                this.initDynamicFormOptions();
+                this.initExpertTimeline();
+                // this.initMultilingualTyping(); Removed in favor of integrated demo
+            } catch (err) {
+                console.error("Initialization error:", err);
+            }
         },
 
         async injectPartials() {
@@ -151,12 +161,19 @@ document.addEventListener('DOMContentLoaded', () => {
         initHeroTyping() {
             const typedTextSpan = document.querySelector(".hero .typed-text");
             const msmeHeader = document.getElementById("msme-typing-header");
-            if (!typedTextSpan && !msmeHeader) return;
+            const expertsHeader = document.getElementById("experts-typing-header");
+            if (!typedTextSpan && !msmeHeader && !expertsHeader) return;
 
-            const target = typedTextSpan || msmeHeader;
-            const phrases = msmeHeader
-                ? ["Instant Clarity.", "Seamless Compliance.", "Global Growth."]
-                : ["Empower", "Elevate", "Expand"];
+            const target = typedTextSpan || msmeHeader || expertsHeader;
+            let phrases;
+
+            if (msmeHeader) {
+                phrases = ["Running MSME is Hard.", "Compliance is Confusing.", "Schemes are Scattered.", "You Need a Digital Partner."];
+            } else if (expertsHeader) {
+                phrases = ["No Cold Outreach.", "Get Qualified MSME Leads.", "Earn Transparently.", "Get Paid Instantly."];
+            } else {
+                phrases = ["Empower", "Elevate", "Expand"];
+            }
 
             let phraseIndex = 0;
             let charIdx = 0;
@@ -657,6 +674,95 @@ document.addEventListener('DOMContentLoaded', () => {
             runCycle();
         },
 
+        // --- Multilingual Typing Animation (All Chips) ---
+        initMultilingualTyping() {
+            // Helper function to create independent typing cycles
+            const createTyper = (elementId, queries, startDelay) => {
+                const target = document.getElementById(elementId);
+                if (!target) return;
+
+                let queryIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let isWaiting = false;
+
+                const type = () => {
+                    const currentQuery = queries[queryIndex];
+
+                    if (isWaiting) return;
+
+                    if (isDeleting) {
+                        target.textContent = currentQuery.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        target.textContent = currentQuery.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    // Randomize typing speed slightly for realism
+                    let typeSpeed = isDeleting ? 30 : (50 + Math.random() * 50);
+
+                    if (!isDeleting && charIndex === currentQuery.length) {
+                        // Finished typing, wait before deleting
+                        isWaiting = true;
+                        // Vary wait time slightly so they don't sync up perfectly
+                        const waitTime = 2000 + Math.random() * 1000;
+                        setTimeout(() => {
+                            isWaiting = false;
+                            isDeleting = true;
+                            type();
+                        }, waitTime);
+                        return;
+                    } else if (isDeleting && charIndex === 0) {
+                        // Finished deleting, move to next
+                        isDeleting = false;
+                        queryIndex = (queryIndex + 1) % queries.length;
+                        typeSpeed = 500;
+                    }
+
+                    setTimeout(type, typeSpeed);
+                };
+
+                // Initial start delay
+                setTimeout(type, startDelay);
+            };
+
+            // 1. Schemes Query (English -> Hindi -> Bengali)
+            createTyper('multi-query-0', [
+                "Which government schemes am I eligible for?",
+                "Mere business ko konsi subsidy milegi?",
+                "Kono sorkari scheme amar jonno ache?"
+            ], 0);
+
+            // 2. Loans Query (English -> Hindi -> Tamil)
+            createTyper('multi-query-1', [
+                "How do I get business loan approval?",
+                "Mujhe business loan kaise milega?",
+                "Enakku thozhil kadan kidaikkuma?"
+            ], 1500);
+
+            // 3. Compliance Query (English -> Hindi -> Marathi)
+            createTyper('multi-query-2', [
+                "What compliance is mandatory for my business?",
+                "Mere liye kya legal compliance zaroori hai?",
+                "Vyavasaay parvaanagi kuthun milvavi?"
+            ], 3000);
+
+            // 4. FSSAI/GST Query (English -> Hinglish -> Kannada)
+            createTyper('multi-query-3', [
+                "Need FSSAI / GST guidance",
+                "GST Registration kaise karein?",
+                "Food licence apply madodu hege?"
+            ], 4500);
+
+            // 5. Experts Query (English -> Malayalam -> Telugu)
+            createTyper('multi-query-4', [
+                "Find verified CA near me",
+                "Njan oru CA-ye anweshikkunnu",
+                "Naaku manchi CA kavali"
+            ], 6000);
+        },
+
         // --- Premium MSME Ecosystem Animation ---
         initMSMEDemo() {
             const card = document.querySelector('.msme-ecosystem-card');
@@ -670,54 +776,149 @@ document.addEventListener('DOMContentLoaded', () => {
             const animOut = document.getElementById('anim-particle-out');
             const mpathIn = animIn.querySelector('mpath');
             const mpathOut = animOut.querySelector('mpath');
-
             const wait = (ms) => new Promise(r => setTimeout(r, ms));
 
+            const translations = [
+                {
+                    lang: 'en',
+                    inputs: [
+                        "Which government schemes am I eligible for?",
+                        "How do I get business loan approval?",
+                        "What compliance is mandatory for my business?",
+                        "Need FSSAI / GST guidance",
+                        "Find verified CA near me"
+                    ],
+                    outputs: [
+                        { strong: "Eligible Govt Schemes", span: "PMEGP & CGTMSE Identified" },
+                        { strong: "Documentation Checklist", span: "Ready for Submission" },
+                        { strong: "Credit Options Matched", span: "₹25L Priority Limit" },
+                        { strong: "Verified Expert Connected", span: "Top CA Onboarded" }
+                    ]
+                },
+                {
+                    lang: 'hi', // Hindi
+                    inputs: [
+                        "मेरे बिजनेस के लिए कौन सी सरकारी योजना है?",
+                        "मुझे बिजनेस लोन कैसे मिलेगा?",
+                        "मेरे बिजनेस के लिए क्या अनुपालन जरूरी है?",
+                        "FSSAI और GST रजिस्ट्रेशन चाहिए",
+                        "मेरे पास के अच्छे CA को ढूंढें"
+                    ],
+                    outputs: [
+                        { strong: "सरकारी योजनाएं", span: "PMEGP और CGTMSE मिली" },
+                        { strong: "दस्तावेज़ों की सूची", span: "जमा करने के लिए तैयार" },
+                        { strong: "क्रेडिट विकल्प", span: "₹25L की सीमा" },
+                        { strong: "वेरिफाइड एक्सपर्ट", span: "Top CA से संपर्क हुआ" }
+                    ]
+                },
+                {
+                    lang: 'mr', // Marathi
+                    inputs: [
+                        "माझ्या व्यवसायासाठी कोणत्या योजना आहेत?",
+                        "व्यवसाय कर्ज कसे मिळवायचे?",
+                        "माझ्या व्यवसायासाठी कायदेशीर बाबी कोणत्या?",
+                        "मला FSSAI / GST मार्गदर्शन हवे आहे",
+                        "जवळचे व्हेरिफाईड CA शोधा"
+                    ],
+                    outputs: [
+                        { strong: "सरकारी योजना", span: "PMEGP आणि CGTMSE ओळखले" },
+                        { strong: "कागदपत्रे", span: "सादर करण्यासाठी तयार" },
+                        { strong: "कर्ज पर्याय", span: "₹25L पर्यंत मर्यादा" },
+                        { strong: "तज्ञ एक्सपर्ट", span: "Top CA सोबत जोडले" }
+                    ]
+                },
+                {
+                    lang: 'gu', // Gujarati
+                    inputs: [
+                        "મારા બિઝનેસ માટે કઈ સરકારી યોજના છે?",
+                        "મને બિઝનેસ લોન કેવી રીતે મળે?",
+                        "મારા ધંધા માટે કયા કાયદાકીય પાલન જરૂરી છે?",
+                        "મને FSSAI / GST માર્ગદર્શન જોઈએ છે",
+                        "નજીકના વેરિફાઈડ CA શોધો"
+                    ],
+                    outputs: [
+                        { strong: "સરકારી યોજનાઓ", span: "PMEGP અને CGTMSE મળી" },
+                        { strong: "દસ્તાવેજોની યાદી", span: "સબમિશન માટે તૈયાર" },
+                        { strong: "ક્રેડિટ વિકલ્પો", span: "₹25L ની મર્યાદા" },
+                        { strong: "વેરિફાઈડ એક્સપર્ટ", span: "Top CA સાથે વાત થઈ" }
+                    ]
+                }
+            ];
+
+            let cycleIndex = 0;
+
+            const typeText = async (elementId, text, speed = 30) => {
+                const el = document.getElementById(elementId);
+                if (!el) return;
+                el.textContent = "";
+                for (let i = 0; i < text.length; i++) {
+                    el.textContent += text.charAt(i);
+                    await wait(speed);
+                }
+            };
+
             const runCycle = async () => {
+                const currentData = translations[cycleIndex % translations.length];
+                cycleIndex++;
+
                 // RESET
                 bubbles.forEach(b => b.classList.remove('active'));
                 outputs.forEach(o => o.classList.remove('active'));
                 particleIn.style.opacity = "0";
                 particleOut.style.opacity = "0";
 
-                await wait(1000);
+                await wait(500);
 
-                // 1. INPUT PHASE: Sequential Bubbles + Particles
+                // 0. TYPING PHASE: Type all inputs concurrently
+                const typingPromises = currentData.inputs.map((text, i) => {
+                    return new Promise(async (resolve) => {
+                        await wait(i * 150); // Slight stagger
+                        await typeText(`multi-query-${i}`, text, 20);
+                        resolve();
+                    });
+                });
+                await Promise.all(typingPromises);
+
+                // Update Outputs Text
+                currentData.outputs.forEach((data, i) => {
+                    if (outputs[i]) {
+                        outputs[i].querySelector('strong').textContent = data.strong;
+                        outputs[i].querySelector('span').textContent = data.span;
+                    }
+                });
+
+                await wait(500);
+
+                // 1. INPUT PHASE
                 for (let i = 0; i < bubbles.length; i++) {
                     bubbles[i].classList.add('active');
-
-                    // Trigger flow particle to center
                     mpathIn.setAttribute('href', `#path-in-${i}`);
                     particleIn.style.opacity = "1";
                     animIn.beginElement();
-
-                    await wait(800); // Slower, more premium pacing
+                    await wait(600);
                     particleIn.style.opacity = "0";
                 }
 
-                // 2. PROCESSING PHASE: Subtle delay for center processing effect
-                await wait(1200); // Deeper processing pause for 'Intelligence' feel
+                // 2. PROCESSING PHASE
+                await wait(1000);
 
-                // 3. OUTPUT PHASE: Staggered Cards + Particles
+                // 3. OUTPUT PHASE
                 for (let i = 0; i < outputs.length; i++) {
-                    // Trigger flow particle from center
                     mpathOut.setAttribute('href', `#path-out-${i}`);
                     particleOut.style.opacity = "1";
                     animOut.beginElement();
-
-                    await wait(400); // Smooth flow
+                    await wait(300);
                     outputs[i].classList.add('active');
-                    await wait(400);
+                    await wait(300);
                     particleOut.style.opacity = "0";
                 }
 
-                // 4. HOLD PHASE: Enjoy the result
-                await wait(5000);
+                // 4. HOLD PHASE
+                await wait(4000);
 
-                // 5. FADE OUT for Seamless Loop
+                // 5. FADE OUT
                 bubbles.forEach(b => b.classList.add('fade-out'));
                 outputs.forEach(o => o.classList.add('fade-out'));
-
                 await wait(800);
                 bubbles.forEach(b => b.classList.remove('fade-out'));
                 outputs.forEach(o => o.classList.remove('fade-out'));
@@ -725,7 +926,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(runCycle);
             };
 
-            // Start the infinite loop
             runCycle();
         },
 
@@ -832,6 +1032,32 @@ document.addEventListener('DOMContentLoaded', () => {
             updateProgressLine();
         },
 
+        // --- Expert Horizontal Timeline ---
+        initExpertTimeline() {
+            const wrapper = document.querySelector('.timeline-steps');
+            const progressMoving = document.querySelector('.timeline-progress-moving');
+            if (!wrapper || !progressMoving) return;
+
+            const updateHorizontalProgress = () => {
+                const rect = wrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Trigger: Top of timeline enters at 85% of screen
+                const startPoint = windowHeight * 0.85;
+                const totalRange = 400; // 400px of scroll to fill
+                const distance = startPoint - rect.top;
+
+                let progress = (distance / totalRange) * 100;
+                progress = Math.max(0, Math.min(100, progress));
+
+                // The line is 70% of the container width in CSS
+                progressMoving.style.width = `${progress * 0.7}%`;
+            };
+
+            window.addEventListener('scroll', updateHorizontalProgress);
+            updateHorizontalProgress();
+        },
+
         // --- Contact Form ---
         initContactForm() {
             const form = document.getElementById('contactForm');
@@ -928,6 +1154,148 @@ document.addEventListener('DOMContentLoaded', () => {
                     option.value = opt.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                     option.textContent = opt;
                     industrySelect.appendChild(option);
+                });
+            });
+        },
+
+        // --- Expert Registration Form ---
+        initExpertForm() {
+            const showBtn = document.getElementById('show-expert-form');
+            const heroJoinBtn = document.getElementById('hero-join-btn');
+            const preFooterBtn = document.getElementById('pre-footer-join-btn');
+            const formSection = document.getElementById('expert-form-section');
+            const formContainer = document.getElementById('expert-registration-form');
+
+            console.log("Expert Form Detection:", { showBtn, heroJoinBtn, preFooterBtn, formSection, formContainer });
+
+            if (!formSection || !formContainer) return;
+
+            const form = formContainer.querySelector('form');
+
+            const toggleForm = (e) => {
+                if (e) e.preventDefault();
+                console.log("Expert Form Toggle Triggered");
+
+                const isOpening = formSection.style.display === 'none' || getComputedStyle(formSection).display === 'none';
+
+                if (isOpening) {
+                    formSection.style.display = 'block';
+                    if (showBtn) showBtn.innerHTML = 'Close Form <i class="fas fa-times"></i>';
+
+                    setTimeout(() => {
+                        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50);
+                } else {
+                    formSection.style.display = 'none';
+                    if (showBtn) showBtn.innerHTML = 'Register as an Expert <i class="fas fa-arrow-right"></i>';
+                }
+            };
+
+            if (showBtn) showBtn.addEventListener('click', toggleForm);
+            if (heroJoinBtn) heroJoinBtn.addEventListener('click', toggleForm);
+            if (preFooterBtn) preFooterBtn.addEventListener('click', toggleForm);
+
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const btn = form.querySelector('button[type="submit"]');
+                    const originalText = btn.innerHTML;
+
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+                    try {
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+
+                        // Success State
+                        formContainer.innerHTML = `
+                            <div class="success-message" style="text-align: center; padding: 2rem; animation: personaFadeIn 0.6s ease forwards;">
+                                <i class="fas fa-check-circle" style="font-size: 4rem; color: #10b981; margin-bottom: 1.5rem;"></i>
+                                <h3 style="color: var(--secondary); font-size: 2rem; margin-bottom: 1rem;">Application Submitted!</h3>
+                                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                                    Thank you for applying to the Bharat2Business Expert Network. 
+                                    Our team will review your credentials and get back to you within 48 hours.
+                                </p>
+                                <button class="btn-cta" style="margin-top: 2rem;" onclick="window.location.reload()">Back to Page</button>
+                            </div>
+                        `;
+                    } catch (error) {
+                        console.error("Submission error:", error);
+                        btn.disabled = false;
+                        btn.innerHTML = originalText;
+                        alert("Something went wrong. Please try again.");
+                    }
+                });
+            }
+        },
+
+        initIndustrySelect() {
+            const header = document.getElementById('industry-select-header');
+            const dropdown = document.getElementById('industry-dropdown');
+            const selectedText = document.getElementById('selected-industries-text');
+            const categoryToggles = document.querySelectorAll('.category-toggle');
+            const industryCheckboxes = document.querySelectorAll('.industry-checkbox');
+
+            if (!header || !dropdown) return;
+
+            // Toggle Dropdown
+            header.addEventListener('click', (e) => {
+                const isActive = header.classList.contains('active');
+                if (isActive) {
+                    header.classList.remove('active');
+                    dropdown.classList.remove('active');
+                } else {
+                    header.classList.add('active');
+                    dropdown.classList.add('active');
+                }
+            });
+
+            // Close on outside click (excluding dropdown content)
+            document.addEventListener('click', (e) => {
+                if (!header.contains(e.target) && !dropdown.contains(e.target)) {
+                    header.classList.remove('active');
+                    dropdown.classList.remove('active');
+                }
+            });
+
+            const updateCount = () => {
+                const checked = document.querySelectorAll('.industry-checkbox:checked');
+                if (checked.length === 0) {
+                    selectedText.textContent = "Select industries you serve";
+                    selectedText.style.color = "#94a3b8";
+                } else {
+                    selectedText.textContent = `${checked.length} Industries Selected`;
+                    selectedText.style.color = "var(--secondary)";
+                }
+            };
+
+            // Category Toggle (Select All)
+            categoryToggles.forEach(toggle => {
+                toggle.addEventListener('change', () => {
+                    const category = toggle.dataset.category;
+                    const isChecked = toggle.checked;
+                    const subCheckboxes = document.querySelectorAll(`.industry-checkbox[data-category="${category}"]`);
+
+                    subCheckboxes.forEach(cb => {
+                        cb.checked = isChecked;
+                    });
+                    updateCount();
+                });
+            });
+
+            // Individual Checkbox Click
+            industryCheckboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const category = cb.dataset.category;
+                    const catToggle = document.querySelector(`.category-toggle[data-category="${category}"]`);
+                    const allInCat = document.querySelectorAll(`.industry-checkbox[data-category="${category}"]`);
+                    const checkedInCat = document.querySelectorAll(`.industry-checkbox[data-category="${category}"]:checked`);
+
+                    if (catToggle) {
+                        catToggle.checked = allInCat.length === checkedInCat.length;
+                    }
+                    updateCount();
                 });
             });
         }

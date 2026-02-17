@@ -37,15 +37,16 @@
             <div style="margin-bottom: 2rem;">
                 <h1
                     style="font-size: clamp(2.8rem, 6vw, 4rem); margin-bottom: 1rem; line-height: 1.1; letter-spacing: -2px; font-weight: 800; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    Empowering India's <span style="color: var(--primary);">Experts.</span>
+                    <span id="experts-typing-header"></span><span class="msme-cursor">|</span>
                 </h1>
                 <p
                     style="font-size: 1.125rem; max-width: 700px; margin: 0 auto 1.5rem; color: var(--text-muted); font-weight: 500; line-height: 1.6; opacity: 0.85;">
-                    Connect with MSME Business, earn commissions, and receive instant payouts—all on one platform.
+                    Stop chasing fragmented leads. Get matched with verified MSMEs who are actively seeking expert
+                    guidance across compliance, credit, and growth.
                 </p>
-                <a href="contact.html" class="btn-cta hero-cta">
+                <button id="hero-join-btn" class="btn-cta hero-cta" onclick="console.log('Hero Join click fired')">
                     Join Network
-                </a>
+                </button>
             </div>
 
             <!-- Live Match Engine Hero Card -->
@@ -130,17 +131,13 @@
     <!-- Expert Timeline Section -->
     <section class="expert-timeline-section">
         <div class="container">
-            <div class="timeline-steps" style="position: relative;">
-                <!-- Horizontal Progress Line -->
-                <div
-                    style="position: absolute; top: 30px; left: 15%; right: 15%; height: 3px; background: rgba(37, 99, 235, 0.15); z-index: 0;">
-                </div>
+            <div class="timeline-steps">
+                <!-- Responsive Progress Line -->
+                <div class="timeline-progress-bg"></div>
 
                 <!-- Animated Moving Dot on Progress Line -->
-                <div style="position: absolute; top: 28.5px; left: 15%; width: 70%; height: 6px; z-index: 1;">
-                    <div
-                        style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); animation: progressDot 6s ease-in-out infinite;">
-                    </div>
+                <div class="timeline-progress-moving">
+                    <div class="timeline-progress-dot"></div>
                 </div>
 
                 <div class="timeline-step reveal-up">
@@ -154,7 +151,7 @@
                 </div>
                 <div class="timeline-step reveal-up" style="animation-delay: 0.2s;">
                     <div class="timeline-icon">
-                        <i class="fas fa-shield-check"></i>
+                        <i class="fas fa-user-shield"></i>
                     </div>
                     <div class="timeline-label">
                         <h4>Verification</h4>
@@ -163,7 +160,7 @@
                 </div>
                 <div class="timeline-step reveal-up" style="animation-delay: 0.4s;">
                     <div class="timeline-icon">
-                        <i class="fas fa-rupee-sign"></i>
+                        <i class="fas fa-indian-rupee-sign"></i>
                     </div>
                     <div class="timeline-label">
                         <h4>Start Earning</h4>
@@ -193,8 +190,7 @@
     <section class="expertise-ecosystem">
         <div class="container">
             <div class="section-title">
-                <span>Domain Expertise</span>
-                <h2>Comprehensive Guidance Across All Sectors</h2>
+                <h2>Network of Experts Across All Sectors</h2>
                 <p style="max-width: 800px; margin: 1rem auto; color: var(--text-muted);">
                     We have curated a network of verified professionals to cover every aspect of your MSME journey.
                     From registration to global expansion, Bharat2Business is your one-stop expert ecosystem.
@@ -202,11 +198,8 @@
             </div>
 
             <div class="expertise-grid">
-                <!-- Category 1 -->
                 <div class="expertise-card reveal-up">
-                    <div class="expertise-icon">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
+                    <div class="expertise-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Finance & Tax</h3>
                     <p>Chartered Accountants and Auditors for GST filing, Income Tax, and financial auditing.</p>
                     <ul class="expertise-tags">
@@ -216,11 +209,8 @@
                     </ul>
                 </div>
 
-                <!-- Category 2 -->
                 <div class="expertise-card reveal-up delay-100">
-                    <div class="expertise-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
+                    <div class="expertise-icon"><i class="fas fa-gavel"></i></div>
                     <h3>Legal & Compliance</h3>
                     <p>Legal consultants and Company Secretaries for business registration, IP, and licensing.</p>
                     <ul class="expertise-tags">
@@ -230,11 +220,8 @@
                     </ul>
                 </div>
 
-                <!-- Category 3 -->
                 <div class="expertise-card reveal-up delay-200">
-                    <div class="expertise-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
+                    <div class="expertise-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3>Growth & Marketing</h3>
                     <p>Strategists to help you build your brand, reach new customers, and expand your market.</p>
                     <ul class="expertise-tags">
@@ -244,11 +231,8 @@
                     </ul>
                 </div>
 
-                <!-- Category 4 -->
                 <div class="expertise-card reveal-up delay-300">
-                    <div class="expertise-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
+                    <div class="expertise-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Technology & IT</h3>
                     <p>Experts in digital transformation, ERP systems, and secure business infrastructure.</p>
                     <ul class="expertise-tags">
@@ -258,12 +242,9 @@
                     </ul>
                 </div>
 
-                <!-- Category 5 -->
                 <div class="expertise-card reveal-up delay-400">
-                    <div class="expertise-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <h3>Operations</h3>
+                    <div class="expertise-icon"><i class="fas fa-industry"></i></div>
+                    <h3>Operations & Manufacturing</h3>
                     <p>Supply chain and manufacturing experts to optimize your production and logistics.</p>
                     <ul class="expertise-tags">
                         <li>Six Sigma</li>
@@ -272,34 +253,338 @@
                     </ul>
                 </div>
 
-                <!-- Category 6 -->
                 <div class="expertise-card reveal-up delay-500">
-                    <div class="expertise-icon">
-                        <i class="fas fa-hand-holding-usd"></i>
-                    </div>
-                    <h3>Funding & Grants</h3>
-                    <p>Consultants to help you navigate bank loans, venture capital, and government subsidies.</p>
+                    <div class="expertise-icon"><i class="fas fa-university"></i></div>
+                    <h3>Credit, Funding & Banking</h3>
+                    <p>Consultants to help you navigate bank loans, venture capital, and working capital needs.</p>
                     <ul class="expertise-tags">
-                        <li>Bank Loans</li>
-                        <li>Subsidy</li>
+                        <li>Loans</li>
+                        <li>Credit</li>
                         <li>Equity</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card reveal-up" style="transition-delay: 0.6s;">
+                    <div class="expertise-icon"><i class="fas fa-tasks"></i></div>
+                    <h3>Project Management</h3>
+                    <p>Experts to oversee your business expansions, factory setups, and digital transformations.</p>
+                    <ul class="expertise-tags">
+                        <li>Planning</li>
+                        <li>Lifecycle</li>
+                        <li>Governance</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card reveal-up" style="transition-delay: 0.7s;">
+                    <div class="expertise-icon"><i class="fas fa-truck-moving"></i></div>
+                    <h3>Supply Chain & Logistics</h3>
+                    <p>Optimizing flow of goods, warehousing, and transportation for efficiency.</p>
+                    <ul class="expertise-tags">
+                        <li>Warehousing</li>
+                        <li>Freight</li>
+                        <li>Inventory</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card reveal-up" style="transition-delay: 0.8s;">
+                    <div class="expertise-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>Government Schemes & Subsidy</h3>
+                    <p>Identifying and applying for relevant government grants and subsidies.</p>
+                    <ul class="expertise-tags">
+                        <li>PMEGP</li>
+                        <li>Subsidy</li>
+                        <li>CGTMSE</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card reveal-up" style="transition-delay: 0.9s;">
+                    <div class="expertise-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Export & International Trade</h3>
+                    <p>Guidance on export documentation, forex compliance, and international markets.</p>
+                    <ul class="expertise-tags">
+                        <li>IEC Code</li>
+                        <li>Forex</li>
+                        <li>Customs</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card reveal-up" style="transition-delay: 1.0s;">
+                    <div class="expertise-icon"><i class="fas fa-users-cog"></i></div>
+                    <h3>HR & Business Operations</h3>
+                    <p>Managing talent, payroll, and internal business policies.</p>
+                    <ul class="expertise-tags">
+                        <li>Payroll</li>
+                        <li>Recruitment</li>
+                        <li>Compliance</li>
                     </ul>
                 </div>
             </div>
 
             <!-- Join as Expert CTA -->
-            <div class="expert-join-cta reveal-up">
+            <div class="expert-join-cta">
                 <div class="cta-inner">
                     <div class="cta-text">
                         <h3>Become a Bharat2Business Expert</h3>
-                        <p>Are you a verified professional looking to empower India's MSME sector? Join our platform to
-                            connect with thousands of businesses needing your expertise.</p>
+                        <p>Join our network of verified professionals to connect with MSMEs seeking your expertise.</p>
                     </div>
                     <div class="cta-action">
-                        <a href="contact.html" class="btn-cta">Register as an Expert <i
-                                class="fas fa-arrow-right"></i></a>
+                        <button id="show-expert-form" class="btn-cta" onclick="console.log('Button click fired')">
+                            Register as an Expert <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedicated Expert Registration Form Section -->
+    <section id="expert-form-section" class="expert-form-section" style="display: none; padding-top: 0;">
+        <div class="container">
+            <div id="expert-registration-form" class="expert-form-container">
+                <form class="sleek-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" placeholder="John" required>
+                        </div>
+                        <div class="form-group" style="animation-delay: 0.1s;">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="animation-delay: 0.2s;">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group" style="animation-delay: 0.3s;">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="animation-delay: 0.4s;">
+                            <label>Expertise</label>
+                            <select required>
+                                <option value="" disabled selected>Select Your Domain</option>
+                                <option>Finance & Tax</option>
+                                <option>Legal & Compliance</option>
+                                <option>Growth & Marketing</option>
+                                <option>Technology & IT</option>
+                                <option>Operations & Manufacturing</option>
+                                <option>Credit, Funding & Banking</option>
+                                <option>Project Management</option>
+                                <option>Supply Chain & Logistics</option>
+                                <option>Government Schemes & Subsidy</option>
+                                <option>Export & International Trade</option>
+                                <option>HR & Business Operations</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="animation-delay: 0.5s;">
+                            <label>Years of Experience</label>
+                            <input type="number" min="0" placeholder="e.g. 5" required>
+                        </div>
+                    </div>
+
+                    <!-- Target Industries Multi-select -->
+                    <div class="form-group" style="animation-delay: 0.6s;">
+                        <label>Target Industries (Select Categories to Multi-select)</label>
+                        <div class="multi-select-container">
+                            <div class="multi-select-header" id="industry-select-header">
+                                <span id="selected-industries-text">Select industries you serve</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="multi-select-dropdown" id="industry-dropdown">
+                                <div class="industry-category">
+                                    <div class="category-header">
+                                        <label class="industry-option">
+                                            <input type="checkbox" class="hidden-checkbox category-toggle"
+                                                data-category="manufacturing">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                                            <strong>Manufacturing (Select All)</strong>
+                                        </label>
+                                    </div>
+                                    <div class="industry-options">
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Agro-Based & Food Training">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Agro-Based &
+                                            Food
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Textiles & Apparel">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Textiles &
+                                            Apparel
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Leather & Footwear">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Leather &
+                                            Footwear
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Wood & Paper">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Wood & Paper
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Chemicals & Allied">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Chemicals &
+                                            Allied
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Pharma & Healthcare">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Pharma &
+                                            Healthcare
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Rubber & Plastics">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Rubber &
+                                            Plastics
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Metals & Engineering">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Metals &
+                                            Engineering
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Electronics & Electricals">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Electronics &
+                                            Electricals
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Construction Materials">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Construction
+                                            Materials
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="manufacturing"
+                                                value="Gems & Handicrafts">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Gems &
+                                            Handicrafts
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="industry-category">
+                                    <div class="category-header">
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox category-toggle" data-category="service">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                                            <strong>Service (Select All)</strong>
+                                        </label>
+                                    </div>
+                                    <div class="industry-options">
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Professional Services">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Professional
+                                            Services
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="IT & Digital Services">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>IT & Digital
+                                            Services
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Financial Services">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Financial
+                                            Services
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Logistics & Transport">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Logistics &
+                                            Transport
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Tourism & Hospitality">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Tourism &
+                                            Hospitality
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Healthcare Services">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Healthcare
+                                            Services
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Education & Training">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Education &
+                                            Training
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Media & Design">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Media &
+                                            Design
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Technical Services">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Technical
+                                            Services
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="service"
+                                                value="Real Estate Services">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Real Estate
+                                            Services
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="industry-category">
+                                    <div class="category-header">
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox category-toggle" data-category="trade">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div><strong>Trade
+                                                (Select All)</strong>
+                                        </label>
+                                    </div>
+                                    <div class="industry-options">
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="trade"
+                                                value="Wholesale Trading">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Wholesale
+                                            Trading
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="trade"
+                                                value="Retail Trading">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Retail
+                                            Trading
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="trade"
+                                                value="E-Commerce Trade">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>E-Commerce
+                                            Trade
+                                        </label>
+                                        <label class="industry-option"><input type="checkbox"
+                                                class="hidden-checkbox industry-checkbox" data-category="trade"
+                                                value="Import–Export Trade">
+                                            <div class="custom-checkbox"><i class="fas fa-check"></i></div>Import–Export
+                                            Trade
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-footer" style="animation-delay: 0.6s;">
+                        <button type="submit" class="btn-cta full-width">Submit Application</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -310,14 +595,13 @@
             <h3 class="marquee-title">Trusted by Experts from Leading Institutions</h3>
             <div class="marquee-wrapper">
                 <div class="marquee-content">
-                    <!-- Standard placeholder "logos" or brand names with high-end typography -->
                     <div class="marquee-item"><span>ICA India</span></div>
                     <div class="marquee-item"><span>LawCouncil</span></div>
                     <div class="marquee-item"><span>StartupHub</span></div>
                     <div class="marquee-item"><span>GlobalConsult</span></div>
                     <div class="marquee-item"><span>MSME Ally</span></div>
                     <div class="marquee-item"><span>IndiaLegal</span></div>
-                    <!-- Duplicate for seamless loop -->
+                    <!-- Duplicate for loop -->
                     <div class="marquee-item"><span>ICA India</span></div>
                     <div class="marquee-item"><span>LawCouncil</span></div>
                     <div class="marquee-item"><span>StartupHub</span></div>
@@ -338,16 +622,16 @@
                     <p>Connect with us or start your journey today.</p>
                 </div>
                 <div class="cta-actions">
-                    <a href="contact.html" class="btn-outline">Get Started</a>
+                    <button id="pre-footer-join-btn" class="btn-cta">Apply Now</button>
                     <div class="contact-actions">
                         <div class="tooltip-container">
-                            <a href="https://wa.me/yournumber" class="icon-btn whatsapp" aria-label="WhatsApp">
+                            <a href="https://wa.me/919876543210" class="icon-btn whatsapp" aria-label="WhatsApp">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                             <span class="tooltip">WhatsApp</span>
                         </div>
                         <div class="tooltip-container">
-                            <a href="mailto:info@bharat2business.com" class="icon-btn email" aria-label="Email">
+                            <a href="mailto:connect@bharat2business.com" class="icon-btn email" aria-label="Email">
                                 <i class="fas fa-envelope"></i>
                             </a>
                             <span class="tooltip">Email</span>
@@ -358,13 +642,6 @@
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                             <span class="tooltip">LinkedIn</span>
-                        </div>
-                        <div class="tooltip-container">
-                            <a href="https://www.instagram.com/bharat2business/" target="_blank"
-                                class="icon-btn instagram" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <span class="tooltip">Instagram</span>
                         </div>
                     </div>
                 </div>
