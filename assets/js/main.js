@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.initJourneyLifecycle();
             this.initMatchEngine();
             this.initContactForm();
+            this.initDynamicFormOptions();
         },
 
         async injectPartials() {
@@ -228,9 +229,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 homeScreen.style.display = 'none';
                 aiScreen.style.display = 'flex';
-                aiText.textContent = "";
+                // Show thinking state
+                aiText.innerHTML = '<i class="fas fa-circle-notch fa-spin" style="margin-right:8px; font-size:0.8em;"></i> Parsing query...';
+                aiText.style.color = '#64748b';
 
-                const responseString = "To file GST in India: \n1. Login to the GST Portal (gst.gov.in).\n2. Navigate to 'Returns Dashboard'.\n3. Select shipping period.\n4. Prepare GSTR-1 & GSTR-3B.\n5. Pay tax and submit.";
+                const responseString = "Short Guide to Filing GST:\n\n1. Login to GST Portal (gst.gov.in)\n2. Go to 'Returns Dashboard'\n3. Select Financial Period\n4. File GSTR-1 (Outward Supplies)\n5. File GSTR-3B & Pay Tax";
+
                 let charIdx = 0;
                 let cancelled = false;
 
@@ -246,14 +250,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const typeAI = () => {
                     if (cancelled) return;
+
+                    // Start actual typing
+                    if (charIdx === 0) {
+                        aiText.textContent = "";
+                        aiText.style.color = '#334155'; // Darker text for answer
+                    }
+
                     if (charIdx < responseString.length) {
                         aiText.textContent += responseString.charAt(charIdx++);
-                        setTimeout(typeAI, 25);
+                        // Add random variance for natural feel
+                        setTimeout(typeAI, 15 + Math.random() * 20);
                     } else {
-                        setTimeout(() => { if (!cancelled) back(); }, 5000);
+                        // Hold longer before resetting
+                        setTimeout(() => { if (!cancelled) back(); }, 6000);
                     }
                 };
-                setTimeout(typeAI, 500);
+
+                // Delay before typing starts
+                setTimeout(typeAI, 1200);
             };
 
             animateAppSearch();
@@ -773,39 +788,95 @@ document.addEventListener('DOMContentLoaded', () => {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
-                const btn = form.querySelector('button');
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const message = document.getElementById('message').value.trim();
+                const btn = form.querySelector('button[type="submit"]');
+                const firstName = document.getElementById('firstName')?.value.trim();
+                const lastName = document.getElementById('lastName')?.value.trim();
+                const phone = document.getElementById('phone')?.value.trim();
 
-                // Simple validation
-                let hasError = false;
-                if (!name) { document.getElementById('nameError').textContent = "Required"; document.getElementById('nameError').style.display = "block"; hasError = true; }
-                if (!email) { document.getElementById('emailError').textContent = "Required"; document.getElementById('emailError').style.display = "block"; hasError = true; }
-
-                if (hasError) return;
+                // Capture other fields for backend processing
+                const businessName = document.getElementById('businessName')?.value.trim();
+                const email = document.getElementById('email')?.value.trim();
+                const industry = document.getElementById('industry')?.value;
+                const businessType = document.getElementById('businessType')?.value;
+                const turnover = document.getElementById('turnover')?.value;
+                const primaryNeed = document.getElementById('primaryNeed')?.value;
 
                 btn.disabled = true;
                 const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+                // Clear global error if exists
+                const errorSpan = document.getElementById('formError');
+                if (errorSpan) errorSpan.style.display = 'none';
 
                 try {
-                    // Simulate API call or connect to server.js
+                    // Simulate API call
+                    console.log("Form Data:", {
+                        firstName, lastName, businessName, email, phone,
+                        industry, businessType, turnover, primaryNeed
+                    });
+
                     await new Promise(r => setTimeout(r, 1500));
 
                     form.innerHTML = `
                         <div class="success-message" style="text-align: center; padding: 2rem;">
                             <i class="fas fa-check-circle" style="font-size: 3rem; color: #10b981; margin-bottom: 1rem;"></i>
-                            <h3>Message Sent!</h3>
-                            <p>Thank you ${name}. Our team will contact you shortly.</p>
-                            <button onclick="location.reload()" class="btn-cta" style="margin-top: 1rem;">Send Another</button>
+                            <h3>Request Received!</h3>
+                            <p>Thank you, ${firstName}. Your Bharat2Business account manager will contact you at ${phone} shortly.</p>
+                            <button class="btn-premium btn-primary mb-4" onclick="window.location.reload()" style="margin-top: 1.5rem; width: auto; display: inline-flex;">Back to Home</button>
                         </div>
                     `;
                 } catch (err) {
+                    console.error("Submission Error:", err);
                     btn.disabled = false;
                     btn.innerHTML = originalText;
-                    alert("Submission failed. Please try again.");
+                    if (errorSpan) {
+                        errorSpan.textContent = "Something went wrong. Please try again.";
+                        errorSpan.style.display = "block";
+                    }
                 }
+            });
+        },
+
+        // --- Dynamic Form Options ---
+        initDynamicFormOptions() {
+            const typeSelect = document.getElementById('businessType');
+            const industrySelect = document.getElementById('industry');
+
+            if (!typeSelect || !industrySelect) return;
+
+            const industryOptions = {
+                manufacturer: [
+                    "Agro-Based & Food Manufacturing", "Textiles, Apparel & Handlooms", "Leather & Footwear",
+                    "Wood, Furniture & Paper", "Chemicals & Allied", "Pharmaceuticals & Healthcare Manufacturing",
+                    "Rubber & Plastics", "Metals & Engineering", "Electronics & Electricals",
+                    "Construction Materials", "Gems, Jewellery & Handicrafts"
+                ],
+                service: [
+                    "Professional & Business Services", "IT, ITES & Digital Services", "Financial Services (Non-Banking)",
+                    "Logistics & Transport Services", "Tourism, Hospitality & Travel", "Healthcare & Social Services",
+                    "Education & Training", "Media, Design & Creative Services", "Repair, Maintenance & Technical Services",
+                    "Real Estate & Allied Services"
+                ],
+                trader: [
+                    "Wholesale Trading", "Retail Trading", "E-Commerce & Digital Trade", "Import–Export Trading"
+                ]
+            };
+
+            typeSelect.addEventListener('change', (e) => {
+                const selectedType = e.target.value;
+                const options = industryOptions[selectedType] || [];
+
+                // Clear existing options
+                industrySelect.innerHTML = '<option value="" disabled selected>Select Industry</option>';
+
+                // Add new options
+                options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                    option.textContent = opt;
+                    industrySelect.appendChild(option);
+                });
             });
         }
     };
