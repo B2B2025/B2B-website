@@ -391,7 +391,7 @@ section {
 
 /* Hero Section */
 .hero {
-    padding: 100px 0;
+    padding: 80px 0 50px;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg,
@@ -489,7 +489,7 @@ section {
     line-height: 1.7 !important;
     color: var(--text-muted) !important;
     max-width: 850px !important;
-    margin-bottom: 3rem !important;
+    margin-bottom: 2rem !important;
     opacity: 0.9;
 }
 
@@ -498,8 +498,8 @@ section {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
