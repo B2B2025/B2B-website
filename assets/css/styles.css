@@ -6023,3 +6023,83 @@ footer {
         display: none;
     }
 }
+
+/* ── Global Mobile Refinements ── */
+@media (max-width: 992px) {
+    .work-row, .alternate-row {
+        flex-direction: column !important;
+        gap: 3rem;
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .work-text {
+        max-width: 100%;
+        order: 2;
+    }
+
+    .work-img {
+        max-width: 100%;
+        order: 1;
+    }
+
+    .work-row.reverse, .alternate-row:nth-child(even) {
+        flex-direction: column !important;
+    }
+
+    .parallax-section {
+        padding: 60px 0;
+    }
+
+    .parallax-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .parallax-desc {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .hero-btns .btn-cta, .hero-btns .btn-outline {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    .card-premium {
+        padding: 2rem 1.5rem;
+    }
+
+    .showcase-title {
+        font-size: 2.2rem;
+    }
+
+    .showcase-desc {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+}

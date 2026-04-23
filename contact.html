@@ -102,123 +102,33 @@
                         </div>
 
                         <div class="card-premium glass-card reveal-right"
-                            style="box-shadow: 0 20px 60px rgba(0,0,0,0.08); background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.8);">
-                            <form id="contactForm" style="display: grid; gap: 15px;">
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                                    <div>
-                                        <label for="firstName"
-                                            style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">First
-                                            Name</label>
-                                        <input type="text" id="firstName" class="form-input"
-                                            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border);"
-                                            placeholder="Rahul" required>
-                                    </div>
-                                    <div>
-                                        <label for="lastName"
-                                            style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Last
-                                            Name</label>
-                                        <input type="text" id="lastName" class="form-input"
-                                            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border);"
-                                            placeholder="Gupta" required>
-                                    </div>
-                                </div>
+                            style="box-shadow: 0 20px 60px rgba(0,0,0,0.08); background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.8); text-align: center;">
+                            <div style="margin-bottom: 2rem;">
+                                <i class="fas fa-paper-plane"
+                                    style="font-size: 3.5rem; color: var(--primary); margin-bottom: 1.5rem; display: block;"></i>
+                                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--brand-dark);">Ready to
+                                    Elevate Your Business?</h2>
+                                <p style="color: var(--brand-muted); font-size: 1.1rem; line-height: 1.6;">
+                                    Click the button below to fill out our quick interest form.
+                                    We will reach out to you soon.
+                                </p>
+                            </div>
 
-                                <div>
-                                    <label for="businessName"
-                                        style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Business
-                                        Name</label>
-                                    <input type="text" id="businessName" class="form-input"
-                                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border);"
-                                        placeholder="Gupta Textiles Pvt Ltd" required>
-                                </div>
+                            <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank"
+                                class="btn-premium btn-primary"
+                                style="justify-content: center; width: 100%; font-size: 1.2rem; padding: 1.2rem 2rem;">
+                                Contact Us <i class="fas fa-external-link-alt"
+                                    style="margin-left: 10px; font-size: 0.9rem;"></i>
+                            </a>
 
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                                    <div>
-                                        <label for="email"
-                                            style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Work
-                                            Email</label>
-                                        <input type="email" id="email" class="form-input"
-                                            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border);"
-                                            placeholder="rahul@guptatextiles.com" required>
-                                    </div>
-                                    <div>
-                                        <label for="phone"
-                                            style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Phone
-                                            Number</label>
-                                        <input type="tel" id="phone" class="form-input"
-                                            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border);"
-                                            placeholder="+91 99999 99999" required>
-                                    </div>
-                                </div>
-
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                                    <div>
-                                        <label for="businessType"
-                                            style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Business
-                                            Type</label>
-                                        <select id="businessType" class="form-input"
-                                            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border); background-color: var(--white);"
-                                            required>
-                                            <option value="" disabled selected>Select Type</option>
-                                            <option value="manufacturer">Manufacturer</option>
-                                            <option value="trader">Trader</option>
-                                            <option value="service">Service Provider</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label for="turnover"
-                                            style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Annual
-                                            Turnover</label>
-                                        <select id="turnover" class="form-input"
-                                            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border); background-color: var(--white);"
-                                            required>
-                                            <option value="" disabled selected>Select Range</option>
-                                            <option value="0-50L">₹0 - ₹50 Lakhs</option>
-                                            <option value="50L-5Cr">₹50L - ₹5 Cr</option>
-                                            <option value="5Cr-50Cr">₹5 Cr - ₹50 Cr</option>
-                                            <option value="50Cr-250Cr">₹50 Cr - ₹250 Cr</option>
-                                            <option value="250Cr+">₹250 Cr+</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="industry"
-                                        style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Industry</label>
-                                    <select id="industry" class="form-input"
-                                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border); background-color: var(--white);"
-                                        required>
-                                        <option value="" disabled selected>Select Business Type first</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label for="primaryNeed"
-                                        style="display: block; margin-bottom: 6px; font-weight: 700; color: var(--brand-dark);">Primary
-                                        Need</label>
-                                    <select id="primaryNeed" class="form-input"
-                                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--brand-border); background-color: var(--white);"
-                                        required>
-                                        <option value="" disabled selected>What do you need help with?</option>
-                                        <option value="schemes">Government Schemes & Subsidies</option>
-                                        <option value="compliance">Compliance & Audits</option>
-                                        <option value="credit">Credit & Business Loans</option>
-                                        <option value="experts">Expert Consultation</option>
-                                        <option value="all">Full Digital Transformation</option>
-                                    </select>
-                                </div>
-
-                                <button type="submit" class="btn-premium btn-primary"
-                                    style="justify-content: center; width: 100%; margin-top: 10px; font-size: 1.05rem;">
-                                    Start My Personalized Guidance <i class="fas fa-arrow-right"
-                                        style="margin-left: 8px;"></i>
-                                </button>
-                                <span class="error-message" id="formError"
-                                    style="color: #ef4444; font-size: 0.8rem; display: none; margin-top: 4px; text-align: center;"></span>
-                            </form>
+                            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--brand-muted);">
+                                <i class="fas fa-shield-alt" style="margin-right: 5px;"></i> Your data is processed
+                                securely & confidentially.
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>

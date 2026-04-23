@@ -63,7 +63,13 @@ h4 {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     color: var(--secondary);
+    line-height: 1.2;
 }
+
+h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+h2 { font-size: clamp(2rem, 6vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+h4 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
 
 a {
     text-decoration: none;
@@ -73,6 +79,21 @@ a {
 
 ul {
     list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.mobile-hidden {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none;
+    }
 }
 
 /* ============================================
@@ -91,6 +112,12 @@ section {
 
 .section-spacing {
     padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+    section, .section-spacing {
+        padding: 50px 0;
+    }
 }
 
 .flex-split {

@@ -25,13 +25,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.initPersonaSelector();
                 this.initJourneyLifecycle();
                 this.initMatchEngine();
-                this.initContactForm();
-                this.initDynamicFormOptions();
                 this.initExpertTimeline();
+                this.initVisionSwitcher();
                 // this.initMultilingualTyping(); Removed in favor of integrated demo
             } catch (err) {
                 console.error("Initialization error:", err);
             }
+        },
+
+        initVisionSwitcher() {
+            const prevBtn = document.getElementById('vision-prev');
+            const nextBtn = document.getElementById('vision-next');
+            const layouts = document.querySelectorAll('.founder-layout');
+            if (!prevBtn || !nextBtn || !layouts.length) return;
+
+            let currentIndex = 0;
+
+            const updateDisplay = (index) => {
+                layouts.forEach((layout, i) => {
+                    layout.classList.remove('active');
+                    if (i === index) {
+                        setTimeout(() => layout.classList.add('active'), 50);
+                    }
+                });
+            };
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + layouts.length) % layouts.length;
+                updateDisplay(currentIndex);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % layouts.length;
+                updateDisplay(currentIndex);
+            });
         },
 
         async injectPartials() {
@@ -1058,105 +1085,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateHorizontalProgress();
         },
 
-        // --- Contact Form ---
-        initContactForm() {
-            const form = document.getElementById('contactForm');
-            if (!form) return;
 
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-
-                const btn = form.querySelector('button[type="submit"]');
-                const firstName = document.getElementById('firstName')?.value.trim();
-                const lastName = document.getElementById('lastName')?.value.trim();
-                const phone = document.getElementById('phone')?.value.trim();
-
-                // Capture other fields for backend processing
-                const businessName = document.getElementById('businessName')?.value.trim();
-                const email = document.getElementById('email')?.value.trim();
-                const industry = document.getElementById('industry')?.value;
-                const businessType = document.getElementById('businessType')?.value;
-                const turnover = document.getElementById('turnover')?.value;
-                const primaryNeed = document.getElementById('primaryNeed')?.value;
-
-                btn.disabled = true;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-
-                // Clear global error if exists
-                const errorSpan = document.getElementById('formError');
-                if (errorSpan) errorSpan.style.display = 'none';
-
-                try {
-                    // Simulate API call
-                    console.log("Form Data:", {
-                        firstName, lastName, businessName, email, phone,
-                        industry, businessType, turnover, primaryNeed
-                    });
-
-                    await new Promise(r => setTimeout(r, 1500));
-
-                    form.innerHTML = `
-                        <div class="success-message" style="text-align: center; padding: 2rem;">
-                            <i class="fas fa-check-circle" style="font-size: 3rem; color: #10b981; margin-bottom: 1rem;"></i>
-                            <h3>Request Received!</h3>
-                            <p>Thank you, ${firstName}. Your Bharat2Business account manager will contact you at ${phone} shortly.</p>
-                            <button class="btn-premium btn-primary mb-4" onclick="window.location.reload()" style="margin-top: 1.5rem; width: auto; display: inline-flex;">Back to Home</button>
-                        </div>
-                    `;
-                } catch (err) {
-                    console.error("Submission Error:", err);
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                    if (errorSpan) {
-                        errorSpan.textContent = "Something went wrong. Please try again.";
-                        errorSpan.style.display = "block";
-                    }
-                }
-            });
-        },
-
-        // --- Dynamic Form Options ---
-        initDynamicFormOptions() {
-            const typeSelect = document.getElementById('businessType');
-            const industrySelect = document.getElementById('industry');
-
-            if (!typeSelect || !industrySelect) return;
-
-            const industryOptions = {
-                manufacturer: [
-                    "Agro-Based & Food Manufacturing", "Textiles, Apparel & Handlooms", "Leather & Footwear",
-                    "Wood, Furniture & Paper", "Chemicals & Allied", "Pharmaceuticals & Healthcare Manufacturing",
-                    "Rubber & Plastics", "Metals & Engineering", "Electronics & Electricals",
-                    "Construction Materials", "Gems, Jewellery & Handicrafts"
-                ],
-                service: [
-                    "Professional & Business Services", "IT, ITES & Digital Services", "Financial Services (Non-Banking)",
-                    "Logistics & Transport Services", "Tourism, Hospitality & Travel", "Healthcare & Social Services",
-                    "Education & Training", "Media, Design & Creative Services", "Repair, Maintenance & Technical Services",
-                    "Real Estate & Allied Services"
-                ],
-                trader: [
-                    "Wholesale Trading", "Retail Trading", "E-Commerce & Digital Trade", "Import–Export Trading"
-                ]
-            };
-
-            typeSelect.addEventListener('change', (e) => {
-                const selectedType = e.target.value;
-                const options = industryOptions[selectedType] || [];
-
-                // Clear existing options
-                industrySelect.innerHTML = '<option value="" disabled selected>Select Industry</option>';
-
-                // Add new options
-                options.forEach(opt => {
-                    const option = document.createElement('option');
-                    option.value = opt.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-                    option.textContent = opt;
-                    industrySelect.appendChild(option);
-                });
-            });
-        },
 
         // --- Expert Registration Form ---
         initExpertForm() {
