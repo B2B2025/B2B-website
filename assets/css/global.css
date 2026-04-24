@@ -4,14 +4,14 @@
 
 :root {
     /* Brand Colors */
-    --primary: #2563eb;
-    --primary-rgb: 37, 99, 235;
-    --primary-dark: #1d4ed8;
+    --primary: #000080;
+    --primary-rgb: 0, 0, 128;
+    --primary-dark: #000066;
     --secondary: #0f172a;
     --accent: #f59e0b;
     --bg-light: #f8fafc;
     --white: #ffffff;
-    --brand-primary: #3b82f6;
+    --brand-primary: #000080;
     --brand-dark: #1e293b;
     --brand-muted: #64748b;
     --brand-white: #ffffff;
