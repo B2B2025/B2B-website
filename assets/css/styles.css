@@ -394,10 +394,7 @@ section {
     padding: 80px 0 50px;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg,
-            rgba(255, 153, 51, 0.55) 0%,
-            rgba(255, 255, 255, 0.55) 50%,
-            rgba(19, 136, 8, 0.55) 100%);
+    background: #ffffff;
     position: relative;
     overflow: hidden;
 }
