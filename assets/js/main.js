@@ -3,12 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const App = {
         async init() {
             // Priority Inits
+            // Inject common UI components
+            await this.injectPartials();
+
+            // Component Inits
+            this.initMobileMenu();
             this.initExpertForm();
             this.initIndustrySelect();
-            this.initMobileMenu();
-
-            // Inject common UI components
-            this.injectPartials();
 
             try {
                 this.initDownloadRedirect();
