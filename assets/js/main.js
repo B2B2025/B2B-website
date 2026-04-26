@@ -117,14 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </div>
                                 </div>
                                 <div class="footer-links">
-                                    <h4>Platform</h4>
-                                    <ul>
-                                        <li><a href="about.html">Our Story</a></li>
-                                    </ul>
-                                </div>
-                                <div class="footer-links">
                                     <h4>Legal</h4>
                                     <ul>
+                                        <li><a href="about.html">Our Story</a></li>
                                         <li><a href="usage-policy.html">Usage Policy</a></li>
                                         <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
                                         <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
