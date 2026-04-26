@@ -96,6 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 footerArea.innerHTML = `
                     <footer>
                         <div class="container">
+                            <div class="pre-footer-content" style="padding-bottom: 3rem; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <div class="cta-message">
+                                    <h3 style="color: var(--white); font-size: 2rem; margin-bottom: 0.5rem;">Ready to take the next step?</h3>
+                                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem;">Connect with us or start your journey today.</p>
+                                </div>
+                                <div class="cta-actions">
+                                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #000080;">Get Started</a>
+                                </div>
+                            </div>
                             <div class="footer-grid">
                                 <div>
                                     <a href="index.html" class="logo footer-logo">
