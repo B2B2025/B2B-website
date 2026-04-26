@@ -96,48 +96,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 footerArea.innerHTML = `
                     <footer>
                         <div class="container">
-                            <div class="pre-footer-content" style="padding-bottom: 0.75rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                            <!-- Top CTA Strip -->
+                            <div class="footer-top-cta">
                                 <div class="cta-message">
-                                    <h3 style="color: var(--white); font-size: 1rem; margin: 0;">Ready to take the next step?</h3>
-                                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin: 0;">Start your journey with Bharat2Business today.</p>
+                                    <h3>Ready to take the next step?</h3>
+                                    <p>Start your journey with Bharat2Business today.</p>
                                 </div>
                                 <div class="cta-actions">
-                                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #000080; padding: 0.4rem 1rem; font-size: 0.8rem;">Get Started</a>
+                                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="newsletter-integrated-btn" style="padding: 0.8rem 2rem; font-size: 1rem;">Get Started</a>
                                 </div>
                             </div>
-                            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-                                <div>
-                                    <a href="index.html" class="logo footer-logo">
+
+                            <div class="footer-grid">
+                                <!-- Column 1: Brand (40%) -->
+                                <div class="footer-logo-col">
+                                    <a href="index.html" class="footer-logo">
                                         <i class="fas fa-rocket"></i> Bharat2Business
                                     </a>
-                                    <p class="footer-desc">Empower.Elevate.Expand.</p>
-                                    <div class="footer-social" style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank" style="color: rgba(255,255,255,0.6); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="https://www.instagram.com/bharat2business/" target="_blank" style="color: rgba(255,255,255,0.6); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                                    <p class="footer-tagline">Empower. Elevate. Expand.</p>
+                                    <div class="footer-social-group">
+                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.instagram.com/bharat2business/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
-                                <div class="footer-links">
-                                    <h4>Legal</h4>
-                                    <ul>
+
+                                <!-- Column 2: Company -->
+                                <div>
+                                    <h4 class="footer-header">Company</h4>
+                                    <ul class="footer-nav-list">
                                         <li><a href="about.html">Our Story</a></li>
-                                        <li><a href="usage-policy.html">Usage Policy</a></li>
-                                        <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
-                                        <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
-                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     </ul>
                                 </div>
-                                <div class="footer-links">
-                                    <h4>Newsletter</h4>
-                                    <p class="newsletter-desc">Stay updated with our latest news.</p>
-                                    <form class="newsletter-form" id="newsletter-form">
-                                        <input type="email" placeholder="Email" class="newsletter-input" id="newsletter-email" aria-label="Email Address" required>
-                                        <button type="submit" class="btn-cta newsletter-btn">Join</button>
+
+                                <!-- Column 3: Legal -->
+                                <div>
+                                    <h4 class="footer-header">Legal</h4>
+                                    <ul class="footer-nav-list">
+                                        <li><a href="terms-msme.html">MSME Terms</a></li>
+                                        <li><a href="terms-experts.html">Expert Terms</a></li>
+                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                        <li><a href="usage-policy.html">Usage Policy</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Column 4: Newsletter -->
+                                <div class="footer-newsletter-box">
+                                    <h4 class="footer-header">Stay updated</h4>
+                                    <form class="newsletter-integrated-form" id="newsletter-form">
+                                        <input type="email" placeholder="Email address" class="newsletter-integrated-input" id="newsletter-email" required>
+                                        <button type="submit" class="newsletter-integrated-btn">Join</button>
                                     </form>
                                     <div id="newsletter-status" class="form-status"></div>
                                 </div>
                             </div>
-                            <div class="footer-bottom">
-                                <p>&copy; 2026 Bharat2Business. Built In Bharat. For Bharat.</p>
+
+                            <!-- Bottom Bar -->
+                            <div class="footer-bottom-bar">
+                                <p class="footer-copyright">© 2026 Bharat2Business · Built in Bharat, for Bharat</p>
                             </div>
                         </div>
                     </footer>
