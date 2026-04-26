@@ -96,16 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 footerArea.innerHTML = `
                     <footer>
                         <div class="container">
-                            <div class="pre-footer-content" style="padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div class="pre-footer-content" style="padding-bottom: 0.75rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
                                 <div class="cta-message">
-                                    <h3 style="color: var(--white); font-size: 1.5rem; margin-bottom: 0.25rem;">Ready to take the next step?</h3>
-                                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem;">Connect with us or start your journey today.</p>
+                                    <h3 style="color: var(--white); font-size: 1rem; margin: 0;">Ready to take the next step?</h3>
+                                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin: 0;">Start your journey with Bharat2Business today.</p>
                                 </div>
                                 <div class="cta-actions">
-                                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #000080;">Get Started</a>
+                                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #000080; padding: 0.4rem 1rem; font-size: 0.8rem;">Get Started</a>
                                 </div>
                             </div>
-                            <div class="footer-grid">
+                            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
                                 <div>
                                     <a href="index.html" class="logo footer-logo">
                                         <i class="fas fa-rocket"></i> Bharat2Business
