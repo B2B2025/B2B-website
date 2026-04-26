@@ -120,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <h4>Platform</h4>
                                     <ul>
                                         <li><a href="about.html">Our Story</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
                                     </ul>
                                 </div>
                                 <div class="footer-links">
@@ -130,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <li><a href="terms-msme.html">Terms of Service: MSME</a></li>
                                         <li><a href="terms-experts.html">Terms of Service: Experts</a></li>
                                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
                                     </ul>
                                 </div>
                                 <div class="footer-links">
