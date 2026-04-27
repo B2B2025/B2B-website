@@ -435,9 +435,9 @@ section {
 }
 
 .hero-glyph {
-    opacity: 0.35;
+    color: #000080;
     font-size: 0.8em;
-    font-weight: 300;
+    font-weight: 700;
     margin: 0 0.2rem;
     vertical-align: middle;
 }
@@ -460,15 +460,15 @@ section {
 
 .hero-microcopy {
     font-size: 0.9rem;
-    color: var(--text-muted);
-    opacity: 0.8;
+    color: #334155;
     margin-bottom: 2.5rem;
     display: block;
+    font-weight: 600;
 }
 
 .hero p {
     font-size: 1.25rem;
-    color: var(--text-muted);
+    color: #334155;
     margin-bottom: 2.5rem;
     max-width: 700px;
     margin-left: auto;
@@ -486,10 +486,9 @@ section {
 .hero-subtext {
     font-size: 1.15rem !important;
     line-height: 1.7 !important;
-    color: var(--text-muted) !important;
+    color: #334155 !important;
     max-width: 850px !important;
     margin-bottom: 2rem !important;
-    opacity: 0.9;
 }
 
 /* Hero Trust Row */
@@ -506,15 +505,14 @@ section {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 600;
+    color: #0f172a;
+    font-weight: 700;
     font-size: 0.95rem;
 }
 
 .trust-item i {
     color: #000080;
     font-size: 1.2rem;
-    opacity: 0.9;
 }
 
 @media (max-width: 768px) {
@@ -6008,7 +6006,9 @@ footer {
 
 /* ── Global Mobile Refinements ── */
 @media (max-width: 992px) {
-    .work-row, .alternate-row {
+
+    .work-row,
+    .alternate-row {
         flex-direction: column !important;
         gap: 3rem;
         text-align: center;
@@ -6025,7 +6025,8 @@ footer {
         order: 1;
     }
 
-    .work-row.reverse, .alternate-row:nth-child(even) {
+    .work-row.reverse,
+    .alternate-row:nth-child(even) {
         flex-direction: column !important;
     }
 
@@ -6053,7 +6054,8 @@ footer {
         width: 100%;
     }
 
-    .hero-btns .btn-cta, .hero-btns .btn-outline {
+    .hero-btns .btn-cta,
+    .hero-btns .btn-outline {
         width: 100%;
         text-align: center;
         justify-content: center;
@@ -6083,5 +6085,132 @@ footer {
 
     .navbar .logo {
         font-size: 1.2rem;
+    }
+}
+
+/* Language Animation */
+.language-animation-container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.globe-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    z-index: 5;
+}
+
+.globe-india {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(37, 99, 235, 0.15);
+    position: relative;
+    z-index: 10;
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(0, 0, 128, 0.05);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.orbit-1 {
+    width: 320px;
+    height: 320px;
+    animation: rotateOrbit 25s linear infinite;
+}
+
+.orbit-2 {
+    width: 480px;
+    height: 480px;
+    animation: rotateOrbit 35s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 640px;
+    height: 640px;
+    animation: rotateOrbit 45s linear infinite;
+}
+
+.lang-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(var(--angle));
+}
+
+.lang-label-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(calc(-1 * var(--angle)));
+}
+
+.lang-label {
+    display: inline-block;
+    background: transparent;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000080;
+    white-space: nowrap;
+}
+
+.orbit-1 .lang-label {
+    animation: counterOrbitNormal 25s linear infinite;
+}
+
+.orbit-2 .lang-label {
+    /* Orbit 2 is reversed, so counter-rotation must also be reversed */
+    animation: counterOrbitReverse 35s linear infinite;
+}
+
+.orbit-3 .lang-label {
+    animation: counterOrbitNormal 45s linear infinite;
+}
+
+@keyframes rotateOrbit {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes counterOrbitNormal {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes counterOrbitReverse {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }
