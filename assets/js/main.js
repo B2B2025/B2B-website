@@ -210,9 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let phrases;
 
             if (msmeHeader) {
-                phrases = ["Running MSME is Hard.", "Compliance is Confusing.", "Schemes are Scattered.", "You Need a Digital Partner."];
+                phrases = ["Running an MSME is hard.", "Compliance shouldn't be confusing.", "Schemes are all over the place.", "You deserve a digital partner."];
             } else if (expertsHeader) {
-                phrases = ["No Cold Outreach.", "Get Qualified MSME Leads.", "Earn Transparently.", "Get Paid Instantly."];
+                phrases = ["Help India's MSMEs grow.", "Verified leads, no cold calls.", "Focus on solving, not selling.", "Get paid for your expertise."];
             } else {
                 phrases = [
                     "Empower.", 
@@ -1212,7 +1212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initPersonaSelector() {
             const pills = document.querySelectorAll('.persona-pill');
             const contents = document.querySelectorAll('.persona-content');
-            const headline = document.getElementById('persona-dynamic-headline');
+            const dynamicHeadline = document.getElementById('persona-dynamic-headline');
             const mobileSelect = document.getElementById('persona-mobile-select');
 
             if (!pills.length || !contents.length) return;
