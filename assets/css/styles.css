@@ -7646,6 +7646,9 @@ footer {
     gap: 8px;
     font-size: 0.83rem;
     color: #475569;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .mf-bullets li i {
     color: #000080;
