@@ -377,6 +377,7 @@
     object-position: center 50%;
 }
 
+
 .founder-content {
     flex: 1;
 }
@@ -586,20 +587,14 @@
     grid-column: span 1;
 }
 
-@media (min-width: 993px) {
-    .principles-grid>div:nth-child(4) {
-        grid-column: 2 / span 2;
-    }
-
-    .principles-grid>div:nth-child(5) {
-        grid-column: 4 / span 2;
-    }
-}
 
 @media (max-width: 992px) {
     .principles-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+    }
+    .principle-item {
+        grid-column: span 1;
     }
 }
 
