@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.initHeroTyping();
                 this.initAppTyping();
                 this.initSchemesAnimation();
-                this.initExposAnimation();
+                this.initBusinessAssistantAnimation();
+                this.initDigitalAssistantAnimation();
                 this.initCounters();
                 this.initTestimonialCarousel();
                 this.initNewsletterForm();
@@ -387,41 +388,228 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(type, 1000);
         },
 
-        initExposAnimation() {
-            const screen = document.getElementById('expos-screen');
+        initBusinessAssistantAnimation() {
+            const screen = document.getElementById('ba-screen');
             if (!screen) return;
-            const search = document.getElementById('expos-search');
-            const results = document.getElementById('expos-results');
-            const target = document.getElementById('expo-typing-target');
-            const phr = "Expos in Surat...";
-            let idx = 0;
 
-            const type = () => {
-                if (idx < phr.length) {
-                    if (idx === 0) target.textContent = "";
-                    target.textContent += phr.charAt(idx++);
-                    setTimeout(type, 100);
-                } else {
-                    setTimeout(showResults, 3000);
+            const views = {
+                v1: document.getElementById('ba-view-1'),
+                v2: document.getElementById('ba-view-2'),
+                v3: document.getElementById('ba-view-3'),
+                v4: document.getElementById('ba-view-4'),
+            };
+            const aiTyping    = document.getElementById('ba-ai-typing');
+            const aiReply     = document.getElementById('ba-ai-reply');
+            const escalateCta = document.getElementById('ba-escalate-cta');
+            const expertMsg1  = document.getElementById('ba-expert-msg-1');
+            const expertMsg2  = document.getElementById('ba-expert-msg-2');
+            const userReply   = document.getElementById('ba-user-reply');
+
+            const wait = ms => new Promise(r => setTimeout(r, ms));
+
+            const showView = (view) => {
+                Object.values(views).forEach(v => { if(v) v.style.display = 'none'; });
+                if (view) view.style.display = 'flex';
+            };
+
+            const runCycle = async () => {
+                // Reset
+                if (aiTyping)    aiTyping.style.display    = 'none';
+                if (aiReply)     aiReply.style.display     = 'none';
+                if (escalateCta) escalateCta.style.display = 'none';
+                if (expertMsg1)  expertMsg1.style.display  = 'none';
+                if (expertMsg2)  expertMsg2.style.display  = 'none';
+                if (userReply)   userReply.style.display   = 'none';
+
+                // SCREEN 1: User question visible, then AI typing
+                showView(views.v1);
+                await wait(1500);
+
+                if (aiTyping) aiTyping.style.display = 'flex';
+                await wait(1800);
+
+                if (aiTyping) aiTyping.style.display = 'none';
+                if (aiReply)  aiReply.style.display  = 'flex';
+                await wait(2000);
+
+                if (escalateCta) escalateCta.style.display = 'flex';
+                await wait(1800);
+
+                // SCREEN 2: Connecting
+                showView(views.v2);
+                await wait(3000);
+
+                // SCREEN 3: Expert Profile
+                showView(views.v3);
+                await wait(3500);
+
+                // SCREEN 4: Expert Chat
+                showView(views.v4);
+                await wait(1200);
+
+                if (expertMsg1) expertMsg1.style.display = 'flex';
+                await wait(2200);
+
+                if (expertMsg2) expertMsg2.style.display = 'flex';
+                await wait(2800);
+
+                if (userReply) userReply.style.display = 'flex';
+                await wait(4000);
+
+                // Loop
+                requestAnimationFrame(runCycle);
+            };
+
+            runCycle();
+        },
+
+        initDigitalAssistantAnimation() {
+            const screen = document.getElementById('da-screen');
+            if (!screen) return;
+
+            const viewHome      = document.getElementById('da-view-home');
+            const viewChat      = document.getElementById('da-view-chat');
+            const typingSpan    = document.getElementById('da-typing-span');
+            const typingInd     = document.getElementById('da-typing-indicator');
+            const aiResp1       = document.getElementById('da-ai-response');
+            const docList       = document.getElementById('da-doc-list');
+            const tipBox        = document.getElementById('da-tip-box');
+            const followupQ     = document.getElementById('da-followup-q');
+            const typingInd2    = document.getElementById('da-typing-2');
+            const aiResp2       = document.getElementById('da-ai-response-2');
+            const inputField    = document.getElementById('da-input-field');
+            const inputPH       = document.getElementById('da-input-placeholder');
+            const criteriaItems = screen.querySelectorAll('.da-criteria-item');
+            const actionRow     = document.getElementById('da-action-row');
+            const chatBody      = document.getElementById('da-chat-body');
+
+            const searchQ   = 'Collateral loan docs - Maharashtra Co-op Society?';
+            const followupText = 'Can I qualify for CGTMSE collateral-free loan?';
+            const wait = ms => new Promise(r => setTimeout(r, ms));
+
+            const typeText = async (el, text, speed = 60) => {
+                el.textContent = '';
+                for (let i = 0; i < text.length; i++) {
+                    el.textContent += text[i];
+                    await wait(speed + Math.random() * 35);
                 }
             };
 
-            const showResults = () => {
-                if (search) search.style.display = 'none';
-                if (results) results.style.display = 'block';
-                setTimeout(reset, 6000);
+            const scrollBottom = () => {
+                if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
             };
 
-            const reset = () => {
-                idx = 0;
-                if (target) target.textContent = "Searching...";
-                if (search) search.style.display = 'flex';
-                if (results) results.style.display = 'none';
-                setTimeout(type, 1500);
+            const showView = view => {
+                [viewHome, viewChat].forEach(v => { if (v) v.style.display = 'none'; });
+                if (view) view.style.display = 'flex';
             };
 
-            setTimeout(type, 2000);
+            const resetAll = () => {
+                if (typingSpan)    typingSpan.textContent = '';
+                if (inputPH)       inputPH.textContent = 'Ask a follow-up...';
+                if (inputField)    inputField.style.color = '';
+                if (typingInd)     typingInd.style.display   = 'none';
+                if (aiResp1)       aiResp1.style.display      = 'none';
+                if (tipBox)        tipBox.style.display        = 'none';
+                if (followupQ)     followupQ.style.display     = 'none';
+                if (typingInd2)    typingInd2.style.display    = 'none';
+                if (aiResp2)       aiResp2.style.display       = 'none';
+                if (actionRow)     actionRow.style.display     = 'none';
+                if (chatBody)      chatBody.scrollTop          = 0;
+                criteriaItems.forEach(c => c.style.opacity = '0');
+                if (docList) docList.querySelectorAll('.da-doc-item').forEach(d => {
+                    d.style.animationName = 'none';
+                });
+            };
+
+            const runCycle = async () => {
+                resetAll();
+
+                // ── A: Home screen with typing ──────────────────────────
+                showView(viewHome);
+                await wait(1000);
+                await typeText(typingSpan, searchQ);
+                await wait(900);
+
+                // ── B: Chat opens — first Q already visible ─────────────
+                showView(viewChat);
+                await wait(500);
+
+                // AI typing indicator 1
+                if (typingInd) typingInd.style.display = 'flex';
+                scrollBottom();
+                await wait(1800);
+
+                // First AI response with staggered doc items
+                if (typingInd) typingInd.style.display = 'none';
+                if (aiResp1)   aiResp1.style.display   = 'flex';
+                if (docList) {
+                    docList.querySelectorAll('.da-doc-item').forEach((item, i) => {
+                        setTimeout(() => {
+                            item.style.animationName = '';
+                            item.style.animationDelay = `${i * 0.16}s`;
+                        }, i * 160);
+                    });
+                }
+                scrollBottom();
+                await wait(2800);
+
+                // Tip box slides in
+                if (tipBox) tipBox.style.display = 'flex';
+                scrollBottom();
+                await wait(2000);
+
+                // ── C: Follow-up — user types in the input bar ──────────
+                // Animate typing in the input field
+                if (inputField) inputField.style.color = '#94a3b8';
+                if (inputPH)    inputPH.textContent = '';
+                if (inputField) {
+                    // Fake-type into the input placeholder area
+                    const tmpEl = inputPH;
+                    for (let i = 0; i < followupText.length; i++) {
+                        await wait(52 + Math.random() * 30);
+                        if (tmpEl) tmpEl.textContent += followupText[i];
+                    }
+                }
+                await wait(600);
+
+                // "Send" — clear input, show user bubble
+                if (inputPH) inputPH.textContent = 'Ask a follow-up...';
+                if (inputField) inputField.style.color = '';
+                if (followupQ) followupQ.style.display = 'flex';
+                scrollBottom();
+                await wait(400);
+
+                // AI typing indicator 2
+                if (typingInd2) typingInd2.style.display = 'flex';
+                scrollBottom();
+                await wait(1600);
+
+                // Second AI response — criteria items stagger in
+                if (typingInd2) typingInd2.style.display = 'none';
+                if (aiResp2)    aiResp2.style.display    = 'flex';
+                criteriaItems.forEach((item, i) => {
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        item.style.opacity = '1';
+                    }, i * 350);
+                });
+                scrollBottom();
+                await wait(1800);
+
+                // Action buttons appear
+                if (actionRow) actionRow.style.display = 'flex';
+                scrollBottom();
+
+                // Hold so user can read
+                await wait(4500);
+
+                requestAnimationFrame(runCycle);
+            };
+
+            runCycle();
         },
+
 
         initCounters() {
             const counters = document.querySelectorAll('.number');

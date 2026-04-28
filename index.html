@@ -93,18 +93,21 @@
 
     <section id="works" class="works">
         <div class="container">
-            <!-- Digital Assistant -->
-            <div class="work-row">
-                <div class="work-text reveal-left">
-
-                    <h3>Ask Complex Questions.</h3>
-                    <p class="mt-1">Want to understand GST filing or decode the government’s latest policy
-                        for your sector? Our Digital Partner is trained on real MSME workflows, so you can ask anything
-                        and follow up until it truly makes sense.</p>
+            <!-- Business Assistant Chat -->
+            <div class="work-row reverse">
+                <div class="work-text reveal-right">
+                    <h3>Ask Complex Questions.<br>Get Expert Answers.</h3>
+                    <p class="mt-1">Your Business Assistant is trained on real MSME workflows — GST filings, government
+                        schemes, loans, licenses, and more. Ask in plain language. Get structured, actionable guidance
+                        instantly.</p>
                     <ul class="benefit-list">
                         <li class="benefit-item">
                             <i class="fas fa-check-circle text-primary"></i>
-                            <span>Real-time voice & text AI</span>
+                            <span>Real-time voice &amp; text AI</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Trained on real MSME workflows</span>
                         </li>
                         <li class="benefit-item">
                             <i class="fas fa-check-circle text-primary"></i>
@@ -112,288 +115,395 @@
                         </li>
                     </ul>
                 </div>
-                <div class="work-img reveal-right">
+                <div class="work-img reveal-left">
                     <div class="mobile-mockup">
-                        <div class="app-screen" id="app-home-screen">
-                            <!-- Header with Skyline -->
-                            <div class="app-header-layered">
-                                <div class="app-status-bar">
-                                    <span>3:24</span>
-                                    <div class="status-icons">
-                                        <i class="fas fa-wifi"></i>
-                                        <i class="fas fa-signal"></i>
-                                        <i class="fas fa-battery-full"></i>
+                        <div class="ba-screen" id="da-screen">
+
+                            <!-- SCREEN A: Home / Search Bar -->
+                            <div class="ba-view" id="da-view-home">
+                                <div class="ba-header">
+                                    <div class="ba-header-left">
+                                        <div class="ba-avatar-sm"
+                                            style="background: linear-gradient(135deg,#0f4c8a,#1d4ed8);">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <div>
+                                            <div class="ba-header-name">Business Assistant</div>
+                                            <div class="ba-header-status"><span class="ba-dot-online"></span> Ready to
+                                                help</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="app-top-nav">
-                                    <div class="menu-btn-round"><i class="fas fa-bars"></i></div>
-                                    <span class="user-greeting">Good Morning, <strong>Demo</strong></span>
-                                    <div class="nav-icons">
-                                        <span class="lang-tag-pill">EN</span>
-                                        <div class="settings-btn-round"><i class="fas fa-cog"></i></div>
-                                    </div>
-                                </div>
-                                <div class="mumbai-skyline"></div>
-                            </div>
-                            <!-- App Content -->
-                            <div class="app-body">
-                                <span class="app-section-title">Recommended for you</span>
-                                <div class="app-card">
-                                    <div class="card-icon-round"><i class="fas fa-chart-line"></i></div>
-                                    <div class="card-text">
-                                        <strong>Business Health</strong>
-                                        <span>Credit score updated today</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right chevron-right"></i>
-                                </div>
-                                <div class="app-pagination">
-                                    <span></span>
-                                    <span class="active"></span>
-                                    <span></span>
+                                    <div class="ba-header-actions"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
 
-                                <div class="app-search-container">
-                                    <div class="app-search-bar">
-                                        <i class="fas fa-search"></i>
-                                        <div class="typing-wrapper">
-                                            <span id="app-typing-target"></span><span class="app-cursor">|</span>
-                                        </div>
-                                        <i class="fas fa-microphone mic-icon"></i>
+                                <div class="da-home-body">
+                                    <div class="da-greeting">
+                                        <span class="da-greeting-sub">Good morning, Ramesh 👋</span>
+                                        <span class="da-greeting-main">What can I help you with today?</span>
                                     </div>
-                                    <p class="search-hint">Try: "Latest Budget Impact"</p>
+
+                                    <div class="da-search-box">
+                                        <i class="fas fa-search da-search-icon"></i>
+                                        <span class="da-typing-target" id="da-typing-span"></span><span
+                                            class="da-cursor">|</span>
+                                        <i class="fas fa-microphone da-mic-icon"></i>
+                                    </div>
+
+                                    <div class="da-quick-chips">
+                                        <span class="da-chip-quick">GST Filing</span>
+                                        <span class="da-chip-quick active">Loans</span>
+                                        <span class="da-chip-quick">PMEGP</span>
+                                        <span class="da-chip-quick">Export</span>
+                                    </div>
+
+                                    <div class="da-recent-title">Recent topics</div>
+                                    <div class="da-recent-list">
+                                        <div class="da-recent-item">
+                                            <i class="fas fa-file-invoice-dollar"></i>
+                                            <span>GST return filing deadline</span>
+                                            <i class="fas fa-chevron-right da-arrow"></i>
+                                        </div>
+                                        <div class="da-recent-item">
+                                            <i class="fas fa-handshake"></i>
+                                            <span>MSME Samadhan process</span>
+                                            <i class="fas fa-chevron-right da-arrow"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SCREEN B: Chat Response -->
+                            <div class="ba-view" id="da-view-chat" style="display:none;">
+                                <div class="ba-header">
+                                    <div class="ba-header-left">
+                                        <i class="fas fa-arrow-left"
+                                            style="color:#64748b; margin-right:10px; cursor:pointer;"></i>
+                                        <div class="ba-avatar-sm"
+                                            style="background: linear-gradient(135deg,#0f4c8a,#1d4ed8);">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <div>
+                                            <div class="ba-header-name">Business Assistant</div>
+                                            <div class="ba-header-status"><span class="ba-dot-online"></span> Online
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ba-header-actions"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
 
-                                <div class="help-grid-title">How can I help you today?</div>
-                                <div class="help-grid">
-                                    <div class="help-item">
-                                        <div class="help-item-text">
-                                            <strong>Apply for a Business Loan</strong>
-                                            <span>Up to ₹50L</span>
-                                        </div>
-                                        <i class="fas fa-chevron-right"></i>
+                                <div class="ba-chat-body" id="da-chat-body">
+                                    <!-- User question -->
+                                    <div class="ba-msg-row user">
+                                        <div class="ba-bubble user">What documents do I need for a collateral loan from
+                                            a cooperative society in Maharashtra?</div>
                                     </div>
-                                    <div class="help-item">
-                                        <div class="help-item-text">
-                                            <strong>Find Subsidies</strong>
-                                            <span>Central & State</span>
-                                        </div>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- AI RESPONSE SCREEN (DIGITAL ASSISTANT) -->
-                        <div class="app-screen-ai" id="app-ai-screen" style="display: none;">
-                            <div class="ai-header-fixed">
-                                <i class="fas fa-arrow-left" id="ai-back"></i>
-                                <span>Digital Assistant</span>
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <div class="ai-chat-body-scroller">
-                                <div class="chat-bubble-user-app">How to file GST?</div>
-                                <div class="chat-bubble-ai-app">
-                                    <div class="ai-avatar-circle">
-                                        <i class="fas fa-robot"></i>
+                                    <!-- Typing indicator -->
+                                    <div class="ba-msg-row ai" id="da-typing-indicator" style="display:none;">
+                                        <div class="ba-bubble ai">
+                                            <div class="ba-typing-dots"><span></span><span></span><span></span></div>
+                                        </div>
                                     </div>
-                                    <div class="ai-message-content">
-                                        <div id="ai-response-text"></div>
-                                        <span class="ai-cursor">|</span>
+
+                                    <!-- AI Response -->
+                                    <div class="ba-msg-row ai" id="da-ai-response" style="display:none;">
+                                        <div class="ba-bubble ai da-response-bubble">
+                                            <div class="da-response-label"><i class="fas fa-bolt"></i> Business
+                                                Assistant</div>
+                                            <p class="da-response-intro">For a <strong>collateral loan from a
+                                                    Maharashtra Co-op Society</strong>, here's what you'll need:</p>
+                                            <div class="da-doc-list" id="da-doc-list">
+                                                <div class="da-doc-item" style="animation-delay:0.1s">
+                                                    <div class="da-doc-icon"><i class="fas fa-id-card"></i></div>
+                                                    <div><strong>KYC Documents</strong><span>PAN, Aadhaar, 2 passport
+                                                            photos</span></div>
+                                                </div>
+                                                <div class="da-doc-item" style="animation-delay:0.3s">
+                                                    <div class="da-doc-icon"><i class="fas fa-certificate"></i></div>
+                                                    <div><strong>Udyam Registration</strong><span>Mandatory for MSME
+                                                            benefits</span></div>
+                                                </div>
+                                                <div class="da-doc-item" style="animation-delay:0.5s">
+                                                    <div class="da-doc-icon"><i class="fas fa-file-alt"></i></div>
+                                                    <div><strong>7/12 Extract &amp; Index-II</strong><span>Property
+                                                            papers (Maharashtra-specific)</span></div>
+                                                </div>
+                                                <div class="da-doc-item" style="animation-delay:0.7s">
+                                                    <div class="da-doc-icon"><i class="fas fa-chart-bar"></i></div>
+                                                    <div><strong>Financials (2–3 yrs)</strong><span>P&amp;L, Balance
+                                                            Sheet, ITR, Bank Statements</span></div>
+                                                </div>
+                                                <div class="da-doc-item" style="animation-delay:0.9s">
+                                                    <div class="da-doc-icon"><i class="fas fa-home"></i></div>
+                                                    <div><strong>Collateral Papers</strong><span>Title deed, valuation
+                                                            report, non-encumbrance cert</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="da-tip-box" id="da-tip-box" style="display:none;">
+                                                <i class="fas fa-lightbulb"></i>
+                                                <span>Up to ₹2 Cr may qualify as <strong>collateral-free</strong> under
+                                                    CGTMSE. Want me to check your eligibility?</span>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <!-- Follow-up: User question 2 -->
+                                    <div class="ba-msg-row user" id="da-followup-q" style="display:none;">
+                                        <div class="ba-bubble user">Yes! Can I check if my business qualifies for CGTMSE
+                                            collateral-free?</div>
+                                    </div>
+
+                                    <!-- Follow-up: Typing indicator 2 -->
+                                    <div class="ba-msg-row ai" id="da-typing-2" style="display:none;">
+                                        <div class="ba-bubble ai">
+                                            <div class="ba-typing-dots"><span></span><span></span><span></span></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Follow-up: AI Response 2 -->
+                                    <div class="ba-msg-row ai" id="da-ai-response-2" style="display:none;">
+                                        <div class="ba-bubble ai da-response-bubble">
+                                            <div class="da-response-label"><i class="fas fa-bolt"></i> Business
+                                                Assistant</div>
+                                            <p class="da-response-intro">Quick check — your business likely qualifies
+                                                if:</p>
+                                            <div class="da-criteria-list">
+                                                <div class="da-criteria-item da-c-yes" id="da-c1">
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <div><strong>Registered MSME</strong><span>Udyam certificate
+                                                            required</span></div>
+                                                </div>
+                                                <div class="da-criteria-item da-c-yes" id="da-c2">
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <div><strong>Loan ≤ ₹2 Crore</strong><span>From a Member Lending
+                                                            Institution</span></div>
+                                                </div>
+                                                <div class="da-criteria-item da-c-check" id="da-c3">
+                                                    <i class="fas fa-clock"></i>
+                                                    <div><strong>No existing default</strong><span>CIBIL score &amp;
+                                                            clean repayment history</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="da-action-row" id="da-action-row" style="display:none;">
+                                                <button class="da-action-btn primary"><i class="fas fa-search"></i>
+                                                    Check Full Eligibility</button>
+                                                <button class="da-action-btn secondary"><i class="fas fa-share-alt"></i>
+                                                    Share with CA</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="ba-input-bar" id="da-input-bar">
+                                    <div class="ba-input-field" id="da-input-field"><span id="da-input-placeholder">Ask
+                                            a follow-up...</span></div>
+                                    <button class="ba-send-btn"><i class="fas fa-paper-plane"></i></button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Government Schemes -->
+            <!-- Business Assistant → Expert Handoff -->
             <div class="work-row">
                 <div class="work-text reveal-left">
-                    <h3>Government Schemes for You.</h3>
-                    <p>Unsure which subsidies, credit programs, or incentives apply to your business? Bharat2Business
-                        analyzes your business profile and highlights schemes you qualify for so you don’t miss
-                        opportunities meant for you.</p>
+                    <h3>Your Business Assistant.<br>Your Expert Network.</h3>
+                    <p>Start with AI, escalate to a verified expert seamlessly. Your Business Assistant understands your
+                        problem, then connects you to the right professional who already knows the full context.</p>
                     <ul class="benefit-list">
                         <li class="benefit-item">
                             <i class="fas fa-check-circle text-primary"></i>
-                            <span>Instant eligibility analysis</span>
+                            <span>AI-to-expert handoff with full context summary</span>
                         </li>
                         <li class="benefit-item">
                             <i class="fas fa-check-circle text-primary"></i>
-                            <span>Personalized subsidy matching</span>
+                            <span>In-app calls, chat & milestone tracking</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Verified lawyers, CAs & compliance experts</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Pay only when milestones are completed</span>
                         </li>
                     </ul>
                 </div>
                 <div class="work-img reveal-right">
                     <div class="mobile-mockup">
-                        <div class="app-screen" id="schemes-home-screen">
-                            <div class="schemes-header">
-                                <i class="fas fa-arrow-left"></i>
-                                <span>Government Schemes</span>
-                                <i class="fas fa-ellipsis-v schemes-options-icon"></i>
-                            </div>
+                        <div class="ba-screen" id="ba-screen">
 
-                            <div class="schemes-body">
-                                <!-- STATE 1: Banner + Input -->
-                                <div id="schemes-wizard" class="schemes-wizard-content">
-                                    <div class="udyam-input-box">
-                                        <i class="fas fa-id-card"></i>
-                                        <span id="udyam-typing-target">Enter Udyam Number</span>
-                                    </div>
-                                    <div class="app-card schemes-card-spacer">
-                                        <div class="card-text">
-                                            <strong>Annual Turnover</strong>
-                                            <span>₹2.5 Crores</span>
-                                        </div>
-                                        <i class="fas fa-chevron-down opacity-30" style="margin-left: auto;"></i>
-                                    </div>
-                                    <button class="btn-cta schemes-check-btn">Check
-                                        Eligibility</button>
-                                </div>
-
-                                <!-- STATE 2: Loader -->
-                                <div id="schemes-loader" class="schemes-loader" style="display: none;">
-                                    <div class="ios-loader">
-                                        <div class="ios-spinner">
-                                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-                                        </div>
-                                    </div>
-                                    <p class="loader-text">Matching your profile...</p>
-                                </div>
-
-                                <!-- STATE 3: Banner + Results -->
-                                <div id="schemes-results" style="display: none;">
-                                    <div class="eligibility-banner">
-                                        <i class="fas fa-check-circle eligible-icon"></i>
-                                        <p>You are eligible for 2 central schemes!</p>
-                                    </div>
-                                    <div class="schemes-list schemes-list-container">
-                                        <div class="scheme-card-item">
-                                            <span class="scheme-tag">ELIGIBLE</span>
-                                            <strong class="scheme-name">PMEGP
-                                                Loan Scheme</strong>
-                                            <p class="scheme-desc">Get up to 35% subsidy on
-                                                credit.</p>
-                                        </div>
-                                        <div class="scheme-card-item">
-                                            <span class="scheme-tag">ELIGIBLE</span>
-                                            <strong class="scheme-name">CLCSS
-                                                Technology</strong>
-                                            <p class="scheme-desc">15% capital subsidy for
-                                                upgrades.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trade Shows -->
-            <div class="work-row">
-                <div class="work-text">
-                    <h3>Trade Shows & Opportunities.</h3>
-                    <p>Looking to expand beyond your local market? Find relevant trade shows, expos, and industry events
-                        tailored to your sector and explore new customers, suppliers, and partnerships with confidence.
-                    </p>
-                    <ul class="benefit-list">
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Curated expos and industry meets near you</span>
-                        </li>
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Expand your reach to national and global markets</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="work-img reveal-right">
-                    <div class="mobile-mockup">
-                        <div class="app-screen" id="expos-screen">
-                            <div class="schemes-header">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Events & Trade Shows</span>
-                                <i class="fas fa-search schemes-options-icon"></i>
-                            </div>
-
-                            <div class="expos-body">
-                                <!-- STATE 1: Searching -->
-                                <div id="expos-search" class="expos-search-ui">
-                                    <div class="search-entry-pill">
-                                        <i class="fas fa-search"></i>
-                                        <span id="expo-typing-target">Expos in Pune</span>
-                                    </div>
-                                    <div class="discovery-pulse-container">
-                                        <div class="location-pulse"></div>
-                                        <div class="flag-mini f-1"><i class="fas fa-flag"></i></div>
-                                        <div class="flag-mini f-2"><i class="fas fa-flag"></i></div>
-                                        <div class="flag-mini f-3"><i class="fas fa-flag"></i></div>
-                                        <p class="discovery-text">Finding nearby opportunities...</p>
-                                    </div>
-                                </div>
-
-                                <!-- STATE 2: Results -->
-                                <div id="expos-results" class="event-list" style="display: none;">
-                                    <!-- Event 1 -->
-                                    <div class="event-item">
-                                        <div class="event-date-tag">15<br>FEB</div>
-                                        <div class="event-details">
-                                            <span class="event-name">Global Textile Expo 2026</span>
-                                            <div class="event-meta">
-                                                <span class="event-location-chip">Surat</span>
-                                                <span class="event-type">B2B Exhibition</span>
+                            <!-- SCREEN 1: AI Chat -->
+                            <div class="ba-view" id="ba-view-1">
+                                <div class="ba-header">
+                                    <div class="ba-header-left">
+                                        <div class="ba-avatar-sm"
+                                            style="background:linear-gradient(135deg,#0f4c8a,#1d4ed8);"><i
+                                                class="fas fa-headset"></i></div>
+                                        <div>
+                                            <div class="ba-header-name">Business Assistant</div>
+                                            <div class="ba-header-status"><span class="ba-dot-online"></span> Online
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Event 2 -->
-                                    <div class="event-item">
-                                        <div class="event-date-tag">22<br>FEB</div>
-                                        <div class="event-details">
-                                            <span class="event-name">MSME Tech Summit Bharat</span>
-                                            <div class="event-meta">
-                                                <span class="event-location-chip">Delhi</span>
-                                                <span class="event-type">Tech Sourcing</span>
-                                            </div>
+                                    <div class="ba-header-actions">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </div>
+                                </div>
+                                <div class="ba-chat-body" id="ba-chat-body-1">
+                                    <div class="ba-msg-row user">
+                                        <div class="ba-bubble user">My GST payments are delayed by a buyer. How do I use
+                                            MSME Samadhan to recover?</div>
+                                    </div>
+                                    <div class="ba-msg-row ai" id="ba-ai-typing" style="display:none;">
+                                        <div class="ba-bubble ai">
+                                            <div class="ba-typing-dots"><span></span><span></span><span></span></div>
                                         </div>
                                     </div>
-                                    <!-- Event 3 -->
-                                    <div class="event-item">
-                                        <div class="event-date-tag">05<br>MAR</div>
-                                        <div class="event-details">
-                                            <span class="event-name">Auto Spares Sourcing Fair</span>
-                                            <div class="event-meta">
-                                                <span class="event-location-chip">Pune</span>
-                                                <span class="event-type">Supplier Meet</span>
+                                    <div class="ba-msg-row ai" id="ba-ai-reply" style="display:none;">
+                                        <div class="ba-bubble ai">
+                                            MSME Samadhan is a govt portal to file delayed payment cases against buyers.
+                                            <div class="ba-info-chips">
+                                                <div class="ba-chip"><i class="fas fa-file-alt"></i> Valid Invoice
+                                                    needed</div>
+                                                <div class="ba-chip"><i class="fas fa-id-card"></i> Udyam Registration
+                                                </div>
                                             </div>
+                                            This can get complex — would you like me to <strong>connect you with a
+                                                verified MSME lawyer?</strong>
                                         </div>
+                                    </div>
+                                    <div class="ba-escalate-cta" id="ba-escalate-cta" style="display:none;">
+                                        <button class="ba-btn-yes" id="ba-btn-yes"><i class="fas fa-check"></i> Yes,
+                                            connect me</button>
+                                        <button class="ba-btn-no">Not now</button>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- SCREEN 2: Connecting fullscreen -->
+                            <div class="ba-view" id="ba-view-2" style="display:none;">
+                                <div class="ba-connecting-screen">
+                                    <div class="ba-connect-rings">
+                                        <div class="ba-ring r1"></div>
+                                        <div class="ba-ring r2"></div>
+                                        <div class="ba-ring r3"></div>
+                                        <div class="ba-connect-avatar"><i class="fas fa-user-tie"></i></div>
+                                    </div>
+                                    <div class="ba-connect-label">Finding verified MSME expert...</div>
+                                    <div class="ba-connect-sub">Matching based on your case type</div>
+                                    <div class="ba-connect-pills">
+                                        <span class="ba-pill active">MSME Law</span>
+                                        <span class="ba-pill">Delayed Payments</span>
+                                        <span class="ba-pill">Samadhan Portal</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SCREEN 3: Expert Profile -->
+                            <div class="ba-view" id="ba-view-3" style="display:none;">
+                                <div class="ba-expert-profile">
+                                    <div class="ba-profile-glow"></div>
+                                    <div class="ba-profile-badge">✓ Verified Expert</div>
+                                    <div class="ba-expert-avatar-lg">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div class="ba-expert-name">Adv. Prakash Shah</div>
+                                    <div class="ba-expert-title">MSME Legal Specialist</div>
+                                    <div class="ba-expert-stats">
+                                        <div class="ba-stat"><strong>8+</strong><span>Years Exp.</span></div>
+                                        <div class="ba-stat-divider"></div>
+                                        <div class="ba-stat"><strong>4.9 ★</strong><span>Rating</span></div>
+                                        <div class="ba-stat-divider"></div>
+                                        <div class="ba-stat"><strong>200+</strong><span>Cases Won</span></div>
+                                    </div>
+                                    <div class="ba-expert-tags">
+                                        <span>MSME Samadhan</span><span>Delayed Payments</span><span>Legal
+                                            Notices</span>
+                                    </div>
+                                    <div class="ba-connect-btn">Connect to Adv. Prakash Shah <i
+                                            class="fas fa-arrow-right"></i></div>
+                                </div>
+                            </div>
+
+                            <!-- SCREEN 4: Expert Chat (with AI summary + milestones) -->
+                            <div class="ba-view" id="ba-view-4" style="display:none;">
+                                <div class="ba-header">
+                                    <div class="ba-header-left">
+                                        <div class="ba-avatar-sm expert"><i class="fas fa-user-tie"></i></div>
+                                        <div>
+                                            <div class="ba-header-name">Adv. Prakash Shah</div>
+                                            <div class="ba-header-status"><span class="ba-dot-online"></span> Connected
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ba-call-actions">
+                                        <button class="ba-call-btn audio" title="Voice Call"><i
+                                                class="fas fa-phone"></i></button>
+                                        <button class="ba-call-btn video" title="Video Call"><i
+                                                class="fas fa-video"></i></button>
+                                    </div>
+                                </div>
+                                <div class="ba-chat-body">
+                                    <!-- AI Summary Banner -->
+                                    <div class="ba-summary-banner">
+                                        <div class="ba-summary-icon"><i class="fas fa-robot"></i></div>
+                                        <div class="ba-summary-text">
+                                            <strong>AI Case Summary</strong>
+                                            <p>Buyer delayed payment · Udyam verified · Needs Samadhan filing</p>
+                                        </div>
+                                    </div>
+                                    <!-- Expert messages -->
+                                    <div class="ba-msg-row ai" id="ba-expert-msg-1" style="display:none;">
+                                        <div class="ba-avatar-xs expert"><i class="fas fa-user-tie"></i></div>
+                                        <div class="ba-bubble ai">
+                                            Hello! I've reviewed your case. Based on your Udyam certificate and
+                                            invoices, you have a strong case under MSME Samadhan.
+                                        </div>
+                                    </div>
+                                    <div class="ba-msg-row ai" id="ba-expert-msg-2" style="display:none;">
+                                        <div class="ba-avatar-xs expert"><i class="fas fa-user-tie"></i></div>
+                                        <div class="ba-bubble ai">
+                                            I'll handle this in 3 structured steps:
+                                            <div class="ba-milestone-plan">
+                                                <div class="ba-mp-step done">
+                                                    <div class="ba-mp-dot"></div>
+                                                    <div><strong>Case Review & Notice</strong><span>₹1,500 · 2
+                                                            days</span></div>
+                                                </div>
+                                                <div class="ba-mp-step active">
+                                                    <div class="ba-mp-dot"></div>
+                                                    <div><strong>MSME Portal Filing</strong><span>₹2,000 · 3 days</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ba-mp-step">
+                                                    <div class="ba-mp-dot"></div>
+                                                    <div><strong>Follow-up & Recovery</strong><span>₹1,500 · 7
+                                                            days</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ba-msg-row user" id="ba-user-reply" style="display:none;">
+                                        <div class="ba-bubble user">That looks perfect. Let's start!</div>
+                                    </div>
+                                </div>
+                                <div class="ba-input-bar">
+                                    <div class="ba-input-field"><span>Type a message...</span></div>
+                                    <button class="ba-send-btn"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Language Support -->
-            <div class="work-row">
-                <div class="work-text reveal-left">
-                    <h3>Business in your Language.</h3>
-                    <p>India is diverse, and so are our businesses. Bharat2Business is built to understand you in the
-                        language you are most comfortable with. From Hindi to Gujarati, Marathi to Tamil — speak, read,
-                        and grow in your mother tongue.</p>
-                    <ul class="benefit-list">
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Support for 12+ Indian languages</span>
-                        </li>
-                        <li class="benefit-item">
-                            <i class="fas fa-check-circle text-primary"></i>
-                            <span>Voice-first AI interactions</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="work-img reveal-right">
+            <div class="work-row reverse">
+                <div class="work-img reveal-left">
                     <div class="language-animation-container">
                         <div class="globe-wrapper">
                             <img src="assets/img/india-globe.png" alt="India Globe" class="globe-india">
@@ -453,6 +563,22 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="work-text reveal-right">
+                    <h3>Business in your Language.</h3>
+                    <p>India is diverse, and so are our businesses. Bharat2Business is built to understand you in the
+                        language you are most comfortable with. From Hindi to Gujarati, Marathi to Tamil — speak, read,
+                        and grow in your mother tongue.</p>
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Support for 12+ Indian languages</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Voice-first AI interactions</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
