@@ -133,15 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     </ul>
                                 </div>
-                                <div class="footer-links">
-                                    <h4>Newsletter</h4>
-                                    <p class="newsletter-desc">Stay updated with our latest news.</p>
-                                    <form class="newsletter-form" id="newsletter-form">
-                                        <input type="email" placeholder="Email" class="newsletter-input" id="newsletter-email" aria-label="Email Address" required>
-                                        <button type="submit" class="btn-cta newsletter-btn">Join</button>
-                                    </form>
-                                    <div id="newsletter-status" class="form-status"></div>
-                                </div>
                             </div>
                             <div class="footer-bottom">
                                 <p>&copy; 2026 Bharat2Business. Built In Bharat. For Bharat.</p>
@@ -210,9 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let phrases;
 
             if (msmeHeader) {
-                phrases = ["Running an MSME is hard.", "Compliance shouldn't be confusing.", "Schemes are all over the place.", "You deserve a digital partner."];
+                phrases = ["Running a business is hard.", "Compliance shouldn't be confusing.", "Schemes are all over the place.", "You deserve a Business Assistant."];
             } else if (expertsHeader) {
-                phrases = ["Help India's MSMEs grow.", "Verified leads, no cold calls.", "Focus on solving, not selling.", "Get paid for your expertise."];
+                phrases = ["Finding verified leads is hard.", "Verified leads, no cold calls.", "Focus on solving, not selling.", "Get paid for your expertise."];
             } else {
                 phrases = [
                     "Empower.", 
@@ -267,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const type = () => {
                 const currentPhrase = phrases[phraseIndex];
+                const isHeroTagline = !msmeHeader && !expertsHeader;
 
                 // Trigger map update at start of typing a new phrase
                 if (charIdx === 0 && !isDeleting) {
@@ -281,14 +273,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     charIdx++;
                 }
 
-                let typeSpeed = isDeleting ? 50 : 100;
+                let typeSpeed = isDeleting ? 30 : 60;
 
                 if (!isDeleting && charIdx === currentPhrase.length) {
-                    typeSpeed = 2000; // Pause at end
-                    isDeleting = true;
+                    // Cumulative reveal for Hero Tagline
+                    if (isHeroTagline && phraseIndex < phrases.length - 1) {
+                        phraseIndex++;
+                        // charIdx remains at the end of the previous phrase, 
+                        // which is the start of the new content in the next phrase.
+                        typeSpeed = 800; // Pause between words
+                    } else {
+                        typeSpeed = 1500; // Final pause
+                        isDeleting = true;
+                    }
                 } else if (isDeleting && charIdx === 0) {
                     isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    phraseIndex = 0;
                     typeSpeed = 500;
                 }
 

@@ -44,11 +44,11 @@
     padding: 0.6rem 1.4rem;
     border-radius: 100px;
     font-size: 0.85rem;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     display: inline-block;
-    margin-bottom: 1.5rem;
+    margin-bottom: 10px;
     border: 1px solid rgba(var(--primary-rgb), 0.05);
 }
 
@@ -312,7 +312,7 @@ section {
 
 .logo {
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--primary);
     display: flex;
     align-items: center;
@@ -439,8 +439,8 @@ section {
 
 .hero h1 {
     font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
 }
 
 .hero h1 span.typed-text {
@@ -629,7 +629,8 @@ section {
 }
 
 .parallax-title {
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .parallax-desc {
@@ -727,7 +728,7 @@ section {
 .badge-tag,
 .showcase-label {
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 0.85rem;
     color: #000080;
     letter-spacing: 2px;
@@ -737,8 +738,8 @@ section {
 
 .showcase-title {
     font-size: 3.5rem;
-    line-height: 1.1;
-    font-weight: 800;
+    line-height: 1.2;
+    font-weight: 700;
     color: #0f172a;
     margin-bottom: 2rem;
     letter-spacing: -1.5px;
@@ -938,7 +939,7 @@ section {
     padding: 3px 10px;
     border-radius: 20px;
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #000080;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -977,7 +978,7 @@ section {
 }
 
 .app-section-title {
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1rem;
     color: #1e293b;
     margin-bottom: 1rem;
@@ -1266,7 +1267,7 @@ section {
 }
 
 .help-grid-title {
-    font-weight: 800;
+    font-weight: 700;
     margin: 1.5rem 0 1rem;
     font-size: 1rem;
     color: #1e293b;
@@ -1325,7 +1326,7 @@ section {
 }
 
 .ai-header-fixed span {
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1rem;
     color: #0f172a;
     flex: 1;
@@ -1488,7 +1489,7 @@ section {
 }
 
 .schemes-header span {
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1rem;
     color: #0f172a;
 }
@@ -1735,7 +1736,7 @@ section {
     background: #ecfdf5;
     color: #10b981;
     font-size: 0.65rem;
-    font-weight: 800;
+    font-weight: 700;
     padding: 2px 8px;
     border-radius: 8px;
     display: inline-block;
@@ -1824,7 +1825,7 @@ section {
     padding: 8px 16px;
     border-radius: 50px;
     font-size: 0.85rem;
-    font-weight: 800;
+    font-weight: 700;
     border: 1px solid rgba(0, 0, 128, 0.1);
 }
 
@@ -2141,7 +2142,7 @@ section {
 
 .counter-item strong {
     font-size: 3.5rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--primary);
     line-height: 1;
 }
@@ -2159,7 +2160,7 @@ section {
     font-size: 0.8rem;
     color: var(--primary);
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 1px;
     opacity: 0.5;
     vertical-align: super;
@@ -2329,7 +2330,7 @@ footer {
 
 .footer-logo {
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     margin-bottom: 1.25rem;
     /* Slightly reduced */
@@ -2482,7 +2483,7 @@ footer {
 
 .eco-node span {
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -2629,7 +2630,7 @@ footer {
     text-align: center;
     margin-top: 1rem;
     font-size: 0.9rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 4px;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -3281,10 +3282,10 @@ footer {
     padding: 8px 6px;
     border-radius: 10px;
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 700;
     text-align: center;
     min-width: 45px;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 .event-details {
@@ -3486,7 +3487,7 @@ footer {
 .cta-text h3 {
     color: white;
     font-size: 2.25rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .cta-text p {
@@ -3811,7 +3812,7 @@ footer {
 
 .marquee-item span {
     font-size: 1.75rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #cbd5e1;
     letter-spacing: -0.5px;
     transition: var(--transition);
@@ -4479,7 +4480,7 @@ footer {
     font-size: 0.85rem;
     font-weight: 600;
     color: #000080;
-    margin-bottom: 1.5rem;
+    margin-bottom: 10px;
     border: 1px solid rgba(0, 0, 128, 0.1);
 }
 
@@ -4636,10 +4637,10 @@ footer {
 
 .msme-title {
     font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -2px;
-    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
     color: var(--primary);
 }
 
@@ -5050,7 +5051,7 @@ footer {
 
 .zone-tag {
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--primary);
@@ -5292,12 +5293,12 @@ footer {
 }
 
 .problem-header h2 {
-    font-size: 3.2rem;
-    font-weight: 800;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--secondary);
-    margin-bottom: 1.5rem;
-    letter-spacing: -2px;
-    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
 .problem-header p {
@@ -5314,12 +5315,12 @@ footer {
 }
 
 .section-header h2 {
-    font-size: 3.2rem;
-    font-weight: 800;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--secondary);
-    margin-bottom: 1.5rem;
-    letter-spacing: -2px;
-    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
 .section-header p {
@@ -5364,7 +5365,7 @@ footer {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 24px;
-    padding: 1.5rem 2rem;
+    padding: 0.85rem 2rem;
     min-width: 320px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
     display: flex;
@@ -5374,8 +5375,8 @@ footer {
 }
 
 .problem-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     background: rgba(0, 0, 128, 0.07);
     color: var(--primary);
     border-radius: 12px;
@@ -5398,7 +5399,7 @@ footer {
 
     .problem-header h2,
     .section-header h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .problem-card {
@@ -5413,8 +5414,8 @@ footer {
 
     .problem-header h2,
     .section-header h2 {
-        font-size: 2.1rem;
-        letter-spacing: -1px;
+        font-size: 1.8rem;
+        letter-spacing: -0.5px;
     }
 }
 
@@ -5625,7 +5626,7 @@ footer {
 
 .step-card h3 {
     font-size: 1.8rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--secondary);
     line-height: 1.2;
     margin: 0;
@@ -5865,8 +5866,8 @@ footer {
 
 .persona-content h3 {
     font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
     color: var(--secondary);
     letter-spacing: -0.5px;
 }
@@ -5967,7 +5968,7 @@ footer {
 
 .solution-header h2 {
     font-size: 2.8rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--secondary);
     margin-top: 1rem;
     letter-spacing: -1.5px;
@@ -8206,7 +8207,7 @@ footer {
 .bento-stat strong {
     display: block;
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #4ade80;
     line-height: 1;
 }
@@ -8235,7 +8236,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 0.65rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #fff;
     letter-spacing: 0.3px;
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -8590,7 +8591,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 0.62rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #fff;
     border: 2px solid #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -8738,7 +8739,7 @@ footer {
 .expert-match-animation .section-title h2 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -1px;
 }
 
@@ -8784,7 +8785,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.1rem;
 }
 
@@ -9061,3 +9062,49 @@ footer {
         padding: 1.25rem;
     }
 }
+
+/* Persona Section Benefits */
+.persona-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.persona-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+.persona-benefits li i {
+    color: #000080;
+    font-size: 0.45rem;
+    flex-shrink: 0;
+}
+
+
+/* Problem Card Tag */
+.problem-card {
+    position: relative; /* Ensure tag is relative to card */
+}
+
+.problem-tag {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 128, 0.05);
+    color: var(--primary);
+    opacity: 0.8;
+}
+
