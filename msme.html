@@ -45,19 +45,8 @@
                     government portals, paperwork, and unverified experts. Get AI-powered
                     guidance for schemes, compliance, financing, and expert support in one unified platform.
                     </p>
-                    <!-- Trust Row -->
-                    <div class="hero-trust-row" style="margin-top: 3rem;">
-                        <div class="trust-item">
-                            <span>AI Business Assistant</span>
-                        </div>
-                        <div class="trust-item">
-                            <span>Verified Experts</span>
-                        </div>
-                        <div class="trust-item">
-                            <span>Scheme Discovery</span>
-                        </div>
-                    </div>
                 </div>
+            </div>
             </div>
             <div class="section-separator-gradient"></div>
         </section>
@@ -272,7 +261,17 @@
                 </div>
 
                 <div class="persona-selector-wrapper reveal-up">
-                    <div class="persona-chips-scroll shadow-sm">
+                    <!-- Mobile Select Dropdown -->
+                    <div class="persona-mobile-nav hidden-desktop">
+                        <select id="persona-mobile-select" class="form-select-premium shadow-sm">
+                            <option value="manufacturer">Manufacturer</option>
+                            <option value="trader">Trader</option>
+                            <option value="service">Service Business</option>
+                            <option value="startup">Startup</option>
+                        </select>
+                    </div>
+
+                    <div class="persona-chips-scroll shadow-sm visible-desktop">
                         <button class="persona-pill active" data-persona="manufacturer"
                             data-headline="Compliance • Subsidies • Operations Guidance">
                             <i class="fas fa-industry"></i> Manufacturer

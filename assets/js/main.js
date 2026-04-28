@@ -118,9 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <i class="fas fa-rocket"></i> Bharat2Business
                                     </a>
                                     <p class="footer-desc">Empower.Elevate.Expand.</p>
-                                    <div class="footer-social-icons" style="margin-top: 1.5rem;">
-                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="https://www.instagram.com/bharat2business/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <div class="footer-social-icons" style="margin-top: 1.5rem; display: flex; gap: 1.25rem;">
+                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank" style="font-size: 1.2rem; color: rgba(255,255,255,0.8); transition: color 0.3s ease;"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.instagram.com/bharat2business/" target="_blank" style="font-size: 1.2rem; color: rgba(255,255,255,0.8); transition: color 0.3s ease;"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
                                 <div class="footer-links">
@@ -1212,7 +1212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initPersonaSelector() {
             const pills = document.querySelectorAll('.persona-pill');
             const contents = document.querySelectorAll('.persona-content');
-            const dynamicHeadline = document.getElementById('persona-dynamic-headline');
+            const headline = document.getElementById('persona-dynamic-headline');
+            const mobileSelect = document.getElementById('persona-mobile-select');
 
             if (!pills.length || !contents.length) return;
 
@@ -1228,6 +1229,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         p.classList.remove('active');
                     }
                 });
+
+                // Sync mobile select
+                if (mobileSelect) {
+                    mobileSelect.value = persona;
+                }
 
                 // Update dynamic headline with fade effect
                 if (dynamicHeadline && headlineText) {
@@ -1258,11 +1264,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             pills.forEach(pill => {
                 const persona = pill.getAttribute('data-persona');
-
-                // Handle both click and hover for better responsiveness
                 pill.addEventListener('click', () => updatePersona(persona));
-                pill.addEventListener('mouseenter', () => updatePersona(persona));
             });
+
+            if (mobileSelect) {
+                mobileSelect.addEventListener('change', (e) => {
+                    updatePersona(e.target.value);
+                });
+            }
         },
 
         // --- Journey Lifecycle Animation (Scroll-based) ---

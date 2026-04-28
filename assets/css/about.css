@@ -597,30 +597,23 @@
 
 @media (max-width: 992px) {
     .principles-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .principle-item {
-        grid-column: span 2;
-    }
-
-    .principles-grid>div:nth-child(5) {
-        grid-column: 2 / span 2;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 768px) {
     .principles-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 
     .principle-item {
-        grid-column: span 1 !important;
+        padding: 2rem 1.5rem;
     }
 
-    .principles-grid>div:nth-child(4),
-    .principles-grid>div:nth-child(5) {
-        grid-column: span 1 !important;
+    .principle-item h3 {
+        font-size: 1.35rem;
     }
 }
 
@@ -681,4 +674,61 @@
 .purpose-section .container {
     max-width: 1100px;
     margin: 0 auto;
+}
+
+/* --- Purpose Manifesto (High Impact) --- */
+.purpose-manifesto {
+    max-width: 950px;
+    margin: 4rem auto 0;
+    text-align: center;
+    padding: 5rem 3rem;
+    background: var(--white);
+    border-radius: 48px;
+    box-shadow: 0 40px 80px rgba(0, 0, 128, 0.05);
+    border: 1px solid rgba(0, 0, 128, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.purpose-manifesto::before {
+    content: '"';
+    position: absolute;
+    top: -30px;
+    left: 40px;
+    font-size: 18rem;
+    color: rgba(0, 0, 128, 0.02);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+}
+
+.manifesto-text {
+    font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+    line-height: 1.5;
+    color: var(--secondary);
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.manifesto-highlight {
+    background: linear-gradient(120deg, rgba(0, 0, 128, 0.08) 0%, rgba(0, 0, 128, 0.08) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 88%;
+    font-weight: 700;
+    color: var(--primary);
+    padding: 0 0.2rem;
+}
+
+@media (max-width: 768px) {
+    .purpose-manifesto {
+        padding: 3.5rem 1.5rem;
+        border-radius: 32px;
+        margin-top: 2rem;
+    }
+    
+    .manifesto-text {
+        font-size: 1.35rem;
+        line-height: 1.45;
+    }
 }
