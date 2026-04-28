@@ -70,6 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (navbarArea) {
                 const isScrolledPage = ['msme.html', 'experts.html', 'about.html', 'contact.html', 'privacy-policy.html', 'terms-msme.html', 'terms-experts.html', 'usage-policy.html'].includes(currentPage);
+                const navCtaText = currentPage === 'experts.html' ? 'Join Network' : 'Get Started';
+                const navCtaHref = currentPage === 'experts.html' ? 'https://forms.gle/qWrV5uZdoeHvdiNd8' : 'contact.html';
+                const navCtaTarget = currentPage === 'experts.html' ? '_blank' : '_self';
                 const navClass = isScrolledPage ? 'navbar scrolled' : 'navbar';
 
                 navbarArea.innerHTML = `
@@ -83,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <li><a href="msme.html" class="nav-link ${currentPage === 'msme.html' ? 'active' : ''}">For MSMEs</a></li>
                                 <li><a href="experts.html" class="nav-link ${currentPage === 'experts.html' ? 'active' : ''}">For Experts</a></li>
                                 <li><a href="about.html" class="nav-link ${currentPage === 'about.html' ? 'active' : ''}">About</a></li>
-                                <li><a href="contact.html" class="btn-cta ${currentPage === 'contact.html' ? 'active' : ''}">Get Started</a></li>
+                                <li><a href="${navCtaHref}" target="${navCtaTarget}" class="btn-cta">${navCtaText}</a></li>
                             </ul>
                             <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
                                 <i class="fas fa-bars"></i>
@@ -94,6 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (footerArea) {
+                const footerCtaHref = 'https://forms.gle/qWrV5uZdoeHvdiNd8';
+                const footerCtaOnClick = '';
+
                 footerArea.innerHTML = `
                     <footer>
                         <div class="container">
@@ -103,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin: 0;">Start your journey with Bharat2Business today.</p>
                                 </div>
                                 <div class="cta-actions">
-                                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #000080; padding: 0.4rem 1rem; font-size: 0.8rem;">Get Started</a>
+                                    <a href="${footerCtaHref}" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #000080; padding: 0.4rem 1rem; font-size: 0.8rem;">Join Now</a>
                                 </div>
                             </div>
                             <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
@@ -799,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Live Match Engine Animation (Expert Matching) ---
         initMatchEngine() {
-            const container = document.querySelector('.live-match-card');
+            const container = document.querySelector('.live-match-card, .live-match-card-v2');
             if (!container) return;
 
             const scenarios = [

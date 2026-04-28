@@ -21,44 +21,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/global.css">
 
 </head>
 
 <body class="page-entrance">
     <div id="navbar-placeholder"></div>
 
-    <!-- Hero Section -->
-    <section class="hero" style="padding: 80px 0 50px; position: relative; overflow: hidden; min-height: auto;">
-        <!-- Premium Animated Background -->
+    <!-- Premium Expert Hero -->
+    <section class="msme-hero">
         <div class="hero-animated-bg"></div>
-
-        <div class="container" style="text-align: center; max-width: 1100px; position: relative; z-index: 1;">
-            <!-- Top Section: Headline + Subtext + CTA -->
-            <div style="margin-bottom: 2rem;">
-                <h1
-                    style="font-size: clamp(2.8rem, 6vw, 4rem); margin-bottom: 1rem; line-height: 1.1; letter-spacing: -2px; font-weight: 800; max-width: 900px; margin-left: auto; margin-right: auto;">
+        <div class="container msme-hero-container">
+            <div class="msme-hero-content">
+                <h1 class="msme-title">
                     <span id="experts-typing-header"></span><span class="msme-cursor">|</span>
                 </h1>
-                <p
-                    style="font-size: 1.125rem; max-width: 700px; margin: 0 auto 1.5rem; color: var(--text-muted); font-weight: 500; line-height: 1.6; opacity: 0.85;">
-                    Stop chasing fragmented leads. Get matched with verified MSMEs who are actively seeking expert
-                    guidance across compliance, credit, and growth.
+                <p class="msme-subtitle">
+                <h3><b>Monetize Your expertise. Help India's MSMEs grow.</b></h3><br>
+                Join the digital backbone of Bharat. Stop chasing fragmented leads and get matched with verified MSMEs who are actively seeking your guidance across compliance, credit, and growth.
                 </p>
-                <button id="hero-join-btn" class="btn-cta hero-cta" onclick="console.log('Hero Join click fired')">
-                    Join Network
-                </button>
+                <div style="margin-top: 2.5rem;">
+                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" id="hero-join-btn" class="btn-cta">
+                        Join Expert Network
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="section-separator-gradient"></div>
+    </section>
+
+    <!-- Expert Matchmaking Animation Section -->
+    <section class="expert-match-animation">
+        <div class="container">
+            <div class="section-title reveal-up">
+                <h2>The Pulse of the Network</h2>
+                <p style="max-width: 800px; margin: 1rem auto; color: var(--text-muted);">
+                    Our AI-powered engine works 24/7 to match your specific expertise with real-time requirements from businesses across Bharat.
+                </p>
             </div>
 
-            <!-- Live Match Engine Hero Card -->
-            <!-- Ecosystem Demo Card (Experts Context) -->
-            <div class="live-match-card">
+            <!-- Live Match Engine Card -->
+            <div class="live-match-card-v2 reveal-up">
                 <div class="msme-demo-grid">
                     <!-- Left: MSME Query -->
                     <div class="msme-demo-node msme-query">
                         <div class="demo-bubble">
                             <span id="demo-query-text"></span><span class="demo-cursor">|</span>
                         </div>
-                        <div class="demo-label">MSME Query</div>
+                        <div class="demo-label">MSME Requirement</div>
                     </div>
 
                     <!-- Center: AI Node -->
@@ -69,7 +79,7 @@
                                 <i class="fas fa-brain"></i>
                             </div>
                         </div>
-                        <div class="demo-label">Bharat2Business<br>Digital Partner</div>
+                        <div class="demo-label">B2B Matchmaking Engine</div>
                     </div>
 
                     <!-- Right: Expert Match -->
@@ -92,15 +102,15 @@
                                 <i class="fas fa-calendar-check"></i> Consultation Booked
                             </div>
                         </div>
-                        <div class="demo-label">Verified Expert</div>
+                        <div class="demo-label">Your Next Client</div>
                     </div>
                 </div>
 
                 <!-- SVG Connection Lines -->
                 <svg class="demo-svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet">
-                    <path id="demo-path-1" d="M 230,100 L 370,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
+                    <path id="demo-path-1" d="M 180,100 L 360,100" stroke="rgba(0, 0, 128, 0.1)" stroke-width="2"
                         stroke-dasharray="6,4" fill="none" />
-                    <path id="demo-path-2" d="M 430,100 L 570,100" stroke="rgba(37, 99, 235, 0.15)" stroke-width="2"
+                    <path id="demo-path-2" d="M 440,100 L 620,100" stroke="rgba(0, 0, 128, 0.1)" stroke-width="2"
                         stroke-dasharray="6,4" fill="none" />
                     <circle id="demo-dot" r="4" fill="var(--primary)"
                         style="opacity: 0; filter: drop-shadow(0 0 8px var(--primary));">
@@ -113,24 +123,25 @@
                 <!-- Trust Strip (Bottom Footer) -->
                 <div class="trust-strip">
                     <div class="trust-strip-item">
-                        <i class="fas fa-shield-alt trust-strip-icon"></i> Verified Experts
+                        <i class="fas fa-shield-alt trust-strip-icon"></i> 100% Verified Needs
                     </div>
                     <div class="trust-strip-item">
-                        <i class="fas fa-coins trust-strip-icon"></i> Transparent Commission
+                        <i class="fas fa-coins trust-strip-icon"></i> Guaranteed Payments
                     </div>
                     <div class="trust-strip-item">
-                        <i class="fas fa-bolt trust-strip-icon"></i> Instant Payouts
+                        <i class="fas fa-bolt trust-strip-icon"></i> Seamless Handoff
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="section-separator-gradient"></div>
     </section>
 
     <!-- Expert Timeline Section -->
     <section class="expert-timeline-section">
         <div class="container">
+            <div class="section-title reveal-up">
+                <h2>Simple Onboarding, Instant Results</h2>
+            </div>
             <div class="timeline-steps">
                 <!-- Responsive Progress Line -->
                 <div class="timeline-progress-bg"></div>
@@ -201,7 +212,6 @@
                 <div class="expertise-card reveal-up">
                     <div class="expertise-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Finance & Tax</h3>
-                    <p>Chartered Accountants and Auditors for GST filing, Income Tax, and financial auditing.</p>
                     <ul class="expertise-tags">
                         <li>GST Compliance</li>
                         <li>Audit</li>
@@ -212,7 +222,6 @@
                 <div class="expertise-card reveal-up delay-100">
                     <div class="expertise-icon"><i class="fas fa-gavel"></i></div>
                     <h3>Legal & Compliance</h3>
-                    <p>Legal consultants and Company Secretaries for business registration, IP, and licensing.</p>
                     <ul class="expertise-tags">
                         <li>Udyam</li>
                         <li>Trademark</li>
@@ -223,7 +232,6 @@
                 <div class="expertise-card reveal-up delay-200">
                     <div class="expertise-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3>Growth & Marketing</h3>
-                    <p>Strategists to help you build your brand, reach new customers, and expand your market.</p>
                     <ul class="expertise-tags">
                         <li>Digital Ads</li>
                         <li>Branding</li>
@@ -234,7 +242,6 @@
                 <div class="expertise-card reveal-up delay-300">
                     <div class="expertise-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Technology & IT</h3>
-                    <p>Experts in digital transformation, ERP systems, and secure business infrastructure.</p>
                     <ul class="expertise-tags">
                         <li>Web Dev</li>
                         <li>Cloud Ops</li>
@@ -245,7 +252,6 @@
                 <div class="expertise-card reveal-up delay-400">
                     <div class="expertise-icon"><i class="fas fa-industry"></i></div>
                     <h3>Operations & Manufacturing</h3>
-                    <p>Supply chain and manufacturing experts to optimize your production and logistics.</p>
                     <ul class="expertise-tags">
                         <li>Six Sigma</li>
                         <li>Inventory</li>
@@ -256,7 +262,6 @@
                 <div class="expertise-card reveal-up delay-500">
                     <div class="expertise-icon"><i class="fas fa-university"></i></div>
                     <h3>Credit, Funding & Banking</h3>
-                    <p>Consultants to help you navigate bank loans, venture capital, and working capital needs.</p>
                     <ul class="expertise-tags">
                         <li>Loans</li>
                         <li>Credit</li>
@@ -267,7 +272,6 @@
                 <div class="expertise-card reveal-up" style="transition-delay: 0.6s;">
                     <div class="expertise-icon"><i class="fas fa-tasks"></i></div>
                     <h3>Project Management</h3>
-                    <p>Experts to oversee your business expansions, factory setups, and digital transformations.</p>
                     <ul class="expertise-tags">
                         <li>Planning</li>
                         <li>Lifecycle</li>
@@ -278,7 +282,6 @@
                 <div class="expertise-card reveal-up" style="transition-delay: 0.7s;">
                     <div class="expertise-icon"><i class="fas fa-truck-moving"></i></div>
                     <h3>Supply Chain & Logistics</h3>
-                    <p>Optimizing flow of goods, warehousing, and transportation for efficiency.</p>
                     <ul class="expertise-tags">
                         <li>Warehousing</li>
                         <li>Freight</li>
@@ -289,7 +292,6 @@
                 <div class="expertise-card reveal-up" style="transition-delay: 0.8s;">
                     <div class="expertise-icon"><i class="fas fa-landmark"></i></div>
                     <h3>Government Schemes & Subsidy</h3>
-                    <p>Identifying and applying for relevant government grants and subsidies.</p>
                     <ul class="expertise-tags">
                         <li>PMEGP</li>
                         <li>Subsidy</li>
@@ -300,7 +302,6 @@
                 <div class="expertise-card reveal-up" style="transition-delay: 0.9s;">
                     <div class="expertise-icon"><i class="fas fa-globe"></i></div>
                     <h3>Export & International Trade</h3>
-                    <p>Guidance on export documentation, forex compliance, and international markets.</p>
                     <ul class="expertise-tags">
                         <li>IEC Code</li>
                         <li>Forex</li>
@@ -311,11 +312,20 @@
                 <div class="expertise-card reveal-up" style="transition-delay: 1.0s;">
                     <div class="expertise-icon"><i class="fas fa-users-cog"></i></div>
                     <h3>HR & Business Operations</h3>
-                    <p>Managing talent, payroll, and internal business policies.</p>
                     <ul class="expertise-tags">
                         <li>Payroll</li>
                         <li>Recruitment</li>
                         <li>Compliance</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card reveal-up" style="transition-delay: 1.1s;">
+                    <div class="expertise-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Sales & Strategy</h3>
+                    <ul class="expertise-tags">
+                        <li>Lead Gen</li>
+                        <li>CRM</li>
+                        <li>B2B Growth</li>
                     </ul>
                 </div>
             </div>
@@ -328,9 +338,9 @@
                         <p>Join our network of verified professionals to connect with MSMEs seeking your expertise.</p>
                     </div>
                     <div class="cta-action">
-                        <button id="show-expert-form" class="btn-cta" onclick="console.log('Button click fired')">
+                        <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" id="show-expert-form" class="btn-cta">
                             Register as an Expert <i class="fas fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -589,7 +599,7 @@
         </div>
     </section>
 
-    <!-- Partner Logos (Marquee) -->
+    <!-- Partner Logos (Marquee) - Commented Out
     <section class="partner-marquee-section">
         <div class="container">
             <h3 class="marquee-title">Trusted by Experts from Leading Institutions</h3>
@@ -601,7 +611,7 @@
                     <div class="marquee-item"><span>GlobalConsult</span></div>
                     <div class="marquee-item"><span>MSME Ally</span></div>
                     <div class="marquee-item"><span>IndiaLegal</span></div>
-                    <!-- Duplicate for loop -->
+                    
                     <div class="marquee-item"><span>ICA India</span></div>
                     <div class="marquee-item"><span>LawCouncil</span></div>
                     <div class="marquee-item"><span>StartupHub</span></div>
@@ -612,6 +622,7 @@
             </div>
         </div>
     </section>
+    -->
 
     <div id="footer-placeholder"></div>
 
