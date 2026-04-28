@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const typedTextSpan = document.querySelector(".typed-text");
             const msmeHeader = document.getElementById("msme-typing-header");
             const expertsHeader = document.getElementById("experts-typing-header");
-            
+
             if (!typedTextSpan && !msmeHeader && !expertsHeader) return;
 
             const target = typedTextSpan || msmeHeader || expertsHeader;
@@ -214,15 +214,65 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (expertsHeader) {
                 phrases = ["No Cold Outreach.", "Get Qualified MSME Leads.", "Earn Transparently.", "Get Paid Instantly."];
             } else {
-                phrases = ["Empower", "Elevate", "Expand"];
+                phrases = [
+                    "Empower.", 
+                    "Empower. Elevate.", 
+                    "Empower. Elevate. Expand."
+                ];
             }
 
             let phraseIndex = 0;
             let charIdx = 0;
             let isDeleting = false;
 
+            const updateNetworkMap = (phrase) => {
+                const map = document.querySelector('.hero-network-map');
+                if (!map) return;
+                
+                // Reset
+                map.querySelectorAll('.node-group:not(.node-central), .connection-path').forEach(el => {
+                    el.classList.remove('active');
+                });
+
+                if (phrase.includes("Empower")) {
+                    document.getElementById('node-compliance')?.classList.add('active');
+                    document.getElementById('path-compliance')?.classList.add('active');
+                    document.getElementById('node-schemes')?.classList.add('active');
+                    document.getElementById('path-schemes')?.classList.add('active');
+                }
+                if (phrase.includes("Elevate")) {
+                    document.getElementById('node-experts')?.classList.add('active');
+                    document.getElementById('path-experts')?.classList.add('active');
+                    document.getElementById('node-insights')?.classList.add('active');
+                    document.getElementById('path-insights')?.classList.add('active');
+                }
+                if (phrase.includes("Expand")) {
+                    document.getElementById('node-credit')?.classList.add('active');
+                    document.getElementById('path-credit')?.classList.add('active');
+                    document.getElementById('node-events')?.classList.add('active');
+                    document.getElementById('path-events')?.classList.add('active');
+                    
+                    // Full Network on Expand
+                    map.querySelectorAll('.node-group, .connection-path').forEach(el => {
+                        el.classList.add('active');
+                    });
+
+                    // FORM INDIA MAP
+                    if (window.formIndiaMap) window.formIndiaMap(true);
+                } else {
+                    // Reset India Map if not in Expand phase
+                    if (window.formIndiaMap) window.formIndiaMap(false);
+                }
+            };
+
             const type = () => {
                 const currentPhrase = phrases[phraseIndex];
+
+                // Trigger map update at start of typing a new phrase
+                if (charIdx === 0 && !isDeleting) {
+                    updateNetworkMap(currentPhrase);
+                }
+
                 if (isDeleting) {
                     target.textContent = currentPhrase.substring(0, charIdx - 1);
                     charIdx--;
@@ -231,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     charIdx++;
                 }
 
-                let typeSpeed = isDeleting ? 75 : 150;
+                let typeSpeed = isDeleting ? 50 : 100;
 
                 if (!isDeleting && charIdx === currentPhrase.length) {
                     typeSpeed = 2000; // Pause at end
@@ -239,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (isDeleting && charIdx === 0) {
                     isDeleting = false;
                     phraseIndex = (phraseIndex + 1) % phrases.length;
-                    typeSpeed = 500; // Pause before next word
+                    typeSpeed = 500;
                 }
 
                 setTimeout(type, typeSpeed);
@@ -405,28 +455,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 v3: document.getElementById('ba-view-3'),
                 v4: document.getElementById('ba-view-4'),
             };
-            const aiTyping    = document.getElementById('ba-ai-typing');
-            const aiReply     = document.getElementById('ba-ai-reply');
+            const aiTyping = document.getElementById('ba-ai-typing');
+            const aiReply = document.getElementById('ba-ai-reply');
             const escalateCta = document.getElementById('ba-escalate-cta');
-            const expertMsg1  = document.getElementById('ba-expert-msg-1');
-            const expertMsg2  = document.getElementById('ba-expert-msg-2');
-            const userReply   = document.getElementById('ba-user-reply');
+            const expertMsg1 = document.getElementById('ba-expert-msg-1');
+            const expertMsg2 = document.getElementById('ba-expert-msg-2');
+            const userReply = document.getElementById('ba-user-reply');
 
             const wait = ms => new Promise(r => setTimeout(r, ms));
 
             const showView = (view) => {
-                Object.values(views).forEach(v => { if(v) v.style.display = 'none'; });
+                Object.values(views).forEach(v => { if (v) v.style.display = 'none'; });
                 if (view) view.style.display = 'flex';
             };
 
             const runCycle = async () => {
                 // Reset
-                if (aiTyping)    aiTyping.style.display    = 'none';
-                if (aiReply)     aiReply.style.display     = 'none';
+                if (aiTyping) aiTyping.style.display = 'none';
+                if (aiReply) aiReply.style.display = 'none';
                 if (escalateCta) escalateCta.style.display = 'none';
-                if (expertMsg1)  expertMsg1.style.display  = 'none';
-                if (expertMsg2)  expertMsg2.style.display  = 'none';
-                if (userReply)   userReply.style.display   = 'none';
+                if (expertMsg1) expertMsg1.style.display = 'none';
+                if (expertMsg2) expertMsg2.style.display = 'none';
+                if (userReply) userReply.style.display = 'none';
 
                 // SCREEN 1: User question visible, then AI typing
                 showView(views.v1);
@@ -436,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 await wait(1800);
 
                 if (aiTyping) aiTyping.style.display = 'none';
-                if (aiReply)  aiReply.style.display  = 'flex';
+                if (aiReply) aiReply.style.display = 'flex';
                 await wait(2000);
 
                 if (escalateCta) escalateCta.style.display = 'flex';
@@ -474,23 +524,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const screen = document.getElementById('da-screen');
             if (!screen) return;
 
-            const viewHome      = document.getElementById('da-view-home');
-            const viewChat      = document.getElementById('da-view-chat');
-            const typingSpan    = document.getElementById('da-typing-span');
-            const typingInd     = document.getElementById('da-typing-indicator');
-            const aiResp1       = document.getElementById('da-ai-response');
-            const docList       = document.getElementById('da-doc-list');
-            const tipBox        = document.getElementById('da-tip-box');
-            const followupQ     = document.getElementById('da-followup-q');
-            const typingInd2    = document.getElementById('da-typing-2');
-            const aiResp2       = document.getElementById('da-ai-response-2');
-            const inputField    = document.getElementById('da-input-field');
-            const inputPH       = document.getElementById('da-input-placeholder');
+            const viewHome = document.getElementById('da-view-home');
+            const viewChat = document.getElementById('da-view-chat');
+            const typingSpan = document.getElementById('da-typing-span');
+            const typingInd = document.getElementById('da-typing-indicator');
+            const aiResp1 = document.getElementById('da-ai-response');
+            const docList = document.getElementById('da-doc-list');
+            const tipBox = document.getElementById('da-tip-box');
+            const followupQ = document.getElementById('da-followup-q');
+            const typingInd2 = document.getElementById('da-typing-2');
+            const aiResp2 = document.getElementById('da-ai-response-2');
+            const inputField = document.getElementById('da-input-field');
+            const inputPH = document.getElementById('da-input-placeholder');
             const criteriaItems = screen.querySelectorAll('.da-criteria-item');
-            const actionRow     = document.getElementById('da-action-row');
-            const chatBody      = document.getElementById('da-chat-body');
+            const actionRow = document.getElementById('da-action-row');
+            const chatBody = document.getElementById('da-chat-body');
 
-            const searchQ   = 'Collateral loan docs - Maharashtra Co-op Society?';
+            const searchQ = 'Collateral loan docs - Maharashtra Co-op Society?';
             const followupText = 'Can I qualify for CGTMSE collateral-free loan?';
             const wait = ms => new Promise(r => setTimeout(r, ms));
 
@@ -512,17 +562,17 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             const resetAll = () => {
-                if (typingSpan)    typingSpan.textContent = '';
-                if (inputPH)       inputPH.textContent = 'Ask a follow-up...';
-                if (inputField)    inputField.style.color = '';
-                if (typingInd)     typingInd.style.display   = 'none';
-                if (aiResp1)       aiResp1.style.display      = 'none';
-                if (tipBox)        tipBox.style.display        = 'none';
-                if (followupQ)     followupQ.style.display     = 'none';
-                if (typingInd2)    typingInd2.style.display    = 'none';
-                if (aiResp2)       aiResp2.style.display       = 'none';
-                if (actionRow)     actionRow.style.display     = 'none';
-                if (chatBody)      chatBody.scrollTop          = 0;
+                if (typingSpan) typingSpan.textContent = '';
+                if (inputPH) inputPH.textContent = 'Ask a follow-up...';
+                if (inputField) inputField.style.color = '';
+                if (typingInd) typingInd.style.display = 'none';
+                if (aiResp1) aiResp1.style.display = 'none';
+                if (tipBox) tipBox.style.display = 'none';
+                if (followupQ) followupQ.style.display = 'none';
+                if (typingInd2) typingInd2.style.display = 'none';
+                if (aiResp2) aiResp2.style.display = 'none';
+                if (actionRow) actionRow.style.display = 'none';
+                if (chatBody) chatBody.scrollTop = 0;
                 criteriaItems.forEach(c => c.style.opacity = '0');
                 if (docList) docList.querySelectorAll('.da-doc-item').forEach(d => {
                     d.style.animationName = 'none';
@@ -549,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // First AI response with staggered doc items
                 if (typingInd) typingInd.style.display = 'none';
-                if (aiResp1)   aiResp1.style.display   = 'flex';
+                if (aiResp1) aiResp1.style.display = 'flex';
                 if (docList) {
                     docList.querySelectorAll('.da-doc-item').forEach((item, i) => {
                         setTimeout(() => {
@@ -569,7 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // ── C: Follow-up — user types in the input bar ──────────
                 // Animate typing in the input field
                 if (inputField) inputField.style.color = '#94a3b8';
-                if (inputPH)    inputPH.textContent = '';
+                if (inputPH) inputPH.textContent = '';
                 if (inputField) {
                     // Fake-type into the input placeholder area
                     const tmpEl = inputPH;
@@ -594,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Second AI response — criteria items stagger in
                 if (typingInd2) typingInd2.style.display = 'none';
-                if (aiResp2)    aiResp2.style.display    = 'flex';
+                if (aiResp2) aiResp2.style.display = 'flex';
                 criteriaItems.forEach((item, i) => {
                     setTimeout(() => {
                         item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';

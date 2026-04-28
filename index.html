@@ -38,30 +38,148 @@
 
     <!-- Hero Section -->
     <header class="msme-hero">
-        <div class="hero-animated-bg"></div>
+        <div class="hero-network-map">
+            <svg class="network-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <radialGradient id="nebulaGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#2563eb; stop-opacity:0.2" />
+                        <stop offset="100%" style="stop-color:#2563eb; stop-opacity:0" />
+                    </radialGradient>
+                </defs>
+
+                <!-- Static Background Stars (The Galaxy) -->
+                <g id="galaxy-stars" class="galaxy-base"></g>
+
+                <!-- Neural Connections (Ultra Thin) -->
+                <path id="path-compliance" class="connection-path" d="M500,300 L380,140" />
+                <path id="path-insights" class="connection-path" d="M500,300 L620,140" />
+                <path id="path-credit" class="connection-path" d="M500,300 L720,300" />
+                <path id="path-events" class="connection-path" d="M500,300 L620,460" />
+                <path id="path-experts" class="connection-path" d="M500,300 L380,460" />
+                <path id="path-schemes" class="connection-path" d="M500,300 L280,300" />
+
+                <!-- Active Neural Centers (Tiny Twinkling Stars) -->
+                <g id="node-compliance" class="node-group">
+                    <circle class="node-glow" cx="380" cy="140" r="120" fill="url(#nebulaGlow)" />
+                    <circle class="node-point star-twinkle" cx="380" cy="140" r="1.5" />
+                </g>
+                <g id="node-insights" class="node-group">
+                    <circle class="node-glow" cx="620" cy="140" r="120" fill="url(#nebulaGlow)" />
+                    <circle class="node-point star-twinkle" cx="620" cy="140" r="1.5" />
+                </g>
+                <g id="node-credit" class="node-group">
+                    <circle class="node-glow" cx="720" cy="300" r="120" fill="url(#nebulaGlow)" />
+                    <circle class="node-point star-twinkle" cx="720" cy="300" r="1.5" />
+                </g>
+                <g id="node-events" class="node-group">
+                    <circle class="node-glow" cx="620" cy="460" r="120" fill="url(#nebulaGlow)" />
+                    <circle class="node-point star-twinkle" cx="620" cy="460" r="1.5" />
+                </g>
+                <g id="node-experts" class="node-group">
+                    <circle class="node-glow" cx="380" cy="460" r="120" fill="url(#nebulaGlow)" />
+                    <circle class="node-point star-twinkle" cx="380" cy="460" r="1.5" />
+                </g>
+                <g id="node-schemes" class="node-group">
+                    <circle class="node-glow" cx="280" cy="300" r="120" fill="url(#nebulaGlow)" />
+                    <circle class="node-point star-twinkle" cx="280" cy="300" r="1.5" />
+                </g>
+
+            </svg>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const galaxy = document.getElementById('galaxy-stars');
+                const connections = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                connections.setAttribute("id", "star-connections");
+                galaxy.parentNode.insertBefore(connections, galaxy.nextSibling);
+
+                if (!galaxy) return;
+
+                const totalStars = 120;
+                const stars = [];
+
+                for (let i = 0; i < totalStars; i++) {
+                    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    const startX = Math.random() * 1000;
+                    const startY = Math.random() * 600;
+
+                    circle.setAttribute("cx", startX);
+                    circle.setAttribute("cy", startY);
+                    circle.setAttribute("r", Math.random() * 1.5 + 0.5);
+                    circle.setAttribute("fill", "#000080");
+                    circle.setAttribute("opacity", Math.random() * 0.2 + 0.1);
+                    circle.style.transition = "all 3s cubic-bezier(0.4, 0, 0.2, 1)";
+
+                    if (Math.random() > 0.7) circle.classList.add('star-twinkle');
+
+                    galaxy.appendChild(circle);
+                    stars.push({
+                        el: circle,
+                        x: startX,
+                        y: startY
+                    });
+                }
+
+                // Global function to trigger subtle connection animation
+                window.formIndiaMap = (active) => {
+                    // Clear previous connections
+                    connections.innerHTML = '';
+                    
+                    if (!active) {
+                        stars.forEach(star => {
+                            star.el.setAttribute("opacity", Math.random() * 0.2 + 0.1);
+                            star.el.setAttribute("fill", "#000080");
+                            star.el.setAttribute("r", Math.random() * 1.5 + 0.5);
+                        });
+                        return;
+                    }
+
+                    // Activate stars and draw very slight connections
+                    stars.forEach((star, i) => {
+                        star.el.setAttribute("opacity", "0.5");
+                        star.el.setAttribute("fill", "#2563eb");
+                        star.el.setAttribute("r", "2");
+
+                        // Connect to 1-2 nearby stars
+                        if (active && i % 3 === 0) { // Only some stars initiate connections
+                            const nearby = stars
+                                .filter((s, idx) => idx !== i)
+                                .map(s => ({ star: s, dist: Math.hypot(s.x - star.x, s.y - star.y) }))
+                                .filter(s => s.dist < 80)
+                                .sort((a, b) => a.dist - b.dist)
+                                .slice(0, 1);
+
+                            nearby.forEach(n => {
+                                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                                line.setAttribute("x1", star.x);
+                                line.setAttribute("y1", star.y);
+                                line.setAttribute("x2", n.star.x);
+                                line.setAttribute("y2", n.star.y);
+                                line.setAttribute("stroke", "#2563eb");
+                                line.setAttribute("stroke-width", "0.3");
+                                line.setAttribute("stroke-opacity", "0.2");
+                                line.setAttribute("class", "star-connection-line");
+                                line.style.transition = "all 2s ease";
+                                connections.appendChild(line);
+                            });
+                        }
+                    });
+                };
+            });
+        </script>
         <div class="container msme-hero-container">
-            <div class="msme-hero-content">
+            <div class="hero-glass-card">
                 <h1 class="msme-title">
                     <span class="typed-text"></span><span class="cursor">|</span>
                 </h1>
-                <p class="msme-subtitle" style="margin-top: 1rem; margin-bottom: 2rem;">
-                    <span class="hero-msme-text" style="font-size: 1.5rem; font-weight: 700; color: var(--secondary);">India's MSMEs</span>
+                <p class="msme-subtitle"
+                    style="margin-top: 1.5rem; margin-bottom: 2rem; color: #64748b; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem;">
+                    63 Million Indian MSMEs
                 </p>
                 <div class="hero-btns" style="margin-top: 1rem;">
-                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="btn-cta hero-cta-btn">Get Started</a>
-                </div>
-
-                <!-- Trust Row -->
-                <div class="hero-trust-row" style="margin-top: 4rem;">
-                    <div class="trust-item">
-                        <span>AI Business Assistant</span>
-                    </div>
-                    <div class="trust-item">
-                        <span>Verified Experts</span>
-                    </div>
-                    <div class="trust-item">
-                        <span>Government Scheme Discovery</span>
-                    </div>
+                    <a href="https://forms.gle/qWrV5uZdoeHvdiNd8" target="_blank" class="btn-cta hero-cta-btn">Get
+                        Started</a>
                 </div>
             </div>
         </div>
@@ -200,8 +318,8 @@
                                         <div class="ba-bubble ai da-response-bubble">
                                             <div class="da-response-label"><i class="fas fa-bolt"></i> Business
                                                 Assistant</div>
-                                            <p class="da-response-intro">For a <strong>collateral loan from a
-                                                    Maharashtra Co-op Society</strong>, here's what you'll need:</p>
+                                            <p class="da-response-intro">For a <strong>Co-op Society</strong>, here's
+                                                what you'll need:</p>
                                             <div class="da-doc-list" id="da-doc-list">
                                                 <div class="da-doc-item" style="animation-delay:0.1s">
                                                     <div class="da-doc-icon"><i class="fas fa-id-card"></i></div>
