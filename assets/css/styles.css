@@ -7648,8 +7648,8 @@ footer {
     color: #475569;
 }
 .mf-bullets li i {
-    color: #22c55e;
-    font-size: 0.8rem;
+    color: #000080;
+    font-size: 0.45rem;
     flex-shrink: 0;
 }
 
