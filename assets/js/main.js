@@ -118,9 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <i class="fas fa-rocket"></i> Bharat2Business
                                     </a>
                                     <p class="footer-desc">Empower.Elevate.Expand.</p>
-                                    <div class="footer-social" style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank" style="color: rgba(255,255,255,0.6); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="https://www.instagram.com/bharat2business/" target="_blank" style="color: rgba(255,255,255,0.6); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                                    <div class="footer-social-icons" style="margin-top: 1.5rem;">
+                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.instagram.com/bharat2business/" target="_blank"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
                                 <div class="footer-links">
@@ -200,9 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Typing Animations ---
         initHeroTyping() {
-            const typedTextSpan = document.querySelector(".hero .typed-text");
+            const typedTextSpan = document.querySelector(".typed-text");
             const msmeHeader = document.getElementById("msme-typing-header");
             const expertsHeader = document.getElementById("experts-typing-header");
+            
             if (!typedTextSpan && !msmeHeader && !expertsHeader) return;
 
             const target = typedTextSpan || msmeHeader || expertsHeader;

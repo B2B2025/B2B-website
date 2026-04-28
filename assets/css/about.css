@@ -278,16 +278,16 @@
 
 @media (max-width: 768px) {
     .vision-nav {
-        width: 40px;
-        height: 40px;
-        top: auto;
-        bottom: -60px;
-        transform: none;
+        width: 44px;
+        height: 44px;
+        top: 125px; /* Centered on the 250px mobile image */
+        bottom: auto;
+        transform: translateY(-50%);
+        z-index: 30;
     }
-    .vision-nav:hover { transform: scale(1.1); }
-    .vision-nav.prev-btn { left: calc(50% - 50px); }
-    .vision-nav.next-btn { right: calc(50% - 50px); }
-    .vision-display { margin-bottom: 60px; }
+    .vision-nav.prev-btn { left: 10px; }
+    .vision-nav.next-btn { right: 10px; }
+    .vision-display { margin-bottom: 30px; }
 }
 
 .vision-display {
@@ -631,6 +631,7 @@
 
 
 @media (max-width: 768px) {
+
     .animated-header {
         font-size: 2rem;
     }
