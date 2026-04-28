@@ -659,6 +659,8 @@ section {
     box-shadow: none !important;
     overflow: visible;
     /* Allow phone shadow to breathe */
+    min-height: 620px;
+    /* Prevent layout shift during animation */
 }
 
 .placeholder-icon-box {
@@ -3129,6 +3131,10 @@ footer {
 
     .parallax-section p {
         font-size: 1.2rem !important;
+    }
+
+    .principles-grid {
+        grid-template-columns: 1fr;
     }
 
     .counters-grid {

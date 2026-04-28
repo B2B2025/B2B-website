@@ -609,13 +609,18 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 850px) {
     .principles-grid {
         grid-template-columns: 1fr;
     }
 
     .principle-item {
-        grid-column: span 1;
+        grid-column: span 1 !important;
+    }
+
+    .principles-grid>div:nth-child(4),
+    .principles-grid>div:nth-child(5) {
+        grid-column: span 1 !important;
     }
 }
 
