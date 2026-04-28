@@ -6207,12 +6207,12 @@ footer {
 
     .work-text {
         max-width: 100%;
-        order: 2;
+        order: 1;
     }
 
     .work-img {
         max-width: 100%;
-        order: 1;
+        order: 2;
     }
 
     .work-row.reverse,
