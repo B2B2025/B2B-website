@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Business Profile | Bharat2Business</title>
+    <meta id="page-description" name="description" content="Public MSME profile on Bharat2Business.">
+    <meta name="author" content="Bharat2Business">
+
+    <!-- Social Media Meta Tags (updated by profile.js after fetch) -->
+    <meta id="og-title" property="og:title" content="Business Profile | Bharat2Business">
+    <meta id="og-description" property="og:description" content="Public MSME profile on Bharat2Business.">
+    <meta id="og-url" property="og:url" content="https://www.bharat2business.com/profile">
+    <meta property="og:type" content="profile">
+    <meta id="og-image" property="og:image" content="https://www.bharat2business.com/assets/img/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- API base — flip to api.bharat2business.com once prod ships -->
+    <meta name="b2b-api-base" content="https://dev.bharat2business.com/api/v1">
+
+    <link rel="icon" href="assets/img/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+</head>
+
+<body class="page-entrance">
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <!-- Loading skeleton (default state) -->
+        <section id="profile-loading" class="profile-state">
+            <div class="container">
+                <div class="profile-skeleton">
+                    <div class="skel skel-avatar"></div>
+                    <div class="skel skel-title"></div>
+                    <div class="skel skel-line"></div>
+                    <div class="skel skel-card"></div>
+                    <div class="skel skel-card"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Not found state -->
+        <section id="profile-not-found" class="profile-state hidden">
+            <div class="container text-center">
+                <i class="fas fa-magnifying-glass profile-empty-icon"></i>
+                <h1 class="profile-empty-title">Profile not found</h1>
+                <p class="profile-empty-desc">
+                    This business profile is private or doesn't exist.
+                    Check the link or scan the QR again.
+                </p>
+                <a href="index.html" class="btn-cta">Back to Bharat2Business</a>
+            </div>
+        </section>
+
+        <!-- Error state -->
+        <section id="profile-error" class="profile-state hidden">
+            <div class="container text-center">
+                <i class="fas fa-triangle-exclamation profile-empty-icon"></i>
+                <h1 class="profile-empty-title">Couldn't load this profile</h1>
+                <p class="profile-empty-desc">
+                    Something went wrong on our end. Please try again in a moment.
+                </p>
+                <button id="profile-retry" class="btn-cta">Retry</button>
+            </div>
+        </section>
+
+        <!-- Profile content (populated by profile.js) -->
+        <article id="profile-content" class="profile-state hidden">
+            <!-- Hero -->
+            <header class="profile-hero">
+                <div class="container">
+                    <div class="profile-hero-inner">
+                        <div id="profile-logo-wrap" class="profile-logo-wrap hidden">
+                            <img id="profile-logo" alt="" class="profile-logo">
+                        </div>
+                        <h1 id="profile-name" class="profile-name"></h1>
+                        <p id="profile-tagline" class="profile-tagline hidden"></p>
+                        <div id="profile-location" class="profile-location hidden">
+                            <i class="fas fa-location-dot"></i>
+                            <span id="profile-location-text"></span>
+                        </div>
+                        <div class="profile-trust hidden" id="profile-verified">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Verified on Bharat2Business</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Section cards -->
+            <div class="container profile-cards">
+
+                <section id="card-about" class="profile-card hidden">
+                    <h2 class="profile-card-title">About</h2>
+                    <p id="profile-about" class="profile-card-body"></p>
+                </section>
+
+                <section id="card-operations" class="profile-card hidden">
+                    <h2 class="profile-card-title">Operations</h2>
+                    <dl class="profile-meta">
+                        <div class="profile-meta-row hidden" id="row-industry">
+                            <dt>Industry</dt>
+                            <dd id="profile-industry"></dd>
+                        </div>
+                        <div class="profile-meta-row hidden" id="row-products">
+                            <dt>Products &amp; services</dt>
+                            <dd id="profile-products"></dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section id="card-contact" class="profile-card hidden">
+                    <h2 class="profile-card-title">Get in touch</h2>
+                    <ul class="profile-contact-list" id="profile-contact-list"></ul>
+                </section>
+
+                <section id="card-business" class="profile-card hidden">
+                    <h2 class="profile-card-title">Business details</h2>
+                    <dl class="profile-meta">
+                        <div class="profile-meta-row hidden" id="row-certifications">
+                            <dt>Certifications</dt>
+                            <dd id="profile-certifications"></dd>
+                        </div>
+                        <div class="profile-meta-row hidden" id="row-gst">
+                            <dt>GSTIN</dt>
+                            <dd id="profile-gst" class="profile-mono"></dd>
+                        </div>
+                        <div class="profile-meta-row hidden" id="row-udyam">
+                            <dt>UDYAM</dt>
+                            <dd id="profile-udyam" class="profile-mono"></dd>
+                        </div>
+                    </dl>
+                </section>
+
+            </div>
+
+            <div class="container profile-footer-note">
+                <p>
+                    Profile generated by
+                    <a href="index.html">Bharat2Business</a> on
+                    <span id="profile-generated-at"></span>.
+                </p>
+            </div>
+        </article>
+
+        <!-- Sticky CTA bar — visible on profile-content + 404 + error states.
+             #download-btn is auto-wired by main.js initDownloadRedirect() to
+             Play Store / App Store / contact.html based on platform. -->
+        <div id="profile-cta-bar" class="profile-cta-bar hidden">
+            <div class="profile-cta-inner">
+                <div class="profile-cta-copy">
+                    <strong>Want a profile like this?</strong>
+                    <span>Bharat2Business helps MSMEs get found.</span>
+                </div>
+                <a id="download-btn" href="contact.html" class="profile-cta-btn">
+                    <i class="fas fa-mobile-screen-button"></i>
+                    Get the App
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/profile.js"></script>
+</body>
+
+</html>
