@@ -751,7 +751,8 @@
                     .ega-fb{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid #e2e8f0;cursor:pointer;background:transparent;color:var(--text-muted);font-family:'Inter',sans-serif;font-weight:600;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
                     .ega-fb.on{background:var(--secondary);color:#ffffff;border-color:var(--secondary)}
                     .ega-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;padding:2px 0}
-                    .ega-d{width:100%;aspect-ratio:1;border-radius:50%;transition:opacity .28s ease}
+                    .ega-d{width:100%;aspect-ratio:1;border-radius:50%;opacity:0;transform:scale(.45);transition:opacity .5s cubic-bezier(.22,.7,.3,1) calc(var(--i, 0) * 4ms), transform .5s cubic-bezier(.22,.7,.3,1) calc(var(--i, 0) * 4ms)}
+                    .ega-grid.in .ega-d{opacity:1;transform:scale(1)}
                     .ega-dg{background:#cbd5e1}
                     .ega-dr{background:#000080}
                     .ega-rbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
@@ -770,15 +771,15 @@
                     <div class="ega-left">
                         <div class="ega-stat">
                             <div class="ega-slbl">Total MSMEs in India</div>
-                            <div class="ega-snum">6.3 Cr</div>
+                            <div class="ega-snum" data-count-to="6.3" data-count-suffix=" Cr">0 Cr</div>
                         </div>
                         <div class="ega-stat">
                             <div class="ega-slbl">With formal expert access</div>
-                            <div class="ega-snum">70 L</div>
+                            <div class="ega-snum" data-count-to="70" data-count-suffix=" L">0 L</div>
                         </div>
                         <div>
                             <div class="ega-slbl ega-rc">Underserved</div>
-                            <div class="ega-snum ega-rc">89%</div>
+                            <div class="ega-snum ega-rc" data-count-to="89" data-count-suffix="%">0%</div>
                         </div>
                         <div class="ega-narr">
                             India has 6.3 crore MSMEs. Only ~11% have access to a qualified CA, lawyer, or compliance
@@ -810,12 +811,14 @@
                 (function () {
                     var RED = new Set([2, 17, 24, 30, 39, 46, 52, 68, 74, 81, 97]);
                     var grid = document.getElementById('ega-dg');
-                    if (!grid) return;
+                    var wrap = document.querySelector('.ega-wrap');
+                    if (!grid || !wrap) return;
 
                     for (var i = 0; i < 100; i++) {
                         var d = document.createElement('div');
                         d.className = 'ega-d ' + (RED.has(i) ? 'ega-dr' : 'ega-dg');
                         d.dataset.i = i;
+                        d.style.setProperty('--i', i);
                         grid.appendChild(d);
                     }
 
@@ -833,6 +836,39 @@
                     document.querySelectorAll('.ega-fb').forEach(function (b) {
                         b.addEventListener('click', function () { applyFilter(b.dataset.f); });
                     });
+
+                    function animateCount(el) {
+                        var target = parseFloat(el.dataset.countTo);
+                        var suffix = el.dataset.countSuffix || '';
+                        var decimals = el.dataset.countTo.indexOf('.') > -1 ? 1 : 0;
+                        var duration = 1200;
+                        var start = null;
+
+                        function step(timestamp) {
+                            if (!start) start = timestamp;
+                            var progress = Math.min((timestamp - start) / duration, 1);
+                            var eased = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = (target * eased).toFixed(decimals) + suffix;
+                            if (progress < 1) {
+                                window.requestAnimationFrame(step);
+                            } else {
+                                el.textContent = target.toFixed(decimals) + suffix;
+                            }
+                        }
+                        window.requestAnimationFrame(step);
+                    }
+
+                    function reveal() {
+                        grid.classList.add('in');
+                        wrap.querySelectorAll('.ega-snum[data-count-to]').forEach(animateCount);
+                    }
+
+                    new IntersectionObserver(function (entries, obs) {
+                        if (entries[0].isIntersecting) {
+                            reveal();
+                            obs.disconnect();
+                        }
+                    }, { threshold: 0.3 }).observe(wrap);
                 })();
             </script>
         </div>
