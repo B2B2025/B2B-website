@@ -701,23 +701,140 @@
     <!-- Counter Section (Relocated) -->
     <section class="counters reveal-up" id="section-counter">
         <div class="container">
-            <h3
-                style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 2.5rem; font-weight: 800; opacity: 0.7;">
-                Alpha Phase</h3>
-            <div class="counters-grid">
-                <div class="counter-item">
-                    <strong class="number" data-number="50">0</strong>
-                    <span>Registered MSMEs</span>
-                </div>
-                <div class="counter-item">
-                    <strong class="number" data-number="34">0</strong>
-                    <span>Verified Experts in the network</span>
-                </div>
-                <div class="counter-item">
-                    <strong class="number" data-number="154">0</strong>
-                    <span>Surveyed MSMEs</span>
+
+            <!-- Alpha Phase stats: hidden per request, kept for easy restore. Remove the wrapper's display:none to bring it back. -->
+            <div style="display:none;">
+                <h3
+                    style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 2.5rem; font-weight: 800; opacity: 0.7;">
+                    Alpha Phase</h3>
+                <div class="counters-grid">
+                    <div class="counter-item">
+                        <strong class="number" data-number="50">0</strong>
+                        <span>Registered MSMEs</span>
+                    </div>
+                    <div class="counter-item">
+                        <strong class="number" data-number="34">0</strong>
+                        <span>Verified Experts in the network</span>
+                    </div>
+                    <div class="counter-item">
+                        <strong class="number" data-number="154">0</strong>
+                        <span>Surveyed MSMEs</span>
+                    </div>
                 </div>
             </div>
+
+            <!-- MSME Expert Access Gap: interactive replacement for Alpha Phase -->
+            <div class="ega-wrap">
+                <h3
+                    style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 2rem; font-weight: 800; opacity: 0.7; text-align: left;">
+                    The Access Gap</h3>
+
+                <h2 class="ega-sr-only">MSME expert access gap in India: 89% of 6.3 crore MSMEs lack formal
+                    professional advisory support — Bharat2Business is their way in</h2>
+
+                <style>
+                    .ega-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+                    .ega-outer{display:flex;gap:40px;padding:0 0 8px;align-items:stretch;text-align:left}
+                    .ega-left{flex:0 0 236px;display:flex;flex-direction:column}
+                    .ega-stat{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #e2e8f0}
+                    .ega-slbl{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px}
+                    .ega-snum{font-family:'Inter',sans-serif;font-size:46px;font-weight:700;color:var(--secondary);line-height:1}
+                    .ega-rc{color:#000080}
+                    .ega-narr{font-size:13.5px;line-height:1.74;color:var(--text-main);margin-top:24px}
+                    .ega-narr strong{color:var(--secondary);font-weight:700}
+                    .ega-src{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-top:auto;padding-top:28px}
+                    .ega-srule{width:28px;height:1px;background:currentColor;flex-shrink:0}
+
+                    .ega-right{flex:1;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-sm);min-width:0}
+                    .ega-rtop{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+                    .ega-scalbl{flex:1;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);min-width:100px}
+                    .ega-fb{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid #e2e8f0;cursor:pointer;background:transparent;color:var(--text-muted);font-family:'Inter',sans-serif;font-weight:600;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
+                    .ega-fb.on{background:var(--secondary);color:#ffffff;border-color:var(--secondary)}
+                    .ega-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;padding:2px 0}
+                    .ega-d{width:100%;aspect-ratio:1;border-radius:50%;transition:opacity .28s ease}
+                    .ega-dg{background:#cbd5e1}
+                    .ega-dr{background:#000080}
+                    .ega-rbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+                    .ega-leg{display:flex;align-items:center;gap:5px;color:var(--text-muted)}
+                    .ega-legr{display:flex;align-items:center;gap:5px;color:#000080}
+                    .ega-ld{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+                    @media (max-width: 768px) {
+                        .ega-outer{flex-direction:column;gap:24px}
+                        .ega-left{flex:none}
+                        .ega-grid{grid-template-columns:repeat(5,1fr);gap:10px}
+                    }
+                </style>
+
+                <div class="ega-outer">
+                    <div class="ega-left">
+                        <div class="ega-stat">
+                            <div class="ega-slbl">Total MSMEs in India</div>
+                            <div class="ega-snum">6.3 Cr</div>
+                        </div>
+                        <div class="ega-stat">
+                            <div class="ega-slbl">With formal expert access</div>
+                            <div class="ega-snum">70 L</div>
+                        </div>
+                        <div>
+                            <div class="ega-slbl ega-rc">Underserved</div>
+                            <div class="ega-snum ega-rc">89%</div>
+                        </div>
+                        <div class="ega-narr">
+                            India has 6.3 crore MSMEs. Only ~11% have access to a qualified CA, lawyer, or compliance
+                            expert. The remaining 89% navigate GST, licensing, and loans alone. <strong>Bharat2Business
+                                is their way in.</strong>
+                        </div>
+                        <div class="ega-src"><span class="ega-srule"></span>MSME Ministry · Industry estimates</div>
+                    </div>
+
+                    <div class="ega-right">
+                        <div class="ega-rtop">
+                            <span class="ega-scalbl">1 dot = 6.3 lakh MSMEs</span>
+                            <button class="ega-fb on" data-f="all" type="button">All</button>
+                            <button class="ega-fb" data-f="served" type="button">11 with access</button>
+                            <button class="ega-fb" data-f="without" type="button">89 without</button>
+                        </div>
+                        <div class="ega-grid" id="ega-dg"></div>
+                        <div class="ega-rbot">
+                            <div class="ega-leg"><div class="ega-ld" style="background:#cbd5e1"></div>Without expert
+                                access · 89</div>
+                            <div class="ega-legr"><div class="ega-ld" style="background:#000080"></div>With expert
+                                access · 11</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                (function () {
+                    var RED = new Set([2, 17, 24, 30, 39, 46, 52, 68, 74, 81, 97]);
+                    var grid = document.getElementById('ega-dg');
+                    if (!grid) return;
+
+                    for (var i = 0; i < 100; i++) {
+                        var d = document.createElement('div');
+                        d.className = 'ega-d ' + (RED.has(i) ? 'ega-dr' : 'ega-dg');
+                        d.dataset.i = i;
+                        grid.appendChild(d);
+                    }
+
+                    function applyFilter(f) {
+                        grid.querySelectorAll('.ega-d').forEach(function (d) {
+                            var isRed = RED.has(+d.dataset.i);
+                            var fade = (f === 'served' && !isRed) || (f === 'without' && isRed);
+                            d.style.opacity = fade ? '0.1' : '1';
+                        });
+                        document.querySelectorAll('.ega-fb').forEach(function (b) {
+                            b.classList.toggle('on', b.dataset.f === f);
+                        });
+                    }
+
+                    document.querySelectorAll('.ega-fb').forEach(function (b) {
+                        b.addEventListener('click', function () { applyFilter(b.dataset.f); });
+                    });
+                })();
+            </script>
         </div>
     </section>
 

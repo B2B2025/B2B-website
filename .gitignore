@@ -3,3 +3,4 @@ subscribers.db
 .env
 *.log
 .DS_Store
+.claude/
