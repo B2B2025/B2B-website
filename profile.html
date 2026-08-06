@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Business Profile | Bharat2Business</title>
-    <meta id="page-description" name="description" content="Public MSME profile on Bharat2Business.">
+    <meta id="page-description" name="description" content="Public profile on Bharat2Business.">
     <meta name="author" content="Bharat2Business">
 
     <!-- Social Media Meta Tags (updated by profile.js after fetch) -->
     <meta id="og-title" property="og:title" content="Business Profile | Bharat2Business">
-    <meta id="og-description" property="og:description" content="Public MSME profile on Bharat2Business.">
+    <meta id="og-description" property="og:description" content="Public profile on Bharat2Business.">
     <meta id="og-url" property="og:url" content="https://www.bharat2business.com/profile">
     <meta property="og:type" content="profile">
     <meta id="og-image" property="og:image" content="https://www.bharat2business.com/assets/img/og-image.png">
@@ -21,11 +21,13 @@
 
     <link rel="icon" href="assets/img/favicon.ico">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter (body/UI) + Fraunces light (display headings,
+         closest free equivalent to the light-serif look this page uses) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,300&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
@@ -33,7 +35,10 @@
     <link rel="stylesheet" href="assets/css/profile.css">
 </head>
 
-<body class="page-entrance">
+<body class="page-entrance profile-page">
+    <!-- Faint animated grain texture, CSS-only (no external asset) -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
     <div id="navbar-placeholder"></div>
 
     <main>
@@ -56,7 +61,7 @@
                 <i class="fas fa-magnifying-glass profile-empty-icon"></i>
                 <h1 class="profile-empty-title">Profile not found</h1>
                 <p class="profile-empty-desc">
-                    This business profile is private or doesn't exist.
+                    This profile is private or doesn't exist.
                     Check the link or scan the QR again.
                 </p>
                 <a href="index.html" class="btn-cta">Back to Bharat2Business</a>
@@ -81,69 +86,32 @@
             <header class="profile-hero">
                 <div class="container">
                     <div class="profile-hero-inner">
-                        <div id="profile-logo-wrap" class="profile-logo-wrap hidden">
-                            <img id="profile-logo" alt="" class="profile-logo">
+                        <div id="profile-logo-wrap" class="profile-logo-wrap">
+                            <img id="profile-logo" alt="" class="profile-logo hidden">
+                            <span id="profile-initials" class="profile-initials"></span>
                         </div>
-                        <h1 id="profile-name" class="profile-name"></h1>
-                        <p id="profile-tagline" class="profile-tagline hidden"></p>
-                        <div id="profile-location" class="profile-location hidden">
-                            <i class="fas fa-location-dot"></i>
-                            <span id="profile-location-text"></span>
-                        </div>
-                        <div class="profile-trust hidden" id="profile-verified">
-                            <i class="fas fa-shield-halved"></i>
-                            <span>Verified on Bharat2Business</span>
+                        <div class="profile-hero-content">
+                            <h1 id="profile-name" class="profile-name"></h1>
+                            <p id="profile-tagline" class="profile-tagline hidden"></p>
+                            <div class="profile-badges">
+                                <div id="profile-location" class="profile-location hidden">
+                                    <i class="fas fa-location-dot"></i>
+                                    <span id="profile-location-text"></span>
+                                </div>
+                                <div class="profile-trust hidden" id="profile-verified">
+                                    <i class="fas fa-shield-halved"></i>
+                                    <span>Verified on Bharat2Business</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <!-- Section cards -->
-            <div class="container profile-cards">
-
-                <section id="card-about" class="profile-card hidden">
-                    <h2 class="profile-card-title">About</h2>
-                    <p id="profile-about" class="profile-card-body"></p>
-                </section>
-
-                <section id="card-operations" class="profile-card hidden">
-                    <h2 class="profile-card-title">Operations</h2>
-                    <dl class="profile-meta">
-                        <div class="profile-meta-row hidden" id="row-industry">
-                            <dt>Industry</dt>
-                            <dd id="profile-industry"></dd>
-                        </div>
-                        <div class="profile-meta-row hidden" id="row-products">
-                            <dt>Products &amp; services</dt>
-                            <dd id="profile-products"></dd>
-                        </div>
-                    </dl>
-                </section>
-
-                <section id="card-contact" class="profile-card hidden">
-                    <h2 class="profile-card-title">Get in touch</h2>
-                    <ul class="profile-contact-list" id="profile-contact-list"></ul>
-                </section>
-
-                <section id="card-business" class="profile-card hidden">
-                    <h2 class="profile-card-title">Business details</h2>
-                    <dl class="profile-meta">
-                        <div class="profile-meta-row hidden" id="row-certifications">
-                            <dt>Certifications</dt>
-                            <dd id="profile-certifications"></dd>
-                        </div>
-                        <div class="profile-meta-row hidden" id="row-gst">
-                            <dt>GSTIN</dt>
-                            <dd id="profile-gst" class="profile-mono"></dd>
-                        </div>
-                        <div class="profile-meta-row hidden" id="row-udyam">
-                            <dt>UDYAM</dt>
-                            <dd id="profile-udyam" class="profile-mono"></dd>
-                        </div>
-                    </dl>
-                </section>
-
-            </div>
+            <!-- Section cards — built dynamically by profile.js so the same
+                 markup serves both MSME and consultant card types, each with
+                 its own category set. -->
+            <div id="profile-cards" class="container profile-cards"></div>
 
             <div class="container profile-footer-note">
                 <p>
@@ -160,8 +128,8 @@
         <div id="profile-cta-bar" class="profile-cta-bar hidden">
             <div class="profile-cta-inner">
                 <div class="profile-cta-copy">
-                    <strong>Want a profile like this?</strong>
-                    <span>Bharat2Business helps MSMEs get found.</span>
+                    <strong>Your business deserves a page like this too</strong>
+                    <span>Join the largest MSME network and grow your business with Bharat2Business.</span>
                 </div>
                 <a id="download-btn" href="contact.html" class="profile-cta-btn">
                     <i class="fas fa-mobile-screen-button"></i>
