@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin: 0;">Start your journey with Bharat2Business today.</p>
                                 </div>
                                 <div class="cta-actions">
-                                    <a href="${footerCtaHref}" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #000080; padding: 0.4rem 1rem; font-size: 0.8rem;">Join Now</a>
+                                    <a href="${footerCtaHref}" target="_blank" class="btn-premium btn-primary" style="background: var(--white); color: #1a1a17; padding: 0.4rem 1rem; font-size: 0.8rem;">Join Now</a>
                                 </div>
                             </div>
                             <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">

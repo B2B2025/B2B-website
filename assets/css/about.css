@@ -257,9 +257,9 @@
 }
 
 .vision-nav:hover {
-    background: var(--primary);
+    background: var(--text-dark);
     color: white;
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 25px rgba(26, 26, 23, 0.25);
     transform: translateY(-50%) scale(1.1);
 }
 

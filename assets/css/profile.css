@@ -8,7 +8,7 @@
 
 body.profile-page {
     /* ---- Fonts ---- */
-    --profile-font-body: 'Inter', sans-serif;
+    --profile-font-body: 'General Sans', 'Inter', sans-serif;
     --profile-font-display: 'Fraunces', 'Times New Roman', serif;
 
     /* ---- Color ---- */
@@ -146,10 +146,10 @@ body.profile-page {
 #profile-retry,
 .profile-state .btn-cta {
     font-family: var(--profile-font-body);
-    background: var(--profile-brand);
+    background: var(--profile-ink);
     color: var(--profile-paper);
     padding: 0.75rem 1.75rem;
-    border: 1px solid var(--profile-brand);
+    border: 1px solid var(--profile-ink);
     border-radius: 100vw;
     font-weight: 600;
     font-size: 0.95rem;
@@ -163,7 +163,7 @@ body.profile-page {
 #profile-retry:hover,
 .profile-state .btn-cta:hover {
     background: transparent;
-    color: var(--profile-brand);
+    color: var(--profile-ink);
 }
 
 /* ── Hero ─────────────────────────────────────────────────── */
@@ -544,10 +544,10 @@ body.profile-page {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--profile-brand);
+    background: var(--profile-ink);
     color: var(--profile-paper);
     padding: 0.65rem 1.3rem;
-    border: 1px solid var(--profile-brand);
+    border: 1px solid var(--profile-ink);
     border-radius: 100vw;
     font-weight: 700;
     font-size: 0.9rem;
@@ -560,7 +560,7 @@ body.profile-page {
 
 .profile-cta-btn:hover {
     background: transparent;
-    color: var(--profile-brand);
+    color: var(--profile-ink);
 }
 
 .profile-cta-btn i {

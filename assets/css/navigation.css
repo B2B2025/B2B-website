@@ -176,7 +176,7 @@
 
 .btn-premium {
     background: var(--white);
-    color: #0f172a;
+    color: var(--text-dark);
     padding: 0.8rem 2.25rem;
     border-radius: 50px;
     font-weight: 700;

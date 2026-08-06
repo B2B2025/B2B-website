@@ -224,7 +224,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'General Sans', 'Inter', sans-serif;
     color: var(--text-main);
     line-height: 1.6;
     background-color: var(--bg-light);
@@ -235,9 +235,14 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'General Sans', 'Inter', sans-serif;
     font-weight: 700;
     color: var(--secondary);
+}
+
+h1 {
+    font-family: 'Fraunces', 'General Sans', serif;
+    font-weight: 300;
 }
 
 a {
@@ -4437,7 +4442,7 @@ footer {
 .btn-cta.hero-cta {
     padding: 1rem 3rem;
     font-size: 1.1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 128, 0.3);
+    box-shadow: 0 10px 25px rgba(26, 26, 23, 0.25);
     margin-top: 0.5rem;
     display: inline-block;
 }
@@ -6495,10 +6500,10 @@ footer {
 
 /* Expert Handoff Animation Styles */
 .expert-handoff-screen {
-    background: #000080;
-    /* Premium Navy Theme */
+    background: #1a1a17;
+    /* Warm charcoal theme */
     color: #f8fafc;
-    font-family: 'Inter', sans-serif;
+    font-family: 'General Sans', 'Inter', sans-serif;
     position: relative;
     height: 100%;
 }
@@ -6511,7 +6516,7 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     font-weight: 600;
     font-size: 1.1rem;
-    background: rgba(0, 0, 128, 0.9);
+    background: rgba(26, 26, 23, 0.9);
     backdrop-filter: blur(10px);
 }
 
@@ -6520,7 +6525,7 @@ footer {
     height: calc(100% - 60px);
     overflow: hidden;
     position: relative;
-    background: linear-gradient(180deg, #000080 0%, #000033 100%);
+    background: linear-gradient(180deg, #1a1a17 0%, #000000 100%);
 }
 
 .handoff-step {
@@ -6638,7 +6643,7 @@ footer {
 
 .btn-escalate {
     background: #fff;
-    color: #000080;
+    color: var(--text-dark);
     padding: 12px 24px;
     border-radius: 12px;
     font-weight: 700;
@@ -6939,12 +6944,12 @@ footer {
 .ba-screen {
     width: 100%;
     height: 100%;
-    background: #0a0f1e;
+    background: #141311;
     border-radius: inherit;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    font-family: 'Inter', sans-serif;
+    font-family: 'General Sans', 'Inter', sans-serif;
     position: relative;
 }
 
@@ -7145,10 +7150,10 @@ footer {
 }
 
 .ba-bubble.user {
-    background: linear-gradient(135deg, #1d4ed8, #000080);
+    background: #1a1a17;
     color: #fff;
     border-radius: 14px 14px 4px 14px;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .ba-bubble.ai {
@@ -7270,7 +7275,7 @@ footer {
     justify-content: center;
     padding: 24px;
     text-align: center;
-    background: radial-gradient(ellipse at center, #0f1f4a 0%, #0a0f1e 70%);
+    background: radial-gradient(ellipse at center, #1a1a5c 0%, #141311 70%);
 }
 
 .ba-connect-rings {
@@ -7387,7 +7392,7 @@ footer {
     padding: 20px 16px;
     text-align: center;
     position: relative;
-    background: radial-gradient(ellipse at top, #1e1044 0%, #0a0f1e 60%);
+    background: radial-gradient(ellipse at top, #1a1a5c 0%, #141311 60%);
 }
 
 .ba-profile-glow {
@@ -7495,7 +7500,7 @@ footer {
 
 .ba-connect-btn {
     width: 100%;
-    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+    background: #1a1a17;
     color: #fff;
     border-radius: 12px;
     padding: 12px 0;
@@ -7507,13 +7512,13 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .ba-connect-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
 }
 
 /* ───────────────────────────────────────────────
@@ -7591,7 +7596,7 @@ footer {
     border-radius: 50%;
     flex-shrink: 0;
     border: 2px solid rgba(255, 255, 255, 0.15);
-    background: #0a0f1e;
+    background: #141311;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7650,7 +7655,7 @@ footer {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    background: #1a1a17;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -7658,7 +7663,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 0.8rem;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s;
 }
 
@@ -8008,9 +8013,9 @@ footer {
 }
 
 .da-action-btn.primary {
-    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    background: #1a1a17;
     color: #fff;
-    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .da-action-btn.secondary {
