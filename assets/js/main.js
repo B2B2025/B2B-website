@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <nav class="${navClass}">
                         <div class="container nav-content">
                             <a href="index.html" class="logo">
-                                <i class="fas fa-rocket"></i> Bharat2Business
+                                Bharat<span class="logo-mark">2</span>Business
                             </a>
                             <ul class="nav-links" id="nav-menu">
                                 <li><a href="index.html" class="nav-link ${currentPage === 'index.html' ? 'active' : ''}">Home</a></li>
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
                                 <div>
                                     <a href="index.html" class="logo footer-logo">
-                                        <i class="fas fa-rocket"></i> Bharat2Business
+                                        Bharat<span class="logo-mark">2</span>Business
                                     </a>
                                     <p class="footer-desc">Empower.Elevate.Expand.</p>
                                     <div class="footer-social-icons" style="margin-top: 1.5rem; display: flex; gap: 1.25rem;">

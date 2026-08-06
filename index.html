@@ -35,6 +35,26 @@
 
 <body class="page-entrance">
 
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <filter id="duotoneNavyAmber" color-interpolation-filters="sRGB">
+                <feColorMatrix type="matrix"
+                    values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0"
+                    result="gray" />
+                <feComponentTransfer in="gray" result="contrast">
+                    <feFuncR type="gamma" amplitude="1" exponent="4" offset="0" />
+                    <feFuncG type="gamma" amplitude="1" exponent="4" offset="0" />
+                    <feFuncB type="gamma" amplitude="1" exponent="4" offset="0" />
+                </feComponentTransfer>
+                <feComponentTransfer in="contrast">
+                    <feFuncR type="table" tableValues="0.05 0.85" />
+                    <feFuncG type="table" tableValues="0.05 0.60" />
+                    <feFuncB type="table" tableValues="0.50 0.17" />
+                </feComponentTransfer>
+            </filter>
+        </defs>
+    </svg>
+
     <div id="navbar-placeholder"></div>
 
     <!-- Hero Section -->
@@ -617,13 +637,17 @@
                     .ega-stat{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #e2e8f0}
                     .ega-slbl{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px}
                     .ega-snum{font-family:'Inter',sans-serif;font-size:46px;font-weight:700;color:var(--secondary);line-height:1}
-                    .ega-rc{color:#000080}
+                    .ega-rc{color:#b5791f}
                     .ega-narr{font-size:13.5px;line-height:1.74;color:var(--text-main);margin-top:24px}
                     .ega-narr strong{color:var(--secondary);font-weight:700}
                     .ega-src{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-top:auto;padding-top:28px}
                     .ega-srule{width:28px;height:1px;background:currentColor;flex-shrink:0}
 
-                    .ega-right{flex:1;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-sm);min-width:0}
+                    .ega-right{position:relative;flex:1;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-sm);min-width:0}
+                    .ega-callout{position:absolute;top:52px;right:22px;display:flex;flex-direction:column;align-items:flex-end;pointer-events:none;z-index:5}
+                    .ega-callout-text{font-family:'Fraunces','General Sans',serif;font-style:italic;font-weight:300;font-size:13px;color:#b5791f;line-height:1.3;text-align:right;transform:rotate(-2deg);white-space:nowrap}
+                    .ega-callout-arrow{margin-top:3px;transform:rotate(-2deg)}
+                    @media (max-width:768px){.ega-callout{display:none}}
                     .ega-rtop{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
                     .ega-scalbl{flex:1;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);min-width:100px}
                     .ega-fb{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid #e2e8f0;cursor:pointer;background:transparent;color:var(--text-muted);font-family:'Inter',sans-serif;font-weight:600;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
@@ -631,11 +655,11 @@
                     .ega-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;padding:2px 0}
                     .ega-d{width:100%;aspect-ratio:1;border-radius:50%;opacity:0;transform:scale(.45);transition:opacity .5s cubic-bezier(.22,.7,.3,1) calc(var(--i, 0) * 4ms), transform .5s cubic-bezier(.22,.7,.3,1) calc(var(--i, 0) * 4ms)}
                     .ega-grid.in .ega-d{opacity:1;transform:scale(1)}
-                    .ega-dg{background:#cbd5e1}
-                    .ega-dr{background:#000080}
+                    .ega-dg{background:#c9cedb}
+                    .ega-dr{background:#d99a2b}
                     .ega-rbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
                     .ega-leg{display:flex;align-items:center;gap:5px;color:var(--text-muted)}
-                    .ega-legr{display:flex;align-items:center;gap:5px;color:#000080}
+                    .ega-legr{display:flex;align-items:center;gap:5px;color:#b5791f}
                     .ega-ld{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 
                     @media (max-width: 768px) {
@@ -674,11 +698,18 @@
                             <button class="ega-fb" data-f="served" type="button">11 with access</button>
                             <button class="ega-fb" data-f="without" type="button">89 without</button>
                         </div>
+                        <div class="ega-callout">
+                            <span class="ega-callout-text">only 11 in every<br>100 are covered</span>
+                            <svg class="ega-callout-arrow" width="46" height="34" viewBox="0 0 46 34" fill="none">
+                                <path d="M40 4C28 6 10 12 4 30" stroke="#d99a2b" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M4 30L11 23M4 30L13 32" stroke="#d99a2b" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
                         <div class="ega-grid" id="ega-dg"></div>
                         <div class="ega-rbot">
-                            <div class="ega-leg"><div class="ega-ld" style="background:#cbd5e1"></div>Without expert
+                            <div class="ega-leg"><div class="ega-ld" style="background:#c9cedb"></div>Without expert
                                 access · 89</div>
-                            <div class="ega-legr"><div class="ega-ld" style="background:#000080"></div>With expert
+                            <div class="ega-legr"><div class="ega-ld" style="background:#d99a2b"></div>With expert
                                 access · 11</div>
                         </div>
                     </div>

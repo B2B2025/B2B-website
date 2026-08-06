@@ -6356,7 +6356,8 @@ footer {
     height: 100%;
     object-fit: contain;
     border-radius: 50%;
-    box-shadow: 0 0 50px rgba(0, 0, 128, 0.15);
+    box-shadow: 0 0 40px rgba(0, 0, 128, 0.12);
+    filter: url(#duotoneNavyAmber);
     position: relative;
     z-index: 10;
 }
