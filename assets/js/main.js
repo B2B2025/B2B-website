@@ -256,13 +256,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
+            let lastMapPhraseIndex = -1;
+
             const type = () => {
                 const currentPhrase = phrases[phraseIndex];
                 const isHeroTagline = !msmeHeader && !expertsHeader;
 
-                // Trigger map update at start of typing a new phrase
-                if (charIdx === 0 && !isDeleting) {
+                // Trigger map update whenever the active phrase changes
+                // (charIdx keeps counting up across phrases, so it only hits
+                // 0 once per full cycle — gate on phraseIndex instead).
+                if (!isDeleting && phraseIndex !== lastMapPhraseIndex) {
                     updateNetworkMap(currentPhrase);
+                    lastMapPhraseIndex = phraseIndex;
                 }
 
                 if (isDeleting) {
