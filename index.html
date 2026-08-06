@@ -645,16 +645,20 @@
                     .ega-src{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-top:auto;padding-top:28px}
                     .ega-srule{width:28px;height:1px;background:currentColor;flex-shrink:0}
 
-                    .ega-right{position:relative;flex:1;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-sm);min-width:0}
+                    .ega-right{position:relative;flex:1;max-width:520px;margin-left:auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sm);min-width:0}
                     .ega-callout{position:absolute;top:52px;right:22px;display:flex;flex-direction:column;align-items:flex-end;pointer-events:none;z-index:5}
-                    .ega-callout-text{font-family:'Fraunces','General Sans',serif;font-style:italic;font-weight:300;font-size:13px;color:#b5791f;line-height:1.3;text-align:right;transform:rotate(-2deg);white-space:nowrap}
+                    .ega-callout-text{font-family:'Fraunces','General Sans',serif;font-style:italic;font-weight:300;font-size:13px;color:#b5791f;line-height:1.3;text-align:right;transform:rotate(-2deg);white-space:nowrap;min-height:2.6em}
+                    .ega-callout-cursor{display:inline-block;color:#b5791f;animation:egaCursorBlink .8s infinite}
+                    @keyframes egaCursorBlink{0%,100%{opacity:1}50%{opacity:0}}
                     .ega-callout-arrow{margin-top:3px;transform:rotate(-2deg)}
+                    .ega-callout-arrow path{stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset .7s cubic-bezier(.4,0,.2,1)}
+                    .ega-callout-arrow.draw path{stroke-dashoffset:0}
                     @media (max-width:768px){.ega-callout{display:none}}
                     .ega-rtop{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
                     .ega-scalbl{flex:1;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);min-width:100px}
                     .ega-fb{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid #e2e8f0;cursor:pointer;background:transparent;color:var(--text-muted);font-family:'Inter',sans-serif;font-weight:600;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
                     .ega-fb.on{background:var(--secondary);color:#ffffff;border-color:var(--secondary)}
-                    .ega-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;padding:2px 0}
+                    .ega-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;padding:2px 0}
                     .ega-d{width:100%;aspect-ratio:1;border-radius:50%;opacity:0;transform:scale(.45);transition:opacity .5s cubic-bezier(.22,.7,.3,1) calc(var(--i, 0) * 4ms), transform .5s cubic-bezier(.22,.7,.3,1) calc(var(--i, 0) * 4ms)}
                     .ega-grid.in .ega-d{opacity:1;transform:scale(1)}
                     .ega-dg{background:#c9cedb}
@@ -701,7 +705,7 @@
                             <button class="ega-fb" data-f="without" type="button">89 without</button>
                         </div>
                         <div class="ega-callout">
-                            <span class="ega-callout-text">only 11 in every<br>100 are covered</span>
+                            <span class="ega-callout-text"><span class="ega-callout-line1"></span><br><span class="ega-callout-line2"></span><span class="ega-callout-cursor">|</span></span>
                             <svg class="ega-callout-arrow" width="46" height="34" viewBox="0 0 46 34" fill="none">
                                 <path d="M40 4C28 6 10 12 4 30" stroke="#d99a2b" stroke-width="1.5" stroke-linecap="round"/>
                                 <path d="M4 30L11 23M4 30L13 32" stroke="#d99a2b" stroke-width="1.5" stroke-linecap="round"/>
@@ -769,9 +773,38 @@
                         window.requestAnimationFrame(step);
                     }
 
+                    function typeCallout() {
+                        var line1 = 'only 11 in every', line2 = '100 are covered';
+                        var l1 = wrap.querySelector('.ega-callout-line1');
+                        var l2 = wrap.querySelector('.ega-callout-line2');
+                        var cursor = wrap.querySelector('.ega-callout-cursor');
+                        var arrow = wrap.querySelector('.ega-callout-arrow');
+                        if (!l1 || !l2) return;
+                        if (arrow) arrow.classList.add('draw');
+
+                        var i = 0, phase = 0;
+                        function tick() {
+                            if (phase === 0) {
+                                l1.textContent = line1.substring(0, i + 1);
+                                i++;
+                                if (i === line1.length) { phase = 1; i = 0; }
+                            } else {
+                                l2.textContent = line2.substring(0, i + 1);
+                                i++;
+                                if (i === line2.length) {
+                                    if (cursor) cursor.style.visibility = 'hidden';
+                                    return;
+                                }
+                            }
+                            setTimeout(tick, 26);
+                        }
+                        setTimeout(tick, 550);
+                    }
+
                     function reveal() {
                         grid.classList.add('in');
                         wrap.querySelectorAll('.ega-snum[data-count-to]').forEach(animateCount);
+                        typeCallout();
                     }
 
                     new IntersectionObserver(function (entries, obs) {
