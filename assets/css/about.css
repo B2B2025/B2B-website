@@ -111,8 +111,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 160%;
-    height: 200%;
+    width: 280px;
+    height: 280px;
     transform: translate(-50%, -50%);
     background: radial-gradient(ellipse at center,
             rgba(37, 99, 235, 0.12) 0%,

@@ -59,17 +59,13 @@
 }
 
 /* Premium Animated Background */
+/* Retired: this animated color-shifting gradient panel read as a stray
+   translucent overlay sitting over the hero — busy, hard-edged against
+   the flat section below, and out of step with the site's calm,
+   grain-textured getburnt aesthetic everywhere else. Hidden rather than
+   deleted in case a future hero wants a different treatment. */
 .hero-animated-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg,
-            rgba(255, 153, 51, 0.12) 0%,
-            rgba(255, 255, 255, 1) 30%,
-            rgba(0, 0, 128, 0.06) 60%,
-            rgba(19, 136, 8, 0.10) 100%);
-    background-size: 300% 300%;
-    animation: heroGradientShift 12s ease-in-out infinite;
-    z-index: 0;
+    display: none;
 }
 
 @keyframes heroGradientShift {

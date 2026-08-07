@@ -299,8 +299,8 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 160%;
-    height: 200%;
+    width: 280px;
+    height: 280px;
     transform: translate(-50%, -50%);
     background: radial-gradient(ellipse at center,
             rgba(0, 0, 128, 0.12) 0%,
