@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const navCtaTarget = currentPage === 'experts.html' ? '_blank' : '_self';
                 const navClass = isScrolledPage ? 'navbar scrolled' : 'navbar';
 
-                navbarArea.innerHTML = `
+                navbarArea.outerHTML = `
                     <nav class="${navClass}">
                         <div class="container nav-content">
                             <a href="index.html" class="logo">
