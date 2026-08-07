@@ -3,14 +3,20 @@
     --primary: #000080;
     --primary-rgb: 0, 0, 128;
     --primary-dark: #000066;
-    --secondary: #0f172a;
-    --accent: #f59e0b;
+    --secondary: #1a1a17;
+    --accent: #d99a2b;
+    --accent-rgb: 217, 154, 43;
     --bg-light: #f8fafc;
     --white: #ffffff;
 
     /* Text */
     --text-main: #334155;
     --text-muted: #64748b;
+    --text-dark: #1a1a17;
+
+    /* Hairline tints (getburnt-style subtle borders/fills) */
+    --tint-dark-4: rgba(26, 26, 23, 0.04);
+    --tint-dark-10: rgba(26, 26, 23, 0.1);
 
     /* UI Elements */
     --glass: rgba(255, 255, 255, 0.8);
@@ -814,7 +820,7 @@ section {
     background: #FFFFFF;
     border-radius: 48px;
     box-shadow: 0 50px 100px -20px rgba(15, 23, 42, 0.25);
-    border: 12px solid #0f172a;
+    border: 12px solid #1a1a17;
     position: relative;
     overflow: hidden;
     z-index: 10;
@@ -3459,7 +3465,7 @@ footer {
 }
 
 .cta-inner {
-    background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+    background: linear-gradient(135deg, var(--secondary) 0%, #000000 100%);
     padding: 4.5rem;
     border-radius: 32px;
     display: flex;
@@ -4920,7 +4926,7 @@ footer {
 .match-toast {
     position: absolute;
     bottom: -50px;
-    background: #1e293b;
+    background: #1a1a17;
     color: white;
     padding: 0.6rem 1.25rem;
     border-radius: 50px;
@@ -6840,7 +6846,7 @@ footer {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #0f172a;
+    background: #1a1a17;
     border: 2px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
     display: flex;
