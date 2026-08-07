@@ -418,6 +418,73 @@
     display: block;
 }
 
+/* ── Meet the Founders (static grid, no carousel) ── */
+.founders-heading {
+    font-family: 'Fraunces', 'General Sans', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(2rem, 1.5vw + 1.6rem, 3rem);
+    color: var(--text-dark, #1a1a17);
+}
+
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.founder-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.founder-card .founder-circle-wrapper {
+    align-items: flex-start;
+    width: 100%;
+}
+
+.founder-card .founder-circle {
+    width: 100%;
+    height: 280px;
+    border-radius: 16px;
+    border: none;
+}
+
+.founder-name-serif {
+    font-family: 'Fraunces', 'General Sans', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.75rem;
+    color: var(--text-dark, #1a1a17);
+    margin-top: 1.25rem;
+}
+
+.founder-role {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+}
+
+.founder-bio {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-top: 0.85rem;
+}
+
+@media (max-width: 900px) {
+    .founders-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
 .scroll-reveal-left {
     opacity: 0;
     transform: translateX(-40px);
@@ -717,12 +784,12 @@
 }
 
 .manifesto-highlight {
-    background: linear-gradient(120deg, rgba(0, 0, 128, 0.08) 0%, rgba(0, 0, 128, 0.08) 100%);
+    background: linear-gradient(120deg, rgba(217, 154, 43, 0.14) 0%, rgba(217, 154, 43, 0.14) 100%);
     background-repeat: no-repeat;
     background-size: 100% 0.3em;
     background-position: 0 88%;
     font-weight: 700;
-    color: var(--primary);
+    color: #b5791f;
     padding: 0 0.2rem;
 }
 
