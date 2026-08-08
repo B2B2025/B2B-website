@@ -87,21 +87,11 @@
     position: relative;
 }
 
+/* Retired per request: no decorative bleed behind hero text at all —
+   hero should end with a hard, flat boundary and nothing extending
+   past it into the next section. */
 .hero-radial-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 280px;
-    height: 280px;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(ellipse at center,
-            rgba(37, 99, 235, 0.12) 0%,
-            rgba(255, 153, 51, 0.08) 40%,
-            transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: glowPulse 4s ease-in-out infinite;
-    z-index: -1;
+    display: none;
 }
 
 @keyframes glowPulse {
