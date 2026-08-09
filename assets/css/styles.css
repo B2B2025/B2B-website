@@ -44,19 +44,7 @@
     .visible-desktop { display: none !important; }
 }
 
-.badge-accent {
-    background: rgba(var(--primary-rgb), 0.1);
-    color: var(--primary);
-    padding: 0.6rem 1.4rem;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    display: inline-block;
-    margin-bottom: 10px;
-    border: 1px solid rgba(var(--primary-rgb), 0.05);
-}
+
 
 /* Premium Animated Background */
 /* Retired: this animated color-shifting gradient panel read as a stray
@@ -178,44 +166,15 @@
     }
 }
 
-.card-premium {
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid var(--tint-dark-10, rgba(26, 26, 23, 0.1));
-    box-shadow: none;
-    transition: var(--transition);
-}
 
-.card-premium:hover {
-    border-color: var(--text-dark, #1a1a17);
-}
 
-.btn-premium {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 700;
-    transition: var(--transition);
-    cursor: pointer;
-    border: none;
-}
 
-.btn-primary {
-    background: var(--primary);
-    color: var(--white);
-}
 
-.btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-3px);
-    /* Increased lift */
-    box-shadow: 0 10px 20px rgba(0, 0, 128, 0.25);
-    /* Soft glow */
-    color: var(--white);
-}
+
+
+
+
+
 
 * {
     margin: 0;
@@ -243,6 +202,7 @@ h4 {
 h1 {
     font-family: 'Fraunces', 'General Sans', serif;
     font-weight: 300;
+    font-size: clamp(2.5rem, 8vw, 4rem);
 }
 
 a {
@@ -265,11 +225,7 @@ section {
     padding: 80px 0;
 }
 
-.flex-split {
-    display: flex;
-    gap: 4rem;
-    align-items: center;
-}
+
 
 @media (max-width: 992px) {
     .flex-split, .work-row, .alternate-row {
@@ -360,23 +316,19 @@ section {
 }
 
 .btn-cta {
-    background: var(--primary);
+    background: var(--text-dark);
     color: var(--white);
-    padding: 0.65rem 1.75rem;
-    /* Reduced height, increased width for elegance */
+    border: 1px solid var(--text-dark);
+    padding: 0.9rem 2rem;
     border-radius: 50px;
     font-weight: 700;
-    box-shadow: var(--shadow-md);
-    display: inline-flex;
-    align-items: center;
-    border: none;
+    transition: var(--transition);
+    display: inline-block;
 }
 
 .btn-cta:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-    color: var(--white);
+    background: transparent;
+    color: var(--text-dark);
     cursor: pointer;
 }
 
@@ -393,26 +345,9 @@ section {
     transform: translateY(1px);
 }
 
-.btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-    padding: 0.7rem 1.4rem;
-    /* Match btn-cta height minus border */
-    border-radius: 50px;
-    font-weight: 700;
-    transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.btn-outline:hover {
-    background: rgba(0, 0, 128, 0.05);
-    border-color: var(--primary-dark);
-    color: var(--primary-dark);
-    transform: translateY(-2px);
-}
+
+
 
 /* Hero Section */
 .hero {
