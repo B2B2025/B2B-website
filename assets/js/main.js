@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (navbarArea) {
                 const isScrolledPage = ['msme.html', 'experts.html', 'about.html', 'contact.html', 'privacy-policy.html', 'terms-msme.html', 'terms-experts.html', 'usage-policy.html'].includes(currentPage);
-                const navCtaText = currentPage === 'experts.html' ? 'Join Network' : 'Get Started';
+                const navCtaText = currentPage === 'experts.html' ? 'Join Network' : 'Try the Business Assistant — Free';
                 const navCtaHref = currentPage === 'experts.html' ? 'https://forms.gle/qWrV5uZdoeHvdiNd8' : 'contact.html';
                 const navCtaTarget = currentPage === 'experts.html' ? '_blank' : '_self';
                 const navClass = isScrolledPage ? 'navbar scrolled' : 'navbar';
