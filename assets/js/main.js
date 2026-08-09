@@ -254,17 +254,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
+            const isHeroTagline = !msmeHeader && !expertsHeader;
+            const taglineSubtitleEl = isHeroTagline ? document.getElementById('tagline-live-subtitle') : null;
+            const taglineSubtitles = [
+                '<strong>Empower</strong> — Understand compliance and business requirements',
+                '<strong>Elevate</strong> — Get expert help when you need it',
+                '<strong>Expand</strong> — Find opportunities, credit, and resources to grow'
+            ];
+
+            const updateTaglineSubtitle = (idx) => {
+                if (!taglineSubtitleEl) return;
+                taglineSubtitleEl.classList.remove('is-visible');
+                taglineSubtitleEl.innerHTML = taglineSubtitles[idx] || '';
+                requestAnimationFrame(() => taglineSubtitleEl.classList.add('is-visible'));
+            };
+
             let lastMapPhraseIndex = -1;
 
             const type = () => {
                 const currentPhrase = phrases[phraseIndex];
-                const isHeroTagline = !msmeHeader && !expertsHeader;
 
                 // Trigger map update whenever the active phrase changes
                 // (charIdx keeps counting up across phrases, so it only hits
                 // 0 once per full cycle — gate on phraseIndex instead).
                 if (!isDeleting && phraseIndex !== lastMapPhraseIndex) {
                     updateNetworkMap(currentPhrase);
+                    updateTaglineSubtitle(phraseIndex);
                     lastMapPhraseIndex = phraseIndex;
                 }
 
@@ -288,10 +303,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         typeSpeed = 1500; // Final pause
                         isDeleting = true;
+                        if (taglineSubtitleEl) taglineSubtitleEl.classList.remove('is-visible');
                     }
                 } else if (isDeleting && charIdx === 0) {
                     isDeleting = false;
                     phraseIndex = 0;
+                    lastMapPhraseIndex = -1;
                     typeSpeed = 500;
                 }
 
