@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Component Inits
             this.initMobileMenu();
-            this.initExpertForm();
-            this.initIndustrySelect();
 
             try {
                 this.initDownloadRedirect();
@@ -256,17 +254,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
+            const isHeroTagline = !msmeHeader && !expertsHeader;
+            const taglineSubtitleEl = isHeroTagline ? document.getElementById('tagline-live-subtitle') : null;
+            const taglineSubtitles = [
+                '<strong>Empower</strong> — Understand compliance and business requirements',
+                '<strong>Elevate</strong> — Get expert help when you need it',
+                '<strong>Expand</strong> — Find opportunities, credit, and resources to grow'
+            ];
+
+            const updateTaglineSubtitle = (idx) => {
+                if (!taglineSubtitleEl) return;
+                taglineSubtitleEl.classList.remove('is-visible');
+                taglineSubtitleEl.innerHTML = taglineSubtitles[idx] || '';
+                requestAnimationFrame(() => taglineSubtitleEl.classList.add('is-visible'));
+            };
+
             let lastMapPhraseIndex = -1;
 
             const type = () => {
                 const currentPhrase = phrases[phraseIndex];
-                const isHeroTagline = !msmeHeader && !expertsHeader;
 
                 // Trigger map update whenever the active phrase changes
                 // (charIdx keeps counting up across phrases, so it only hits
                 // 0 once per full cycle — gate on phraseIndex instead).
                 if (!isDeleting && phraseIndex !== lastMapPhraseIndex) {
                     updateNetworkMap(currentPhrase);
+                    updateTaglineSubtitle(phraseIndex);
                     lastMapPhraseIndex = phraseIndex;
                 }
 
@@ -290,10 +303,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         typeSpeed = 1500; // Final pause
                         isDeleting = true;
+                        if (taglineSubtitleEl) taglineSubtitleEl.classList.remove('is-visible');
                     }
                 } else if (isDeleting && charIdx === 0) {
                     isDeleting = false;
                     phraseIndex = 0;
+                    lastMapPhraseIndex = -1;
                     typeSpeed = 500;
                 }
 
@@ -1353,147 +1368,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        // --- Expert Registration Form ---
-        initExpertForm() {
-            const showBtn = document.getElementById('show-expert-form');
-            const heroJoinBtn = document.getElementById('hero-join-btn');
-            const preFooterBtn = document.getElementById('pre-footer-join-btn');
-            const formSection = document.getElementById('expert-form-section');
-            const formContainer = document.getElementById('expert-registration-form');
-
-            console.log("Expert Form Detection:", { showBtn, heroJoinBtn, preFooterBtn, formSection, formContainer });
-
-            if (!formSection || !formContainer) return;
-
-            const form = formContainer.querySelector('form');
-
-            const toggleForm = (e) => {
-                if (e) e.preventDefault();
-                console.log("Expert Form Toggle Triggered");
-
-                const isOpening = formSection.style.display === 'none' || getComputedStyle(formSection).display === 'none';
-
-                if (isOpening) {
-                    formSection.style.display = 'block';
-                    if (showBtn) showBtn.innerHTML = 'Close Form <i class="fas fa-times"></i>';
-
-                    setTimeout(() => {
-                        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 50);
-                } else {
-                    formSection.style.display = 'none';
-                    if (showBtn) showBtn.innerHTML = 'Register as an Expert <i class="fas fa-arrow-right"></i>';
-                }
-            };
-
-            if (showBtn) showBtn.addEventListener('click', toggleForm);
-            if (heroJoinBtn) heroJoinBtn.addEventListener('click', toggleForm);
-            if (preFooterBtn) preFooterBtn.addEventListener('click', toggleForm);
-
-            if (form) {
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-
-                    const btn = form.querySelector('button[type="submit"]');
-                    const originalText = btn.innerHTML;
-
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-
-                    try {
-                        await new Promise(resolve => setTimeout(resolve, 2000));
-
-                        // Success State
-                        formContainer.innerHTML = `
-                            <div class="success-message" style="text-align: center; padding: 2rem; animation: personaFadeIn 0.6s ease forwards;">
-                                <i class="fas fa-check-circle" style="font-size: 4rem; color: #10b981; margin-bottom: 1.5rem;"></i>
-                                <h3 style="color: var(--secondary); font-size: 2rem; margin-bottom: 1rem;">Application Submitted!</h3>
-                                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
-                                    Thank you for applying to the Bharat2Business Expert Network. 
-                                    Our team will review your credentials and get back to you within 48 hours.
-                                </p>
-                                <button class="btn-cta" style="margin-top: 2rem;" onclick="window.location.reload()">Back to Page</button>
-                            </div>
-                        `;
-                    } catch (error) {
-                        console.error("Submission error:", error);
-                        btn.disabled = false;
-                        btn.innerHTML = originalText;
-                        alert("Something went wrong. Please try again.");
-                    }
-                });
-            }
-        },
-
-        initIndustrySelect() {
-            const header = document.getElementById('industry-select-header');
-            const dropdown = document.getElementById('industry-dropdown');
-            const selectedText = document.getElementById('selected-industries-text');
-            const categoryToggles = document.querySelectorAll('.category-toggle');
-            const industryCheckboxes = document.querySelectorAll('.industry-checkbox');
-
-            if (!header || !dropdown) return;
-
-            // Toggle Dropdown
-            header.addEventListener('click', (e) => {
-                const isActive = header.classList.contains('active');
-                if (isActive) {
-                    header.classList.remove('active');
-                    dropdown.classList.remove('active');
-                } else {
-                    header.classList.add('active');
-                    dropdown.classList.add('active');
-                }
-            });
-
-            // Close on outside click (excluding dropdown content)
-            document.addEventListener('click', (e) => {
-                if (!header.contains(e.target) && !dropdown.contains(e.target)) {
-                    header.classList.remove('active');
-                    dropdown.classList.remove('active');
-                }
-            });
-
-            const updateCount = () => {
-                const checked = document.querySelectorAll('.industry-checkbox:checked');
-                if (checked.length === 0) {
-                    selectedText.textContent = "Select industries you serve";
-                    selectedText.style.color = "#94a3b8";
-                } else {
-                    selectedText.textContent = `${checked.length} Industries Selected`;
-                    selectedText.style.color = "var(--secondary)";
-                }
-            };
-
-            // Category Toggle (Select All)
-            categoryToggles.forEach(toggle => {
-                toggle.addEventListener('change', () => {
-                    const category = toggle.dataset.category;
-                    const isChecked = toggle.checked;
-                    const subCheckboxes = document.querySelectorAll(`.industry-checkbox[data-category="${category}"]`);
-
-                    subCheckboxes.forEach(cb => {
-                        cb.checked = isChecked;
-                    });
-                    updateCount();
-                });
-            });
-
-            // Individual Checkbox Click
-            industryCheckboxes.forEach(cb => {
-                cb.addEventListener('change', () => {
-                    const category = cb.dataset.category;
-                    const catToggle = document.querySelector(`.category-toggle[data-category="${category}"]`);
-                    const allInCat = document.querySelectorAll(`.industry-checkbox[data-category="${category}"]`);
-                    const checkedInCat = document.querySelectorAll(`.industry-checkbox[data-category="${category}"]:checked`);
-
-                    if (catToggle) {
-                        catToggle.checked = allInCat.length === checkedInCat.length;
-                    }
-                    updateCount();
-                });
-            });
-        }
     };
 
     App.init();
