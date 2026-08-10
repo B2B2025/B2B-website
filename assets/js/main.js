@@ -291,17 +291,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     charIdx++;
                 }
 
-                let typeSpeed = isDeleting ? 30 : 60;
+                // Hero tagline (Empower/Elevate/Expand) runs at half speed so the
+                // synced subtitle line is actually readable, not just the header itself.
+                let typeSpeed = isDeleting ? (isHeroTagline ? 60 : 30) : (isHeroTagline ? 120 : 60);
 
                 if (!isDeleting && charIdx === currentPhrase.length) {
                     // Cumulative reveal for Hero Tagline
                     if (isHeroTagline && phraseIndex < phrases.length - 1) {
                         phraseIndex++;
-                        // charIdx remains at the end of the previous phrase, 
+                        // charIdx remains at the end of the previous phrase,
                         // which is the start of the new content in the next phrase.
-                        typeSpeed = 800; // Pause between words
+                        typeSpeed = isHeroTagline ? 1600 : 800; // Pause between words
                     } else {
-                        typeSpeed = 1500; // Final pause
+                        typeSpeed = isHeroTagline ? 3000 : 1500; // Final pause
                         isDeleting = true;
                         if (taglineSubtitleEl) taglineSubtitleEl.classList.remove('is-visible');
                     }
@@ -309,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     isDeleting = false;
                     phraseIndex = 0;
                     lastMapPhraseIndex = -1;
-                    typeSpeed = 500;
+                    typeSpeed = isHeroTagline ? 1000 : 500;
                 }
 
                 setTimeout(type, typeSpeed);
