@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <li><a href="about.html" class="nav-link ${currentPage === 'about.html' ? 'active' : ''}">About</a></li>
                                 <li><a href="${navCtaHref}" target="${navCtaTarget}" class="btn-cta">${navCtaText}</a></li>
                             </ul>
-                            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
-                                <i class="fas fa-bars"></i>
+                            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+                                <i class="fas fa-bars" aria-hidden="true"></i>
                             </button>
                         </div>
                     </nav>
@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </a>
                                     <p class="footer-desc">Empower.Elevate.Expand.</p>
                                     <div class="footer-social-icons" style="margin-top: 1.5rem; display: flex; gap: 1.25rem;">
-                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank" style="font-size: 1.2rem; color: rgba(255,255,255,0.8); transition: color 0.3s ease;"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="https://www.instagram.com/bharat2business/" target="_blank" style="font-size: 1.2rem; color: rgba(255,255,255,0.8); transition: color 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://www.linkedin.com/company/bharat2business/" target="_blank" aria-label="LinkedIn" style="font-size: 1.2rem; color: rgba(255,255,255,0.8); transition: color 0.3s ease;"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                                        <a href="https://www.instagram.com/bharat2business/" target="_blank" aria-label="Instagram" style="font-size: 1.2rem; color: rgba(255,255,255,0.8); transition: color 0.3s ease;"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                                 <div class="footer-links">
