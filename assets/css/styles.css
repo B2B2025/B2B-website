@@ -269,17 +269,14 @@ section {
     font-weight: 700;
     transition: var(--transition);
     display: inline-block;
+    position: relative;
+    z-index: 10;
 }
 
 .btn-cta:hover {
     background: transparent;
     color: var(--text-dark);
     cursor: pointer;
-}
-
-.btn-cta {
-    position: relative;
-    z-index: 10;
 }
 
 .btn-cta.active {
@@ -353,12 +350,6 @@ section {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-}
-
-@media (max-width: 768px) {
-    .hero {
-        padding: 80px 0;
-    }
 }
 
 /* Services */
@@ -1578,8 +1569,9 @@ footer {
     .hero-btns {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
         align-items: center;
+        width: 100%;
     }
 
     .hero-btns .nav-link {
@@ -1610,6 +1602,7 @@ footer {
 
     .counters-grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
 
     .footer-grid {
@@ -1693,8 +1686,7 @@ footer {
 }
 
 /* Cursor animation for typing effect */
-.cursor,
-.msme-cursor {
+.cursor {
     display: inline-block;
     color: #000080;
     margin-left: 2px;
@@ -2217,16 +2209,6 @@ footer {
     background: #ffffff;
 }
 
-.msme-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    /* Scaled down for elegance */
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -1px;
-    margin-bottom: 1rem;
-    color: var(--secondary);
-}
-
 .tagline-live-subtitle {
     margin-top: 0.5rem;
     margin-bottom: 1.75rem;
@@ -2322,7 +2304,7 @@ footer {
     animation: flowLine 30s linear infinite;
 }
 
-.node-label {
+.node-label-svg {
     font-size: 8px;
     font-weight: 700;
     fill: #1e293b;
@@ -2334,7 +2316,7 @@ footer {
     transition: all 1s ease;
 }
 
-.node-group.active .node-label {
+.node-group.active .node-label-svg {
     opacity: 0.8;
     /* Highlighted when active */
     fill: #000080;
@@ -2389,6 +2371,9 @@ footer {
 }
 
 .msme-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    font-weight: 700;
     color: var(--primary);
     animation: blink 1s step-end infinite;
 }
@@ -2628,6 +2613,10 @@ footer {
     /* Added for vertical centering */
     gap: 1.2rem;
     position: relative;
+    /* Add space for the top tags */
+    margin-top: 20px;
+    padding-top: 40px;
+    /* Ensure content starts below the tags */
 }
 
 .zone-inputs {
@@ -3374,13 +3363,6 @@ footer {
     }
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-}
 
 
 /* Contact Page Layout Constraints */
@@ -3393,13 +3375,6 @@ footer {
     .hero-text {
         flex: 0 0 100%;
         max-width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .counters-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
     }
 }
 
@@ -3445,13 +3420,6 @@ footer {
     text-align: right;
 }
 
-.ecosystem-zone {
-    position: relative;
-    /* Add space for the top tags */
-    margin-top: 20px;
-    padding-top: 40px;
-    /* Ensure content starts below the tags */
-}
 
 /* Mobile Responsive Adjustments for MSME Ecosystem */
 @media (max-width: 991px) {
@@ -3547,12 +3515,6 @@ footer {
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.8rem;
-    }
-
-    .hero-btns {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
     }
 
     .hero-btns .btn-cta,
@@ -3747,22 +3709,7 @@ footer {
     }
 }
 
-.chat-bubble-ai-app {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    max-width: 90%;
-}
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 24px 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
 
 .m-step.completed .m-dot {
     background: #10b981;
