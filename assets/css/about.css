@@ -290,7 +290,7 @@
     pointer-events: all;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .founder-layout.active {
         flex-direction: column;
         text-align: center;
@@ -479,7 +479,7 @@
     transform: translateX(0);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .founder-layout {
         flex-direction: column;
         text-align: center;

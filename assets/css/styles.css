@@ -172,7 +172,7 @@ section {
 
 
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .flex-split, .work-row{
         flex-direction: column !important;
         text-align: center !important;
@@ -972,7 +972,7 @@ footer {
     /* Low opacity divider */
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
@@ -1491,7 +1491,7 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .container {
         padding: 0 1.25rem;
     }
@@ -1816,7 +1816,7 @@ footer {
     animation: personaFadeIn 0.3s ease;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .cta-inner {
         flex-direction: column;
         text-align: center;
@@ -3371,7 +3371,7 @@ footer {
     max-width: 550px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .hero-text {
         flex: 0 0 100%;
         max-width: 100%;
@@ -3474,7 +3474,7 @@ footer {
 }
 
 /* ── Global Mobile Refinements ── */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 
     .work-row,
     .alternate-row {
@@ -5201,7 +5201,7 @@ footer {
     letter-spacing: -1px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .live-match-card-v2 .msme-demo-grid {
         grid-template-columns: 1fr 160px 1fr;
     }
