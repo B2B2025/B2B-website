@@ -586,83 +586,86 @@
 }
 
 
-/* ── Principles Grid ── */
+/* ── Principles Grid: borderless, hairline-divided 2-column ── */
 .principles-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--tint-dark-10);
+    border-left: 1px solid var(--tint-dark-10);
     max-width: 1100px;
     margin: 0 auto;
 }
 
 .principle-item {
-    grid-column: span 2;
-    background: white;
-    padding: 2.5rem 2rem;
-    border-radius: 24px;
-    border-top: 4px solid var(--primary);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    grid-column: unset;
+    background: transparent;
+    padding: 3rem 2.75rem;
+    border-radius: 0;
+    border-right: 1px solid var(--tint-dark-10);
+    border-bottom: 1px solid var(--tint-dark-10);
+    border-top: none;
+    box-shadow: none;
+    transition: none;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .principle-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 128, 0.12);
+    transform: none;
+    box-shadow: none;
 }
 
 .principle-number {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.6;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: var(--tint-dark-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    color: var(--secondary);
+    opacity: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
 }
 
 .principle-item h3 {
-    font-size: 1.5rem;
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.7rem;
     color: var(--secondary);
     margin: 0;
-    font-weight: 800;
+    letter-spacing: 0;
 }
 
 .principle-item p {
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.65;
     color: var(--text-muted);
     margin: 0;
+    max-width: 46ch;
 }
 
 .principle-span-half {
-    grid-column: span 1;
+    grid-column: unset;
 }
 
-
-@media (max-width: 992px) {
-    .principles-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    .principle-item {
-        grid-column: span 1;
-    }
-}
 
 @media (max-width: 768px) {
     .principles-grid {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
     }
 
     .principle-item {
-        padding: 2rem 1.5rem;
+        padding: 2.25rem 1.5rem;
     }
 
     .principle-item h3 {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
     }
 }
 
