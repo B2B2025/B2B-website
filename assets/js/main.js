@@ -238,9 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (phrase.includes("Expand")) {
                     document.getElementById('node-credit')?.classList.add('active');
                     document.getElementById('path-credit')?.classList.add('active');
-                    document.getElementById('node-events')?.classList.add('active');
-                    document.getElementById('path-events')?.classList.add('active');
-                    
+
                     // Full Network on Expand
                     map.querySelectorAll('.node-group, .connection-path').forEach(el => {
                         el.classList.add('active');
